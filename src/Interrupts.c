@@ -8,8 +8,13 @@
 
 // USER INCLUDES
 #include <SI_EFM8BB1_Register_Enums.h>
+#include "PetitModBus.h"
 
-// externs
+// externs for modbus are somewhat on PetitModBusPort.h
+extern bool modbusRunFlag;
+
+
+// externs for state machine
 extern bool smRunFlag;
 extern bool cprif;
 extern bool VinCmp;
@@ -56,6 +61,7 @@ SI_INTERRUPT (TIMER0_ISR, TIMER0_IRQn)
 	TCON_TF0 = 0;
 	TL0 = (0xC7 << TL0_TL0__SHIFT);
 	// some modbus switch-on and transmission
+	modbusRunFlag = true;
 }
 
 //-----------------------------------------------------------------------------
@@ -74,3 +80,43 @@ SI_INTERRUPT (TIMER1_ISR, TIMER1_IRQn)
 	smRunFlag = true;
 }
 
+//-----------------------------------------------------------------------------
+// UART0_ISR
+//-----------------------------------------------------------------------------
+//
+// UART0 ISR Content goes here. Remember to clear flag bits:
+// RI::SCON0 (UART 0 Receive Flag)
+// TI::SCON0 (UART 0 Transmit Flag)
+//
+// ISR for for UART
+//-----------------------------------------------------------------------------
+SI_INTERRUPT (UART0_ISR, UART0_IRQn)
+{
+	//Buffer and clear flags immediately so we don't miss an interrupt while processing
+	uint8_t flags = SCON0 & (SCON0_RI__BMASK | SCON0_TI__BMASK);
+	SCON0 &= ~flags;
+
+	if (PetitRxRemaining && (flags & SCON0_RI__SET))
+	{
+		*Petit_Rx_Ptr++ = SBUF0;
+		PetitRxCounter++;
+		if (!--PetitRxRemaining)
+		{
+			//UART0_receiveCompleteCb();
+		}
+	}
+
+	if ((flags & SCON0_TI__SET))
+	{
+		if (Petit_Tx_Buf_Size)
+		{
+			SBUF0 = *Petit_Tx_Ptr++;
+			Petit_Tx_Buf_Size--;
+		}
+		else
+		{
+			// Petit Modbus Tx Complete
+			Petit_Tx_State = PETIT_RXTX_IDLE;
+		}
+	}
+}

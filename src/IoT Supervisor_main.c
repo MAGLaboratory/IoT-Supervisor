@@ -9,14 +9,21 @@
 // it has two components: voltage monitoring (because the opi doesn't have it)
 // and a watchdog (because stuff crashes all the time and nobody notices)
 
-
 //-----------------------------------------------------------------------------
 // Includes
 //-----------------------------------------------------------------------------
 #include <SI_EFM8BB1_Register_Enums.h>                  // SFR declarations
 #include "InitDevice.h"
+#include "PetitModbus.h"
 // $[Generated Includes]
 // [Generated Includes]$
+
+//-----------------------------------------------------------------------------
+// Defines
+//-----------------------------------------------------------------------------
+#define RESET_P (P1_B1)
+#define nLED (P1_B4)
+#define WDT_RESET() (WDTCN = 0xA5)
 
 //-----------------------------------------------------------------------------
 // SiLabs_Startup() Routine
@@ -26,10 +33,10 @@
 // useful place to disable the watchdog timer, which is enable by default
 // and may trigger before main() in some instances.
 //-----------------------------------------------------------------------------
-void SiLabs_Startup (void)
+void SiLabs_Startup(void)
 {
-  // $[SiLabs Startup]
-  // [SiLabs Startup]$
+	// $[SiLabs Startup]
+	// [SiLabs Startup]$
 }
 
 //-----------------------------------------------------------------------------
@@ -56,6 +63,8 @@ void SiLabs_Startup (void)
 // │                                           Modbus WDT SMEn  │
 // │                 Modbus WDT Timeout                         │
 // └────────────────────────────────────────────────────────────┘
+// flags
+bool smRunFlag = false;
 // outputs
 bool nReset = false; // inverse logic
 bool modbusWdtSmEn = false;
@@ -67,15 +76,17 @@ uint8_t sCounter = 0;
 #define SCOUNTER_ONE_SECOND (125)
 // 125 for one second
 
+//-----------------------------------------------------------------------------
+// modbus stuff
+//-----------------------------------------------------------------------------
+// flags
+bool modbusRunFlag = false;
 typedef enum
 {
-	Init,
-	VLow,
-	OK
-}
-VinSm_t;
+	Init, VLow, OK
+} VinSm_t;
 
-void VinSm (void)
+void VinSm(void)
 {
 	static VinSm_t VinState = Init;
 	// default output states
@@ -139,15 +150,31 @@ void VinSm (void)
 // main() Routine
 // ----------------------------------------------------------------------------
 
-int main (void)
+int main(void)
 {
-  // Call hardware initialization routine
-  enter_DefaultMode_from_RESET();
-  
-  while (1) 
-  {
-    PCON0 |= PCON0_IDLE__IDLE;
-    // $[Generated Run-time code]
-    // [Generated Run-time code]$
-  }                             
+	// Call hardware initialization routine
+	enter_DefaultMode_from_RESET();
+
+	while (1)
+	{
+		if (smRunFlag)
+		{
+			// state machine counters and run?
+			VinCmp = CMP0CN0 & CMP0CN0_CPOUT__BMASK;
+			VinSm();
+			RESET_P = nReset;
+			nLED = nReset;
+			WDT_RESET();
+			smRunFlag = false;
+		}
+
+		if (modbusRunFlag)
+		{
+			ProcessPetitModbus();
+		}
+		// put MCU in idle mode to save power
+		PCON0 |= PCON0_IDLE__IDLE;
+		// $[Generated Run-time code]
+		// [Generated Run-time code]$
+	}
 }
