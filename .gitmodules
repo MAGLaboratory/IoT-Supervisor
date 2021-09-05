@@ -1,0 +1,8 @@
+[submodule "src/PetitModbus"]
+	path = src/PetitModbus
+	url = https://github.com/FxDev/PetitModbus.git
+	branch = source-only
+[submodule "inc/PetitModbus"]
+	path = inc/PetitModbus
+	url = https://github.com/FxDev/PetitModbus.git
+	branch = include-only
