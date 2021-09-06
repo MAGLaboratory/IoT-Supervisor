@@ -9,6 +9,8 @@
 #define FALSE (0)
 #define TRUE (1)
 
+extern unsigned short PetitModbusTimerValue;
+
 extern unsigned int PetitRxCounter;
 extern unsigned int PetitRxRemaining;
 extern unsigned char* Petit_Rx_Ptr;
