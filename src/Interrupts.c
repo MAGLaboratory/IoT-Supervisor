@@ -98,11 +98,24 @@ SI_INTERRUPT (UART0_ISR, UART0_IRQn)
 
 	if (PetitRxRemaining && (flags & SCON0_RI__SET))
 	{
-		*Petit_Rx_Ptr++ = SBUF0;
-		PetitRxCounter++;
-		if (!--PetitRxRemaining)
+		char read = SBUF0;
+		if (!PetitRxCounter)
 		{
-			//UART0_receiveCompleteCb();
+			// check if servant address is correct on first character
+			if (read == 1)
+			{
+				*Petit_Rx_Ptr++ = read;
+				PetitRxRemaining--;
+				PetitRxCounter++;
+	            PetitModbusTimerValue   = 0;
+			}
+		}
+		else
+		{
+			*Petit_Rx_Ptr++ = read;
+			PetitRxRemaining--;
+			PetitRxCounter++;
+            PetitModbusTimerValue   = 0;
 		}
 	}
 

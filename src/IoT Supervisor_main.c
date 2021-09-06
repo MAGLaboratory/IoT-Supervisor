@@ -171,6 +171,7 @@ int main(void)
 		if (modbusRunFlag)
 		{
 			ProcessPetitModbus();
+			modbusRunFlag = false;
 		}
 		// put MCU in idle mode to save power
 		PCON0 |= PCON0_IDLE__IDLE;
