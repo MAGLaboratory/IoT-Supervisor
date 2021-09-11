@@ -39,6 +39,11 @@ void SiLabs_Startup(void)
 	// [SiLabs Startup]$
 }
 
+// flags
+unsigned char t1Flag = 0;
+// counters
+uint8_t t1c = 0;
+
 //-----------------------------------------------------------------------------
 // the state machine
 //-----------------------------------------------------------------------------
@@ -63,8 +68,6 @@ void SiLabs_Startup(void)
 // │                                           Modbus WDT SMEn  │
 // │                 Modbus WDT Timeout                         │
 // └────────────────────────────────────────────────────────────┘
-// flags
-bool smRunFlag = false;
 // outputs
 bool nReset = false; // inverse logic
 bool modbusWdtSmEn = false;
@@ -157,7 +160,25 @@ int main(void)
 
 	while (1)
 	{
-		if (smRunFlag)
+		while (t1Flag)
+		{
+			t1Flag--;
+
+			if ((t1c & 0x7) == 0)
+			{
+				// state machine counters and run?
+				VinCmp = CMP0CN0 & CMP0CN0_CPOUT__BMASK;
+				VinSm();
+				RESET_P = nReset;
+				nLED = nReset;
+				WDT_RESET();
+			}
+
+			ProcessPetitModbus();
+			t1c++;
+		}
+
+		if (cprif)
 		{
 			// state machine counters and run?
 			VinCmp = CMP0CN0 & CMP0CN0_CPOUT__BMASK;
@@ -165,16 +186,9 @@ int main(void)
 			RESET_P = nReset;
 			nLED = nReset;
 			WDT_RESET();
-			smRunFlag = false;
-		}
-
-		if (modbusRunFlag)
-		{
-			ProcessPetitModbus();
-			modbusRunFlag = false;
 		}
 		// put MCU in idle mode to save power
-		PCON0 |= PCON0_IDLE__IDLE;
+		//PCON0 |= PCON0_IDLE__IDLE;
 		// $[Generated Run-time code]
 		// [Generated Run-time code]$
 	}

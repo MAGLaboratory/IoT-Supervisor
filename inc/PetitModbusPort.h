@@ -14,6 +14,8 @@ extern unsigned short PetitModbusTimerValue;
 extern unsigned int PetitRxCounter;
 extern unsigned int PetitRxRemaining;
 extern unsigned char* Petit_Rx_Ptr;
+extern unsigned char PetitRxBuffer[];
+extern unsigned char PetitExpectedReceiveCount;
 
 extern unsigned int Petit_Tx_Buf_Size;
 extern unsigned char* Petit_Tx_Ptr;
