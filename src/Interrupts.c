@@ -10,16 +10,9 @@
 #include <SI_EFM8BB1_Register_Enums.h>
 #include "PetitModBus.h"
 
-// externs for modbus are somewhat on PetitModBusPort.h
-extern bool modbusRunFlag;
-
-
-// externs for state machine
-extern bool smRunFlag;
+// externs flags
+extern unsigned char t1Flag;
 extern bool cprif;
-extern bool VinCmp;
-extern bool nReset;
-extern void VinSm(void);
 
 //-----------------------------------------------------------------------------
 // CMP0_ISR
@@ -43,41 +36,45 @@ SI_INTERRUPT (CMP0_ISR, CMP0_IRQn)
 	{
 		CMP0CN0 &= ~(CMP0CN0_CPRIF__BMASK);
 		cprif = true;
-		smRunFlag = true;
 	}
 }
 
 //-----------------------------------------------------------------------------
-// TIMER0_ISR
+// TIMER0_ISR (timer 0, low)
 //-----------------------------------------------------------------------------
 //
 // TIMER0 ISR Content goes here. Remember to clear flag bits:
 // TCON::TF0 (Timer 0 Overflow Flag)
 //
-// ISR for modbus (1.75 ms or whatever)
+// ISR for modbus dump
 //-----------------------------------------------------------------------------
 SI_INTERRUPT (TIMER0_ISR, TIMER0_IRQn)
 {
 	TCON_TF0 = 0;
-	TL0 = (0xC7 << TL0_TL0__SHIFT);
-	// some modbus switch-on and transmission
-	modbusRunFlag = true;
+	TCON_TR0 = false;
+	TL0 = (0x20 << TL0_TL0__SHIFT);
+
+	// dump the modbus receiver
+	PetitRxCounter = 0;
+	PetitRxRemaining = PETITMODBUS_RECEIVE_BUFFER_SIZE;
+	Petit_Rx_Ptr = &(PetitRxBuffer[0]);
+	PetitExpectedReceiveCount = 0;
 }
 
 //-----------------------------------------------------------------------------
-// TIMER1_ISR
+// TIMER1_ISR (timer 0, high)
 //-----------------------------------------------------------------------------
 //
 // TIMER1 ISR Content goes here. Remember to clear flag bits:
 // TCON::TF1 (Timer 1 Overflow Flag)
 //
-// ISR for for timing (8 ms)
+// ISR for for timing (1 ms)
 //-----------------------------------------------------------------------------
 SI_INTERRUPT (TIMER1_ISR, TIMER1_IRQn)
 {
 	TCON_TF1 = 0;
-	TH0 = (0x01 << TH0_TH0__SHIFT);
-	smRunFlag = true;
+	TH0 = (0x80 << TH0_TH0__SHIFT);
+	t1Flag++;
 }
 
 //-----------------------------------------------------------------------------
@@ -107,7 +104,8 @@ SI_INTERRUPT (UART0_ISR, UART0_IRQn)
 				*Petit_Rx_Ptr++ = read;
 				PetitRxRemaining--;
 				PetitRxCounter++;
-	            PetitModbusTimerValue   = 0;
+				TL0 = (0x20 << TL0_TL0__SHIFT);
+				TCON_TR0 = true;
 			}
 		}
 		else
@@ -115,7 +113,8 @@ SI_INTERRUPT (UART0_ISR, UART0_IRQn)
 			*Petit_Rx_Ptr++ = read;
 			PetitRxRemaining--;
 			PetitRxCounter++;
-            PetitModbusTimerValue   = 0;
+			TL0 = (0x20 << TL0_TL0__SHIFT);
+			TCON_TR0 = true;
 		}
 	}
 

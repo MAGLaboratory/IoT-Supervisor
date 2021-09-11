@@ -12,19 +12,31 @@
 // USER PROTOTYPES
 
 // $[Mode Transition Prototypes]
-extern void enter_DefaultMode_from_RESET(void);
+extern void
+enter_DefaultMode_from_RESET (void);
 // [Mode Transition Prototypes]$
 
 // $[Config(Per-Module Mode)Transition Prototypes]
-extern void WDT_0_enter_DefaultMode_from_RESET(void);
-extern void PORTS_0_enter_DefaultMode_from_RESET(void);
-extern void PBCFG_0_enter_DefaultMode_from_RESET(void);
-extern void CMP_0_enter_DefaultMode_from_RESET(void);
-extern void CLOCK_0_enter_DefaultMode_from_RESET(void);
-extern void TIMER01_0_enter_DefaultMode_from_RESET(void);
-extern void TIMER_SETUP_0_enter_DefaultMode_from_RESET(void);
-extern void UART_0_enter_DefaultMode_from_RESET(void);
-extern void INTERRUPT_0_enter_DefaultMode_from_RESET(void);
+extern void
+WDT_0_enter_DefaultMode_from_RESET (void);
+extern void
+PORTS_0_enter_DefaultMode_from_RESET (void);
+extern void
+PBCFG_0_enter_DefaultMode_from_RESET (void);
+extern void
+ADC_0_enter_DefaultMode_from_RESET (void);
+extern void
+CMP_0_enter_DefaultMode_from_RESET (void);
+extern void
+CLOCK_0_enter_DefaultMode_from_RESET (void);
+extern void
+TIMER01_0_enter_DefaultMode_from_RESET (void);
+extern void
+TIMER_SETUP_0_enter_DefaultMode_from_RESET (void);
+extern void
+UART_0_enter_DefaultMode_from_RESET (void);
+extern void
+INTERRUPT_0_enter_DefaultMode_from_RESET (void);
 // [Config(Per-Module Mode)Transition Prototypes]$
 
 #endif
