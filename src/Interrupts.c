@@ -14,6 +14,10 @@
 extern unsigned char t1Flag;
 extern bool cprif;
 
+void VinSm (void);
+
+#define WDT_RESET() (WDTCN = 0xA5)
+
 //-----------------------------------------------------------------------------
 // CMP0_ISR
 //-----------------------------------------------------------------------------
@@ -32,10 +36,12 @@ SI_INTERRUPT (CMP0_ISR, CMP0_IRQn)
 		CMP0CN0 &= ~(CMP0CN0_CPFIF__BMASK);
 	}
 	// clear rising edge flag
+	// run the Vin state machine to shut down the IoT device
 	if (CMP0CN0 & CMP0CN0_CPRIF__BMASK)
 	{
 		CMP0CN0 &= ~(CMP0CN0_CPRIF__BMASK);
 		cprif = true;
+		VinSm();
 	}
 }
 
@@ -46,15 +52,20 @@ SI_INTERRUPT (CMP0_ISR, CMP0_IRQn)
 // TIMER0 ISR Content goes here. Remember to clear flag bits:
 // TCON::TF0 (Timer 0 Overflow Flag)
 //
-// ISR for modbus dump
+// ISR for modbus message timeout
+//
+// Modbus implements a 1.75ms timeout between messages.  Clearing the data in
+// the modbus buffer invalidates it.
 //-----------------------------------------------------------------------------
 SI_INTERRUPT (TIMER0_ISR, TIMER0_IRQn)
 {
 	TCON_TF0 = 0;
+	// timer off
+	// reset timer counter (should be a define)
 	TCON_TR0 = false;
 	TL0 = (0x20 << TL0_TL0__SHIFT);
 
-	// dump the modbus receiver
+	// clear the modbus receiver
 	PetitRxCounter = 0;
 	PetitRxRemaining = PETITMODBUS_RECEIVE_BUFFER_SIZE;
 	Petit_Rx_Ptr = &(PetitRxBuffer[0]);
@@ -72,9 +83,17 @@ SI_INTERRUPT (TIMER0_ISR, TIMER0_IRQn)
 //-----------------------------------------------------------------------------
 SI_INTERRUPT (TIMER1_ISR, TIMER1_IRQn)
 {
+	static unsigned char t1c = 0;
 	TCON_TF1 = 0;
 	TH0 = (0x80 << TH0_TH0__SHIFT);
 	t1Flag++;
+
+	if ((t1c & 7) == 0)
+	{
+
+		WDT_RESET();
+	}
+	t1c++;
 }
 
 //-----------------------------------------------------------------------------

@@ -23,7 +23,6 @@
 //-----------------------------------------------------------------------------
 #define RESET_P (P1_B1)
 #define nLED (P1_B4)
-#define WDT_RESET() (WDTCN = 0xA5)
 
 //-----------------------------------------------------------------------------
 // SiLabs_Startup() Routine
@@ -41,8 +40,6 @@ void SiLabs_Startup(void)
 
 // flags
 unsigned char t1Flag = 0;
-// counters
-uint8_t t1c = 0;
 
 //-----------------------------------------------------------------------------
 // the state machine
@@ -61,7 +58,7 @@ uint8_t t1c = 0;
 // │   nReset = False │                     │
 // │                  │                     │  ┌────────────┐
 // │                  │ VinLow == False     └──┤            │
-// │                  │    1 second            │     OK     ├───┐
+// │                  │    2 seconds           │     OK     ├───┐
 // │                  └───────────────────────►│            │   │
 // │                                           └────────────┘   │
 // │                                            nReset = True   │
@@ -74,7 +71,7 @@ bool modbusWdtSmEn = false;
 // inputs
 bool cprif = false; // set outside, cleared here
 bool VinCmp = true; // set and cleared before calling
-bool modbusWdtExp = false; // set outside, cleared here
+bool modbusWdtExp = false; // set outside, cleared in this SM
 uint8_t sCounter = 0;
 #define SCOUNTER_ONE_SECOND (125)
 // 125 for one second
@@ -92,6 +89,10 @@ typedef enum
 void VinSm(void)
 {
 	static VinSm_t VinState = Init;
+
+	// determine input state
+	VinCmp = CMP0CN0 & CMP0CN0_CPOUT__BMASK;
+
 	// default output states
 	nReset = false;
 	modbusWdtSmEn = false;
@@ -146,9 +147,96 @@ void VinSm(void)
 		break;
 	}
 
+	// output signals
+	RESET_P = nReset;
+	nLED = nReset;
+
+	// reset flags
 	cprif = false;
 }
 
+//-----------------------------------------------------------------------------
+// Modbus WDT processing from Modbus
+//-----------------------------------------------------------------------------
+bool mbWDTen = false;
+bool mbWDTpet = false;
+
+void mbFlagDet()
+{
+	if (PetitRegChange)
+	{
+		// TODO should be a define
+		if (PetitRegisters[0] != 0)
+		{
+			if (PetitRegisters[0] == 0x5A)
+			{
+				mbWDTpet = true;
+			}
+			mbWDTen = true;
+		}
+		PetitRegChange = false;
+	}
+}
+
+//-----------------------------------------------------------------------------
+// Modbus WDT State Machine
+//-----------------------------------------------------------------------------
+typedef enum
+{
+	Ini, En, Timeout
+} mbWDTsmS_t;
+
+
+mbWDTsmS_t mbWDTsmS = Ini;
+uint16_t mbWDTc = 0;
+uint8_t mbWDTcM = 0;
+
+void mbWDTsm (void)
+{
+
+	// transitions
+	switch(mbWDTsmS)
+	{
+	case Ini:
+		if (mbWDTen && modbusWdtSmEn)
+			mbWDTsmS = En;
+		break;
+	case En:
+		if (!mbWDTen || mbWDTpet)
+			mbWDTsmS = Init;
+		if (mbWDTc >= 15)
+			mbWDTsmS = Timeout;
+		break;
+	case Timeout:
+		mbWDTsmS = Init;
+		break;
+	default:
+		mbWDTsmS = Init;
+		break;
+	}
+
+	// output
+	switch(mbWDTsmS)
+	{
+	case Ini:
+		mbWDTc = 0;
+		mbWDTcM = 0;
+		break;
+	case En:
+		mbWDTc++;
+		if (mbWDTc >= 7500)
+			mbWDTcM++;
+		// yass
+		PetitRegisters[0] = 0xEA55;
+		break;
+	case Timeout:
+		// bite
+		PetitRegisters[0] = 0xB17E;
+		mbWDTen = false;
+		modbusWdtExp = true;
+		break;
+	}
+}
 //-----------------------------------------------------------------------------
 // main() Routine
 // ----------------------------------------------------------------------------
@@ -160,35 +248,15 @@ int main(void)
 
 	while (1)
 	{
-		while (t1Flag)
+		if (t1Flag)
 		{
-			t1Flag--;
-
-			if ((t1c & 0x7) == 0)
-			{
-				// state machine counters and run?
-				VinCmp = CMP0CN0 & CMP0CN0_CPOUT__BMASK;
-				VinSm();
-				RESET_P = nReset;
-				nLED = nReset;
-				WDT_RESET();
-			}
-
+			t1Flag = 0;
 			ProcessPetitModbus();
-			t1c++;
+			mbFlagDet();
 		}
 
-		if (cprif)
-		{
-			// state machine counters and run?
-			VinCmp = CMP0CN0 & CMP0CN0_CPOUT__BMASK;
-			VinSm();
-			RESET_P = nReset;
-			nLED = nReset;
-			WDT_RESET();
-		}
 		// put MCU in idle mode to save power
-		//PCON0 |= PCON0_IDLE__IDLE;
+		PCON0 |= PCON0_IDLE__IDLE;
 		// $[Generated Run-time code]
 		// [Generated Run-time code]$
 	}
