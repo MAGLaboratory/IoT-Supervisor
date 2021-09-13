@@ -90,7 +90,7 @@ SI_INTERRUPT (TIMER1_ISR, TIMER1_IRQn)
 
 	if ((t1c & 7) == 0)
 	{
-
+		VinSm();
 		WDT_RESET();
 	}
 	t1c++;
