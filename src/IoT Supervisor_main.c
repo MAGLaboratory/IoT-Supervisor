@@ -39,7 +39,9 @@ void SiLabs_Startup(void)
 }
 
 // flags
-unsigned char t1Flag = 0;
+bool t1Flag = false;
+bool vinSmFlag = false;
+bool WDTsmFlag = false;
 
 //-----------------------------------------------------------------------------
 // the state machine
@@ -65,14 +67,16 @@ unsigned char t1Flag = 0;
 // │                                           Modbus WDT SMEn  │
 // │                 Modbus WDT Timeout                         │
 // └────────────────────────────────────────────────────────────┘
-// outputs
+// == outputs ==
 bool nReset = false; // inverse logic
 bool modbusWdtSmEn = false;
-// inputs
+// == inputs ==
+// comparator input flag
 bool cprif = false; // set outside, cleared here
-bool VinCmp = true; // set and cleared before calling
+// modbus watchdog expired
 bool modbusWdtExp = false; // set outside, cleared in this SM
-uint8_t sCounter = 0;
+
+// == constants ==
 #define SCOUNTER_ONE_SECOND (125)
 // 125 for one second
 
@@ -88,10 +92,12 @@ typedef enum
 
 void VinSm(void)
 {
+	// static variables
 	static VinSm_t VinState = Init;
+	static uint8_t sCounter = 0;
 
 	// determine input state
-	VinCmp = CMP0CN0 & CMP0CN0_CPOUT__BMASK;
+	bool VinCmp = CMP0CN0 & CMP0CN0_CPOUT__BMASK;
 
 	// default output states
 	nReset = false;
@@ -136,9 +142,11 @@ void VinSm(void)
 	{
 	case Init:
 		sCounter++;
+		modbusWdtExp = false;
 		break;
 	case VLow:
 		sCounter = 0;
+		PetitRegisters[0] = 0x5010; // lo (w)
 		break;
 	case OK:
 		nReset = true;
@@ -161,20 +169,25 @@ void VinSm(void)
 bool mbWDTen = false;
 bool mbWDTpet = false;
 
+// todo: handshake for disable
 void mbFlagDet()
 {
 	if (PetitRegChange)
 	{
+		PetitRegChange = false;
 		// TODO should be a define
-		if (PetitRegisters[0] != 0)
+		if (PetitRegisters[1] != 0)
 		{
-			if (PetitRegisters[0] == 0x5A)
+			if (PetitRegisters[1] == 0x5A)
 			{
 				mbWDTpet = true;
+				mbWDTen = true;
 			}
-			mbWDTen = true;
+			if (PetitRegisters[1] == 0xA5)
+			{
+				mbWDTen = false;
+			}
 		}
-		PetitRegChange = false;
 	}
 }
 
@@ -184,15 +197,14 @@ void mbFlagDet()
 typedef enum
 {
 	Ini, En, Timeout
-} mbWDTsmS_t;
-
-
-mbWDTsmS_t mbWDTsmS = Ini;
-uint16_t mbWDTc = 0;
-uint8_t mbWDTcM = 0;
+} mbWDTsmS_t; // modbus watchdog timer state machine states _ type
 
 void mbWDTsm (void)
 {
+	// statics
+	static mbWDTsmS_t mbWDTsmS = Ini;
+	static uint16_t mbWDTc = 0;		// modbus watchdog timer counter
+	static uint8_t mbWDTcM = 0;		// modbus watchdog timer counter (minute)
 
 	// transitions
 	switch(mbWDTsmS)
@@ -204,7 +216,7 @@ void mbWDTsm (void)
 	case En:
 		if (!mbWDTen || mbWDTpet)
 			mbWDTsmS = Init;
-		if (mbWDTc >= 15)
+		if (mbWDTcM >= 15)
 			mbWDTsmS = Timeout;
 		break;
 	case Timeout:
@@ -226,16 +238,17 @@ void mbWDTsm (void)
 		mbWDTc++;
 		if (mbWDTc >= 7500)
 			mbWDTcM++;
-		// yass
-		PetitRegisters[0] = 0xEA55;
+		if (6)
+			PetitRegisters[0] = 0xEA55; // yass
 		break;
 	case Timeout:
-		// bite
-		PetitRegisters[0] = 0xB17E;
+		PetitRegisters[0] = 0xB17E; // bite
 		mbWDTen = false;
 		modbusWdtExp = true;
 		break;
 	}
+
+	mbWDTpet = false;
 }
 //-----------------------------------------------------------------------------
 // main() Routine
@@ -253,6 +266,18 @@ int main(void)
 			t1Flag = 0;
 			ProcessPetitModbus();
 			mbFlagDet();
+		}
+
+		if (vinSmFlag)
+		{
+			vinSmFlag = 0;
+			VinSm();
+		}
+
+		if (WDTsmFlag)
+		{
+			WDTsmFlag = 0;
+			mbWDTsm();
 		}
 
 		// put MCU in idle mode to save power
