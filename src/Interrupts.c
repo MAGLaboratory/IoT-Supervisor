@@ -11,10 +11,10 @@
 #include "PetitModBus.h"
 
 // externs flags
-extern unsigned char t1Flag;
+extern bool t1Flag;
+extern bool vinSmFlag;
+extern bool WDTsmFlag;
 extern bool cprif;
-
-void VinSm (void);
 
 #define WDT_RESET() (WDTCN = 0xA5)
 
@@ -29,6 +29,7 @@ void VinSm (void);
 //-----------------------------------------------------------------------------
 SI_INTERRUPT (CMP0_ISR, CMP0_IRQn)
 {
+	static bool firstInterrupt = true;
 	// state machine immediate off
 	// clear falling edge flag (should not trigger to but whatever)
 	if (CMP0CN0 & CMP0CN0_CPFIF__BMASK)
@@ -40,8 +41,13 @@ SI_INTERRUPT (CMP0_ISR, CMP0_IRQn)
 	if (CMP0CN0 & CMP0CN0_CPRIF__BMASK)
 	{
 		CMP0CN0 &= ~(CMP0CN0_CPRIF__BMASK);
-		cprif = true;
-		VinSm();
+		if (firstInterrupt)
+			firstInterrupt = false;
+		else
+		{
+			cprif = true;
+			vinSmFlag = true;
+		}
 	}
 }
 
@@ -86,11 +92,13 @@ SI_INTERRUPT (TIMER1_ISR, TIMER1_IRQn)
 	static unsigned char t1c = 0;
 	TCON_TF1 = 0;
 	TH0 = (0x80 << TH0_TH0__SHIFT);
-	t1Flag++;
+	t1Flag = true;
 
+	// run every 8ms
 	if ((t1c & 7) == 0)
 	{
-		VinSm();
+		WDTsmFlag = true;
+		vinSmFlag = true;
 		WDT_RESET();
 	}
 	t1c++;
@@ -108,46 +116,63 @@ SI_INTERRUPT (TIMER1_ISR, TIMER1_IRQn)
 //-----------------------------------------------------------------------------
 SI_INTERRUPT (UART0_ISR, UART0_IRQn)
 {
-	//Buffer and clear flags immediately so we don't miss an interrupt while processing
-	uint8_t flags = SCON0 & (SCON0_RI__BMASK | SCON0_TI__BMASK);
-	SCON0 &= ~flags;
+ //Buffer and clear flags immediately so we don't miss an interrupt while processing
+uint8_t flags = SCON0 & (SCON0_RI__BMASK | SCON0_TI__BMASK);
+SCON0 &= ~flags;
 
-	if (PetitRxRemaining && (flags & SCON0_RI__SET))
+if (PetitRxRemaining && (flags & SCON0_RI__SET))
+{
+char read = SBUF0;
+if (!PetitRxCounter)
+{
+	// check if servant address is correct on first character
+	if (read == 1)
 	{
-		char read = SBUF0;
-		if (!PetitRxCounter)
-		{
-			// check if servant address is correct on first character
-			if (read == 1)
-			{
-				*Petit_Rx_Ptr++ = read;
-				PetitRxRemaining--;
-				PetitRxCounter++;
-				TL0 = (0x20 << TL0_TL0__SHIFT);
-				TCON_TR0 = true;
-			}
-		}
-		else
-		{
-			*Petit_Rx_Ptr++ = read;
-			PetitRxRemaining--;
-			PetitRxCounter++;
-			TL0 = (0x20 << TL0_TL0__SHIFT);
-			TCON_TR0 = true;
-		}
-	}
-
-	if ((flags & SCON0_TI__SET))
-	{
-		if (Petit_Tx_Buf_Size)
-		{
-			SBUF0 = *Petit_Tx_Ptr++;
-			Petit_Tx_Buf_Size--;
-		}
-		else
-		{
-			// Petit Modbus Tx Complete
-			Petit_Tx_State = PETIT_RXTX_IDLE;
-		}
+		*Petit_Rx_Ptr++ = read;
+		PetitRxRemaining--;
+		PetitRxCounter++;
+		TL0 = (0x20 << TL0_TL0__SHIFT);
+		TCON_TR0 = true;
 	}
 }
+else
+{
+	*Petit_Rx_Ptr++ = read;
+	PetitRxRemaining--;
+	PetitRxCounter++;
+	TL0 = (0x20 << TL0_TL0__SHIFT);
+	TCON_TR0 = true;
+}
+}
+
+if ((flags & SCON0_TI__SET))
+{
+if (Petit_Tx_Buf_Size)
+{
+	SBUF0 = *Petit_Tx_Ptr++;
+	Petit_Tx_Buf_Size--;
+}
+else
+{
+	// Petit Modbus Tx Complete
+	Petit_Tx_State = PETIT_RXTX_IDLE;
+}
+}
+}
+//-----------------------------------------------------------------------------
+// ADC0EOC_ISR
+//-----------------------------------------------------------------------------
+//
+// ADC0EOC ISR Content goes here. Remember to clear flag bits:
+// ADC0CN0::ADINT (Conversion Complete Interrupt Flag)
+//
+//-----------------------------------------------------------------------------
+SI_INTERRUPT (ADC0EOC_ISR, ADC0EOC_IRQn)
+{
+	char conv_count;
+	ADC0CN0_ADINT = 0;					// clear interrupt flag
+	conv_count = PetitRegisters[2] >> 10 & 0x3F;
+	conv_count++;
+	PetitRegisters[2] = (uint16_t) conv_count << 10 | ADC0 >> 6;
+}
+
