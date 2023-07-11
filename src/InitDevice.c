@@ -85,6 +85,18 @@ extern void WDT_0_enter_DefaultMode_from_RESET(void)
 extern void PORTS_0_enter_DefaultMode_from_RESET(void)
 {
 	// $[P0 - Port 0 Pin Latch]
+	/***********************************************************************
+	 - P0.0 is high. Set P0.0 to drive or float high
+	 - P0.1 is high. Set P0.1 to drive or float high
+	 - P0.2 is high. Set P0.2 to drive or float high
+	 - P0.3 is low. Set P0.3 to drive low
+	 - P0.4 is high. Set P0.4 to drive or float high
+	 - P0.5 is high. Set P0.5 to drive or float high
+	 - P0.6 is high. Set P0.6 to drive or float high
+	 - P0.7 is high. Set P0.7 to drive or float high
+	 ***********************************************************************/
+	P0 = P0_B0__HIGH | P0_B1__HIGH | P0_B2__HIGH | P0_B3__LOW | P0_B4__HIGH
+			| P0_B5__HIGH | P0_B6__HIGH | P0_B7__HIGH;
 	// [P0 - Port 0 Pin Latch]$
 
 	// $[P0MDOUT - Port 0 Output Mode]
@@ -92,14 +104,14 @@ extern void PORTS_0_enter_DefaultMode_from_RESET(void)
 	 - P0.0 output is open-drain
 	 - P0.1 output is open-drain
 	 - P0.2 output is open-drain
-	 - P0.3 output is open-drain
+	 - P0.3 output is push-pull
 	 - P0.4 output is push-pull
 	 - P0.5 output is open-drain
 	 - P0.6 output is open-drain
 	 - P0.7 output is push-pull
 	 ***********************************************************************/
 	P0MDOUT = P0MDOUT_B0__OPEN_DRAIN | P0MDOUT_B1__OPEN_DRAIN
-			| P0MDOUT_B2__OPEN_DRAIN | P0MDOUT_B3__OPEN_DRAIN
+			| P0MDOUT_B2__OPEN_DRAIN | P0MDOUT_B3__PUSH_PULL
 			| P0MDOUT_B4__PUSH_PULL | P0MDOUT_B5__OPEN_DRAIN
 			| P0MDOUT_B6__OPEN_DRAIN | P0MDOUT_B7__PUSH_PULL;
 	// [P0MDOUT - Port 0 Output Mode]$

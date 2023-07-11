@@ -32,8 +32,13 @@
     <property object="P0.0" propertyId="ports.settings.skip" value="Skipped"/>
     <property object="P0.1" propertyId="ports.settings.inputmode" value="Analog"/>
     <property object="P0.1" propertyId="ports.settings.iomode" value="Analog I/O"/>
+    <property object="P0.1" propertyId="ports.settings.label" value="VIN_DIV"/>
     <property object="P0.1" propertyId="ports.settings.skip" value="Skipped"/>
     <property object="P0.2" propertyId="ports.settings.skip" value="Skipped"/>
+    <property object="P0.3" propertyId="ports.settings.iomode" value="Digital Push-Pull Output"/>
+    <property object="P0.3" propertyId="ports.settings.label" value="XCVR_EN"/>
+    <property object="P0.3" propertyId="ports.settings.latch" value="Low"/>
+    <property object="P0.3" propertyId="ports.settings.outputmode" value="Push-pull"/>
     <property object="P0.3" propertyId="ports.settings.skip" value="Skipped"/>
     <property object="P0.4" propertyId="ports.settings.iomode" value="Digital Push-Pull Output"/>
     <property object="P0.4" propertyId="ports.settings.outputmode" value="Push-pull"/>

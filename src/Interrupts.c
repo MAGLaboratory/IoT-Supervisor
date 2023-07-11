@@ -76,6 +76,9 @@ SI_INTERRUPT (TIMER0_ISR, TIMER0_IRQn)
 	PetitRxRemaining = PETITMODBUS_RECEIVE_BUFFER_SIZE;
 	Petit_Rx_Ptr = &(PetitRxBuffer[0]);
 	PetitExpectedReceiveCount = 0;
+
+	// transceiver on receive mode
+	P0_B3 = false;
 }
 
 //-----------------------------------------------------------------------------
@@ -116,48 +119,57 @@ SI_INTERRUPT (TIMER1_ISR, TIMER1_IRQn)
 //-----------------------------------------------------------------------------
 SI_INTERRUPT (UART0_ISR, UART0_IRQn)
 {
- //Buffer and clear flags immediately so we don't miss an interrupt while processing
-uint8_t flags = SCON0 & (SCON0_RI__BMASK | SCON0_TI__BMASK);
-SCON0 &= ~flags;
+	//Buffer and clear flags immediately so we don't miss an interrupt while processing
+	uint8_t flags = SCON0 & (SCON0_RI__BMASK | SCON0_TI__BMASK);
+	SCON0 &= ~flags;
 
-if (PetitRxRemaining && (flags & SCON0_RI__SET))
-{
-char read = SBUF0;
-if (!PetitRxCounter)
-{
-	// check if servant address is correct on first character
-	if (read == 1)
+	if (PetitRxRemaining && (flags & SCON0_RI__SET))
 	{
-		*Petit_Rx_Ptr++ = read;
-		PetitRxRemaining--;
-		PetitRxCounter++;
-		TL0 = (0x20 << TL0_TL0__SHIFT);
-		TCON_TR0 = true;
+		char read = SBUF0;
+		if (!PetitRxCounter)
+		{
+			// check if servant address is correct on first character
+			if (read == 1)
+			{
+				*Petit_Rx_Ptr++ = read;
+				PetitRxRemaining--;
+				PetitRxCounter++;
+				// reset silent period timer
+				TL0 = (0x20 << TL0_TL0__SHIFT);
+				TCON_TR0 = true;
+			}
+		}
+		else
+		{
+			*Petit_Rx_Ptr++ = read;
+			PetitRxRemaining--;
+			PetitRxCounter++;
+			// reset silent period timer
+			TL0 = (0x20 << TL0_TL0__SHIFT);
+			TCON_TR0 = true;
+		}
 	}
-}
-else
-{
-	*Petit_Rx_Ptr++ = read;
-	PetitRxRemaining--;
-	PetitRxCounter++;
-	TL0 = (0x20 << TL0_TL0__SHIFT);
-	TCON_TR0 = true;
-}
-}
 
-if ((flags & SCON0_TI__SET))
-{
-if (Petit_Tx_Buf_Size)
-{
-	SBUF0 = *Petit_Tx_Ptr++;
-	Petit_Tx_Buf_Size--;
-}
-else
-{
-	// Petit Modbus Tx Complete
-	Petit_Tx_State = PETIT_RXTX_IDLE;
-}
-}
+	if ((flags & SCON0_TI__SET))
+	{
+		if (Petit_Tx_Buf_Size != 0)
+		{
+			SBUF0 = *Petit_Tx_Ptr++;
+			Petit_Tx_Buf_Size--;
+			// reset silent period timer
+      TL0 = (0x20 << TL0_TL0__SHIFT);
+      TCON_TR0 = true;
+		}
+		else
+		{
+			// Petit Modbus Tx Complete
+			Petit_Tx_State = PETIT_RXTX_IDLE;
+			P0_B3 = false;
+      // reset silent period timer
+      TL0 = (0x20 << TL0_TL0__SHIFT);
+      TCON_TR0 = true;
+		}
+	}
 }
 //-----------------------------------------------------------------------------
 // ADC0EOC_ISR
