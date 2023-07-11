@@ -9,9 +9,7 @@ input voltage drops below an acceptable voltage.  (Manually configured through
 a resistor divider)
 
 ## TODO
-* Modbus
-* Input voltage reading ADC
-* modbus watchdog
+* Separate out the modbus library usage and make it portable again
 
 ## Deployment
 TODO
@@ -23,6 +21,7 @@ TODO
 *Initial Commit
 ** Low Voltage Comparator
 ** Startup delay
+** Modbus, I guess
 
 ## License
 TODO
