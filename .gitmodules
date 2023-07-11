@@ -1,8 +1,4 @@
-[submodule "src/PetitModbus"]
-	path = src/PetitModbus
+[submodule "PetitModbus"]
+	path = PetitModbus
 	url = https://github.com/MAGLaboratory/PetitModbus.git
-	branch = source-only
-[submodule "inc/PetitModbus"]
-	path = inc/PetitModbus
-	url = https://github.com/MAGLaboratory/PetitModbus.git
-	branch = include-only
+	branch = kirisaki_features
