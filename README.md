@@ -8,8 +8,14 @@ Included are a voltage comparator which automatically resets devices if the
 input voltage drops below an acceptable voltage.  (Manually configured through
 a resistor divider)
 
+## Branch Description
+Somehow, this is a branch for separating out the modbus library... and then doing other work
+on the library.
+
 ## TODO
 * Separate out the modbus library usage and make it portable again
+* Delay between RX and TX
+* Use a single buffer for both RX and TX
 
 ## Deployment
 TODO
