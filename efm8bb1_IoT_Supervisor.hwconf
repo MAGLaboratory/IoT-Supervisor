@@ -45,6 +45,10 @@
     <property object="P0.6" propertyId="ports.settings.skip" value="Skipped"/>
     <property object="P0.7" propertyId="ports.settings.iomode" value="Digital Push-Pull Output"/>
     <property object="P0.7" propertyId="ports.settings.outputmode" value="Push-pull"/>
+    <property object="P1.1" propertyId="ports.settings.label" value="RESET_OUT"/>
+    <property object="P1.3" propertyId="ports.settings.iomode" value="Digital Push-Pull Output"/>
+    <property object="P1.3" propertyId="ports.settings.label" value="DBG"/>
+    <property object="P1.3" propertyId="ports.settings.outputmode" value="Push-pull"/>
     <property object="PBCFG_0" propertyId="pbcfg.settings.enablecrossbar" value="Enabled"/>
     <property object="TIMER01_0" propertyId="ABPeripheral.included" value="true"/>
     <property object="TIMER01_0" propertyId="timer01.timer0highbyte.timer0highbyte" value="128"/>

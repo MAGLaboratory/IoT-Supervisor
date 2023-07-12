@@ -264,6 +264,7 @@ int main(void)
 		if (t1Flag)
 		{
 			t1Flag = 0;
+			P1_B3 = 1;
 			ProcessPetitModbus();
 			mbFlagDet();
 		}
@@ -271,15 +272,18 @@ int main(void)
 		if (vinSmFlag)
 		{
 			vinSmFlag = 0;
+			P1_B3=1;
 			VinSm();
 		}
 
 		if (WDTsmFlag)
 		{
 			WDTsmFlag = 0;
+			P1_B3=1;
 			mbWDTsm();
 		}
 
+		P1_B3=0;
 		// put MCU in idle mode to save power
 		PCON0 |= PCON0_IDLE__IDLE;
 		// $[Generated Run-time code]
