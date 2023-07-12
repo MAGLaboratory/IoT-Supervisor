@@ -8,7 +8,7 @@
 
 // USER INCLUDES
 #include <SI_EFM8BB1_Register_Enums.h>
-#include "PetitModBus.h"
+#include "PetitModbusPort.h"
 
 // externs flags
 extern bool t1Flag;
@@ -77,6 +77,8 @@ SI_INTERRUPT (TIMER0_ISR, TIMER0_IRQn)
 	Petit_Rx_Ptr = &(PetitRxBuffer[0]);
 	PetitExpectedReceiveCount = 0;
 
+
+
 	// transceiver on receive mode
 	P0_B3 = false;
 }
@@ -126,28 +128,12 @@ SI_INTERRUPT (UART0_ISR, UART0_IRQn)
 	if (PetitRxRemaining && (flags & SCON0_RI__SET))
 	{
 		char read = SBUF0;
-		if (!PetitRxCounter)
-		{
-			// check if servant address is correct on first character
-			if (read == 1)
-			{
-				*Petit_Rx_Ptr++ = read;
-				PetitRxRemaining--;
-				PetitRxCounter++;
-				// reset silent period timer
-				TL0 = (0x20 << TL0_TL0__SHIFT);
-				TCON_TR0 = true;
-			}
-		}
-		else
-		{
 			*Petit_Rx_Ptr++ = read;
 			PetitRxRemaining--;
 			PetitRxCounter++;
 			// reset silent period timer
 			TL0 = (0x20 << TL0_TL0__SHIFT);
 			TCON_TR0 = true;
-		}
 	}
 
 	if ((flags & SCON0_TI__SET))

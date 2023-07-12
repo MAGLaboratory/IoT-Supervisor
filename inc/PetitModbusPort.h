@@ -5,9 +5,14 @@
 #ifndef __PETIT_MODBUS_PORT_H__
 #define __PETIT_MODBUS_PORT_H__
 
+#include "PetitModbus.h"
 
+#ifndef FALSE
 #define FALSE (0)
+#endif
+#ifndef TRUE
 #define TRUE (1)
+#endif
 
 extern unsigned short PetitModbusTimerValue;
 
@@ -19,6 +24,7 @@ extern unsigned char PetitExpectedReceiveCount;
 
 extern unsigned int Petit_Tx_Buf_Size;
 extern unsigned char* Petit_Tx_Ptr;
+
 extern PETIT_RXTX_STATE Petit_Tx_State;
 
 #endif
