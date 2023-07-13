@@ -80,8 +80,8 @@ SI_INTERRUPT (TIMER0_ISR, TIMER0_IRQn)
 
 	// clear the modbus receiver
 	PetitRxCounter = 0;
-	PetitRxRemaining = PETITMODBUS_RECEIVE_BUFFER_SIZE;
-	Petit_Rx_Ptr = &(PetitRxBuffer[0]);
+	PetitRxRemaining = PETITMODBUS_RXTX_BUFFER_SIZE;
+	Petit_Rx_Ptr = &(PetitRxTxBuffer[0]);
 	PetitExpectedReceiveCount = 0;
 
 	// transceiver on receive mode

@@ -161,8 +161,9 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
+					<fileInfo id="com.silabs.ss.tool.ide.c8051.toolchain.keil.cdt.release#com.silabs.ss.tool.ide.c8051.toolchain.keil.cdt:9.60.0.1841999375" name="PetitModbusPort.h" rcbsApplicability="disable" resourcePath="PetitModbus/inc/PetitModbusPort.h" toolsToInvoke=""/>
 					<sourceEntries>
-						<entry excluding="PetitModbus/src/PetitModbusPort.c|.trash|src" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="PetitModbus/inc/PetitModbusPort.h|PetitModbus/src/PetitModbusPort.c|.trash|src" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
 					</sourceEntries>
 				</configuration>
