@@ -39,9 +39,18 @@ void SiLabs_Startup(void)
 }
 
 // flags
-bool t1Flag = false;
-bool vinSmFlag = false;
-bool WDTsmFlag = false;
+volatile union
+{
+	// vector access
+	struct
+	{
+		uint8_t t1Flag :1;
+		uint8_t vinSmFlag :1;
+		uint8_t WDTsmFlag :1;
+	} v;
+	// byte access
+	uint8_t b;
+} exec_flags;
 
 //-----------------------------------------------------------------------------
 // the state machine
@@ -199,7 +208,7 @@ typedef enum
 	Ini, En, Timeout
 } mbWDTsmS_t; // modbus watchdog timer state machine states _ type
 
-void mbWDTsm (void)
+void mbWDTsm(void)
 {
 	// statics
 	static mbWDTsmS_t mbWDTsmS = Ini;
@@ -207,7 +216,7 @@ void mbWDTsm (void)
 	static uint8_t mbWDTcM = 0;		// modbus watchdog timer counter (minute)
 
 	// transitions
-	switch(mbWDTsmS)
+	switch (mbWDTsmS)
 	{
 	case Ini:
 		if (mbWDTen && modbusWdtSmEn)
@@ -228,7 +237,7 @@ void mbWDTsm (void)
 	}
 
 	// output
-	switch(mbWDTsmS)
+	switch (mbWDTsmS)
 	{
 	case Ini:
 		mbWDTc = 0;
@@ -261,31 +270,28 @@ int main(void)
 
 	while (1)
 	{
-		if (t1Flag)
+		if (exec_flags.v.t1Flag)
 		{
-			t1Flag = 0;
-			P1_B3 = 1;
+			exec_flags.v.t1Flag = 0;
 			ProcessPetitModbus();
 			mbFlagDet();
 		}
 
-		if (vinSmFlag)
+		if (exec_flags.v.vinSmFlag)
 		{
-			vinSmFlag = 0;
-			P1_B3=1;
+			exec_flags.v.vinSmFlag = 0;
 			VinSm();
 		}
 
-		if (WDTsmFlag)
+		if (exec_flags.v.WDTsmFlag)
 		{
-			WDTsmFlag = 0;
-			P1_B3=1;
+			exec_flags.v.WDTsmFlag = 0;
 			mbWDTsm();
 		}
 
-		P1_B3=0;
-		// put MCU in idle mode to save power
-		PCON0 |= PCON0_IDLE__IDLE;
+		//     idle mode taken out because of some race condition that keeps
+		// being reached.
+
 		// $[Generated Run-time code]
 		// [Generated Run-time code]$
 	}

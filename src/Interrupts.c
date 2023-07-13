@@ -11,9 +11,16 @@
 #include "PetitModbusPort.h"
 
 // externs flags
-extern bool t1Flag;
-extern bool vinSmFlag;
-extern bool WDTsmFlag;
+extern volatile union
+{
+	struct
+	{
+		uint8_t t1Flag :1;
+		uint8_t vinSmFlag :1;
+		uint8_t WDTsmFlag :1;
+	} v;
+	uint8_t b;
+} exec_flags;
 extern bool cprif;
 
 #define WDT_RESET() (WDTCN = 0xA5)
@@ -46,7 +53,7 @@ SI_INTERRUPT (CMP0_ISR, CMP0_IRQn)
 		else
 		{
 			cprif = true;
-			vinSmFlag = true;
+			exec_flags.v.vinSmFlag = true;
 		}
 	}
 }
@@ -77,8 +84,6 @@ SI_INTERRUPT (TIMER0_ISR, TIMER0_IRQn)
 	Petit_Rx_Ptr = &(PetitRxBuffer[0]);
 	PetitExpectedReceiveCount = 0;
 
-
-
 	// transceiver on receive mode
 	P0_B3 = false;
 }
@@ -96,14 +101,15 @@ SI_INTERRUPT (TIMER1_ISR, TIMER1_IRQn)
 {
 	static unsigned char t1c = 0;
 	TCON_TF1 = 0;
+
 	TH0 = (0x80 << TH0_TH0__SHIFT);
-	t1Flag = true;
+	exec_flags.v.t1Flag = true;
 
 	// run every 8ms
 	if ((t1c & 7) == 0)
 	{
-		WDTsmFlag = true;
-		vinSmFlag = true;
+		exec_flags.v.WDTsmFlag = true;
+		exec_flags.v.vinSmFlag = true;
 		WDT_RESET();
 	}
 	t1c++;
@@ -128,12 +134,12 @@ SI_INTERRUPT (UART0_ISR, UART0_IRQn)
 	if (PetitRxRemaining && (flags & SCON0_RI__SET))
 	{
 		char read = SBUF0;
-			*Petit_Rx_Ptr++ = read;
-			PetitRxRemaining--;
-			PetitRxCounter++;
-			// reset silent period timer
-			TL0 = (0x20 << TL0_TL0__SHIFT);
-			TCON_TR0 = true;
+		*Petit_Rx_Ptr++ = read;
+		PetitRxRemaining--;
+		PetitRxCounter++;
+		// reset silent period timer
+		TL0 = (0x20 << TL0_TL0__SHIFT);
+		TCON_TR0 = true;
 	}
 
 	if ((flags & SCON0_TI__SET))
@@ -143,17 +149,17 @@ SI_INTERRUPT (UART0_ISR, UART0_IRQn)
 			SBUF0 = *Petit_Tx_Ptr++;
 			Petit_Tx_Buf_Size--;
 			// reset silent period timer
-      TL0 = (0x20 << TL0_TL0__SHIFT);
-      TCON_TR0 = true;
+			TL0 = (0x20 << TL0_TL0__SHIFT);
+			TCON_TR0 = true;
 		}
 		else
 		{
 			// Petit Modbus Tx Complete
-			Petit_Tx_State = PETIT_RXTX_IDLE;
+			Petit_RxTx_State = PETIT_RXTX_IDLE;
 			P0_B3 = false;
-      // reset silent period timer
-      TL0 = (0x20 << TL0_TL0__SHIFT);
-      TCON_TR0 = true;
+			// reset silent period timer
+			TL0 = (0x20 << TL0_TL0__SHIFT);
+			TCON_TR0 = true;
 		}
 	}
 }
