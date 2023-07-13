@@ -23,13 +23,15 @@
 //-----------------------------------------------------------------------------
 #define RESET_P (P1_B1)
 #define nLED (P1_B4)
+static const int C_MB_WD_COUNT2MIN = 7500;
+static const int C_MB_WD_TIMEOUT = 15;
 
 //-----------------------------------------------------------------------------
 // SiLabs_Startup() Routine
 // ----------------------------------------------------------------------------
 // This function is called immediately after reset, before the initialization
 // code is run in SILABS_STARTUP.A51 (which runs before main() ). This is a
-// useful place to disable the watchdog timer, which is enable by default
+// useful place to disable the watchdog timer, which is enabled by default
 // and may trigger before main() in some instances.
 //-----------------------------------------------------------------------------
 void SiLabs_Startup(void)
@@ -225,7 +227,7 @@ void mbWDTsm(void)
 	case En:
 		if (!mbWDTen || mbWDTpet)
 			mbWDTsmS = Init;
-		if (mbWDTcM >= 15)
+		if (mbWDTcM >= C_MB_WD_TIMEOUT)
 			mbWDTsmS = Timeout;
 		break;
 	case Timeout:
@@ -245,10 +247,9 @@ void mbWDTsm(void)
 		break;
 	case En:
 		mbWDTc++;
-		if (mbWDTc >= 7500)
+		if (mbWDTc >= C_MB_WD_COUNT2MIN)
 			mbWDTcM++;
-		if (6)
-			PetitRegisters[0] = 0xEA55; // yass
+		PetitRegisters[0] = 0xEA55; // yass
 		break;
 	case Timeout:
 		PetitRegisters[0] = 0xB17E; // bite
