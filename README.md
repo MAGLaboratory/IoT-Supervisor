@@ -24,10 +24,10 @@ TODO
 TODO
 
 ## Version History
-*Initial Commit
-** Low Voltage Comparator
-** Startup delay
-** Modbus, I guess
+ * Initial Commit
+   * Low Voltage Comparator
+   * Startup delay
+   * Modbus, I guess
 
 ## License
 TODO
