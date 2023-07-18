@@ -14,8 +14,7 @@ on the library.
 
 ## TODO
 * Separate out the modbus library usage and make it portable again
-* Delay between RX and TX
-* Use a single buffer for both RX and TX
+* Use a single buffer for RX and TX 
 
 ## Deployment
 TODO
