@@ -559,6 +559,18 @@ extern void enter_DebugMode_from_DefaultMode(void)
 extern void PORTS_0_enter_DebugMode_from_DefaultMode(void)
 {
 	// $[P0 - Port 0 Pin Latch]
+	/***********************************************************************
+	 - P0.0 is high. Set P0.0 to drive or float high
+	 - P0.1 is high. Set P0.1 to drive or float high
+	 - P0.2 is high. Set P0.2 to drive or float high
+	 - P0.3 is low. Set P0.3 to drive low
+	 - P0.4 is high. Set P0.4 to drive or float high
+	 - P0.5 is high. Set P0.5 to drive or float high
+	 - P0.6 is low. Set P0.6 to drive low
+	 - P0.7 is high. Set P0.7 to drive or float high
+	 ***********************************************************************/
+	P0 = P0_B0__HIGH | P0_B1__HIGH | P0_B2__HIGH | P0_B3__LOW | P0_B4__HIGH
+			| P0_B5__HIGH | P0_B6__LOW | P0_B7__HIGH;
 	// [P0 - Port 0 Pin Latch]$
 
 	// $[P0MDOUT - Port 0 Output Mode]
@@ -595,6 +607,18 @@ extern void PORTS_0_enter_DebugMode_from_DefaultMode(void)
 extern void PORTS_1_enter_DebugMode_from_DefaultMode(void)
 {
 	// $[P1 - Port 1 Pin Latch]
+	/***********************************************************************
+	 - P1.0 is low. Set P1.0 to drive low
+	 - P1.1 is high. Set P1.1 to drive or float high
+	 - P1.2 is low. Set P1.2 to drive low
+	 - P1.3 is low. Set P1.3 to drive low
+	 - P1.4 is high. Set P1.4 to drive or float high
+	 - P1.5 is high. Set P1.5 to drive or float high
+	 - P1.6 is high. Set P1.6 to drive or float high
+	 - P1.7 is high. Set P1.7 to drive or float high
+	 ***********************************************************************/
+	P1 = P1_B0__LOW | P1_B1__HIGH | P1_B2__LOW | P1_B3__LOW | P1_B4__HIGH
+			| P1_B5__HIGH | P1_B6__HIGH | P1_B7__HIGH;
 	// [P1 - Port 1 Pin Latch]$
 
 	// $[P1MDOUT - Port 1 Output Mode]

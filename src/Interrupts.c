@@ -8,6 +8,7 @@
 
 // USER INCLUDES
 #include <SI_EFM8BB1_Register_Enums.h>
+#include "debugpins.h"
 #include "PetitModbusPort.h"
 
 // externs flags
@@ -48,6 +49,7 @@ SI_INTERRUPT (CMP0_ISR, CMP0_IRQn)
 	if (CMP0CN0 & CMP0CN0_CPRIF__BMASK)
 	{
 		CMP0CN0 &= ~(CMP0CN0_CPRIF__BMASK);
+		// interrupt fires once on startup
 		if (firstInterrupt)
 			firstInterrupt = false;
 		else
@@ -78,6 +80,8 @@ SI_INTERRUPT (TIMER0_ISR, TIMER0_IRQn)
 	TCON_TR0 = false;
 	TL0 = (0x20 << TL0_TL0__SHIFT);
 
+	TIMER0_PIN_ON();
+
 	// clear the modbus receiver
 	PetitRxCounter = 0;
 	PetitRxRemaining = PETITMODBUS_RXTX_BUFFER_SIZE;
@@ -86,6 +90,8 @@ SI_INTERRUPT (TIMER0_ISR, TIMER0_IRQn)
 
 	// transceiver on receive mode
 	P0_B3 = false;
+
+	TIMER0_PIN_OFF();
 }
 
 //-----------------------------------------------------------------------------
@@ -103,6 +109,9 @@ SI_INTERRUPT (TIMER1_ISR, TIMER1_IRQn)
 	TCON_TF1 = 0;
 
 	TH0 = (0x80 << TH0_TH0__SHIFT);
+
+	TIMER1_PIN_ON();
+
 	exec_flags.v.t1Flag = true;
 
 	// run every 8ms
@@ -113,6 +122,8 @@ SI_INTERRUPT (TIMER1_ISR, TIMER1_IRQn)
 		WDT_RESET();
 	}
 	t1c++;
+
+	TIMER1_PIN_OFF();
 }
 
 //-----------------------------------------------------------------------------
@@ -131,6 +142,8 @@ SI_INTERRUPT (UART0_ISR, UART0_IRQn)
 	uint8_t flags = SCON0 & (SCON0_RI__BMASK | SCON0_TI__BMASK);
 	SCON0 &= ~flags;
 
+	UART0_PIN_ON();
+
 	if (PetitRxRemaining && Petit_RxTx_State == PETIT_RXTX_IDLE && 
 			(flags & SCON0_RI__SET))
 	{
@@ -143,7 +156,7 @@ SI_INTERRUPT (UART0_ISR, UART0_IRQn)
 		TCON_TR0 = true;
 	}
 
-	if (Petit_RxTx_State == PETIT_RXTX_Tx && (flags & SCON0_TI__SET))
+	if (Petit_RxTx_State == PETIT_RXTX_TX && (flags & SCON0_TI__SET))
 	{
 		if (Petit_Tx_Buf_Size != 0)
 		{
@@ -163,6 +176,8 @@ SI_INTERRUPT (UART0_ISR, UART0_IRQn)
 			TCON_TR0 = true;
 		}
 	}
+
+	UART0_PIN_OFF();
 }
 //-----------------------------------------------------------------------------
 // ADC0EOC_ISR
@@ -176,8 +191,13 @@ SI_INTERRUPT (ADC0EOC_ISR, ADC0EOC_IRQn)
 {
 	char conv_count;
 	ADC0CN0_ADINT = 0;					// clear interrupt flag
+
+	ADC0_PIN_ON();
+
 	conv_count = PetitRegisters[2] >> 10 & 0x3F;
 	conv_count++;
 	PetitRegisters[2] = (uint16_t) conv_count << 10 | ADC0 >> 6;
+
+	ADC0_PIN_OFF();
 }
 
