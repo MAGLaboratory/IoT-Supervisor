@@ -137,19 +137,23 @@
     <property object="P0.4" propertyId="ports.settings.outputmode" value="Push-pull"/>
     <property object="P0.6" propertyId="ports.settings.iomode" value="Digital Push-Pull Output"/>
     <property object="P0.6" propertyId="ports.settings.label" value="DBG0"/>
+    <property object="P0.6" propertyId="ports.settings.latch" value="Low"/>
     <property object="P0.6" propertyId="ports.settings.outputmode" value="Push-pull"/>
     <property object="P0.6" propertyId="ports.settings.skip" value="Skipped"/>
     <property object="P0.7" propertyId="ports.settings.iomode" value="Digital Push-Pull Output"/>
     <property object="P0.7" propertyId="ports.settings.outputmode" value="Push-pull"/>
     <property object="P1.0" propertyId="ports.settings.iomode" value="Digital Push-Pull Output"/>
     <property object="P1.0" propertyId="ports.settings.label" value="DBG1"/>
+    <property object="P1.0" propertyId="ports.settings.latch" value="Low"/>
     <property object="P1.0" propertyId="ports.settings.outputmode" value="Push-pull"/>
     <property object="P1.1" propertyId="ports.settings.label" value="RESET_OUT"/>
     <property object="P1.2" propertyId="ports.settings.iomode" value="Digital Push-Pull Output"/>
     <property object="P1.2" propertyId="ports.settings.label" value="DBG2"/>
+    <property object="P1.2" propertyId="ports.settings.latch" value="Low"/>
     <property object="P1.2" propertyId="ports.settings.outputmode" value="Push-pull"/>
     <property object="P1.3" propertyId="ports.settings.iomode" value="Digital Push-Pull Output"/>
     <property object="P1.3" propertyId="ports.settings.label" value="DBG3"/>
+    <property object="P1.3" propertyId="ports.settings.latch" value="Low"/>
     <property object="P1.3" propertyId="ports.settings.outputmode" value="Push-pull"/>
     <property object="PBCFG_0" propertyId="pbcfg.settings.enablecrossbar" value="Enabled"/>
     <property object="TIMER01_0" propertyId="ABPeripheral.included" value="true"/>
