@@ -131,7 +131,8 @@ SI_INTERRUPT (UART0_ISR, UART0_IRQn)
 	uint8_t flags = SCON0 & (SCON0_RI__BMASK | SCON0_TI__BMASK);
 	SCON0 &= ~flags;
 
-	if (PetitRxRemaining && (flags & SCON0_RI__SET))
+	if (PetitRxRemaining && Petit_RxTx_State == PETIT_RXTX_IDLE && 
+			(flags & SCON0_RI__SET))
 	{
 		char read = SBUF0;
 		*Petit_Rx_Ptr++ = read;
@@ -142,7 +143,7 @@ SI_INTERRUPT (UART0_ISR, UART0_IRQn)
 		TCON_TR0 = true;
 	}
 
-	if ((flags & SCON0_TI__SET))
+	if (Petit_RxTx_State == PETIT_RXTX_Tx && (flags & SCON0_TI__SET))
 	{
 		if (Petit_Tx_Buf_Size != 0)
 		{
