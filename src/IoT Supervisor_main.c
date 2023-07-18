@@ -268,6 +268,9 @@ int main(void)
 {
 	// Call hardware initialization routine
 	enter_DefaultMode_from_RESET();
+#if DEBUG
+	enter_DebugMode_from_DefaultMode();
+#endif
 
 	while (1)
 	{
