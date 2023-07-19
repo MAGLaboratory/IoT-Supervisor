@@ -10,14 +10,22 @@
 
 #if DEBUG
 // debug mode is on, toggle the debug pins
-#define TIMER0_PIN_ON() P0_B6 = 1;
-#define TIMER0_PIN_OFF() P0_B6 = 0;
-#define TIMER1_PIN_ON() P1_B0 = 1;
-#define TIMER1_PIN_OFF() P1_B0 = 0;
-#define UART0_PIN_ON() P1_B2 = 1;
-#define UART0_PIN_OFF() P1_B2 = 0;
+#define DBG0 (P0_B6)
+#define DBG1 (P1_B0)
+#define DBG2 (P1_B2)
+#define DBG3 (P1_B3)
+#define TIMER0_PIN_ON() DBG0 = 1;
+#define TIMER0_PIN_OFF() DBG0 = 0;
+#define TIMER1_PIN_ON() DBG1 = 1;
+#define TIMER1_PIN_OFF() DBG1 = 0;
+#define UART0_PIN_ON() DBG2 = 1;
+#define UART0_PIN_OFF() DBG2 = 0;
 #define ADC0_PIN_ON()
 #define ADC0_PIN_OFF()
+#define MAIN_PIN_ON()
+#define MAIN_PIN_OFF()
+#define PETIT_PROCESS_ON() DBG3 = 1;
+#define PETIT_PROCESS_OFF() DBG3 = 0;
 #else
 // empty declarations
 #define TIMER0_PIN_ON()
@@ -28,6 +36,10 @@
 #define UART0_PIN_OFF()
 #define ADC0_PIN_ON()
 #define ADC0_PIN_OFF()
+#define MAIN_PIN_ON()
+#define MAIN_PIN_OFF()
+#define PETTI_PROCESS_ON()
+#define PETIT_PROCESS_OFF()
 #endif
 
 #endif /* INC_DEBUGPINS_H_ */

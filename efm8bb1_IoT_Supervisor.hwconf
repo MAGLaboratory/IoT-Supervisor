@@ -155,6 +155,7 @@
     <property object="P1.3" propertyId="ports.settings.label" value="DBG3"/>
     <property object="P1.3" propertyId="ports.settings.latch" value="Low"/>
     <property object="P1.3" propertyId="ports.settings.outputmode" value="Push-pull"/>
+    <property object="P1.4" propertyId="ports.settings.label" value="LED"/>
     <property object="PBCFG_0" propertyId="pbcfg.settings.enablecrossbar" value="Enabled"/>
     <property object="TIMER01_0" propertyId="ABPeripheral.included" value="true"/>
     <property object="TIMER01_0" propertyId="timer01.timer0highbyte.timer0highbyte" value="128"/>

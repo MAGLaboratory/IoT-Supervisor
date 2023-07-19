@@ -162,18 +162,12 @@ SI_INTERRUPT (UART0_ISR, UART0_IRQn)
 		{
 			SBUF0 = *Petit_Tx_Ptr++;
 			Petit_Tx_Buf_Size--;
-			// reset silent period timer
-			TL0 = (0x20 << TL0_TL0__SHIFT);
-			TCON_TR0 = true;
 		}
 		else
 		{
 			// Petit Modbus Tx Complete
 			Petit_RxTx_State = PETIT_RXTX_IDLE;
 			P0_B3 = false;
-			// reset silent period timer
-			TL0 = (0x20 << TL0_TL0__SHIFT);
-			TCON_TR0 = true;
 		}
 	}
 
