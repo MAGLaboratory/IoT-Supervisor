@@ -14,6 +14,7 @@
 //-----------------------------------------------------------------------------
 #include <SI_EFM8BB1_Register_Enums.h>                  // SFR declarations
 #include "InitDevice.h"
+#include "debugpins.h"
 #include "PetitModbus.h"
 // $[Generated Includes]
 // [Generated Includes]$
@@ -278,8 +279,13 @@ int main(void)
 		if (exec_flags.v.t1Flag)
 		{
 			exec_flags.v.t1Flag = 0;
+
+			PETIT_PROCESS_ON();
+
 			ProcessPetitModbus();
 			mbFlagDet();
+
+			PETIT_PROCESS_OFF();
 		}
 
 		if (exec_flags.v.vinSmFlag)
