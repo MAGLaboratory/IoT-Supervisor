@@ -194,6 +194,7 @@ void mbFlagDet()
 			{
 				mbWDTpet = true;
 				mbWDTen = true;
+				PetitRegisters[1] = 0;
 			}
 			if (PetitRegisters[1] == 0xA5)
 			{

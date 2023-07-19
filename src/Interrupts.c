@@ -144,7 +144,7 @@ SI_INTERRUPT (UART0_ISR, UART0_IRQn)
 
 	UART0_PIN_ON();
 
-	if (PetitRxRemaining && Petit_RxTx_State == PETIT_RXTX_IDLE && 
+	if (PetitRxRemaining && Petit_RxTx_State == PETIT_RXTX_RX &&
 			(flags & SCON0_RI__SET))
 	{
 		char read = SBUF0;
@@ -166,7 +166,7 @@ SI_INTERRUPT (UART0_ISR, UART0_IRQn)
 		else
 		{
 			// Petit Modbus Tx Complete
-			Petit_RxTx_State = PETIT_RXTX_IDLE;
+			Petit_RxTx_State = PETIT_RXTX_RX;
 			P0_B3 = false;
 		}
 	}
