@@ -246,6 +246,7 @@ void mbWDTsm(void)
 	case Ini:
 		mbWDTc = 0;
 		mbWDTcM = 0;
+		PetitRegisters[0] = 0x0000; // off?
 		break;
 	case En:
 		mbWDTc++;
