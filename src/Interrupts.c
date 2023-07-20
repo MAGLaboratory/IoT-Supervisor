@@ -77,15 +77,15 @@ SI_INTERRUPT (TIMER0_ISR, TIMER0_IRQn)
 	TCON_TF0 = 0;
 	// timer off
 	// reset timer counter (should be a define)
-	PetitTimerStop();
+	PetitPortTimerStop();
 
 	TIMER0_PIN_ON();
 
 	// clear the modbus receiver
-	PetitUartRxBufferReset();
+	PetitRxBufferReset();
 
 	// transceiver on receive mode
-	PetitTxPinOff();
+	PetitPortTxPinOff();
 
 	TIMER0_PIN_OFF();
 }
@@ -142,19 +142,19 @@ SI_INTERRUPT (UART0_ISR, UART0_IRQn)
 
 	if (flags & SCON0_RI__SET)
 	{
-		PetitUartRxBufferInsert(SBUF0);
+		PetitRxBufferInsert(SBUF0);
 	}
 
-	if (Petit_RxTx_State == PETIT_RXTX_TX && (flags & SCON0_TI__SET))
+	if (flags & SCON0_TI__SET)
 	{
 		unsigned char res;
-		if (PetitUartTxBufferPop(&res))
+		if (PetitTxBufferPop(&res))
 		{
 			SBUF0 = res;
 		}
 		else
 		{
-			PetitTxPinOff();
+			PetitPortTxPinOff();
 		}
 	}
 
