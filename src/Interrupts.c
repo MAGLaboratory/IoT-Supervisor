@@ -77,19 +77,15 @@ SI_INTERRUPT (TIMER0_ISR, TIMER0_IRQn)
 	TCON_TF0 = 0;
 	// timer off
 	// reset timer counter (should be a define)
-	TCON_TR0 = false;
-	TL0 = (0x20 << TL0_TL0__SHIFT);
+	PetitTimerStop();
 
 	TIMER0_PIN_ON();
 
 	// clear the modbus receiver
-	PetitRxCounter = 0;
-	PetitRxRemaining = PETITMODBUS_RXTX_BUFFER_SIZE;
-	Petit_Rx_Ptr = &(PetitRxTxBuffer[0]);
-	PetitExpectedReceiveCount = 0;
+	PetitUartRxBufferReset();
 
 	// transceiver on receive mode
-	P0_B3 = false;
+	PetitTxPinOff();
 
 	TIMER0_PIN_OFF();
 }
@@ -144,30 +140,21 @@ SI_INTERRUPT (UART0_ISR, UART0_IRQn)
 
 	UART0_PIN_ON();
 
-	if (PetitRxRemaining && Petit_RxTx_State == PETIT_RXTX_RX &&
-			(flags & SCON0_RI__SET))
+	if (flags & SCON0_RI__SET)
 	{
-		char read = SBUF0;
-		*Petit_Rx_Ptr++ = read;
-		PetitRxRemaining--;
-		PetitRxCounter++;
-		// reset silent period timer
-		TL0 = (0x20 << TL0_TL0__SHIFT);
-		TCON_TR0 = true;
+		PetitUartRxBufferInsert(SBUF0);
 	}
 
 	if (Petit_RxTx_State == PETIT_RXTX_TX && (flags & SCON0_TI__SET))
 	{
-		if (Petit_Tx_Buf_Size != 0)
+		unsigned char res;
+		if (PetitUartTxBufferPop(&res))
 		{
-			SBUF0 = *Petit_Tx_Ptr++;
-			Petit_Tx_Buf_Size--;
+			SBUF0 = res;
 		}
 		else
 		{
-			// Petit Modbus Tx Complete
-			Petit_RxTx_State = PETIT_RXTX_RX;
-			P0_B3 = false;
+			PetitTxPinOff();
 		}
 	}
 
