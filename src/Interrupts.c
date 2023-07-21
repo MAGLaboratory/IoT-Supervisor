@@ -85,7 +85,7 @@ SI_INTERRUPT (TIMER0_ISR, TIMER0_IRQn)
 	PetitRxBufferReset();
 
 	// transceiver on receive mode
-	PetitPortTxPinOff();
+	PetitPortDirRx();
 
 	TIMER0_PIN_OFF();
 }
@@ -154,7 +154,7 @@ SI_INTERRUPT (UART0_ISR, UART0_IRQn)
 		}
 		else
 		{
-			PetitPortTxPinOff();
+			PetitPortDirRx();
 		}
 	}
 
