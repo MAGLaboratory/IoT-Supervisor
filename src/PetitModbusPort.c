@@ -15,13 +15,13 @@ void PetitPortTimerStop()
 	return;
 }
 
-void PetitPortTxPinOn()
+void PetitPortDirTx()
 {
 	P0_B3 = true;
 	return;
 }
 
-void PetitPortTxPinOff()
+void PetitPortDirRx()
 {
 	P0_B3 = false;
 	return;
@@ -30,9 +30,9 @@ void PetitPortTxPinOff()
 
 // the linker will warn about this function because it is used in an ISR,
 // but the ISR will only be called after this function executes.  So it's fine.
-void PetitPortUartBegin(unsigned char tx)
+void PetitPortTxBegin(unsigned char tx)
 {
-	PetitPortTxPinOn();
+	PetitPortDirTx();
 	// no need to check here, this function should only be called by 
 	// petitmodbus on the first character anyway
 	SBUF0 = tx;
