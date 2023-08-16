@@ -26,6 +26,7 @@
 #define nLED (P1_B4)
 static const int C_MB_WD_COUNT2MIN = 7500;
 static const int C_MB_WD_TIMEOUT = 15;
+#define C_FLASH_CONF (0x1C00) // 0x1e00 - 512 bytes
 
 //-----------------------------------------------------------------------------
 // SiLabs_Startup() Routine

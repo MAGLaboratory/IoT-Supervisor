@@ -43,6 +43,9 @@
 									<listOptionValue builtIn="false" value="&quot;${StudioSdkPath}/Device/shared/si8051Base&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${StudioSdkPath}/Device/EFM8BB1/inc&quot;"/>
 								</option>
+								<option id="com.silabs.ide.si8051.keil.compiler.category.listing.assembly.1927807481" name="Assembly code" superClass="com.silabs.ide.si8051.keil.compiler.category.listing.assembly" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="com.silabs.ide.si8051.keil.compiler.category.listing.symbols.439325752" name="Symbols" superClass="com.silabs.ide.si8051.keil.compiler.category.listing.symbols" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="com.silabs.ide.si8051.keil.compiler.category.listing.preprocessor.685893323" name="Create preprocessor listing file" superClass="com.silabs.ide.si8051.keil.compiler.category.listing.preprocessor" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 								<inputType id="com.silabs.ide.si8051.keil.compiler.inputType.1339904838" superClass="com.silabs.ide.si8051.keil.compiler.inputType"/>
 							</tool>
 							<tool command="AX51" id="com.silabs.ide.si8051.keil.toolchain.assembler.1137083774" name="Keil 8051 Assembler" superClass="com.silabs.ide.si8051.keil.toolchain.assembler">
