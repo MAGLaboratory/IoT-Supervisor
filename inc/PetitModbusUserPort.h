@@ -12,6 +12,7 @@
 // Have to put a number of registers here
 // It has to be bigger than 0 (zero)!!
 #define NUMBER_OF_OUTPUT_PETITREGISTERS                 ( 3 )
+#define NUMBER_OF_REGISTERS_IN_BUFFER                   ( 3 )
 // Cycles to delay TX once the CRC finishes calculation
 #define PETITMODBUS_DLY_TOP                             ( 0 )
 
