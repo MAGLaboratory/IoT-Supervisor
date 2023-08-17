@@ -16,12 +16,14 @@ extern volatile union
 {
 	struct
 	{
-		uint8_t t1Flag :1;
 		uint8_t vinSmFlag :1;
 		uint8_t WDTsmFlag :1;
 	} v;
 	uint8_t b;
 } exec_flags;
+
+extern uint8_t t1Count;
+
 extern bool cprif;
 
 #define WDT_RESET() (WDTCN = 0xA5)
@@ -108,7 +110,7 @@ SI_INTERRUPT (TIMER1_ISR, TIMER1_IRQn)
 
 	TIMER1_PIN_ON();
 
-	exec_flags.v.t1Flag = true;
+	t1Count++;
 
 	// run every 8ms
 	if ((t1c & 7) == 0)
