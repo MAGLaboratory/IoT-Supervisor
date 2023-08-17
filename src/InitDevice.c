@@ -255,9 +255,9 @@ extern void TIMER01_0_enter_DefaultMode_from_RESET(void)
 
 	// $[TL0 - Timer 0 Low Byte]
 	/***********************************************************************
-	 - Timer 0 Low Byte = 0x20
+	 - Timer 0 Low Byte = 0x60
 	 ***********************************************************************/
-	TL0 = (0x20 << TL0_TL0__SHIFT);
+	TL0 = (0x60 << TL0_TL0__SHIFT);
 	// [TL0 - Timer 0 Low Byte]$
 
 	// $[TH1 - Timer 1 High Byte]
@@ -665,6 +665,16 @@ extern void PBCFG_0_enter_DebugMode_from_DefaultMode(void)
 
 	// $[XBR1 - Port I/O Crossbar 1]
 	// [XBR1 - Port I/O Crossbar 1]$
+
+}
+
+extern void TIMER01_0_enter_DebugMode_from_DefaultMode(void)
+{
+
+}
+
+extern void TIMER_SETUP_0_enter_DebugMode_from_DefaultMode(void)
+{
 
 }
 

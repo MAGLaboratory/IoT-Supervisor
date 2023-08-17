@@ -285,7 +285,7 @@ int main(void)
 		{
 			PETIT_PROCESS_ON();
 
-			t1CountLast = t1Count;
+			t1CountLast++;
 
 			ProcessPetitModbus();
 			mbFlagDet();
