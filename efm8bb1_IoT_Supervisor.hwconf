@@ -49,9 +49,9 @@
     <property object="PBCFG_0" propertyId="pbcfg.settings.enablecrossbar" value="Enabled"/>
     <property object="TIMER01_0" propertyId="ABPeripheral.included" value="true"/>
     <property object="TIMER01_0" propertyId="timer01.timer0highbyte.timer0highbyte" value="128"/>
-    <property object="TIMER01_0" propertyId="timer01.timer0lowbyte.timer0lowbyte" value="32"/>
+    <property object="TIMER01_0" propertyId="timer01.timer0lowbyte.timer0lowbyte" value="96"/>
     <property object="TIMER01_0" propertyId="timer01.timer0mode3:th08bit.timerinitvalue" value="128"/>
-    <property object="TIMER01_0" propertyId="timer01.timer0mode3:tl08bit.timerinitvalue" value="32"/>
+    <property object="TIMER01_0" propertyId="timer01.timer0mode3:tl08bit.timerinitvalue" value="96"/>
     <property object="TIMER01_0" propertyId="timer01.timer1highbyte.timer1highbyte" value="236"/>
     <property object="TIMER01_0" propertyId="timer01.timer1lowbyte.timer1lowbyte" value="236"/>
     <property object="TIMER01_0" propertyId="timer01.timer1mode2:8bitcountertimerwithautoreload.targetoverflowfrequency" value="76800"/>
@@ -159,9 +159,9 @@
     <property object="PBCFG_0" propertyId="pbcfg.settings.enablecrossbar" value="Enabled"/>
     <property object="TIMER01_0" propertyId="ABPeripheral.included" value="true"/>
     <property object="TIMER01_0" propertyId="timer01.timer0highbyte.timer0highbyte" value="128"/>
-    <property object="TIMER01_0" propertyId="timer01.timer0lowbyte.timer0lowbyte" value="32"/>
+    <property object="TIMER01_0" propertyId="timer01.timer0lowbyte.timer0lowbyte" value="96"/>
     <property object="TIMER01_0" propertyId="timer01.timer0mode3:th08bit.timerinitvalue" value="128"/>
-    <property object="TIMER01_0" propertyId="timer01.timer0mode3:tl08bit.timerinitvalue" value="32"/>
+    <property object="TIMER01_0" propertyId="timer01.timer0mode3:tl08bit.timerinitvalue" value="96"/>
     <property object="TIMER01_0" propertyId="timer01.timer1highbyte.timer1highbyte" value="236"/>
     <property object="TIMER01_0" propertyId="timer01.timer1lowbyte.timer1lowbyte" value="236"/>
     <property object="TIMER01_0" propertyId="timer01.timer1mode2:8bitcountertimerwithautoreload.targetoverflowfrequency" value="76800"/>

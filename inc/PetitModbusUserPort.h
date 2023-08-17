@@ -23,7 +23,7 @@
 // Where to process our modbus message
 // 0 for processing in its own cycle
 // 1 for processing in the same cycle as TX CRC calculation
-#define PETITMODBUS_PROCESS_POSITION                    ( 1 )
+#define PETITMODBUS_PROCESS_POSITION                    ( 0 )
 
 // how to process the CRC
 // PETIT_CRC_TABULAR takes up code space but is the fastest.
