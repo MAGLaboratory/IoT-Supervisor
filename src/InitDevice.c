@@ -380,10 +380,8 @@ extern void UART_0_enter_DefaultMode_from_RESET(void)
 	// $[SCON0 - UART0 Serial Port Control]
 	/***********************************************************************
 	 - UART0 reception enabled
-	 - RI is set and an interrupt is generated only when the stop bit is
-	 logic 1
 	 ***********************************************************************/
-	SCON0 |= SCON0_REN__RECEIVE_ENABLED | SCON0_MCE__MULTI_ENABLED;
+	SCON0 |= SCON0_REN__RECEIVE_ENABLED;
 	// [SCON0 - UART0 Serial Port Control]$
 
 }
@@ -527,6 +525,18 @@ extern void VREF_0_enter_DefaultMode_from_RESET(void)
 extern void PORTS_1_enter_DefaultMode_from_RESET(void)
 {
 	// $[P1 - Port 1 Pin Latch]
+	/***********************************************************************
+	 - P1.0 is high. Set P1.0 to drive or float high
+	 - P1.1 is low. Set P1.1 to drive low
+	 - P1.2 is high. Set P1.2 to drive or float high
+	 - P1.3 is high. Set P1.3 to drive or float high
+	 - P1.4 is high. Set P1.4 to drive or float high
+	 - P1.5 is high. Set P1.5 to drive or float high
+	 - P1.6 is high. Set P1.6 to drive or float high
+	 - P1.7 is high. Set P1.7 to drive or float high
+	 ***********************************************************************/
+	P1 = P1_B0__HIGH | P1_B1__LOW | P1_B2__HIGH | P1_B3__HIGH | P1_B4__HIGH
+			| P1_B5__HIGH | P1_B6__HIGH | P1_B7__HIGH;
 	// [P1 - Port 1 Pin Latch]$
 
 	// $[P1MDOUT - Port 1 Output Mode]
@@ -609,7 +619,7 @@ extern void PORTS_1_enter_DebugMode_from_DefaultMode(void)
 	// $[P1 - Port 1 Pin Latch]
 	/***********************************************************************
 	 - P1.0 is low. Set P1.0 to drive low
-	 - P1.1 is high. Set P1.1 to drive or float high
+	 - P1.1 is low. Set P1.1 to drive low
 	 - P1.2 is low. Set P1.2 to drive low
 	 - P1.3 is low. Set P1.3 to drive low
 	 - P1.4 is high. Set P1.4 to drive or float high
@@ -617,7 +627,7 @@ extern void PORTS_1_enter_DebugMode_from_DefaultMode(void)
 	 - P1.6 is high. Set P1.6 to drive or float high
 	 - P1.7 is high. Set P1.7 to drive or float high
 	 ***********************************************************************/
-	P1 = P1_B0__LOW | P1_B1__HIGH | P1_B2__LOW | P1_B3__LOW | P1_B4__HIGH
+	P1 = P1_B0__LOW | P1_B1__LOW | P1_B2__LOW | P1_B3__LOW | P1_B4__HIGH
 			| P1_B5__HIGH | P1_B6__HIGH | P1_B7__HIGH;
 	// [P1 - Port 1 Pin Latch]$
 
@@ -674,6 +684,11 @@ extern void TIMER01_0_enter_DebugMode_from_DefaultMode(void)
 }
 
 extern void TIMER_SETUP_0_enter_DebugMode_from_DefaultMode(void)
+{
+
+}
+
+extern void UART_0_enter_DebugMode_from_DefaultMode(void)
 {
 
 }

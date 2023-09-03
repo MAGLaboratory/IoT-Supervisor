@@ -14,8 +14,10 @@
 #define DBG1 (P1_B0)
 #define DBG2 (P1_B2)
 #define DBG3 (P1_B3)
-#define TIMER0_PIN_ON() DBG0 = 1;
-#define TIMER0_PIN_OFF() DBG0 = 0;
+#define TIMER0_PINO_ON()
+#define TIMER0_PINO_OFF()
+#define TIMER0_PINI_ON() DBG0 = 1;
+#define TIMER0_PINI_OFF() DBG0 = 0;
 #define TIMER1_PIN_ON() DBG1 = 1;
 #define TIMER1_PIN_OFF() DBG1 = 0;
 #define UART0_PIN_ON() DBG2 = 1;
