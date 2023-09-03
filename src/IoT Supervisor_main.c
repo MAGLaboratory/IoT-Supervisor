@@ -14,8 +14,11 @@
 //-----------------------------------------------------------------------------
 #include <SI_EFM8BB1_Register_Enums.h>                  // SFR declarations
 #include "InitDevice.h"
+#include "IoT_Supervisor.h"
+#include "ModbusMiddleWare.h"
 #include "debugpins.h"
 #include "PetitModbus.h"
+#include "EFM8BB1_FlashPrimitives.h"
 // $[Generated Includes]
 // [Generated Includes]$
 
@@ -24,9 +27,32 @@
 //-----------------------------------------------------------------------------
 #define RESET_P (P1_B1)
 #define nLED (P1_B4)
-static const int C_MB_WD_COUNT2MIN = 7500;
-static const int C_MB_WD_TIMEOUT = 15;
-#define C_FLASH_CONF (0x1C00) // 0x1e00 (end of flash) - 512 bytes
+#define C_MB_WD_COUNT2MIN (7500)
+#define C_DEFAULT_MB_WD_TIMEOUT (15)
+#define C_FLASH_CONF (0x1e00) // 0x2000 (end of flash) - 512 bytes
+#define C_PW_DEFAULT (0xDEFA) // default
+#define C_FOUND_PROG_END (0x1000)
+
+code const uint8_t ex_cfg_header[] =
+{
+	'M','A','G', 	// Makers, Artists, and Gadgeteers Labroatory
+	'S','V', 		// IoT Supervisor
+	'0', 			// sw major
+	'0', 			// sw minor
+	'0' 			// header version
+};
+#define C_CFG_HEADER_LEN (8)
+
+code const cfg_t default_cfg =
+{
+	255, // sid, the default is 255
+	eMMW_B_38400, // baud
+	C_DEFAULT_MB_WD_TIMEOUT, // fifteen minutes
+	C_PW_DEFAULT
+};
+#define C_CFG_DATA_LEN (5)
+#define C_CFG_C_CRC_LEN (2)
+#define C_CFG_P_CRC_LEN (2)
 
 //-----------------------------------------------------------------------------
 // SiLabs_Startup() Routine
@@ -42,21 +68,19 @@ void SiLabs_Startup(void)
 	// [SiLabs Startup]$
 }
 
-// flags
-volatile union
-{
-	// vector access
-	struct
-	{
-		uint8_t vinSmFlag :1;
-		uint8_t WDTsmFlag :1;
-	} v;
-	// byte access
-	uint8_t b;
-} exec_flags;
+//-----------------------------------------------------------------------------
+// "Global" Variables
+//-----------------------------------------------------------------------------
+volatile bool vinSmFlag = false;
+volatile bool WDTsmFlag = false;
+sv_dev_sta_t sv_dev_sta = {0};
 
 uint8_t t1Count = 0;
 uint8_t t1CountLast = 0;
+
+// used in the timer 0 loop
+uint8_t t0Count = 0;
+uint8_t T0C_TOP = 0;
 //-----------------------------------------------------------------------------
 // the state machine
 //-----------------------------------------------------------------------------
@@ -68,16 +92,16 @@ uint8_t t1CountLast = 0;
 // │                  │                        │    VLow    ├───┘
 // │   ┌────────────┐ │                     ┌─►│            │
 // │   │            ├─┘                     │  └────────────┘
-// ├──►│    Init    │                       │  nReset = False
+// ├──►│    Init    │                       │  nReset = low
 // │   │            ├─┐     VinLow Interrupt│
 // │   └────────────┘ │                     │
-// │   nReset = False │                     │
+// │   nReset = low   │                     │
 // │                  │                     │  ┌────────────┐
 // │                  │ VinLow == False     └──┤            │
 // │                  │    2 seconds           │     OK     ├───┐
 // │                  └───────────────────────►│            │   │
 // │                                           └────────────┘   │
-// │                                            nReset = True   │
+// │                                            nReset = high   │
 // │                                           Modbus WDT SMEn  │
 // │                 Modbus WDT Timeout                         │
 // └────────────────────────────────────────────────────────────┘
@@ -99,15 +123,10 @@ bool modbusWdtExp = false; // set outside, cleared in this SM
 //-----------------------------------------------------------------------------
 // flags
 bool modbusRunFlag = false;
-typedef enum
-{
-	Init, VLow, OK
-} VinSm_t;
 
 void VinSm(void)
 {
 	// static variables
-	static VinSm_t VinState = Init;
 	static uint8_t sCounter = 0;
 
 	// determine input state
@@ -118,51 +137,52 @@ void VinSm(void)
 	modbusWdtSmEn = false;
 
 	// transitions
-	switch (VinState)
+	switch (sv_dev_sta.v.vinSmS)
 	{
-	case Init:
+	case eVIN_Init:
 		if (cprif == true || VinCmp == true)
 		{
-			VinState = VLow;
+			sv_dev_sta.v.vinSmS = eVIN_VLow;
 		}
 		else if (sCounter >= SCOUNTER_ONE_SECOND * 2 - 1)
 		{
-			VinState = OK;
+			sv_dev_sta.v.vinSmS = eVIN_OK;
 		}
 		break;
-	case VLow:
+	case eVIN_VLow:
 		if (VinCmp == false)
 		{
-			VinState = Init;
+			sv_dev_sta.v.vinSmS = eVIN_Init;
 		}
 		break;
-	case OK:
+	case eVIN_OK:
 		if (cprif == true || VinCmp == true)
 		{
-			VinState = VLow;
+			sv_dev_sta.v.vinSmS = eVIN_VLow;
+			sv_dev_sta.v.lastRstS = eLR_VSM;
 		}
 		else if (modbusWdtExp == true)
 		{
-			VinState = Init;
+			sv_dev_sta.v.vinSmS = eVIN_VLow;
+			sv_dev_sta.v.lastRstS = eLR_WDT;
 		}
 		break;
 	default:
-		VinState = Init;
+		sv_dev_sta.v.vinSmS = eVIN_VLow;
 		break;
 	}
 
 	// outputs
-	switch (VinState)
+	switch (sv_dev_sta.v.vinSmS)
 	{
-	case Init:
+	case eVIN_Init:
 		sCounter++;
 		modbusWdtExp = false;
 		break;
-	case VLow:
+	case eVIN_VLow:
 		sCounter = 0;
-		PetitRegisters[0] = 0x5010; // lo (w)
 		break;
-	case OK:
+	case eVIN_OK:
 		nReset = true;
 		modbusWdtSmEn = true;
 		sCounter = 0;
@@ -184,6 +204,7 @@ bool mbWDTen = false;
 bool mbWDTpet = false;
 
 // todo: handshake for disable
+/*
 void mbFlagDet()
 {
 	if (PetitRegChange)
@@ -205,59 +226,53 @@ void mbFlagDet()
 		}
 	}
 }
+*/
 
 //-----------------------------------------------------------------------------
 // Modbus WDT State Machine
 //-----------------------------------------------------------------------------
-typedef enum
-{
-	Ini, En, Timeout
-} mbWDTsmS_t; // modbus watchdog timer state machine states _ type
-
+uint8_t MB_WD_TIMEOUT = 15;
 void mbWDTsm(void)
 {
 	// statics
-	static mbWDTsmS_t mbWDTsmS = Ini;
+	static mbWDTsmS_t mbWDTsmS = eMW_Ini;
 	static uint16_t mbWDTc = 0;		// modbus watchdog timer counter
-	static uint8_t mbWDTcM = 0;		// modbus watchdog timer counter (minute)
+	static uint8_t mbWDTcM = 0;	// modbus watchdog timer counter (minute)
 
 	// transitions
 	switch (mbWDTsmS)
 	{
-	case Ini:
+	case eMW_Ini:
 		if (mbWDTen && modbusWdtSmEn)
-			mbWDTsmS = En;
+			mbWDTsmS = eMW_En;
 		break;
-	case En:
+	case eMW_En:
 		if (!mbWDTen || mbWDTpet)
-			mbWDTsmS = Init;
-		if (mbWDTcM >= C_MB_WD_TIMEOUT)
-			mbWDTsmS = Timeout;
+			mbWDTsmS = eMW_Ini;
+		if (mbWDTcM >= MB_WD_TIMEOUT)
+			mbWDTsmS = eMW_Timeout;
 		break;
-	case Timeout:
-		mbWDTsmS = Init;
+	case eMW_Timeout:
+		mbWDTsmS = eMW_Ini;
 		break;
 	default:
-		mbWDTsmS = Init;
+		mbWDTsmS = eMW_Ini;
 		break;
 	}
 
 	// output
 	switch (mbWDTsmS)
 	{
-	case Ini:
+	case eMW_Ini:
 		mbWDTc = 0;
 		mbWDTcM = 0;
-		PetitRegisters[0] = 0x0000; // off?
 		break;
-	case En:
+	case eMW_En:
 		mbWDTc++;
 		if (mbWDTc >= C_MB_WD_COUNT2MIN)
 			mbWDTcM++;
-		PetitRegisters[0] = 0xEA55; // yass
 		break;
-	case Timeout:
-		PetitRegisters[0] = 0xB17E; // bite
+	case eMW_Timeout:
 		mbWDTen = false;
 		modbusWdtExp = true;
 		break;
@@ -265,10 +280,320 @@ void mbWDTsm(void)
 
 	mbWDTpet = false;
 }
+
+//-----------------------------------------------------------------------------
+// config state machine
+//-----------------------------------------------------------------------------
+CfgSM_t cfgSmS = eCFG_Idle;
+bool pw_flag = false;
+bool run_petitmodbus = false;
+uint16_t pw; // entered password, not necessarily the correct password
+cfg_t cfg;
+uint8_t cfg_write_idx = 0;
+uint16_t calc_cfg_crc = 0xFFFF;
+uint16_t calc_prog_crc = 0xFFFF;
+
+#define C_CFG_DATA_END (C_CFG_HEADER_LEN + C_CFG_DATA_LEN)
+#define C_CFG_C_CRC_END (C_CFG_DATA_END + C_CFG_C_CRC_LEN)
+#define C_CFG_P_CRC_END (C_CFG_C_CRC_END + C_CFG_P_CRC_LEN)
+
+// helpers
+void cfg_load()
+{
+	uint8_t code* addr = C_FLASH_CONF;
+	uint8_t i = 0;
+	bool cfg_ok = true;
+
+	calc_cfg_crc = 0xFFFF;
+	for (i = 0; i < C_CFG_HEADER_LEN; i++)
+	{
+		if (*(addr + i) != ex_cfg_header[i])
+		{
+			cfg_ok = false;
+			sv_dev_sta.v.verifSt = eVS_Setup;
+			break;
+		}
+		KirisakiCRC16Calc(ex_cfg_header[i], &calc_cfg_crc);
+	}
+
+	if (cfg_ok == true)
+	{
+		// check contents
+		// modbus SID
+		cfg.sid = *(addr + C_CFG_HEADER_LEN);
+		if(i < 1 || i > 247)
+		{
+			cfg_ok = false;
+			sv_dev_sta.v.verifSt = eVS_Cfg;
+		}
+		else
+		{
+			cfg.sid = i;
+			KirisakiCRC16Calc(i, &calc_cfg_crc);
+			// modbus baud config
+			i = *(addr + C_CFG_HEADER_LEN + 1);
+			if (i == 0 || i >= eMMW_B_NUM)
+			{
+				cfg_ok = false;
+				sv_dev_sta.v.verifSt = eVS_Cfg;
+			}
+			else
+			{
+				cfg.baud = i;
+				KirisakiCRC16Calc(i, &calc_cfg_crc);
+				// modbus WD timeout
+				i = *(addr + C_CFG_HEADER_LEN + 2);
+				if (i == 0)
+				{
+					cfg_ok = false;
+					sv_dev_sta.v.verifSt = eVS_Cfg;
+				}
+				else
+				{
+					cfg.wdto = i;
+					KirisakiCRC16Calc(i, &calc_cfg_crc);
+					// password
+					i = *(addr + C_CFG_HEADER_LEN + 3);
+					cfg.pw = i;
+					KirisakiCRC16Calc(i, &calc_cfg_crc);
+					i = *(addr + C_CFG_HEADER_LEN + 4);
+					cfg.pw |= (uint16_t)i << 8;
+					KirisakiCRC16Calc(i, &calc_cfg_crc);
+					if (cfg.pw == C_CMD_COMMIT || cfg.pw == C_CMD_CANCEL)
+					{
+						cfg_ok = false;
+						sv_dev_sta.v.verifSt = eVS_Cfg;
+					}
+				}
+			}
+		}
+	}
+
+	// check CFG CRC
+	if (cfg_ok == true)
+	{
+		i = *(addr + C_CFG_DATA_END);
+		if (calc_cfg_crc & 0xFF != i)
+		{
+			cfg_ok = false;
+			sv_dev_sta.v.verifSt = eVS_Cfg;
+		}
+		else
+		{
+			i = *(addr + C_CFG_DATA_END + 1);
+			if (calc_cfg_crc >> 8 != i)
+			{
+				cfg_ok = false;
+				sv_dev_sta.v.verifSt = eVS_Cfg;
+			}
+		}
+	}
+
+	// check PROG CRC
+	if (sv_dev_sta.v.verifSt != eVS_Setup)
+	{
+		calc_prog_crc = 0xFFFF;
+		for (addr =	0; addr < C_FOUND_PROG_END; addr++)
+		{
+			KirisakiCRC16Calc(*addr, &calc_prog_crc);
+		}
+		addr = C_FLASH_CONF;
+		i = *(addr + C_CFG_C_CRC_END);
+		if (calc_prog_crc & 0xFF != i)
+		{
+			sv_dev_sta.v.verifSt = eVS_Prog;
+		}
+		else
+		{
+			i = *(addr + C_CFG_C_CRC_END + 1);
+			if (calc_prog_crc >> 8 != i)
+			{
+				sv_dev_sta.v.verifSt = eVS_Prog;
+			}
+		}
+	}
+
+	if (cfg_ok == false)
+	{
+		// load the default configuration structure
+		cfg.sid = default_cfg.sid;
+		cfg.baud = default_cfg.baud;
+		cfg.wdto = default_cfg.wdto;
+		cfg.pw = default_cfg.pw;
+	}
+
+	// apply configuration structure
+	mmw_init(cfg.sid, cfg.baud);
+	MB_WD_TIMEOUT = cfg.wdto;
+}
+
+void cfg_write()
+{
+	cfg_write_idx = 0;
+	while (cfg_write_idx < C_CFG_P_CRC_END)
+	{
+		if (cfg_write_idx < C_CFG_HEADER_LEN)
+		{
+			FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx,
+					ex_cfg_header[cfg_write_idx]);
+			KirisakiCRC16Calc(ex_cfg_header[cfg_write_idx++], &calc_prog_crc);
+		}
+		else if (cfg_write_idx < C_CFG_DATA_END)
+		{
+			if (cfg_write_idx == C_CFG_HEADER_LEN)
+			{
+				FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx++, cfg.sid);
+				KirisakiCRC16Calc(cfg.sid, &calc_prog_crc);
+			}
+			else if (cfg_write_idx == C_CFG_HEADER_LEN + 1)
+			{
+				FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx++, cfg.baud);
+				KirisakiCRC16Calc(cfg.baud, &calc_prog_crc);
+			}
+			else if (cfg_write_idx == C_CFG_HEADER_LEN + 2)
+			{
+				FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx++, cfg.wdto);
+				KirisakiCRC16Calc(cfg.wdto, &calc_prog_crc);
+			}
+			else if (cfg_write_idx == C_CFG_HEADER_LEN + 3)
+			{
+				FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx++, cfg.pw & 0xFF);
+				KirisakiCRC16Calc(cfg.pw & 0xFF, &calc_prog_crc);
+			}
+			else
+			{
+				FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx++, cfg.pw >> 8);
+				KirisakiCRC16Calc(cfg.pw >> 8, &calc_prog_crc);
+			}
+		}
+		else if (cfg_write_idx < C_CFG_C_CRC_END)
+		{
+			if (cfg_write_idx == C_CFG_DATA_END)
+			{
+				FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx++,
+						calc_cfg_crc & 0xFF);
+			}
+			else
+			{
+				FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx++,
+						calc_cfg_crc >> 8);
+			}
+		}
+		else if (cfg_write_idx < C_CFG_P_CRC_LEN)
+		{
+			if (cfg_write_idx == C_CFG_DATA_END)
+			{
+				FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx++,
+						calc_prog_crc & 0xFF);
+			}
+			else
+			{
+				FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx++,
+						calc_prog_crc >> 8);
+			}
+		}
+		else
+		{
+			cfgSmS = eCFG_Idle;
+			cfg_write_idx = 0;
+		}
+	}
+	cfgSmS = eCFG_Idle;
+}
+
+void CFGsm()
+{
+	// transitions
+	switch (cfgSmS)
+	{
+	case eCFG_Load:
+		// transitions handled in-function
+		break;
+	case eCFG_Idle:
+		if (pw_flag)
+		{
+			if (pw == cfg.pw)
+			{
+				cfgSmS = eCFG_Cache;
+			}
+			pw_flag = false;
+		}
+		break;
+	case eCFG_Cache:
+		if (pw_flag && Petit_RxTx_State == PETIT_RXTX_RX)
+		{
+			if (pw == C_CMD_COMMIT)
+			{
+				cfgSmS = eCFG_Commit;
+				mmw_init(cfg.sid, cfg.baud);
+				MB_WD_TIMEOUT = cfg.wdto;
+			}
+			if (pw == C_CMD_CANCEL)
+			{
+				cfgSmS = eCFG_Idle;
+				cfg = default_cfg;
+			}
+			pw_flag = false;
+		}
+		break;
+	case eCFG_Commit:
+		if (pw_flag && Petit_RxTx_State == PETIT_RXTX_RX)
+		{
+			if (pw == cfg.pw)
+			{
+				cfgSmS = eCFG_Erase;
+			}
+			if (pw == C_CMD_CANCEL)
+			{
+				cfgSmS = eCFG_Idle;
+			}
+			pw_flag = false;
+		}
+		break;
+	case eCFG_Erase:
+			cfgSmS = eCFG_Write;
+		break;
+	case eCFG_Write:
+		// transitions handled in function
+		break;
+	default:
+		cfgSmS = eCFG_Idle;
+		break;
+	}
+
+	// outputs
+	switch (cfgSmS)
+	{
+	case eCFG_Load:
+		cfg_load();
+		run_petitmodbus = false;
+		break;
+	case eCFG_Idle:
+		run_petitmodbus = true;
+		break;
+	case eCFG_Cache:
+		run_petitmodbus = true;
+		mbWDTen = false;
+		// the magic in processing actually happens in the modbus rx function
+		break;
+	case eCFG_Commit:
+		run_petitmodbus = true;
+		// functionality implemented in the transitions, believe it or not
+		break;
+	case eCFG_Erase:
+		run_petitmodbus = false;
+		FLASH_PageErase(C_FLASH_CONF);
+		break;
+	case eCFG_Write:
+		run_petitmodbus = false;
+		cfg_write();
+		break;
+	}
+}
+
 //-----------------------------------------------------------------------------
 // main() Routine
 // ----------------------------------------------------------------------------
-
 int main(void)
 {
 	// Call hardware initialization routine
@@ -285,23 +610,25 @@ int main(void)
 		{
 			PETIT_PROCESS_ON();
 
-			t1CountLast++;
-
-			ProcessPetitModbus();
-			mbFlagDet();
+			t1CountLast = t1Count;
+			if (run_petitmodbus)
+			{
+				ProcessPetitModbus();
+				// mbFlagDet();
+			}
 
 			PETIT_PROCESS_OFF();
 		}
 
-		if (exec_flags.v.vinSmFlag)
+		if (vinSmFlag)
 		{
-			exec_flags.v.vinSmFlag = 0;
+			vinSmFlag = false;
 			VinSm();
 		}
 
-		if (exec_flags.v.WDTsmFlag)
+		if (WDTsmFlag)
 		{
-			exec_flags.v.WDTsmFlag = 0;
+			WDTsmFlag = false;
 			mbWDTsm();
 		}
 

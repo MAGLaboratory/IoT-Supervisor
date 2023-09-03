@@ -10,21 +10,8 @@
 #include <SI_EFM8BB1_Register_Enums.h>
 #include "debugpins.h"
 #include "PetitModbusPort.h"
+#include "IoT_Supervisor.h"
 
-// externs flags
-extern volatile union
-{
-	struct
-	{
-		uint8_t vinSmFlag :1;
-		uint8_t WDTsmFlag :1;
-	} v;
-	uint8_t b;
-} exec_flags;
-
-extern uint8_t t1Count;
-
-extern bool cprif;
 
 #define WDT_RESET() (WDTCN = 0xA5)
 
@@ -57,7 +44,7 @@ SI_INTERRUPT (CMP0_ISR, CMP0_IRQn)
 		else
 		{
 			cprif = true;
-			exec_flags.v.vinSmFlag = true;
+			vinSmFlag = true;
 		}
 	}
 }
@@ -71,25 +58,35 @@ SI_INTERRUPT (CMP0_ISR, CMP0_IRQn)
 //
 // ISR for modbus message timeout
 //
-// Modbus implements a 1.75ms timeout between messages.  Clearing the data in
+// Modbus implements a "T_1.5" timeout between bytes.  Clearing the data in
 // the modbus buffer invalidates it.
 //-----------------------------------------------------------------------------
 SI_INTERRUPT (TIMER0_ISR, TIMER0_IRQn)
 {
 	TCON_TF0 = 0;
-	// timer off
-	// reset timer counter (should be a define)
-	PetitPortTimerStop();
 
-	TIMER0_PIN_ON();
+	TIMER0_PINO_ON();
 
-	// clear the modbus receiver
-	PetitRxBufferReset();
+	// reset timer counter
+	TL0 = (0x20 << TL0_TL0__SHIFT);
 
-	// transceiver on receive mode
-	PetitPortDirRx();
+	t0Count++;
 
-	TIMER0_PIN_OFF();
+	if (t0Count > T0C_TOP)
+	{
+		TIMER0_PINI_ON();
+		// reset timer counter (should be a define)
+		PetitPortTimerStop();
+
+		// clear the modbus receiver
+		PetitRxBufferReset();
+
+		// transceiver on receive mode
+		PetitPortDirRx();
+
+		TIMER0_PINI_OFF();
+	}
+	TIMER0_PINO_OFF();
 }
 
 //-----------------------------------------------------------------------------
@@ -115,8 +112,8 @@ SI_INTERRUPT (TIMER1_ISR, TIMER1_IRQn)
 	// run every 8ms
 	if ((t1c & 7) == 0)
 	{
-		exec_flags.v.WDTsmFlag = true;
-		exec_flags.v.vinSmFlag = true;
+		WDTsmFlag = true;
+		vinSmFlag = true;
 		WDT_RESET();
 	}
 	t1c++;
@@ -177,10 +174,11 @@ SI_INTERRUPT (ADC0EOC_ISR, ADC0EOC_IRQn)
 
 	ADC0_PIN_ON();
 
-	conv_count = PetitRegisters[2] >> 10 & 0x3F;
+	// top 6 bits for the conversion count
+	// bottom 10 bits for the ADC value (it's a 10-bit ADC)
+	conv_count = PetitInputRegisters[0] >> 10 & 0x3F;
 	conv_count++;
-	PetitRegisters[2] = (uint16_t) conv_count << 10 | ADC0 >> 6;
+	PetitInputRegisters[0] = (uint16_t) conv_count << 10 | ADC0 >> 6;
 
 	ADC0_PIN_OFF();
 }
-
