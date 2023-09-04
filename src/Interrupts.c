@@ -12,7 +12,6 @@
 #include "PetitModbusPort.h"
 #include "IoT_Supervisor.h"
 
-
 #define WDT_RESET() (WDTCN = 0xA5)
 
 //-----------------------------------------------------------------------------
@@ -43,8 +42,9 @@ SI_INTERRUPT (CMP0_ISR, CMP0_IRQn)
 			firstInterrupt = false;
 		else
 		{
+			RESET_P = false; // reset now.
+			nLED = false; // light led
 			cprif = true;
-			vinSmFlag = true;
 		}
 	}
 }
@@ -112,8 +112,8 @@ SI_INTERRUPT (TIMER1_ISR, TIMER1_IRQn)
 	// run every 8ms
 	if ((t1c & 7) == 0)
 	{
-		WDTsmFlag = true;
-		vinSmFlag = true;
+		VinSm();
+		mbWDTsm();
 		WDT_RESET();
 	}
 	t1c++;

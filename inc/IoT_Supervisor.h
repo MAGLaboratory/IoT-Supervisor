@@ -7,17 +7,22 @@
 
 #ifndef INC_IOT_SUPERVISOR_H_
 #define INC_IOT_SUPERVISOR_H_
-
 #include <stdint.h>
 #include <stdbool.h>
+
 //-----------------------------------------------------------------------------
-// Type Definitions
+// Defines
 //-----------------------------------------------------------------------------
+#define RESET_P (P1_B1)
+#define nLED (P1_B4)
 #define C_WDT_PET 0x5A
 #define C_WDT_DIS 0xA5
 #define C_CMD_COMMIT 0x5FAF
 #define C_CMD_CANCEL 0x0000
 
+//-----------------------------------------------------------------------------
+// Type Definitions
+//-----------------------------------------------------------------------------
 // voltage in state machine _ type
 typedef enum
 {
@@ -88,9 +93,6 @@ typedef struct
 //-----------------------------------------------------------------------------
 // Globals
 //-----------------------------------------------------------------------------
-extern volatile bool vinSmFlag;
-extern volatile bool WDTsmFlag;
-
 extern uint8_t t1Count;
 extern bool cprif;
 
@@ -109,5 +111,11 @@ extern uint16_t pw;
 extern cfg_t cfg;
 
 extern CfgSM_t cfgSmS;
+
+//-----------------------------------------------------------------------------
+// Functions
+//-----------------------------------------------------------------------------
+void VinSm(void);
+void mbWDTsm(void);
 
 #endif /* INC_IOT_SUPERVISOR_H_ */

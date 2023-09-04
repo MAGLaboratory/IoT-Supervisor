@@ -82,9 +82,9 @@
     <property object="UART_0" propertyId="uart.serialportcontrol.enablereceive" value="Enabled"/>
     <property object="VREF_0" propertyId="ABPeripheral.included" value="true"/>
     <property object="WDT_0" propertyId="ABPeripheral.included" value="true"/>
-    <property object="WDT_0" propertyId="wdt.watchdogcontrol.wdtinitialvalue" value="3"/>
-    <property object="WDT_0" propertyId="wdt.watchdogcontrol.wdtperiodactual" value="409.600 ms"/>
-    <property object="WDT_0" propertyId="wdt.watchdogcontrol.wdtperiodtargetms" value="300"/>
+    <property object="WDT_0" propertyId="wdt.watchdogcontrol.wdtinitialvalue" value="1"/>
+    <property object="WDT_0" propertyId="wdt.watchdogcontrol.wdtperiodactual" value="25.600 ms"/>
+    <property object="WDT_0" propertyId="wdt.watchdogcontrol.wdtperiodtargetms" value="25"/>
   </mode>
   <mode name="DebugMode">
     <property object="ADC_0" propertyId="ABPeripheral.included" value="true"/>
@@ -184,9 +184,9 @@
     <property object="TIMER_SETUP_0" propertyId="timer_setup.timer1firmwarecontrol.timerstartorstop" value="Switch mode by T1M(TMOD[5:4])"/>
     <property object="VREF_0" propertyId="ABPeripheral.included" value="true"/>
     <property object="WDT_0" propertyId="ABPeripheral.included" value="true"/>
-    <property object="WDT_0" propertyId="wdt.watchdogcontrol.wdtinitialvalue" value="3"/>
-    <property object="WDT_0" propertyId="wdt.watchdogcontrol.wdtperiodactual" value="409.600 ms"/>
-    <property object="WDT_0" propertyId="wdt.watchdogcontrol.wdtperiodtargetms" value="300"/>
+    <property object="WDT_0" propertyId="wdt.watchdogcontrol.wdtinitialvalue" value="1"/>
+    <property object="WDT_0" propertyId="wdt.watchdogcontrol.wdtperiodactual" value="25.600 ms"/>
+    <property object="WDT_0" propertyId="wdt.watchdogcontrol.wdtperiodtargetms" value="25"/>
   </mode>
   <modeTransition>
     <property object="RESET &#x2192; DefaultMode" propertyId="modeTransition.source" value="RESET"/>
