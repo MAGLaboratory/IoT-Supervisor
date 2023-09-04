@@ -32,7 +32,6 @@ extern void enter_DefaultMode_from_RESET(void)
 	TIMER01_0_enter_DefaultMode_from_RESET();
 	TIMER16_2_enter_DefaultMode_from_RESET();
 	TIMER_SETUP_0_enter_DefaultMode_from_RESET();
-	UART_0_enter_DefaultMode_from_RESET();
 	INTERRUPT_0_enter_DefaultMode_from_RESET();
 	// [Config Calls]$
 
@@ -173,7 +172,7 @@ extern void PBCFG_0_enter_DefaultMode_from_RESET(void)
 
 	// $[XBR0 - Port I/O Crossbar 0]
 	/***********************************************************************
-	 - UART TX, RX routed to Port pins P0.4 and P0.5
+	 - UART I/O unavailable at Port pin
 	 - SPI I/O unavailable at Port pins
 	 - SMBus 0 I/O unavailable at Port pins
 	 - CP0 unavailable at Port pin
@@ -182,7 +181,7 @@ extern void PBCFG_0_enter_DefaultMode_from_RESET(void)
 	 - Asynchronous CP1 unavailable at Port pin
 	 - SYSCLK unavailable at Port pin
 	 ***********************************************************************/
-	XBR0 = XBR0_URT0E__ENABLED | XBR0_SPI0E__DISABLED | XBR0_SMB0E__DISABLED
+	XBR0 = XBR0_URT0E__DISABLED | XBR0_SPI0E__DISABLED | XBR0_SMB0E__DISABLED
 			| XBR0_CP0E__DISABLED | XBR0_CP0AE__ENABLED | XBR0_CP1E__DISABLED
 			| XBR0_CP1AE__DISABLED | XBR0_SYSCKE__DISABLED;
 	// [XBR0 - Port I/O Crossbar 0]$
@@ -261,17 +260,9 @@ extern void TIMER01_0_enter_DefaultMode_from_RESET(void)
 	// [TL0 - Timer 0 Low Byte]$
 
 	// $[TH1 - Timer 1 High Byte]
-	/***********************************************************************
-	 - Timer 1 High Byte = 0xEC
-	 ***********************************************************************/
-	TH1 = (0xEC << TH1_TH1__SHIFT);
 	// [TH1 - Timer 1 High Byte]$
 
 	// $[TL1 - Timer 1 Low Byte]
-	/***********************************************************************
-	 - Timer 1 Low Byte = 0xEC
-	 ***********************************************************************/
-	TL1 = (0xEC << TL1_TL1__SHIFT);
 	// [TL1 - Timer 1 Low Byte]$
 
 	// $[Timer Restoration]
@@ -285,31 +276,18 @@ extern void TIMER01_0_enter_DefaultMode_from_RESET(void)
 extern void TIMER_SETUP_0_enter_DefaultMode_from_RESET(void)
 {
 	// $[CKCON0 - Clock Control 0]
-	/***********************************************************************
-	 - System clock divided by 12
-	 - Counter/Timer 0 uses the clock defined by the prescale field, SCA
-	 - Timer 2 high byte uses the clock defined by T2XCLK in TMR2CN0
-	 - Timer 2 low byte uses the clock defined by T2XCLK in TMR2CN0
-	 - Timer 3 high byte uses the clock defined by T3XCLK in TMR3CN0
-	 - Timer 3 low byte uses the clock defined by T3XCLK in TMR3CN0
-	 - Timer 1 uses the system clock
-	 ***********************************************************************/
-	CKCON0 = CKCON0_SCA__SYSCLK_DIV_12 | CKCON0_T0M__PRESCALE
-			| CKCON0_T2MH__EXTERNAL_CLOCK | CKCON0_T2ML__EXTERNAL_CLOCK
-			| CKCON0_T3MH__EXTERNAL_CLOCK | CKCON0_T3ML__EXTERNAL_CLOCK
-			| CKCON0_T1M__SYSCLK;
 	// [CKCON0 - Clock Control 0]$
 
 	// $[TMOD - Timer 0/1 Mode]
 	/***********************************************************************
 	 - Mode 3, Two 8-bit Counter/Timers
-	 - Mode 2, 8-bit Counter/Timer with Auto-Reload
+	 - Mode 3, Timer 1 Inactive
 	 - Timer Mode
 	 - Timer 0 enabled when TR0 = 1 irrespective of INT0 logic level
 	 - Timer Mode
 	 - Timer 1 enabled when TR1 = 1 irrespective of INT1 logic level
 	 ***********************************************************************/
-	TMOD = TMOD_T0M__MODE3 | TMOD_T1M__MODE2 | TMOD_CT0__TIMER
+	TMOD = TMOD_T0M__MODE3 | TMOD_T1M__MODE3 | TMOD_CT0__TIMER
 			| TMOD_GATE0__DISABLED | TMOD_CT1__TIMER | TMOD_GATE1__DISABLED;
 	// [TMOD - Timer 0/1 Mode]$
 
@@ -562,6 +540,7 @@ extern void enter_DebugMode_from_DefaultMode(void)
 	PORTS_0_enter_DebugMode_from_DefaultMode();
 	PORTS_1_enter_DebugMode_from_DefaultMode();
 	PBCFG_0_enter_DebugMode_from_DefaultMode();
+	TIMER01_0_enter_DebugMode_from_DefaultMode();
 	// [Config Calls]$
 
 }
@@ -671,6 +650,19 @@ extern void PBCFG_0_enter_DebugMode_from_DefaultMode(void)
 	// [PRTDRV - Port Drive Strength]$
 
 	// $[XBR0 - Port I/O Crossbar 0]
+	/***********************************************************************
+	 - UART TX, RX routed to Port pins P0.4 and P0.5
+	 - SPI I/O unavailable at Port pins
+	 - SMBus 0 I/O unavailable at Port pins
+	 - CP0 unavailable at Port pin
+	 - Asynchronous CP0 routed to Port pin
+	 - CP1 unavailable at Port pin
+	 - Asynchronous CP1 unavailable at Port pin
+	 - SYSCLK unavailable at Port pin
+	 ***********************************************************************/
+	XBR0 = XBR0_URT0E__ENABLED | XBR0_SPI0E__DISABLED | XBR0_SMB0E__DISABLED
+			| XBR0_CP0E__DISABLED | XBR0_CP0AE__ENABLED | XBR0_CP1E__DISABLED
+			| XBR0_CP1AE__DISABLED | XBR0_SYSCKE__DISABLED;
 	// [XBR0 - Port I/O Crossbar 0]$
 
 	// $[XBR1 - Port I/O Crossbar 1]
@@ -680,6 +672,33 @@ extern void PBCFG_0_enter_DebugMode_from_DefaultMode(void)
 
 extern void TIMER01_0_enter_DebugMode_from_DefaultMode(void)
 {
+
+	// $[Timer Initialization]
+	//Save Timer Configuration
+	uint8_t TCON_save;
+	TCON_save = TCON;
+	//Stop Timers
+	TCON &= ~TCON_TR0__BMASK & ~TCON_TR1__BMASK;
+
+	// [Timer Initialization]$
+
+	// $[TH0 - Timer 0 High Byte]
+	// [TH0 - Timer 0 High Byte]$
+
+	// $[TL0 - Timer 0 Low Byte]
+	// [TL0 - Timer 0 Low Byte]$
+
+	// $[TH1 - Timer 1 High Byte]
+	// [TH1 - Timer 1 High Byte]$
+
+	// $[TL1 - Timer 1 Low Byte]
+	// [TL1 - Timer 1 Low Byte]$
+
+	// $[Timer Restoration]
+	//Restore Timer Configuration
+	TCON |= (TCON_save & TCON_TR0__BMASK) | (TCON_save & TCON_TR1__BMASK);
+
+	// [Timer Restoration]$
 
 }
 

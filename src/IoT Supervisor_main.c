@@ -31,11 +31,11 @@
 #define C_DEFAULT_MB_WD_TIMEOUT (15)
 #define C_FLASH_CONF (0x1e00) // 0x2000 (end of flash) - 512 bytes
 #define C_PW_DEFAULT (0xDEFA) // default
-#define C_FOUND_PROG_END (0x1000)
+#define C_FOUND_PROG_END (0x0FC7) // end of program memory to check (exclusive)
 
 code const uint8_t ex_cfg_header[] =
 {
-	'M','A','G', 	// Makers, Artists, and Gadgeteers Labroatory
+	'M','A','G', 	// Makers, Artists, and Gadgeteers Laboratory
 	'S','V', 		// IoT Supervisor
 	'0', 			// sw major
 	'0', 			// sw minor
@@ -284,8 +284,9 @@ void mbWDTsm(void)
 //-----------------------------------------------------------------------------
 // config state machine
 //-----------------------------------------------------------------------------
-CfgSM_t cfgSmS = eCFG_Idle;
+CfgSM_t cfgSmS = eCFG_Load;
 bool pw_flag = false;
+bool dir_tx = false;
 bool run_petitmodbus = false;
 uint16_t pw; // entered password, not necessarily the correct password
 cfg_t cfg;
@@ -320,7 +321,7 @@ void cfg_load()
 	{
 		// check contents
 		// modbus SID
-		cfg.sid = *(addr + C_CFG_HEADER_LEN);
+		i = *(addr + C_CFG_HEADER_LEN);
 		if(i < 1 || i > 247)
 		{
 			cfg_ok = false;
@@ -373,7 +374,7 @@ void cfg_load()
 	if (cfg_ok == true)
 	{
 		i = *(addr + C_CFG_DATA_END);
-		if (calc_cfg_crc & 0xFF != i)
+		if ((calc_cfg_crc & 0xFF) != i)
 		{
 			cfg_ok = false;
 			sv_dev_sta.v.verifSt = eVS_Cfg;
@@ -389,17 +390,19 @@ void cfg_load()
 		}
 	}
 
+	// calculate PROG CRC
+	calc_prog_crc = 0xFFFF;
+	for (addr =	0; addr < C_FOUND_PROG_END; addr++)
+	{
+		KirisakiCRC16Calc(*addr, &calc_prog_crc);
+	}
+
 	// check PROG CRC
 	if (sv_dev_sta.v.verifSt != eVS_Setup)
 	{
-		calc_prog_crc = 0xFFFF;
-		for (addr =	0; addr < C_FOUND_PROG_END; addr++)
-		{
-			KirisakiCRC16Calc(*addr, &calc_prog_crc);
-		}
 		addr = C_FLASH_CONF;
 		i = *(addr + C_CFG_C_CRC_END);
-		if (calc_prog_crc & 0xFF != i)
+		if ((calc_prog_crc & 0xFF) != i)
 		{
 			sv_dev_sta.v.verifSt = eVS_Prog;
 		}
@@ -425,45 +428,48 @@ void cfg_load()
 	// apply configuration structure
 	mmw_init(cfg.sid, cfg.baud);
 	MB_WD_TIMEOUT = cfg.wdto;
+
+	cfgSmS = eCFG_Idle;
 }
 
 void cfg_write()
 {
 	cfg_write_idx = 0;
+	calc_cfg_crc = 0xFFFF;
 	while (cfg_write_idx < C_CFG_P_CRC_END)
 	{
 		if (cfg_write_idx < C_CFG_HEADER_LEN)
 		{
 			FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx,
 					ex_cfg_header[cfg_write_idx]);
-			KirisakiCRC16Calc(ex_cfg_header[cfg_write_idx++], &calc_prog_crc);
+			KirisakiCRC16Calc(ex_cfg_header[cfg_write_idx++], &calc_cfg_crc);
 		}
 		else if (cfg_write_idx < C_CFG_DATA_END)
 		{
 			if (cfg_write_idx == C_CFG_HEADER_LEN)
 			{
 				FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx++, cfg.sid);
-				KirisakiCRC16Calc(cfg.sid, &calc_prog_crc);
+				KirisakiCRC16Calc(cfg.sid, &calc_cfg_crc);
 			}
 			else if (cfg_write_idx == C_CFG_HEADER_LEN + 1)
 			{
 				FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx++, cfg.baud);
-				KirisakiCRC16Calc(cfg.baud, &calc_prog_crc);
+				KirisakiCRC16Calc(cfg.baud, &calc_cfg_crc);
 			}
 			else if (cfg_write_idx == C_CFG_HEADER_LEN + 2)
 			{
 				FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx++, cfg.wdto);
-				KirisakiCRC16Calc(cfg.wdto, &calc_prog_crc);
+				KirisakiCRC16Calc(cfg.wdto, &calc_cfg_crc);
 			}
 			else if (cfg_write_idx == C_CFG_HEADER_LEN + 3)
 			{
 				FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx++, cfg.pw & 0xFF);
-				KirisakiCRC16Calc(cfg.pw & 0xFF, &calc_prog_crc);
+				KirisakiCRC16Calc(cfg.pw & 0xFF, &calc_cfg_crc);
 			}
 			else
 			{
 				FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx++, cfg.pw >> 8);
-				KirisakiCRC16Calc(cfg.pw >> 8, &calc_prog_crc);
+				KirisakiCRC16Calc(cfg.pw >> 8, &calc_cfg_crc);
 			}
 		}
 		else if (cfg_write_idx < C_CFG_C_CRC_END)
@@ -479,9 +485,9 @@ void cfg_write()
 						calc_cfg_crc >> 8);
 			}
 		}
-		else if (cfg_write_idx < C_CFG_P_CRC_LEN)
+		else /* if (cfg_write_idx < C_CFG_P_CRC_END) */
 		{
-			if (cfg_write_idx == C_CFG_DATA_END)
+			if (cfg_write_idx == C_CFG_C_CRC_END)
 			{
 				FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx++,
 						calc_prog_crc & 0xFF);
@@ -491,11 +497,6 @@ void cfg_write()
 				FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx++,
 						calc_prog_crc >> 8);
 			}
-		}
-		else
-		{
-			cfgSmS = eCFG_Idle;
-			cfg_write_idx = 0;
 		}
 	}
 	cfgSmS = eCFG_Idle;
@@ -520,10 +521,11 @@ void CFGsm()
 		}
 		break;
 	case eCFG_Cache:
-		if (pw_flag && Petit_RxTx_State == PETIT_RXTX_RX)
+		if (pw_flag && Petit_RxTx_State == PETIT_RXTX_RX && dir_tx == false)
 		{
 			if (pw == C_CMD_COMMIT)
 			{
+				// todo: implement checker here
 				cfgSmS = eCFG_Commit;
 				mmw_init(cfg.sid, cfg.baud);
 				MB_WD_TIMEOUT = cfg.wdto;
@@ -611,6 +613,9 @@ int main(void)
 			PETIT_PROCESS_ON();
 
 			t1CountLast = t1Count;
+
+			CFGsm();
+
 			if (run_petitmodbus)
 			{
 				ProcessPetitModbus();

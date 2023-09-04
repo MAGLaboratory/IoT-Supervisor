@@ -43,6 +43,7 @@ void PetitPortTimerStop()
 void PetitPortDirTx()
 {
 	P0_B3 = true;
+	dir_tx = true;
 	return;
 }
 
@@ -53,6 +54,7 @@ void PetitPortDirTx()
 void PetitPortDirRx()
 {
 	P0_B3 = false;
+	dir_tx = false;
 	return;
 }
 
@@ -78,9 +80,8 @@ void PetitPortTxBegin(pu8_t tx)
  */
 pu8_t PetitPortRegWrite(pu8_t Address, pu16_t Data)
 {
-	// check if you can access this
-	if (Address > eMMW_HR_CFG &&
-			(cfgSmS != eCFG_Cache || cfgSmS != eCFG_Commit))
+	// check if you can write to this
+	if (Address > eMMW_HR_CFG && cfgSmS != eCFG_Cache)
 	{
 		return 0;
 	}
@@ -107,13 +108,19 @@ pu8_t PetitPortRegWrite(pu8_t Address, pu16_t Data)
 	}
 	if (Address == eMMW_HR_MB)
 	{
-		if (Data & 0xFF > 0)
+		if ((Data & 0xFF) > 0)
 		{
-			cfg.sid = Data & 0xFF;
+			if ((Data & 0xFF) < 248)
+			{
+				cfg.sid = Data & 0xFF;
+			}
 		}
 		if (Data >> 8 > 0)
 		{
-			cfg.baud = Data >> 8;
+			if (Data >> 8 < eMMW_B_NUM)
+			{
+				cfg.baud = Data >> 8;
+			}
 		}
 	}
 	if (Address == eMMW_HR_WDT)
@@ -145,7 +152,7 @@ pu8_t PetitPortRegRead(pu8_t Address, pu16_t* Data)
 {
 	// check if you can access this
 	if (Address > eMMW_HR_CFG &&
-			(cfgSmS != eCFG_Cache || cfgSmS != eCFG_Commit))
+			(cfgSmS != eCFG_Cache && cfgSmS != eCFG_Commit))
 	{
 		return 0;
 	}
