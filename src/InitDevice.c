@@ -73,7 +73,7 @@ extern void WDT_0_enter_DefaultMode_from_RESET(void)
 	}
 
 	// Change WDT interval
-	WDTCN = 3;
+	WDTCN = 1;
 
 	// Start WDT
 	WDTCN = 0xA5;

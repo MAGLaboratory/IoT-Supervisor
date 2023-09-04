@@ -25,13 +25,11 @@
 //-----------------------------------------------------------------------------
 // Defines
 //-----------------------------------------------------------------------------
-#define RESET_P (P1_B1)
-#define nLED (P1_B4)
 #define C_MB_WD_COUNT2MIN (7500)
 #define C_DEFAULT_MB_WD_TIMEOUT (15)
 #define C_FLASH_CONF (0x1e00) // 0x2000 (end of flash) - 512 bytes
 #define C_PW_DEFAULT (0xDEFA) // default
-#define C_FOUND_PROG_END (0x1030) // end of program memory to check (exclusive)
+#define C_FOUND_PROG_END (0x1068) // end of program memory to check (exclusive)
 
 code const uint8_t ex_cfg_header[] =
 {
@@ -71,7 +69,6 @@ void SiLabs_Startup(void)
 //-----------------------------------------------------------------------------
 // "Global" Variables
 //-----------------------------------------------------------------------------
-volatile bool vinSmFlag = false;
 volatile bool WDTsmFlag = false;
 sv_dev_sta_t sv_dev_sta = {0};
 
@@ -198,40 +195,11 @@ void VinSm(void)
 }
 
 //-----------------------------------------------------------------------------
-// Modbus WDT processing from Modbus
-//-----------------------------------------------------------------------------
-bool mbWDTen = false;
-bool mbWDTpet = false;
-
-// todo: handshake for disable
-/*
-void mbFlagDet()
-{
-	if (PetitRegChange)
-	{
-		PetitRegChange = false;
-		// TODO should be a define
-		if (PetitRegisters[1] != 0)
-		{
-			if (PetitRegisters[1] == 0x5A)
-			{
-				mbWDTpet = true;
-				mbWDTen = true;
-				PetitRegisters[1] = 0;
-			}
-			if (PetitRegisters[1] == 0xA5)
-			{
-				mbWDTen = false;
-			}
-		}
-	}
-}
-*/
-
-//-----------------------------------------------------------------------------
 // Modbus WDT State Machine
 //-----------------------------------------------------------------------------
 uint8_t MB_WD_TIMEOUT = 15;
+bool mbWDTen = false;
+bool mbWDTpet = false;
 void mbWDTsm(void)
 {
 	// statics
@@ -499,6 +467,8 @@ void cfg_write()
 			}
 		}
 	}
+	RSTSRC |= RSTSRC_SWRSF__SET;
+	// uh, set the state machine to idle in case we have not reset
 	cfgSmS = eCFG_Idle;
 }
 
@@ -598,6 +568,12 @@ void CFGsm()
 // ----------------------------------------------------------------------------
 int main(void)
 {
+	// reset handling code
+	//   skip startup reset if a software reset was called
+	if ((RSTSRC & RSTSRC_SWRSF__BMASK) == RSTSRC_SWRSF__SET)
+	{
+		sv_dev_sta.v.vinSmS = eVIN_OK;
+	}
 	// Call hardware initialization routine
 	enter_DefaultMode_from_RESET();
 #if DEBUG
@@ -623,18 +599,6 @@ int main(void)
 			}
 
 			PETIT_PROCESS_OFF();
-		}
-
-		if (vinSmFlag)
-		{
-			vinSmFlag = false;
-			VinSm();
-		}
-
-		if (WDTsmFlag)
-		{
-			WDTsmFlag = false;
-			mbWDTsm();
 		}
 
 		//     idle mode taken out because of some race condition that keeps
