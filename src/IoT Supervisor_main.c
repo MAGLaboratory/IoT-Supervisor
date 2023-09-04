@@ -31,7 +31,7 @@
 #define C_DEFAULT_MB_WD_TIMEOUT (15)
 #define C_FLASH_CONF (0x1e00) // 0x2000 (end of flash) - 512 bytes
 #define C_PW_DEFAULT (0xDEFA) // default
-#define C_FOUND_PROG_END (0x0FC7) // end of program memory to check (exclusive)
+#define C_FOUND_PROG_END (0x1030) // end of program memory to check (exclusive)
 
 code const uint8_t ex_cfg_header[] =
 {
