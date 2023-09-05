@@ -46,6 +46,8 @@
 								<option id="com.silabs.ide.si8051.keil.compiler.category.listing.assembly.1927807481" name="Assembly code" superClass="com.silabs.ide.si8051.keil.compiler.category.listing.assembly" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 								<option id="com.silabs.ide.si8051.keil.compiler.category.listing.symbols.439325752" name="Symbols" superClass="com.silabs.ide.si8051.keil.compiler.category.listing.symbols" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 								<option id="com.silabs.ide.si8051.keil.compiler.category.listing.preprocessor.685893323" name="Create preprocessor listing file" superClass="com.silabs.ide.si8051.keil.compiler.category.listing.preprocessor" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="com.silabs.ide.si8051.keil.compiler.category.general.browse.1256541817" name="Generate browse information" superClass="com.silabs.ide.si8051.keil.compiler.category.general.browse" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="com.silabs.ide.si8051.keil.compiler.category.optimization.coloring.297366058" name="Global register coloring" superClass="com.silabs.ide.si8051.keil.compiler.category.optimization.coloring" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 								<inputType id="com.silabs.ide.si8051.keil.compiler.inputType.1339904838" superClass="com.silabs.ide.si8051.keil.compiler.inputType"/>
 							</tool>
 							<tool command="AX51" id="com.silabs.ide.si8051.keil.toolchain.assembler.1137083774" name="Keil 8051 Assembler" superClass="com.silabs.ide.si8051.keil.toolchain.assembler">
@@ -60,9 +62,9 @@
 								<inputType id="com.silabs.ide.si8051.keil.assembler.inputType.894918489" superClass="com.silabs.ide.si8051.keil.assembler.inputType"/>
 							</tool>
 							<tool command="LX51" id="com.silabs.ide.si8051.keil.toolchain.linker.479788717" name="Keil 8051 Linker" superClass="com.silabs.ide.si8051.keil.toolchain.linker">
-								<option id="com.silabs.ide.si8051.keil.linker.category.ordering.selection.331355240" name="Linker input ordering" superClass="com.silabs.ide.si8051.keil.linker.category.ordering.selection" useByScannerDiscovery="false" value="./src/PetitModbus/PetitModbus.OBJ;./src/PetitModbus/PetitRegConstant.OBJ;./src/InitDevice.OBJ;./src/Interrupts.OBJ;./src/IoT Supervisor_main.OBJ;./src/SILABS_STARTUP.OBJ" valueType="string"/>
+								<option id="com.silabs.ide.si8051.keil.linker.category.ordering.selection.331355240" name="Linker input ordering" superClass="com.silabs.ide.si8051.keil.linker.category.ordering.selection" useByScannerDiscovery="false" value="./src/InitDevice.OBJ;./src/Interrupts.OBJ;./src/IoT Supervisor_main.OBJ;./src/SILABS_STARTUP.OBJ;./src/EFM8BB1_FlashPrimitives.OBJ;./src/Kirisaki_CRC.OBJ;./src/ModbusMiddleWare.OBJ;./src/PetitModbusPort.OBJ;./PetitModbus/src/PetitCRCtable.OBJ;./PetitModbus/src/PetitModbus.OBJ;./PetitModbus/src/PetitRegConstant.OBJ" valueType="string"/>
 								<option id="com.silabs.ide.si8051.keil.linker.category.libraries.dependencies.projects.1511407166" name="Project Dependencies" superClass="com.silabs.ide.si8051.keil.linker.category.libraries.dependencies.projects" useByScannerDiscovery="false"/>
-								<option id="com.silabs.ide.si8051.keil.linker.category.misc.extraflags.684234101" name="Additional Flags" superClass="com.silabs.ide.si8051.keil.linker.category.misc.extraflags" useByScannerDiscovery="false" value="SEGMENTS(?CO?KIRISAKI_CRC(C:0x01C00))" valueType="string"/>
+								<option id="com.silabs.ide.si8051.keil.linker.category.misc.extraflags.684234101" name="Additional Flags" superClass="com.silabs.ide.si8051.keil.linker.category.misc.extraflags" useByScannerDiscovery="false" value="SEGMENTS(?CO?KIRISAKI_CRC(C:0x01C00)) REGFILE(IoT Supervisor.ORC)" valueType="string"/>
 								<option id="com.silabs.ide.si8051.keil.linker.category.general.removeunused.1974607604" name="Remove unused program and data segments provided that data overlaying is enabled (Extended Linker)" superClass="com.silabs.ide.si8051.keil.linker.category.general.removeunused" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 								<inputType id="com.silabs.ide.si8051.keil.linker.inputType.1056056641" superClass="com.silabs.ide.si8051.keil.linker.inputType"/>
 							</tool>
@@ -144,6 +146,10 @@
 									<listOptionValue builtIn="false" value="&quot;${StudioSdkPath}/Device/shared/si8051Base&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${StudioSdkPath}/Device/EFM8BB1/inc&quot;"/>
 								</option>
+								<option id="com.silabs.ide.si8051.keil.compiler.category.general.browse.116632255" name="Generate browse information" superClass="com.silabs.ide.si8051.keil.compiler.category.general.browse" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="com.silabs.ide.si8051.keil.compiler.category.listing.preprocessor.1835695966" name="Create preprocessor listing file" superClass="com.silabs.ide.si8051.keil.compiler.category.listing.preprocessor" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="com.silabs.ide.si8051.keil.compiler.category.listing.symbols.175468878" name="Symbols" superClass="com.silabs.ide.si8051.keil.compiler.category.listing.symbols" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="com.silabs.ide.si8051.keil.compiler.category.listing.assembly.190508373" name="Assembly code" superClass="com.silabs.ide.si8051.keil.compiler.category.listing.assembly" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 								<inputType id="com.silabs.ide.si8051.keil.compiler.inputType.815666649" superClass="com.silabs.ide.si8051.keil.compiler.inputType"/>
 							</tool>
 							<tool command="AX51" id="com.silabs.ide.si8051.keil.toolchain.assembler.266991350" name="Keil 8051 Assembler" superClass="com.silabs.ide.si8051.keil.toolchain.assembler">
@@ -159,6 +165,8 @@
 							</tool>
 							<tool command="LX51" id="com.silabs.ide.si8051.keil.toolchain.linker.1086575980" name="Keil 8051 Linker" superClass="com.silabs.ide.si8051.keil.toolchain.linker">
 								<option id="com.silabs.ide.si8051.keil.linker.category.libraries.dependencies.projects.1173358524" name="Project Dependencies" superClass="com.silabs.ide.si8051.keil.linker.category.libraries.dependencies.projects" useByScannerDiscovery="false"/>
+								<option id="com.silabs.ide.si8051.keil.linker.category.misc.extraflags.1997766290" name="Additional Flags" superClass="com.silabs.ide.si8051.keil.linker.category.misc.extraflags" useByScannerDiscovery="false" value="SEGMENTS(?CO?KIRISAKI_CRC(C:0x01C00)) REGFILE(IoT Supervisor.ORC)" valueType="string"/>
+								<option id="com.silabs.ide.si8051.keil.linker.category.ordering.selection.1067103112" name="Linker input ordering" superClass="com.silabs.ide.si8051.keil.linker.category.ordering.selection" useByScannerDiscovery="false" value="./src/EFM8BB1_FlashPrimitives.OBJ;./src/InitDevice.OBJ;./src/Interrupts.OBJ;./src/IoT Supervisor_main.OBJ;./src/Kirisaki_CRC.OBJ;./src/ModbusMiddleWare.OBJ;./src/PetitModbusPort.OBJ;./src/SILABS_STARTUP.OBJ;./PetitModbus/src/PetitCRCtable.OBJ;./PetitModbus/src/PetitModbus.OBJ;./PetitModbus/src/PetitRegConstant.OBJ" valueType="string"/>
 								<inputType id="com.silabs.ide.si8051.keil.linker.inputType.1158195713" superClass="com.silabs.ide.si8051.keil.linker.inputType"/>
 							</tool>
 							<tool id="com.silabs.ide.si8051.keil.toolchain.librarian.709099826" name="Keil 8051 Library Manager" superClass="com.silabs.ide.si8051.keil.toolchain.librarian">
