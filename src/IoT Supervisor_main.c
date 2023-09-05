@@ -27,9 +27,15 @@
 //-----------------------------------------------------------------------------
 #define C_MB_WD_COUNT2MIN (7500)
 #define C_DEFAULT_MB_WD_TIMEOUT (15)
-#define C_FLASH_CONF (0x1e00) // 0x2000 (end of flash) - 512 bytes
+#define C_FLASH_CONF (0x1E00) // last page of flash
+#define pFLASH_CONF ((uint8_t code*)C_FLASH_CONF) // a pointer to the flash cfg
 #define C_PW_DEFAULT (0xDEFA) // default
-#define C_FOUND_PROG_END (0x1068) // end of program memory to check (exclusive)
+// manually determined program memory end.
+#if defined(DEBUG) && DEBUG
+#define C_FOUND_PROG_END (0x0FDB) // end of program memory to check (exclusive)
+#else
+#define C_FOUND_PROG_END (0x0FA1) // determine me
+#endif
 
 code const uint8_t ex_cfg_header[] =
 {
@@ -266,97 +272,126 @@ uint16_t calc_prog_crc = 0xFFFF;
 #define C_CFG_C_CRC_END (C_CFG_DATA_END + C_CFG_C_CRC_LEN)
 #define C_CFG_P_CRC_END (C_CFG_C_CRC_END + C_CFG_P_CRC_LEN)
 
-// helpers
-void cfg_load()
+// returns true if okay
+// returns false if not okay
+bool ccfg_check(void)
 {
-	uint8_t code* addr = C_FLASH_CONF;
 	uint8_t i = 0;
-	bool cfg_ok = true;
-
 	calc_cfg_crc = 0xFFFF;
+	// check header
 	for (i = 0; i < C_CFG_HEADER_LEN; i++)
 	{
-		if (*(addr + i) != ex_cfg_header[i])
+		if (*(pFLASH_CONF + i) != ex_cfg_header[i])
 		{
-			cfg_ok = false;
 			sv_dev_sta.v.verifSt = eVS_Setup;
-			break;
+			return false;
 		}
 		KirisakiCRC16Calc(ex_cfg_header[i], &calc_cfg_crc);
 	}
 
-	if (cfg_ok == true)
+	// check contents
+	// modbus SID
+	i = *(pFLASH_CONF + C_CFG_HEADER_LEN);
+	if(i < 1 || i > 247)
 	{
-		// check contents
-		// modbus SID
-		i = *(addr + C_CFG_HEADER_LEN);
-		if(i < 1 || i > 247)
-		{
-			cfg_ok = false;
-			sv_dev_sta.v.verifSt = eVS_Cfg;
-		}
-		else
-		{
-			cfg.sid = i;
-			KirisakiCRC16Calc(i, &calc_cfg_crc);
-			// modbus baud config
-			i = *(addr + C_CFG_HEADER_LEN + 1);
-			if (i == 0 || i >= eMMW_B_NUM)
-			{
-				cfg_ok = false;
-				sv_dev_sta.v.verifSt = eVS_Cfg;
-			}
-			else
-			{
-				cfg.baud = i;
-				KirisakiCRC16Calc(i, &calc_cfg_crc);
-				// modbus WD timeout
-				i = *(addr + C_CFG_HEADER_LEN + 2);
-				if (i == 0)
-				{
-					cfg_ok = false;
-					sv_dev_sta.v.verifSt = eVS_Cfg;
-				}
-				else
-				{
-					cfg.wdto = i;
-					KirisakiCRC16Calc(i, &calc_cfg_crc);
-					// password
-					i = *(addr + C_CFG_HEADER_LEN + 3);
-					cfg.pw = i;
-					KirisakiCRC16Calc(i, &calc_cfg_crc);
-					i = *(addr + C_CFG_HEADER_LEN + 4);
-					cfg.pw |= (uint16_t)i << 8;
-					KirisakiCRC16Calc(i, &calc_cfg_crc);
-					if (cfg.pw == C_CMD_COMMIT || cfg.pw == C_CMD_CANCEL)
-					{
-						cfg_ok = false;
-						sv_dev_sta.v.verifSt = eVS_Cfg;
-					}
-				}
-			}
-		}
+		sv_dev_sta.v.verifSt = eVS_Cfg;
+		return false;
 	}
-
+	else
+	{
+		cfg.sid = i;
+		KirisakiCRC16Calc(i, &calc_cfg_crc);
+	}
+	// modbus baud config
+	i = *(pFLASH_CONF + C_CFG_HEADER_LEN + 1);
+	if (i == 0 || i >= eMMW_B_NUM)
+	{
+		sv_dev_sta.v.verifSt = eVS_Cfg;
+		return false;
+	}
+	else
+	{
+		cfg.baud = i;
+		KirisakiCRC16Calc(i, &calc_cfg_crc);
+	}
+	// modbus WD timeout
+	i = *(pFLASH_CONF + C_CFG_HEADER_LEN + 2);
+	if (i == 0)
+	{
+		sv_dev_sta.v.verifSt = eVS_Cfg;
+		return false;
+	}
+	else
+	{
+		cfg.wdto = i;
+		KirisakiCRC16Calc(i, &calc_cfg_crc);
+	}
+	// password
+	i = *(pFLASH_CONF + C_CFG_HEADER_LEN + 3);
+	cfg.pw = i;
+	KirisakiCRC16Calc(i, &calc_cfg_crc);
+	i = *(pFLASH_CONF + C_CFG_HEADER_LEN + 4);
+	cfg.pw |= (uint16_t)i << 8;
+	KirisakiCRC16Calc(i, &calc_cfg_crc);
+	if (cfg.pw == C_CMD_COMMIT || cfg.pw == C_CMD_CANCEL)
+	{
+		sv_dev_sta.v.verifSt = eVS_Cfg;
+		return false;
+	}
 	// check CFG CRC
-	if (cfg_ok == true)
+	i = *(pFLASH_CONF + C_CFG_DATA_END);
+	if ((calc_cfg_crc & 0xFF) != i)
 	{
-		i = *(addr + C_CFG_DATA_END);
-		if ((calc_cfg_crc & 0xFF) != i)
+		sv_dev_sta.v.verifSt = eVS_Cfg;
+		return false;
+	}
+	else
+	{
+		i = *(pFLASH_CONF + C_CFG_DATA_END + 1);
+		if (calc_cfg_crc >> 8 != i)
 		{
-			cfg_ok = false;
 			sv_dev_sta.v.verifSt = eVS_Cfg;
-		}
-		else
-		{
-			i = *(addr + C_CFG_DATA_END + 1);
-			if (calc_cfg_crc >> 8 != i)
-			{
-				cfg_ok = false;
-				sv_dev_sta.v.verifSt = eVS_Cfg;
-			}
+			return false;
 		}
 	}
+	return true;
+}
+
+// returns true if ok / normal
+// returns false if otherwise
+bool dcfg_check()
+{
+	// check SID
+	if (cfg.sid < 1 || cfg.sid > 247)
+	{
+		return false;
+	}
+	// check baud enum (no parity)
+	if (cfg.baud < 1 || cfg.baud >= eMMW_B_NUM)
+	{
+		return false;
+	}
+	// check wdt timeout
+	if (cfg.wdto < 1)
+	{
+		return false;
+	}
+	// check password
+	if (cfg.pw == C_CMD_COMMIT || cfg.pw == C_CMD_CANCEL)
+	{
+		return false;
+	}
+	return true;
+}
+
+// helpers
+void cfg_load()
+{
+	uint8_t code* addr;
+	uint8_t i = 0;
+	bool cfg_ok = true;
+
+	cfg_ok = ccfg_check();
 
 	// calculate PROG CRC
 	calc_prog_crc = 0xFFFF;
@@ -368,15 +403,14 @@ void cfg_load()
 	// check PROG CRC
 	if (sv_dev_sta.v.verifSt != eVS_Setup)
 	{
-		addr = C_FLASH_CONF;
-		i = *(addr + C_CFG_C_CRC_END);
+		i = *(pFLASH_CONF + C_CFG_C_CRC_END);
 		if ((calc_prog_crc & 0xFF) != i)
 		{
 			sv_dev_sta.v.verifSt = eVS_Prog;
 		}
 		else
 		{
-			i = *(addr + C_CFG_C_CRC_END + 1);
+			i = *(pFLASH_CONF + C_CFG_C_CRC_END + 1);
 			if (calc_prog_crc >> 8 != i)
 			{
 				sv_dev_sta.v.verifSt = eVS_Prog;
@@ -402,71 +436,35 @@ void cfg_load()
 
 void cfg_write()
 {
-	cfg_write_idx = 0;
 	calc_cfg_crc = 0xFFFF;
-	while (cfg_write_idx < C_CFG_P_CRC_END)
+	for (cfg_write_idx = 0; cfg_write_idx < C_CFG_HEADER_LEN; cfg_write_idx++)
 	{
-		if (cfg_write_idx < C_CFG_HEADER_LEN)
-		{
-			FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx,
-					ex_cfg_header[cfg_write_idx]);
-			KirisakiCRC16Calc(ex_cfg_header[cfg_write_idx++], &calc_cfg_crc);
-		}
-		else if (cfg_write_idx < C_CFG_DATA_END)
-		{
-			if (cfg_write_idx == C_CFG_HEADER_LEN)
-			{
-				FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx++, cfg.sid);
-				KirisakiCRC16Calc(cfg.sid, &calc_cfg_crc);
-			}
-			else if (cfg_write_idx == C_CFG_HEADER_LEN + 1)
-			{
-				FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx++, cfg.baud);
-				KirisakiCRC16Calc(cfg.baud, &calc_cfg_crc);
-			}
-			else if (cfg_write_idx == C_CFG_HEADER_LEN + 2)
-			{
-				FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx++, cfg.wdto);
-				KirisakiCRC16Calc(cfg.wdto, &calc_cfg_crc);
-			}
-			else if (cfg_write_idx == C_CFG_HEADER_LEN + 3)
-			{
-				FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx++, cfg.pw & 0xFF);
-				KirisakiCRC16Calc(cfg.pw & 0xFF, &calc_cfg_crc);
-			}
-			else
-			{
-				FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx++, cfg.pw >> 8);
-				KirisakiCRC16Calc(cfg.pw >> 8, &calc_cfg_crc);
-			}
-		}
-		else if (cfg_write_idx < C_CFG_C_CRC_END)
-		{
-			if (cfg_write_idx == C_CFG_DATA_END)
-			{
-				FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx++,
-						calc_cfg_crc & 0xFF);
-			}
-			else
-			{
-				FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx++,
-						calc_cfg_crc >> 8);
-			}
-		}
-		else /* if (cfg_write_idx < C_CFG_P_CRC_END) */
-		{
-			if (cfg_write_idx == C_CFG_C_CRC_END)
-			{
-				FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx++,
-						calc_prog_crc & 0xFF);
-			}
-			else
-			{
-				FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx++,
-						calc_prog_crc >> 8);
-			}
-		}
+		FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx,
+				ex_cfg_header[cfg_write_idx]);
+		KirisakiCRC16Calc(ex_cfg_header[cfg_write_idx], &calc_cfg_crc);
 	}
+	// sid
+	FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx++, cfg.sid);
+	KirisakiCRC16Calc(cfg.sid, &calc_cfg_crc);
+	// baud
+	FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx++, cfg.baud);
+	KirisakiCRC16Calc(cfg.baud, &calc_cfg_crc);
+	// wdto
+	FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx++, cfg.wdto);
+	KirisakiCRC16Calc(cfg.wdto, &calc_cfg_crc);
+	// pw
+	FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx++, cfg.pw & 0xFF);
+	KirisakiCRC16Calc(cfg.pw & 0xFF, &calc_cfg_crc);
+	FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx++, cfg.pw >> 8);
+	KirisakiCRC16Calc(cfg.pw >> 8, &calc_cfg_crc);
+	// cfg crc
+	FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx++,	calc_cfg_crc & 0xFF);
+	FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx++,	calc_cfg_crc >> 8);
+	// prog crc
+	FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx++, calc_prog_crc & 0xFF);
+	FLASH_ByteWrite(C_FLASH_CONF + cfg_write_idx++, calc_prog_crc >> 8);
+
+	// reset to complete
 	RSTSRC |= RSTSRC_SWRSF__SET;
 	// uh, set the state machine to idle in case we have not reset
 	cfgSmS = eCFG_Idle;
@@ -495,10 +493,12 @@ void CFGsm()
 		{
 			if (pw == C_CMD_COMMIT)
 			{
-				// todo: implement checker here
-				cfgSmS = eCFG_Commit;
-				mmw_init(cfg.sid, cfg.baud);
-				MB_WD_TIMEOUT = cfg.wdto;
+				if (dcfg_check())
+				{
+					cfgSmS = eCFG_Commit;
+					mmw_init(cfg.sid, cfg.baud);
+					MB_WD_TIMEOUT = cfg.wdto;
+				}
 			}
 			if (pw == C_CMD_CANCEL)
 			{
@@ -509,7 +509,7 @@ void CFGsm()
 		}
 		break;
 	case eCFG_Commit:
-		if (pw_flag && Petit_RxTx_State == PETIT_RXTX_RX)
+		if (pw_flag && Petit_RxTx_State == PETIT_RXTX_RX && dir_tx == false)
 		{
 			if (pw == cfg.pw)
 			{
@@ -576,7 +576,7 @@ int main(void)
 	}
 	// Call hardware initialization routine
 	enter_DefaultMode_from_RESET();
-#if DEBUG
+#if defined(DEBUG) && DEBUG
 	// enter debugmode to get the pins working
 	enter_DebugMode_from_DefaultMode();
 #endif
@@ -587,17 +587,16 @@ int main(void)
 		if (t1Count - t1CountLast >= (uint8_t)1)
 		{
 			PETIT_PROCESS_ON();
-
-			t1CountLast = t1Count;
-
 			CFGsm();
-
 			if (run_petitmodbus)
 			{
+				t1CountLast++;
 				ProcessPetitModbus();
-				// mbFlagDet();
 			}
-
+			else
+			{
+				t1CountLast = t1Count;
+			}
 			PETIT_PROCESS_OFF();
 		}
 
