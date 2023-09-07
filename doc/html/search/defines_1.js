@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['c_5fcmd_5fcancel_0',['C_CMD_CANCEL',['../_io_t___supervisor_8h.html#a3eeb3473a2e1cd78451afc01b331d89f',1,'IoT_Supervisor.h']]],
-  ['c_5fcmd_5fcommit_1',['C_CMD_COMMIT',['../_io_t___supervisor_8h.html#a35004385fd057486275757ee2d0dd1e9',1,'IoT_Supervisor.h']]],
-  ['c_5fwdt_5fdis_2',['C_WDT_DIS',['../_io_t___supervisor_8h.html#a297e9ea9b92297b1cf3d85e3b12e8f30',1,'IoT_Supervisor.h']]],
-  ['c_5fwdt_5fpet_3',['C_WDT_PET',['../_io_t___supervisor_8h.html#a8f2ab3d655054566ca4857f1ffbeb938',1,'IoT_Supervisor.h']]]
+  ['flash_5flast_0',['FLASH_LAST',['../_e_f_m8_b_b1___flash_primitives_8h.html#a7197e3e6d38fd3d3b202c9dc5c0e2caa',1,'EFM8BB1_FlashPrimitives.h']]],
+  ['flash_5fpagesize_1',['FLASH_PAGESIZE',['../_e_f_m8_b_b1___flash_primitives_8h.html#a521ec11c3239cbfc66a272d20081b882',1,'EFM8BB1_FlashPrimitives.h']]],
+  ['flash_5ftemp_2',['FLASH_TEMP',['../_e_f_m8_b_b1___flash_primitives_8h.html#aa4a9834be732240c3a58ee6f688f76b9',1,'EFM8BB1_FlashPrimitives.h']]]
 ];

@@ -61,7 +61,7 @@ reads the registers \begin{DoxyReturn}{Returns}
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{_petit_modbus_port_8c_source_l00155}{155}} of file \mbox{\hyperlink{_petit_modbus_port_8c_source}{Petit\+Modbus\+Port.\+c}}.
+Definition at line \mbox{\hyperlink{_petit_modbus_port_8c_source_l00178}{178}} of file \mbox{\hyperlink{_petit_modbus_port_8c_source}{Petit\+Modbus\+Port.\+c}}.
 
 \Hypertarget{group___petit___modbus___porting___functions_ga8c879da6e57433f788bec497418f778f}\label{group___petit___modbus___porting___functions_ga8c879da6e57433f788bec497418f778f} 
 \index{Petit Modbus Porting Functions@{Petit Modbus Porting Functions}!PetitPortRegWrite@{PetitPortRegWrite}}
@@ -69,12 +69,14 @@ Definition at line \mbox{\hyperlink{_petit_modbus_port_8c_source_l00155}{155}} o
 \doxysubsubsubsection{\texorpdfstring{PetitPortRegWrite()}{PetitPortRegWrite()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{_petit_modbus_user_port_8h_afd4ae3efcf82687fa69481d6e27efad3}{pb\+\_\+t}} Petit\+Port\+Reg\+Write (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\+\_\+t}}}]{Address,  }\item[{\mbox{\hyperlink{_petit_modbus_user_port_8h_a01c483557b33c4176a1d15e40e35dc75}{pu16\+\_\+t}}}]{Data }\end{DoxyParamCaption})}
 
-writes to the registers \begin{DoxyReturn}{Returns}
+writes to the registers
+
+this function will return if it is determined that the value written is invalid. \begin{DoxyReturn}{Returns}
 the number of registers written 0 if an error occurred during processing 1 if everything went smoothly 
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{_petit_modbus_port_8c_source_l00086}{86}} of file \mbox{\hyperlink{_petit_modbus_port_8c_source}{Petit\+Modbus\+Port.\+c}}.
+Definition at line \mbox{\hyperlink{_petit_modbus_port_8c_source_l00089}{89}} of file \mbox{\hyperlink{_petit_modbus_port_8c_source}{Petit\+Modbus\+Port.\+c}}.
 
 \Hypertarget{group___petit___modbus___porting___functions_ga44d78866eb528ef7f1152737e018706e}\label{group___petit___modbus___porting___functions_ga44d78866eb528ef7f1152737e018706e} 
 \index{Petit Modbus Porting Functions@{Petit Modbus Porting Functions}!PetitPortTimerStart@{PetitPortTimerStart}}

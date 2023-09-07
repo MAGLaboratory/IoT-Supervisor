@@ -16,13 +16,17 @@ struct \mbox{\hyperlink{structcfg__t}{cfg\+\_\+t}}
 \item 
 \#define \mbox{\hyperlink{_io_t___supervisor_8h_a4ee54671b212fa40e655eae67c043a9b}{n\+LED}}~(P1\+\_\+\+B4)
 \item 
-\#define \mbox{\hyperlink{_io_t___supervisor_8h_a8f2ab3d655054566ca4857f1ffbeb938}{C\+\_\+\+WDT\+\_\+\+PET}}~0x5A
+\#define \mbox{\hyperlink{group___modbus___w_d_t___state___machine_ga8f2ab3d655054566ca4857f1ffbeb938}{C\+\_\+\+WDT\+\_\+\+PET}}~0x5A
 \item 
-\#define \mbox{\hyperlink{_io_t___supervisor_8h_a297e9ea9b92297b1cf3d85e3b12e8f30}{C\+\_\+\+WDT\+\_\+\+DIS}}~0x\+A5
+\#define \mbox{\hyperlink{group___modbus___w_d_t___state___machine_ga297e9ea9b92297b1cf3d85e3b12e8f30}{C\+\_\+\+WDT\+\_\+\+DIS}}~0x\+A5
 \item 
-\#define \mbox{\hyperlink{_io_t___supervisor_8h_a35004385fd057486275757ee2d0dd1e9}{C\+\_\+\+CMD\+\_\+\+COMMIT}}~0x5\+FAF
+\#define \mbox{\hyperlink{group___configuration___state___machine_ga35004385fd057486275757ee2d0dd1e9}{C\+\_\+\+CMD\+\_\+\+COMMIT}}~0x5\+FAF
 \item 
-\#define \mbox{\hyperlink{_io_t___supervisor_8h_a3eeb3473a2e1cd78451afc01b331d89f}{C\+\_\+\+CMD\+\_\+\+CANCEL}}~0x0000
+\#define \mbox{\hyperlink{group___configuration___state___machine_ga3eeb3473a2e1cd78451afc01b331d89f}{C\+\_\+\+CMD\+\_\+\+CANCEL}}~0x0000
+\item 
+\#define \mbox{\hyperlink{group___configuration___state___machine_ga36cea86425025f8b068256d0254b49c5}{C\+\_\+\+SID\+\_\+\+MIN}}~1
+\item 
+\#define \mbox{\hyperlink{group___configuration___state___machine_ga00d0491c3afc5730a550797466e1e7ef}{C\+\_\+\+SID\+\_\+\+MAX}}~247
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
@@ -112,46 +116,6 @@ Definition in file \mbox{\hyperlink{_io_t___supervisor_8h_source}{Io\+T\+\_\+\+S
 
 
 \doxysubsection{Macro Definition Documentation}
-\Hypertarget{_io_t___supervisor_8h_a3eeb3473a2e1cd78451afc01b331d89f}\label{_io_t___supervisor_8h_a3eeb3473a2e1cd78451afc01b331d89f} 
-\index{IoT\_Supervisor.h@{IoT\_Supervisor.h}!C\_CMD\_CANCEL@{C\_CMD\_CANCEL}}
-\index{C\_CMD\_CANCEL@{C\_CMD\_CANCEL}!IoT\_Supervisor.h@{IoT\_Supervisor.h}}
-\doxysubsubsection{\texorpdfstring{C\_CMD\_CANCEL}{C\_CMD\_CANCEL}}
-{\footnotesize\ttfamily \#define C\+\_\+\+CMD\+\_\+\+CANCEL~0x0000}
-
-
-
-Definition at line \mbox{\hyperlink{_io_t___supervisor_8h_source_l00024}{24}} of file \mbox{\hyperlink{_io_t___supervisor_8h_source}{Io\+T\+\_\+\+Supervisor.\+h}}.
-
-\Hypertarget{_io_t___supervisor_8h_a35004385fd057486275757ee2d0dd1e9}\label{_io_t___supervisor_8h_a35004385fd057486275757ee2d0dd1e9} 
-\index{IoT\_Supervisor.h@{IoT\_Supervisor.h}!C\_CMD\_COMMIT@{C\_CMD\_COMMIT}}
-\index{C\_CMD\_COMMIT@{C\_CMD\_COMMIT}!IoT\_Supervisor.h@{IoT\_Supervisor.h}}
-\doxysubsubsection{\texorpdfstring{C\_CMD\_COMMIT}{C\_CMD\_COMMIT}}
-{\footnotesize\ttfamily \#define C\+\_\+\+CMD\+\_\+\+COMMIT~0x5\+FAF}
-
-
-
-Definition at line \mbox{\hyperlink{_io_t___supervisor_8h_source_l00023}{23}} of file \mbox{\hyperlink{_io_t___supervisor_8h_source}{Io\+T\+\_\+\+Supervisor.\+h}}.
-
-\Hypertarget{_io_t___supervisor_8h_a297e9ea9b92297b1cf3d85e3b12e8f30}\label{_io_t___supervisor_8h_a297e9ea9b92297b1cf3d85e3b12e8f30} 
-\index{IoT\_Supervisor.h@{IoT\_Supervisor.h}!C\_WDT\_DIS@{C\_WDT\_DIS}}
-\index{C\_WDT\_DIS@{C\_WDT\_DIS}!IoT\_Supervisor.h@{IoT\_Supervisor.h}}
-\doxysubsubsection{\texorpdfstring{C\_WDT\_DIS}{C\_WDT\_DIS}}
-{\footnotesize\ttfamily \#define C\+\_\+\+WDT\+\_\+\+DIS~0x\+A5}
-
-
-
-Definition at line \mbox{\hyperlink{_io_t___supervisor_8h_source_l00022}{22}} of file \mbox{\hyperlink{_io_t___supervisor_8h_source}{Io\+T\+\_\+\+Supervisor.\+h}}.
-
-\Hypertarget{_io_t___supervisor_8h_a8f2ab3d655054566ca4857f1ffbeb938}\label{_io_t___supervisor_8h_a8f2ab3d655054566ca4857f1ffbeb938} 
-\index{IoT\_Supervisor.h@{IoT\_Supervisor.h}!C\_WDT\_PET@{C\_WDT\_PET}}
-\index{C\_WDT\_PET@{C\_WDT\_PET}!IoT\_Supervisor.h@{IoT\_Supervisor.h}}
-\doxysubsubsection{\texorpdfstring{C\_WDT\_PET}{C\_WDT\_PET}}
-{\footnotesize\ttfamily \#define C\+\_\+\+WDT\+\_\+\+PET~0x5A}
-
-
-
-Definition at line \mbox{\hyperlink{_io_t___supervisor_8h_source_l00021}{21}} of file \mbox{\hyperlink{_io_t___supervisor_8h_source}{Io\+T\+\_\+\+Supervisor.\+h}}.
-
 \Hypertarget{_io_t___supervisor_8h_a4ee54671b212fa40e655eae67c043a9b}\label{_io_t___supervisor_8h_a4ee54671b212fa40e655eae67c043a9b} 
 \index{IoT\_Supervisor.h@{IoT\_Supervisor.h}!nLED@{nLED}}
 \index{nLED@{nLED}!IoT\_Supervisor.h@{IoT\_Supervisor.h}}
@@ -209,7 +173,7 @@ e\+CFG\+\_\+\+Write&\\
 \end{DoxyEnumFields}
 
 
-Definition at line \mbox{\hyperlink{_io_t___supervisor_8h_source_l00078}{78}} of file \mbox{\hyperlink{_io_t___supervisor_8h_source}{Io\+T\+\_\+\+Supervisor.\+h}}.
+Definition at line \mbox{\hyperlink{_io_t___supervisor_8h_source_l00087}{87}} of file \mbox{\hyperlink{_io_t___supervisor_8h_source}{Io\+T\+\_\+\+Supervisor.\+h}}.
 
 \Hypertarget{_io_t___supervisor_8h_a6fd609b4d1cbec982d502d97a866fca7}\label{_io_t___supervisor_8h_a6fd609b4d1cbec982d502d97a866fca7} 
 \index{IoT\_Supervisor.h@{IoT\_Supervisor.h}!LastRst\_t@{LastRst\_t}}
@@ -233,7 +197,7 @@ e\+LR\+\_\+\+WDT&\\
 \end{DoxyEnumFields}
 
 
-Definition at line \mbox{\hyperlink{_io_t___supervisor_8h_source_l00046}{46}} of file \mbox{\hyperlink{_io_t___supervisor_8h_source}{Io\+T\+\_\+\+Supervisor.\+h}}.
+Definition at line \mbox{\hyperlink{_io_t___supervisor_8h_source_l00055}{55}} of file \mbox{\hyperlink{_io_t___supervisor_8h_source}{Io\+T\+\_\+\+Supervisor.\+h}}.
 
 \Hypertarget{_io_t___supervisor_8h_a299607114400fe41e8e9dcccee0f787a}\label{_io_t___supervisor_8h_a299607114400fe41e8e9dcccee0f787a} 
 \index{IoT\_Supervisor.h@{IoT\_Supervisor.h}!mbWDTsmS\_t@{mbWDTsmS\_t}}
@@ -257,7 +221,7 @@ e\+MW\+\_\+\+Timeout&\\
 \end{DoxyEnumFields}
 
 
-Definition at line \mbox{\hyperlink{_io_t___supervisor_8h_source_l00038}{38}} of file \mbox{\hyperlink{_io_t___supervisor_8h_source}{Io\+T\+\_\+\+Supervisor.\+h}}.
+Definition at line \mbox{\hyperlink{_io_t___supervisor_8h_source_l00047}{47}} of file \mbox{\hyperlink{_io_t___supervisor_8h_source}{Io\+T\+\_\+\+Supervisor.\+h}}.
 
 \Hypertarget{_io_t___supervisor_8h_ae7452a3b4994fb1305b6184d19c8b4fe}\label{_io_t___supervisor_8h_ae7452a3b4994fb1305b6184d19c8b4fe} 
 \index{IoT\_Supervisor.h@{IoT\_Supervisor.h}!VerifSt\_t@{VerifSt\_t}}
@@ -285,7 +249,7 @@ e\+VS\+\_\+\+Setup&\\
 \end{DoxyEnumFields}
 
 
-Definition at line \mbox{\hyperlink{_io_t___supervisor_8h_source_l00054}{54}} of file \mbox{\hyperlink{_io_t___supervisor_8h_source}{Io\+T\+\_\+\+Supervisor.\+h}}.
+Definition at line \mbox{\hyperlink{_io_t___supervisor_8h_source_l00063}{63}} of file \mbox{\hyperlink{_io_t___supervisor_8h_source}{Io\+T\+\_\+\+Supervisor.\+h}}.
 
 \Hypertarget{_io_t___supervisor_8h_ac71595e22bb54f0f156340ffb1ff44ba}\label{_io_t___supervisor_8h_ac71595e22bb54f0f156340ffb1ff44ba} 
 \index{IoT\_Supervisor.h@{IoT\_Supervisor.h}!VinSm\_t@{VinSm\_t}}
@@ -309,5 +273,5 @@ e\+VIN\+\_\+\+OK&\\
 \end{DoxyEnumFields}
 
 
-Definition at line \mbox{\hyperlink{_io_t___supervisor_8h_source_l00030}{30}} of file \mbox{\hyperlink{_io_t___supervisor_8h_source}{Io\+T\+\_\+\+Supervisor.\+h}}.
+Definition at line \mbox{\hyperlink{_io_t___supervisor_8h_source_l00039}{39}} of file \mbox{\hyperlink{_io_t___supervisor_8h_source}{Io\+T\+\_\+\+Supervisor.\+h}}.
 

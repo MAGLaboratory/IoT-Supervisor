@@ -18,11 +18,20 @@
 //-----------------------------------------------------------------------------
 #define RESET_P (P1_B1)
 #define nLED (P1_B4)
+/** @addtogroup Modbus_WDT_State_Machine
+ *  @{
+ */
 #define C_WDT_PET 0x5A
 #define C_WDT_DIS 0xA5
+/** @} */ // group Modbus WDT State Machine
+/** @addtogroup Configuration_State_Machine
+ *  @{
+ */
 #define C_CMD_COMMIT 0x5FAF
 #define C_CMD_CANCEL 0x0000
-
+#define C_SID_MIN 1
+#define C_SID_MAX 247
+/** @} */ // group Configuration_State_Machine
 //-----------------------------------------------------------------------------
 // Type Definitions
 //-----------------------------------------------------------------------------

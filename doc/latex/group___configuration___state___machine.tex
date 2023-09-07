@@ -9,7 +9,7 @@
 \item 
 \#define \mbox{\hyperlink{group___configuration___state___machine_ga0f6656888b6da3d751ce6bb0644d0dd9}{C\+\_\+\+PW\+\_\+\+DEFAULT}}~(0x\+DEFA)
 \item 
-\#define \mbox{\hyperlink{group___configuration___state___machine_ga2b8473431a4fe63b20294043b9ae4773}{C\+\_\+\+FOUND\+\_\+\+PROG\+\_\+\+END}}~(0x0\+FA2)
+\#define \mbox{\hyperlink{group___configuration___state___machine_ga2b8473431a4fe63b20294043b9ae4773}{C\+\_\+\+FOUND\+\_\+\+PROG\+\_\+\+END}}~(0x0\+F8D)
 \item 
 \#define \mbox{\hyperlink{group___configuration___state___machine_ga36de940e9065f10013db52ed98a34b1f}{C\+\_\+\+CFG\+\_\+\+HEADER\+\_\+\+LEN}}~(8)
 \item 
@@ -24,6 +24,14 @@
 \#define \mbox{\hyperlink{group___configuration___state___machine_ga19952ec2f55ea62e4cdaf7637fb29e4e}{C\+\_\+\+CFG\+\_\+\+C\+\_\+\+CRC\+\_\+\+END}}~(\mbox{\hyperlink{group___configuration___state___machine_gad29b0843a725184d4dcde51268edc086}{C\+\_\+\+CFG\+\_\+\+DATA\+\_\+\+END}} + \mbox{\hyperlink{group___configuration___state___machine_ga1cf8a7c45bd5eafaa45862c9f304da4c}{C\+\_\+\+CFG\+\_\+\+C\+\_\+\+CRC\+\_\+\+LEN}})
 \item 
 \#define \mbox{\hyperlink{group___configuration___state___machine_ga0ae2d8806fe25d3e6b27511f76385ae6}{C\+\_\+\+CFG\+\_\+\+P\+\_\+\+CRC\+\_\+\+END}}~(\mbox{\hyperlink{group___configuration___state___machine_ga19952ec2f55ea62e4cdaf7637fb29e4e}{C\+\_\+\+CFG\+\_\+\+C\+\_\+\+CRC\+\_\+\+END}} + \mbox{\hyperlink{group___configuration___state___machine_gaba2ebeddce6013b0ef742209113a58b7}{C\+\_\+\+CFG\+\_\+\+P\+\_\+\+CRC\+\_\+\+LEN}})
+\item 
+\#define \mbox{\hyperlink{group___configuration___state___machine_ga35004385fd057486275757ee2d0dd1e9}{C\+\_\+\+CMD\+\_\+\+COMMIT}}~0x5\+FAF
+\item 
+\#define \mbox{\hyperlink{group___configuration___state___machine_ga3eeb3473a2e1cd78451afc01b331d89f}{C\+\_\+\+CMD\+\_\+\+CANCEL}}~0x0000
+\item 
+\#define \mbox{\hyperlink{group___configuration___state___machine_ga36cea86425025f8b068256d0254b49c5}{C\+\_\+\+SID\+\_\+\+MIN}}~1
+\item 
+\#define \mbox{\hyperlink{group___configuration___state___machine_ga00d0491c3afc5730a550797466e1e7ef}{C\+\_\+\+SID\+\_\+\+MAX}}~247
 \end{DoxyCompactItemize}
 \doxysubsubsubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -141,6 +149,26 @@ program CRC length (16 bits)
 
 Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00323}{323}} of file \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source}{Io\+T Supervisor\+\_\+main.\+c}}.
 
+\Hypertarget{group___configuration___state___machine_ga3eeb3473a2e1cd78451afc01b331d89f}\label{group___configuration___state___machine_ga3eeb3473a2e1cd78451afc01b331d89f} 
+\index{Configuration State Machine@{Configuration State Machine}!C\_CMD\_CANCEL@{C\_CMD\_CANCEL}}
+\index{C\_CMD\_CANCEL@{C\_CMD\_CANCEL}!Configuration State Machine@{Configuration State Machine}}
+\doxysubsubsubsection{\texorpdfstring{C\_CMD\_CANCEL}{C\_CMD\_CANCEL}}
+{\footnotesize\ttfamily \#define C\+\_\+\+CMD\+\_\+\+CANCEL~0x0000}
+
+
+
+Definition at line \mbox{\hyperlink{_io_t___supervisor_8h_source_l00031}{31}} of file \mbox{\hyperlink{_io_t___supervisor_8h_source}{Io\+T\+\_\+\+Supervisor.\+h}}.
+
+\Hypertarget{group___configuration___state___machine_ga35004385fd057486275757ee2d0dd1e9}\label{group___configuration___state___machine_ga35004385fd057486275757ee2d0dd1e9} 
+\index{Configuration State Machine@{Configuration State Machine}!C\_CMD\_COMMIT@{C\_CMD\_COMMIT}}
+\index{C\_CMD\_COMMIT@{C\_CMD\_COMMIT}!Configuration State Machine@{Configuration State Machine}}
+\doxysubsubsubsection{\texorpdfstring{C\_CMD\_COMMIT}{C\_CMD\_COMMIT}}
+{\footnotesize\ttfamily \#define C\+\_\+\+CMD\+\_\+\+COMMIT~0x5\+FAF}
+
+
+
+Definition at line \mbox{\hyperlink{_io_t___supervisor_8h_source_l00030}{30}} of file \mbox{\hyperlink{_io_t___supervisor_8h_source}{Io\+T\+\_\+\+Supervisor.\+h}}.
+
 \Hypertarget{group___configuration___state___machine_gaa240e519cb5b99446d79d4aad8420dd1}\label{group___configuration___state___machine_gaa240e519cb5b99446d79d4aad8420dd1} 
 \index{Configuration State Machine@{Configuration State Machine}!C\_FLASH\_CONF@{C\_FLASH\_CONF}}
 \index{C\_FLASH\_CONF@{C\_FLASH\_CONF}!Configuration State Machine@{Configuration State Machine}}
@@ -155,7 +183,7 @@ Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00269}{
 \index{Configuration State Machine@{Configuration State Machine}!C\_FOUND\_PROG\_END@{C\_FOUND\_PROG\_END}}
 \index{C\_FOUND\_PROG\_END@{C\_FOUND\_PROG\_END}!Configuration State Machine@{Configuration State Machine}}
 \doxysubsubsubsection{\texorpdfstring{C\_FOUND\_PROG\_END}{C\_FOUND\_PROG\_END}}
-{\footnotesize\ttfamily \#define C\+\_\+\+FOUND\+\_\+\+PROG\+\_\+\+END~(0x0\+FA2)}
+{\footnotesize\ttfamily \#define C\+\_\+\+FOUND\+\_\+\+PROG\+\_\+\+END~(0x0\+F8D)}
 
 
 
@@ -170,6 +198,26 @@ Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00284}{
 The default password used to enter configuration cache or configuration page erase and write. 
 
 Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00275}{275}} of file \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source}{Io\+T Supervisor\+\_\+main.\+c}}.
+
+\Hypertarget{group___configuration___state___machine_ga00d0491c3afc5730a550797466e1e7ef}\label{group___configuration___state___machine_ga00d0491c3afc5730a550797466e1e7ef} 
+\index{Configuration State Machine@{Configuration State Machine}!C\_SID\_MAX@{C\_SID\_MAX}}
+\index{C\_SID\_MAX@{C\_SID\_MAX}!Configuration State Machine@{Configuration State Machine}}
+\doxysubsubsubsection{\texorpdfstring{C\_SID\_MAX}{C\_SID\_MAX}}
+{\footnotesize\ttfamily \#define C\+\_\+\+SID\+\_\+\+MAX~247}
+
+
+
+Definition at line \mbox{\hyperlink{_io_t___supervisor_8h_source_l00033}{33}} of file \mbox{\hyperlink{_io_t___supervisor_8h_source}{Io\+T\+\_\+\+Supervisor.\+h}}.
+
+\Hypertarget{group___configuration___state___machine_ga36cea86425025f8b068256d0254b49c5}\label{group___configuration___state___machine_ga36cea86425025f8b068256d0254b49c5} 
+\index{Configuration State Machine@{Configuration State Machine}!C\_SID\_MIN@{C\_SID\_MIN}}
+\index{C\_SID\_MIN@{C\_SID\_MIN}!Configuration State Machine@{Configuration State Machine}}
+\doxysubsubsubsection{\texorpdfstring{C\_SID\_MIN}{C\_SID\_MIN}}
+{\footnotesize\ttfamily \#define C\+\_\+\+SID\+\_\+\+MIN~1}
+
+
+
+Definition at line \mbox{\hyperlink{_io_t___supervisor_8h_source_l00032}{32}} of file \mbox{\hyperlink{_io_t___supervisor_8h_source}{Io\+T\+\_\+\+Supervisor.\+h}}.
 
 \Hypertarget{group___configuration___state___machine_gab1cca6a1cf1c6efba75c3ccab43e1518}\label{group___configuration___state___machine_gab1cca6a1cf1c6efba75c3ccab43e1518} 
 \index{Configuration State Machine@{Configuration State Machine}!pFLASH\_CONF@{pFLASH\_CONF}}

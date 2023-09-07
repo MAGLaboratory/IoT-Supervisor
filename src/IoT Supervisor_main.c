@@ -279,9 +279,9 @@ void mbWDTsm(void)
  * The program memory end should be determined using manual methods.  These
  * should be documented in the readme included with this application.
  */
-#define C_FOUND_PROG_END (0x0FC9) // end of program memory to check (exclusive)
+#define C_FOUND_PROG_END (0x0FD9) // end of program memory to check (exclusive)
 #else
-#define C_FOUND_PROG_END (0x0FA2) // determine me
+#define C_FOUND_PROG_END (0x0F9F) // determine me
 #endif
 
 // configuration variables
@@ -370,7 +370,7 @@ bool ccfg_check(void)
 	// check contents
 	// modbus SID
 	i = *(pFLASH_CONF + C_CFG_HEADER_LEN);
-	if(i < 1 || i > 247)
+	if(i < C_SID_MIN || i > C_SID_MAX)
 	{
 		sv_dev_sta.v.verifSt = eVS_Cfg;
 		return false;
@@ -444,7 +444,7 @@ bool ccfg_check(void)
 bool dcfg_check()
 {
 	// check SID
-	if (cfg.sid < 1 || cfg.sid > 247)
+	if (cfg.sid < C_SID_MIN || cfg.sid > C_SID_MAX)
 	{
 		return false;
 	}

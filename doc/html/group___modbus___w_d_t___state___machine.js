@@ -2,6 +2,8 @@ var group___modbus___w_d_t___state___machine =
 [
     [ "C_DEFAULT_MB_WD_TIMEOUT", "group___modbus___w_d_t___state___machine.html#gab4cd620a6ff382f2308515027d02e9b2", null ],
     [ "C_MB_WD_COUNT2MIN", "group___modbus___w_d_t___state___machine.html#gaf61d1b5aac0ac33eefb325181a6e81e8", null ],
+    [ "C_WDT_DIS", "group___modbus___w_d_t___state___machine.html#ga297e9ea9b92297b1cf3d85e3b12e8f30", null ],
+    [ "C_WDT_PET", "group___modbus___w_d_t___state___machine.html#ga8f2ab3d655054566ca4857f1ffbeb938", null ],
     [ "mbWDTsm", "group___modbus___w_d_t___state___machine.html#ga18a609d79f133d41b52d1cc90469be47", null ],
     [ "MB_WD_TIMEOUT", "group___modbus___w_d_t___state___machine.html#gab9eb643439bfb234f1a6da202f1cbf60", null ],
     [ "mbWDTen", "group___modbus___w_d_t___state___machine.html#gabc0aa6fcb559a316edc1f101fea54a5e", null ],

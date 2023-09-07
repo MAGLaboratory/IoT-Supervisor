@@ -2,10 +2,12 @@ var _io_t___supervisor_8h =
 [
     [ "sv_dev_sta_t", "unionsv__dev__sta__t.html", "unionsv__dev__sta__t" ],
     [ "cfg_t", "structcfg__t.html", "structcfg__t" ],
-    [ "C_CMD_CANCEL", "_io_t___supervisor_8h.html#a3eeb3473a2e1cd78451afc01b331d89f", null ],
-    [ "C_CMD_COMMIT", "_io_t___supervisor_8h.html#a35004385fd057486275757ee2d0dd1e9", null ],
-    [ "C_WDT_DIS", "_io_t___supervisor_8h.html#a297e9ea9b92297b1cf3d85e3b12e8f30", null ],
-    [ "C_WDT_PET", "_io_t___supervisor_8h.html#a8f2ab3d655054566ca4857f1ffbeb938", null ],
+    [ "C_CMD_CANCEL", "group___configuration___state___machine.html#ga3eeb3473a2e1cd78451afc01b331d89f", null ],
+    [ "C_CMD_COMMIT", "group___configuration___state___machine.html#ga35004385fd057486275757ee2d0dd1e9", null ],
+    [ "C_SID_MAX", "group___configuration___state___machine.html#ga00d0491c3afc5730a550797466e1e7ef", null ],
+    [ "C_SID_MIN", "group___configuration___state___machine.html#ga36cea86425025f8b068256d0254b49c5", null ],
+    [ "C_WDT_DIS", "group___modbus___w_d_t___state___machine.html#ga297e9ea9b92297b1cf3d85e3b12e8f30", null ],
+    [ "C_WDT_PET", "group___modbus___w_d_t___state___machine.html#ga8f2ab3d655054566ca4857f1ffbeb938", null ],
     [ "nLED", "_io_t___supervisor_8h.html#a4ee54671b212fa40e655eae67c043a9b", null ],
     [ "RESET_P", "_io_t___supervisor_8h.html#af4aa38c233ba7beb1af589ff95cd2717", null ],
     [ "CfgSM_t", "_io_t___supervisor_8h.html#a2e2885d00577c7076677cc277ac4f238", [

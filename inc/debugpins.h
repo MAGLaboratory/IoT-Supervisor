@@ -1,9 +1,23 @@
-/*
- * debugpins.h
+/******************************************************************************
+ * @file debugpins.h
+ * This file contains function-like macros that aim to help debug the
+ * application code through applicable timing data.
  *
- *  Created on: Jul 18, 2023
- *      Author: brandon
- */
+ * This project is meant to be developed in conjunction with an
+ * affordable USB logic analyer.  Much of the timing data is validated using
+ * a logic analyzer since timing calculations should not be trusted with
+ * "new to you" hardware.  The timing information should both be
+ * calculated with either an autoconfig tool or pen and paper and then
+ * validated using other means such as a logic analyzer or USB UART.
+ *
+ * Even in debug mode, many of these macros are blank because they were not
+ * used at the time.  They were strategically placed and should remain in the
+ * code until they are no longer needed.  The definitions in this file can be
+ * changed to suit the target of the debugging effort.  New definitions can be
+ * added in this file to help future developers.
+ * @date Jul 18, 2023
+ * @author brandon
+ *****************************************************************************/
 
 #ifndef INC_DEBUGPINS_H_
 #define INC_DEBUGPINS_H_

@@ -33,6 +33,23 @@
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+This file contains function-\/like macros that aim to help debug the application code through applicable timing data.
+
+This project is meant to be developed in conjunction with an affordable USB logic analyer. Much of the timing data is validated using a logic analyzer since timing calculations should not be trusted with "{}new to you"{} hardware. The timing information should both be calculated with either an autoconfig tool or pen and paper and then validated using other means such as a logic analyzer or USB UART.
+
+Even in debug mode, many of these macros are blank because they were not used at the time. They were strategically placed and should remain in the code until they are no longer needed. The definitions in this file can be changed to suit the target of the debugging effort. New definitions can be added in this file to help future developers. \begin{DoxyDate}{Date}
+Jul 18, 2023 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+brandon 
+\end{DoxyAuthor}
+
+
+Definition in file \mbox{\hyperlink{debugpins_8h_source}{debugpins.\+h}}.
+
+
+
 \doxysubsection{Macro Definition Documentation}
 \Hypertarget{debugpins_8h_a8d4e78709475c786f38fa6ec8858c0bc}\label{debugpins_8h_a8d4e78709475c786f38fa6ec8858c0bc} 
 \index{debugpins.h@{debugpins.h}!ADC0\_PIN\_OFF@{ADC0\_PIN\_OFF}}
@@ -42,7 +59,7 @@
 
 
 
-Definition at line \mbox{\hyperlink{debugpins_8h_source_l00042}{42}} of file \mbox{\hyperlink{debugpins_8h_source}{debugpins.\+h}}.
+Definition at line \mbox{\hyperlink{debugpins_8h_source_l00056}{56}} of file \mbox{\hyperlink{debugpins_8h_source}{debugpins.\+h}}.
 
 \Hypertarget{debugpins_8h_a9940265ba46767d487a10770ec98bb50}\label{debugpins_8h_a9940265ba46767d487a10770ec98bb50} 
 \index{debugpins.h@{debugpins.h}!ADC0\_PIN\_ON@{ADC0\_PIN\_ON}}
@@ -52,7 +69,7 @@ Definition at line \mbox{\hyperlink{debugpins_8h_source_l00042}{42}} of file \mb
 
 
 
-Definition at line \mbox{\hyperlink{debugpins_8h_source_l00041}{41}} of file \mbox{\hyperlink{debugpins_8h_source}{debugpins.\+h}}.
+Definition at line \mbox{\hyperlink{debugpins_8h_source_l00055}{55}} of file \mbox{\hyperlink{debugpins_8h_source}{debugpins.\+h}}.
 
 \Hypertarget{debugpins_8h_ad67471b877a3c235d14d2469a2ba603e}\label{debugpins_8h_ad67471b877a3c235d14d2469a2ba603e} 
 \index{debugpins.h@{debugpins.h}!MAIN\_PIN\_OFF@{MAIN\_PIN\_OFF}}
@@ -62,7 +79,7 @@ Definition at line \mbox{\hyperlink{debugpins_8h_source_l00041}{41}} of file \mb
 
 
 
-Definition at line \mbox{\hyperlink{debugpins_8h_source_l00044}{44}} of file \mbox{\hyperlink{debugpins_8h_source}{debugpins.\+h}}.
+Definition at line \mbox{\hyperlink{debugpins_8h_source_l00058}{58}} of file \mbox{\hyperlink{debugpins_8h_source}{debugpins.\+h}}.
 
 \Hypertarget{debugpins_8h_a6f4866801e55c39ebfb6eda9f7c72e65}\label{debugpins_8h_a6f4866801e55c39ebfb6eda9f7c72e65} 
 \index{debugpins.h@{debugpins.h}!MAIN\_PIN\_ON@{MAIN\_PIN\_ON}}
@@ -72,7 +89,7 @@ Definition at line \mbox{\hyperlink{debugpins_8h_source_l00044}{44}} of file \mb
 
 
 
-Definition at line \mbox{\hyperlink{debugpins_8h_source_l00043}{43}} of file \mbox{\hyperlink{debugpins_8h_source}{debugpins.\+h}}.
+Definition at line \mbox{\hyperlink{debugpins_8h_source_l00057}{57}} of file \mbox{\hyperlink{debugpins_8h_source}{debugpins.\+h}}.
 
 \Hypertarget{debugpins_8h_a214147a181f538d25df71d17d853e8a6}\label{debugpins_8h_a214147a181f538d25df71d17d853e8a6} 
 \index{debugpins.h@{debugpins.h}!PETIT\_PROCESS\_OFF@{PETIT\_PROCESS\_OFF}}
@@ -82,7 +99,7 @@ Definition at line \mbox{\hyperlink{debugpins_8h_source_l00043}{43}} of file \mb
 
 
 
-Definition at line \mbox{\hyperlink{debugpins_8h_source_l00046}{46}} of file \mbox{\hyperlink{debugpins_8h_source}{debugpins.\+h}}.
+Definition at line \mbox{\hyperlink{debugpins_8h_source_l00060}{60}} of file \mbox{\hyperlink{debugpins_8h_source}{debugpins.\+h}}.
 
 \Hypertarget{debugpins_8h_ab73a5eec6ca8d833d27f11d190f360c5}\label{debugpins_8h_ab73a5eec6ca8d833d27f11d190f360c5} 
 \index{debugpins.h@{debugpins.h}!PETIT\_PROCESS\_ON@{PETIT\_PROCESS\_ON}}
@@ -92,7 +109,7 @@ Definition at line \mbox{\hyperlink{debugpins_8h_source_l00046}{46}} of file \mb
 
 
 
-Definition at line \mbox{\hyperlink{debugpins_8h_source_l00045}{45}} of file \mbox{\hyperlink{debugpins_8h_source}{debugpins.\+h}}.
+Definition at line \mbox{\hyperlink{debugpins_8h_source_l00059}{59}} of file \mbox{\hyperlink{debugpins_8h_source}{debugpins.\+h}}.
 
 \Hypertarget{debugpins_8h_a7731f90cd59bd61dfb2ab19e811bd590}\label{debugpins_8h_a7731f90cd59bd61dfb2ab19e811bd590} 
 \index{debugpins.h@{debugpins.h}!TIMER0\_PINI\_OFF@{TIMER0\_PINI\_OFF}}
@@ -102,7 +119,7 @@ Definition at line \mbox{\hyperlink{debugpins_8h_source_l00045}{45}} of file \mb
 
 
 
-Definition at line \mbox{\hyperlink{debugpins_8h_source_l00036}{36}} of file \mbox{\hyperlink{debugpins_8h_source}{debugpins.\+h}}.
+Definition at line \mbox{\hyperlink{debugpins_8h_source_l00050}{50}} of file \mbox{\hyperlink{debugpins_8h_source}{debugpins.\+h}}.
 
 \Hypertarget{debugpins_8h_ada0ed52fc4271cc21769222613b4c60b}\label{debugpins_8h_ada0ed52fc4271cc21769222613b4c60b} 
 \index{debugpins.h@{debugpins.h}!TIMER0\_PINI\_ON@{TIMER0\_PINI\_ON}}
@@ -112,7 +129,7 @@ Definition at line \mbox{\hyperlink{debugpins_8h_source_l00036}{36}} of file \mb
 
 
 
-Definition at line \mbox{\hyperlink{debugpins_8h_source_l00035}{35}} of file \mbox{\hyperlink{debugpins_8h_source}{debugpins.\+h}}.
+Definition at line \mbox{\hyperlink{debugpins_8h_source_l00049}{49}} of file \mbox{\hyperlink{debugpins_8h_source}{debugpins.\+h}}.
 
 \Hypertarget{debugpins_8h_a2f415042c71627ded6845ab3074db99e}\label{debugpins_8h_a2f415042c71627ded6845ab3074db99e} 
 \index{debugpins.h@{debugpins.h}!TIMER0\_PINO\_OFF@{TIMER0\_PINO\_OFF}}
@@ -122,7 +139,7 @@ Definition at line \mbox{\hyperlink{debugpins_8h_source_l00035}{35}} of file \mb
 
 
 
-Definition at line \mbox{\hyperlink{debugpins_8h_source_l00034}{34}} of file \mbox{\hyperlink{debugpins_8h_source}{debugpins.\+h}}.
+Definition at line \mbox{\hyperlink{debugpins_8h_source_l00048}{48}} of file \mbox{\hyperlink{debugpins_8h_source}{debugpins.\+h}}.
 
 \Hypertarget{debugpins_8h_a48bb0879a01c7582daeaf51f4c3708f4}\label{debugpins_8h_a48bb0879a01c7582daeaf51f4c3708f4} 
 \index{debugpins.h@{debugpins.h}!TIMER0\_PINO\_ON@{TIMER0\_PINO\_ON}}
@@ -132,7 +149,7 @@ Definition at line \mbox{\hyperlink{debugpins_8h_source_l00034}{34}} of file \mb
 
 
 
-Definition at line \mbox{\hyperlink{debugpins_8h_source_l00033}{33}} of file \mbox{\hyperlink{debugpins_8h_source}{debugpins.\+h}}.
+Definition at line \mbox{\hyperlink{debugpins_8h_source_l00047}{47}} of file \mbox{\hyperlink{debugpins_8h_source}{debugpins.\+h}}.
 
 \Hypertarget{debugpins_8h_a5ed37e3d0f9014a745a20eefda6aea95}\label{debugpins_8h_a5ed37e3d0f9014a745a20eefda6aea95} 
 \index{debugpins.h@{debugpins.h}!TIMER1\_PIN\_OFF@{TIMER1\_PIN\_OFF}}
@@ -142,7 +159,7 @@ Definition at line \mbox{\hyperlink{debugpins_8h_source_l00033}{33}} of file \mb
 
 
 
-Definition at line \mbox{\hyperlink{debugpins_8h_source_l00038}{38}} of file \mbox{\hyperlink{debugpins_8h_source}{debugpins.\+h}}.
+Definition at line \mbox{\hyperlink{debugpins_8h_source_l00052}{52}} of file \mbox{\hyperlink{debugpins_8h_source}{debugpins.\+h}}.
 
 \Hypertarget{debugpins_8h_ac0f842ddc77766ee28510886d2d6ab85}\label{debugpins_8h_ac0f842ddc77766ee28510886d2d6ab85} 
 \index{debugpins.h@{debugpins.h}!TIMER1\_PIN\_ON@{TIMER1\_PIN\_ON}}
@@ -152,7 +169,7 @@ Definition at line \mbox{\hyperlink{debugpins_8h_source_l00038}{38}} of file \mb
 
 
 
-Definition at line \mbox{\hyperlink{debugpins_8h_source_l00037}{37}} of file \mbox{\hyperlink{debugpins_8h_source}{debugpins.\+h}}.
+Definition at line \mbox{\hyperlink{debugpins_8h_source_l00051}{51}} of file \mbox{\hyperlink{debugpins_8h_source}{debugpins.\+h}}.
 
 \Hypertarget{debugpins_8h_a0c7676d57419a334273342071780035a}\label{debugpins_8h_a0c7676d57419a334273342071780035a} 
 \index{debugpins.h@{debugpins.h}!UART0\_PIN\_OFF@{UART0\_PIN\_OFF}}
@@ -162,7 +179,7 @@ Definition at line \mbox{\hyperlink{debugpins_8h_source_l00037}{37}} of file \mb
 
 
 
-Definition at line \mbox{\hyperlink{debugpins_8h_source_l00040}{40}} of file \mbox{\hyperlink{debugpins_8h_source}{debugpins.\+h}}.
+Definition at line \mbox{\hyperlink{debugpins_8h_source_l00054}{54}} of file \mbox{\hyperlink{debugpins_8h_source}{debugpins.\+h}}.
 
 \Hypertarget{debugpins_8h_adc22a4fda08c42d86df14e7f2e7d6aa2}\label{debugpins_8h_adc22a4fda08c42d86df14e7f2e7d6aa2} 
 \index{debugpins.h@{debugpins.h}!UART0\_PIN\_ON@{UART0\_PIN\_ON}}
@@ -172,5 +189,5 @@ Definition at line \mbox{\hyperlink{debugpins_8h_source_l00040}{40}} of file \mb
 
 
 
-Definition at line \mbox{\hyperlink{debugpins_8h_source_l00039}{39}} of file \mbox{\hyperlink{debugpins_8h_source}{debugpins.\+h}}.
+Definition at line \mbox{\hyperlink{debugpins_8h_source_l00053}{53}} of file \mbox{\hyperlink{debugpins_8h_source}{debugpins.\+h}}.
 
