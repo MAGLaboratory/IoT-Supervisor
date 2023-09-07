@@ -25,6 +25,7 @@
 var NAVTREE =
 [
   [ "IoT Supervisor", "index.html", [
+    [ "MAG Laboratory IoT Supervisor", "index.html", "index" ],
     [ "Topics", "topics.html", "topics" ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],

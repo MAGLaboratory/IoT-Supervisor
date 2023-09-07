@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mag_20laboratory_20iot_20supervisor_0',['MAG Laboratory IoT Supervisor',['../md__r_e_a_d_m_e.html',1,'']]]
+  ['mag_20laboratory_20iot_20supervisor_0',['MAG Laboratory IoT Supervisor',['../index.html',1,'']]]
 ];

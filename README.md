@@ -1,5 +1,6 @@
 # MAG Laboratory IoT Supervisor
-An IoT supervisor board
+An IoT supervisor board\
+https://maglaboratory.github.io/IoT-Supervisor/
 
 ## Project Description
 This is an IoT SBC supervisor for the MAG Laboratory IoT devices.
