@@ -279,7 +279,7 @@ void mbWDTsm(void)
  * The program memory end should be determined using manual methods.  These
  * should be documented in the readme included with this application.
  */
-#define C_FOUND_PROG_END (0x0FD9) // end of program memory to check (exclusive)
+#define C_FOUND_PROG_END (0x0FD5) // end of program memory to check (exclusive)
 #else
 #define C_FOUND_PROG_END (0x0F9F) // determine me
 #endif

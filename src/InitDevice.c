@@ -175,7 +175,7 @@ extern void PBCFG_0_enter_DefaultMode_from_RESET(void)
 
 	// $[XBR0 - Port I/O Crossbar 0]
 	/***********************************************************************
-	 - UART I/O unavailable at Port pin
+	 - UART TX, RX routed to Port pins P0.4 and P0.5
 	 - SPI I/O unavailable at Port pins
 	 - SMBus 0 I/O unavailable at Port pins
 	 - CP0 unavailable at Port pin
@@ -184,7 +184,7 @@ extern void PBCFG_0_enter_DefaultMode_from_RESET(void)
 	 - Asynchronous CP1 unavailable at Port pin
 	 - SYSCLK unavailable at Port pin
 	 ***********************************************************************/
-	XBR0 = XBR0_URT0E__DISABLED | XBR0_SPI0E__DISABLED | XBR0_SMB0E__DISABLED
+	XBR0 = XBR0_URT0E__ENABLED | XBR0_SPI0E__DISABLED | XBR0_SMB0E__DISABLED
 			| XBR0_CP0E__DISABLED | XBR0_CP0AE__ENABLED | XBR0_CP1E__DISABLED
 			| XBR0_CP1AE__DISABLED | XBR0_SYSCKE__DISABLED;
 	// [XBR0 - Port I/O Crossbar 0]$
@@ -638,19 +638,6 @@ extern void PBCFG_0_enter_DebugMode_from_DefaultMode(void)
 	// [PRTDRV - Port Drive Strength]$
 
 	// $[XBR0 - Port I/O Crossbar 0]
-	/***********************************************************************
-	 - UART TX, RX routed to Port pins P0.4 and P0.5
-	 - SPI I/O unavailable at Port pins
-	 - SMBus 0 I/O unavailable at Port pins
-	 - CP0 unavailable at Port pin
-	 - Asynchronous CP0 routed to Port pin
-	 - CP1 unavailable at Port pin
-	 - Asynchronous CP1 unavailable at Port pin
-	 - SYSCLK unavailable at Port pin
-	 ***********************************************************************/
-	XBR0 = XBR0_URT0E__ENABLED | XBR0_SPI0E__DISABLED | XBR0_SMB0E__DISABLED
-			| XBR0_CP0E__DISABLED | XBR0_CP0AE__ENABLED | XBR0_CP1E__DISABLED
-			| XBR0_CP1AE__DISABLED | XBR0_SYSCKE__DISABLED;
 	// [XBR0 - Port I/O Crossbar 0]$
 
 	// $[XBR1 - Port I/O Crossbar 1]

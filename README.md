@@ -13,7 +13,11 @@ This branch is for initial development.  The style of calling something "zero"
 came from a style of anime calling their prequel series "zero."
 
 ## TODO
-* More documentation, especially the state machines.
+* Documentation
+  * Voltage Divider Set-Point Documentation
+  * Modbus registers
+  * How-to (quickstart) guide
+  * State machines
 
 ## Deployment
 Is this section supposed to be about how this project was developed or how to
@@ -50,7 +54,7 @@ should be manually changed based on the information in the `.m51` file:
 ## Help
 Please feel free to leave a bug report or start development on your own branch.
 
-Other forms of communication are acceptable.
+Other forms of communication outside of github are acceptable.
 
 ## Version History
  * Initial Commit

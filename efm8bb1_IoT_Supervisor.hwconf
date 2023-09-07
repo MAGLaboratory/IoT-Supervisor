@@ -20,6 +20,7 @@
     <property object="CMP_0" propertyId="cmp.input.positiveinputmuxselection" value="Internal LDO output"/>
     <property object="CMP_0" propertyId="cmp.interrupts.enablerisingedgeinterrupt" value="Enabled"/>
     <property object="CROSSBAR0" propertyId="xbar0.comparator0.asyncoutput" value="Enabled"/>
+    <property object="CROSSBAR0" propertyId="xbar0.uart0.data" value="Enabled"/>
     <property object="DefaultMode" propertyId="mode.diagramLocation" value="119, 98"/>
     <property object="INTERRUPT_0" propertyId="ABPeripheral.included" value="true"/>
     <property object="INTERRUPT_0" propertyId="interrupt.extendedinterruptenable1.enableadc0conversioncompleteinterrupt" value="Enabled"/>
