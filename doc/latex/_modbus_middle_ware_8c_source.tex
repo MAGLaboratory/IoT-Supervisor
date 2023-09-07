@@ -1,0 +1,69 @@
+\doxysection{Modbus\+Middle\+Ware.\+c}
+\hypertarget{_modbus_middle_ware_8c_source}{}\label{_modbus_middle_ware_8c_source}\index{src/ModbusMiddleWare.c@{src/ModbusMiddleWare.c}}
+\mbox{\hyperlink{_modbus_middle_ware_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_modbus_middle_ware_8h}{ModbusMiddleWare.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_io_t___supervisor_8h}{IoT\_Supervisor.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <SI\_EFM8BB1\_Register\_Enums.h>}}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00022}\mbox{\hyperlink{group___modbus___middle_ware_gae99f13fec6ba22dfa12eef0df06574cf}{00022}}\ code\ \textcolor{keyword}{const}\ uint8\_t\ \mbox{\hyperlink{group___modbus___middle_ware_gae99f13fec6ba22dfa12eef0df06574cf}{mmw\_ct}}[\mbox{\hyperlink{_modbus_middle_ware_8h_ac4b55353c236e4425b062d426cb99eacaf518145fe38ea36c4539548d591a1b6f}{eMMW\_B\_NUM}}][\mbox{\hyperlink{_modbus_middle_ware_8h_a0637d0b9751ca38a0ad7f3cac42c7a40a7cec6cf212411debd9cc00f576e3a605}{eMMW\_CT\_NUM}}]\ =}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00023}00023\ \{}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00024}00024\ \ \ \ \ \{0,\ 0xEC,\ \ 0,\ 0\},}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00025}00025\ \ \ \ \ \{0,\ 0xD8,\ \ 0,\ 0\},}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00026}00026\ \ \ \ \ \{0,\ 0xB0,\ \ 1,\ 0\},}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00027}00027\ \ \ \ \ \{0,\ 0x60,\ \ 4,\ 1\},}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00028}00028\ \ \ \ \ \{1,\ 0xE5,\ 10,\ 3\},}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00029}00029\ \ \ \ \ \{1,\ 0xCB,\ 22,\ 7\}}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00030}00030\ \};}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00032}\mbox{\hyperlink{group___modbus___middle_ware_ga9622a98d515bab04ca2a83558b0f571a}{00032}}\ uint8\_t\ \mbox{\hyperlink{group___modbus___middle_ware_ga9622a98d515bab04ca2a83558b0f571a}{PETITMODBUS\_DLY\_TOP}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00033}\mbox{\hyperlink{group___modbus___middle_ware_ga25a0ea5f5173ae31a717fec624fd0a8c}{00033}}\ uint8\_t\ \mbox{\hyperlink{group___modbus___middle_ware_ga25a0ea5f5173ae31a717fec624fd0a8c}{PETITMODBUS\_SLAVE\_ADDRESS}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00035}00035\ \textcolor{comment}{//\ Functions}}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00044}\mbox{\hyperlink{group___modbus___middle_ware_ga2327e0e12d6b8eb65b2c21d6dfc92a96}{00044}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___modbus___middle_ware_ga2327e0e12d6b8eb65b2c21d6dfc92a96}{mmw\_init}}(uint8\_t\ sid,\ uint8\_t\ baud)}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00045}00045\ \{}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00046}00046\ \ \ \ \ \mbox{\hyperlink{group___modbus___middle_ware_ga25a0ea5f5173ae31a717fec624fd0a8c}{PETITMODBUS\_SLAVE\_ADDRESS}}\ =\ sid;}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00047}00047\ \ \ \ \ \textcolor{keywordflow}{if}\ (baud\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00048}00048\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00050}00050\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00052}00052\ \ \ \ \ \textcolor{comment}{//\ stop\ UART}}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00053}00053\ \ \ \ \ SCON0\ \&=\ \string~SCON0\_REN\_\_BMASK\ \&\ \string~SCON0\_MCE\_\_BMASK;}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00054}00054\ \ \ \ \ \textcolor{comment}{//\ stop\ timer\ 1}}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00055}00055\ \ \ \ \ TMOD\ =\ (TMOD\ \&\ \string~TMOD\_T1M\_\_FMASK)\ |\ TMOD\_T1M\_\_MODE3;}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00057}00057\ \ \ \ \ \textcolor{comment}{//\ decode\ T1\ clock\ source}}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00058}00058\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{group___modbus___middle_ware_gae99f13fec6ba22dfa12eef0df06574cf}{mmw\_ct}}[baud\ -\/\ 1][\mbox{\hyperlink{_modbus_middle_ware_8h_a0637d0b9751ca38a0ad7f3cac42c7a40a5fd0f9167a3eac69624996061dd3d28d}{eMMW\_CT\_T1\_PRE}}]\ ==\ 1)}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00059}00059\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ prescaler}}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00061}00061\ \ \ \ \ \ \ \ \ CKCON0\ =\ (CKCON0\ \&\ \string~CKCON0\_T1M\_\_BMASK)\ |\ CKCON0\_T1M\_\_PRESCALE;}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00062}00062\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00063}00063\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00064}00064\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00065}00065\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ system\ clock}}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00066}00066\ \ \ \ \ \ \ \ \ CKCON0\ =\ (CKCON0\ \&\ \string~CKCON0\_T1M\_\_BMASK)\ |\ CKCON0\_T1M\_\_SYSCLK;}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00067}00067\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00069}00069\ \ \ \ \ \textcolor{comment}{//\ set\ timer\ 1\ mode\ to\ mode\ 2\ (8-\/bit\ counter/timer\ with\ auto-\/reload)}}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00070}00070\ \ \ \ \ TMOD\ =\ (TMOD\ \&\ \string~TMOD\_T1M\_\_FMASK)\ |\ TMOD\_T1M\_\_MODE2;}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00072}00072\ \ \ \ \ \textcolor{comment}{//\ set\ timer\ 1\ current\ value\ and\ reload\ value}}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00073}00073\ \ \ \ \ TH1\ =\ (\mbox{\hyperlink{group___modbus___middle_ware_gae99f13fec6ba22dfa12eef0df06574cf}{mmw\_ct}}[baud\ -\/\ 1][\mbox{\hyperlink{_modbus_middle_ware_8h_a0637d0b9751ca38a0ad7f3cac42c7a40a789089a098588e180f3a46e3031b9989}{eMMW\_CT\_TH1}}]\ <<\ TH1\_TH1\_\_SHIFT);}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00074}00074\ \ \ \ \ TL1\ =\ (\mbox{\hyperlink{group___modbus___middle_ware_gae99f13fec6ba22dfa12eef0df06574cf}{mmw\_ct}}[baud\ -\/\ 1][\mbox{\hyperlink{_modbus_middle_ware_8h_a0637d0b9751ca38a0ad7f3cac42c7a40a789089a098588e180f3a46e3031b9989}{eMMW\_CT\_TH1}}]\ <<\ TL1\_TL1\_\_SHIFT);}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00076}00076\ \ \ \ \ \textcolor{comment}{//\ maybe\ this\ code\ will\ support\ parity\ values\ in\ the\ future,\ but\ the}}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00077}00077\ \ \ \ \ \textcolor{comment}{//\ efm8bb1\ does\ not\ support\ parity.}}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00079}00079\ \ \ \ \ \textcolor{comment}{//\ enable\ UART,\ interestingly\ enough\ the\ MCE\ bit\ is\ just\ for}}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00080}00080\ \ \ \ \ \textcolor{comment}{//\ normal\ interrupts}}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00081}00081\ \ \ \ \ SCON0\ |=\ SCON0\_REN\_\_RECEIVE\_ENABLED\ |\ SCON0\_MCE\_\_MULTI\_ENABLED;}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00083}00083\ \ \ \ \ \textcolor{comment}{//\ software\ counter\ values}}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00084}00084\ \ \ \ \ \mbox{\hyperlink{group___modbus___middle_ware_ga9622a98d515bab04ca2a83558b0f571a}{PETITMODBUS\_DLY\_TOP}}\ =\ \mbox{\hyperlink{group___modbus___middle_ware_gae99f13fec6ba22dfa12eef0df06574cf}{mmw\_ct}}[baud\ -\/\ 1][\mbox{\hyperlink{_modbus_middle_ware_8h_a0637d0b9751ca38a0ad7f3cac42c7a40a31bb5101d0edbb664c8b616de73fe5eb}{eMMW\_CT\_PETIT\_TOP}}];}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00085}00085\ \ \ \ \ \mbox{\hyperlink{group___main___application_ga06f41e11cde40f73d65c73f928a89ae9}{T0C\_TOP}}\ =\ \mbox{\hyperlink{group___modbus___middle_ware_gae99f13fec6ba22dfa12eef0df06574cf}{mmw\_ct}}[baud\ -\/\ 1][\mbox{\hyperlink{_modbus_middle_ware_8h_a0637d0b9751ca38a0ad7f3cac42c7a40af0d4a2198485736a25f2e879e56096b4}{eMMW\_CT\_TL0\_TOP}}];}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00086}00086\ \}}
+\DoxyCodeLine{\Hypertarget{_modbus_middle_ware_8c_source_l00087}00087\ }
+ \textcolor{comment}{// group Modbus\_MiddleWare}
+\end{DoxyCode}

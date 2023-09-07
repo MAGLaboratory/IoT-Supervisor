@@ -8,6 +8,7 @@
 #ifndef INC_PETITMODBUSUSERPORT_H_
 #define INC_PETITMODBUSUSERPORT_H_
 #include <stdint.h>
+#include <stdbool.h>
 // Petit Modbus RTU Slave Output Register Number
 // Have to put a number of registers here
 // It has to be bigger than 0 (zero)!!
@@ -43,6 +44,8 @@
  */
 // define this to let the CRC table reside in code memory rather than RAM
 #define PETIT_CODE code
+// define this for booleans
+#define pb_t bool
 // define this for unsigned octets
 #define pu8_t uint8_t
 // define this for 16-bit unsigned

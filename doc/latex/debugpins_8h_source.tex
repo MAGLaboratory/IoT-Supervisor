@@ -1,0 +1,55 @@
+\doxysection{debugpins.\+h}
+\hypertarget{debugpins_8h_source}{}\label{debugpins_8h_source}\index{inc/debugpins.h@{inc/debugpins.h}}
+\mbox{\hyperlink{debugpins_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00002}00002\ \textcolor{comment}{\ *\ debugpins.h}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00004}00004\ \textcolor{comment}{\ *\ \ Created\ on:\ Jul\ 18,\ 2023}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00005}00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ brandon}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00006}00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00008}00008\ \textcolor{preprocessor}{\#ifndef\ INC\_DEBUGPINS\_H\_}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00009}00009\ \textcolor{preprocessor}{\#define\ INC\_DEBUGPINS\_H\_}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00011}00011\ \textcolor{preprocessor}{\#if\ defined(DEBUG)\ \&\&\ DEBUG}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00012}00012\ \textcolor{comment}{//\ debug\ mode\ is\ on,\ toggle\ the\ debug\ pins}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00013}00013\ \textcolor{preprocessor}{\#define\ DBG0\ (P0\_B6)}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00014}00014\ \textcolor{preprocessor}{\#define\ DBG1\ (P1\_B0)}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00015}00015\ \textcolor{preprocessor}{\#define\ DBG2\ (P1\_B2)}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00016}00016\ \textcolor{preprocessor}{\#define\ DBG3\ (P1\_B3)}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00017}00017\ \textcolor{preprocessor}{\#define\ TIMER0\_PINO\_ON()}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00018}00018\ \textcolor{preprocessor}{\#define\ TIMER0\_PINO\_OFF()}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00019}00019\ \textcolor{preprocessor}{\#define\ TIMER0\_PINI\_ON()\ DBG0\ =\ 1;}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00020}00020\ \textcolor{preprocessor}{\#define\ TIMER0\_PINI\_OFF()\ DBG0\ =\ 0;}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00021}00021\ \textcolor{preprocessor}{\#define\ TIMER1\_PIN\_ON()\ DBG1\ =\ 1;}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00022}00022\ \textcolor{preprocessor}{\#define\ TIMER1\_PIN\_OFF()\ DBG1\ =\ 0;}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00023}00023\ \textcolor{preprocessor}{\#define\ UART0\_PIN\_ON()\ DBG2\ =\ 1;}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00024}00024\ \textcolor{preprocessor}{\#define\ UART0\_PIN\_OFF()\ DBG2\ =\ 0;}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00025}00025\ \textcolor{preprocessor}{\#define\ ADC0\_PIN\_ON()}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00026}00026\ \textcolor{preprocessor}{\#define\ ADC0\_PIN\_OFF()}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00027}00027\ \textcolor{preprocessor}{\#define\ MAIN\_PIN\_ON()}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00028}00028\ \textcolor{preprocessor}{\#define\ MAIN\_PIN\_OFF()}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00029}00029\ \textcolor{preprocessor}{\#define\ PETIT\_PROCESS\_ON()\ DBG3\ =\ 1;}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00030}00030\ \textcolor{preprocessor}{\#define\ PETIT\_PROCESS\_OFF()\ DBG3\ =\ 0;}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00031}00031\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00032}00032\ \textcolor{comment}{//\ empty\ declarations}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00033}\mbox{\hyperlink{debugpins_8h_a48bb0879a01c7582daeaf51f4c3708f4}{00033}}\ \textcolor{preprocessor}{\#define\ TIMER0\_PINO\_ON()}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00034}\mbox{\hyperlink{debugpins_8h_a2f415042c71627ded6845ab3074db99e}{00034}}\ \textcolor{preprocessor}{\#define\ TIMER0\_PINO\_OFF()}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00035}\mbox{\hyperlink{debugpins_8h_ada0ed52fc4271cc21769222613b4c60b}{00035}}\ \textcolor{preprocessor}{\#define\ TIMER0\_PINI\_ON()}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00036}\mbox{\hyperlink{debugpins_8h_a7731f90cd59bd61dfb2ab19e811bd590}{00036}}\ \textcolor{preprocessor}{\#define\ TIMER0\_PINI\_OFF()}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00037}\mbox{\hyperlink{debugpins_8h_ac0f842ddc77766ee28510886d2d6ab85}{00037}}\ \textcolor{preprocessor}{\#define\ TIMER1\_PIN\_ON()}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00038}\mbox{\hyperlink{debugpins_8h_a5ed37e3d0f9014a745a20eefda6aea95}{00038}}\ \textcolor{preprocessor}{\#define\ TIMER1\_PIN\_OFF()}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00039}\mbox{\hyperlink{debugpins_8h_adc22a4fda08c42d86df14e7f2e7d6aa2}{00039}}\ \textcolor{preprocessor}{\#define\ UART0\_PIN\_ON()}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00040}\mbox{\hyperlink{debugpins_8h_a0c7676d57419a334273342071780035a}{00040}}\ \textcolor{preprocessor}{\#define\ UART0\_PIN\_OFF()}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00041}\mbox{\hyperlink{debugpins_8h_a9940265ba46767d487a10770ec98bb50}{00041}}\ \textcolor{preprocessor}{\#define\ ADC0\_PIN\_ON()}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00042}\mbox{\hyperlink{debugpins_8h_a8d4e78709475c786f38fa6ec8858c0bc}{00042}}\ \textcolor{preprocessor}{\#define\ ADC0\_PIN\_OFF()}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00043}\mbox{\hyperlink{debugpins_8h_a6f4866801e55c39ebfb6eda9f7c72e65}{00043}}\ \textcolor{preprocessor}{\#define\ MAIN\_PIN\_ON()}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00044}\mbox{\hyperlink{debugpins_8h_ad67471b877a3c235d14d2469a2ba603e}{00044}}\ \textcolor{preprocessor}{\#define\ MAIN\_PIN\_OFF()}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00045}\mbox{\hyperlink{debugpins_8h_ab73a5eec6ca8d833d27f11d190f360c5}{00045}}\ \textcolor{preprocessor}{\#define\ PETIT\_PROCESS\_ON()}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00046}\mbox{\hyperlink{debugpins_8h_a214147a181f538d25df71d17d853e8a6}{00046}}\ \textcolor{preprocessor}{\#define\ PETIT\_PROCESS\_OFF()}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00047}00047\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{debugpins_8h_source_l00049}00049\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ INC\_DEBUGPINS\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

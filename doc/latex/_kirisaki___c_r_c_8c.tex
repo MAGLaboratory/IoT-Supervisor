@@ -1,0 +1,49 @@
+\doxysection{src/\+Kirisaki\+\_\+\+CRC.c File Reference}
+\hypertarget{_kirisaki___c_r_c_8c}{}\label{_kirisaki___c_r_c_8c}\index{src/Kirisaki\_CRC.c@{src/Kirisaki\_CRC.c}}
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_kirisaki___c_r_c_8c_a91cf4f2aefbeb1a7a9447e4f73f9b6c5}{Kirisaki\+CRC16\+Calc}} (uint8\+\_\+t Data, uint16\+\_\+t \texorpdfstring{$\ast$}{*}CRC)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+code const uint16\+\_\+t \mbox{\hyperlink{_kirisaki___c_r_c_8c_af5855e095c78b148dc7bc64cfcad2a80}{Kirisaki\+CRCtable}} \mbox{[}256\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_kirisaki___c_r_c_8c_a91cf4f2aefbeb1a7a9447e4f73f9b6c5}\label{_kirisaki___c_r_c_8c_a91cf4f2aefbeb1a7a9447e4f73f9b6c5} 
+\index{Kirisaki\_CRC.c@{Kirisaki\_CRC.c}!KirisakiCRC16Calc@{KirisakiCRC16Calc}}
+\index{KirisakiCRC16Calc@{KirisakiCRC16Calc}!Kirisaki\_CRC.c@{Kirisaki\_CRC.c}}
+\doxysubsubsection{\texorpdfstring{KirisakiCRC16Calc()}{KirisakiCRC16Calc()}}
+{\footnotesize\ttfamily void Kirisaki\+CRC16\+Calc (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Data,  }\item[{uint16\+\_\+t \texorpdfstring{$\ast$}{*}}]{CRC }\end{DoxyParamCaption})}
+
+This function calculates the CRC based on the CRC table. \begin{DoxyNote}{Note}
+The CRC has to be initialized and final-\/xor\textquotesingle{}d outside of this function 
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Data} & to continue CRC calculation on \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em CRC} & pointer to CRC source and CRC output \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_kirisaki___c_r_c_8c_source_l00052}{52}} of file \mbox{\hyperlink{_kirisaki___c_r_c_8c_source}{Kirisaki\+\_\+\+CRC.\+c}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{_kirisaki___c_r_c_8c_af5855e095c78b148dc7bc64cfcad2a80}\label{_kirisaki___c_r_c_8c_af5855e095c78b148dc7bc64cfcad2a80} 
+\index{Kirisaki\_CRC.c@{Kirisaki\_CRC.c}!KirisakiCRCtable@{KirisakiCRCtable}}
+\index{KirisakiCRCtable@{KirisakiCRCtable}!Kirisaki\_CRC.c@{Kirisaki\_CRC.c}}
+\doxysubsubsection{\texorpdfstring{KirisakiCRCtable}{KirisakiCRCtable}}
+{\footnotesize\ttfamily code const uint16\+\_\+t Kirisaki\+CRCtable\mbox{[}256\mbox{]}}
+
+CRC table, probably from crccalc.\+com 
+
+Definition at line \mbox{\hyperlink{_kirisaki___c_r_c_8c_source_l00011}{11}} of file \mbox{\hyperlink{_kirisaki___c_r_c_8c_source}{Kirisaki\+\_\+\+CRC.\+c}}.
+

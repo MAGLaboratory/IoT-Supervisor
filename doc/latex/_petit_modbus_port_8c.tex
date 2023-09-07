@@ -1,0 +1,30 @@
+\doxysection{src/\+Petit\+Modbus\+Port.c File Reference}
+\hypertarget{_petit_modbus_port_8c}{}\label{_petit_modbus_port_8c}\index{src/PetitModbusPort.c@{src/PetitModbusPort.c}}
+{\ttfamily \#include "{}Petit\+Modbus\+Port.\+h"{}}\newline
+{\ttfamily \#include $<$SI\+\_\+\+EFM8\+BB1\+\_\+\+Register\+\_\+\+Enums.\+h$>$}\newline
+{\ttfamily \#include "{}Io\+T\+\_\+\+Supervisor.\+h"{}}\newline
+{\ttfamily \#include "{}Modbus\+Middle\+Ware.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group___petit___modbus___porting___functions_ga44d78866eb528ef7f1152737e018706e}{Petit\+Port\+Timer\+Start}} ()
+\item 
+void \mbox{\hyperlink{group___petit___modbus___porting___functions_gaf6adc888121879ba74010f58659a2b55}{Petit\+Port\+Timer\+Stop}} ()
+\item 
+void \mbox{\hyperlink{group___petit___modbus___porting___functions_gaf0ee2372c22e97ffa56b05f5e6f6fe37}{Petit\+Port\+Dir\+Tx}} ()
+\item 
+void \mbox{\hyperlink{group___petit___modbus___porting___functions_gadcc9e71a85b07580f8c711c39ddd1a03}{Petit\+Port\+Dir\+Rx}} ()
+\item 
+void \mbox{\hyperlink{group___petit___modbus___porting___functions_gad7806b34429c3faec1d472a1fb146e81}{Petit\+Port\+Tx\+Begin}} (\mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\+\_\+t}} tx)
+\item 
+\mbox{\hyperlink{_petit_modbus_user_port_8h_afd4ae3efcf82687fa69481d6e27efad3}{pb\+\_\+t}} \mbox{\hyperlink{group___petit___modbus___porting___functions_ga8c879da6e57433f788bec497418f778f}{Petit\+Port\+Reg\+Write}} (\mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\+\_\+t}} Address, \mbox{\hyperlink{_petit_modbus_user_port_8h_a01c483557b33c4176a1d15e40e35dc75}{pu16\+\_\+t}} Data)
+\item 
+\mbox{\hyperlink{_petit_modbus_user_port_8h_afd4ae3efcf82687fa69481d6e27efad3}{pb\+\_\+t}} \mbox{\hyperlink{group___petit___modbus___porting___functions_gaa9a6de5673735007f9db7fef4d23ed59}{Petit\+Port\+Reg\+Read}} (\mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\+\_\+t}} Address, \mbox{\hyperlink{_petit_modbus_user_port_8h_a01c483557b33c4176a1d15e40e35dc75}{pu16\+\_\+t}} \texorpdfstring{$\ast$}{*}Data)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains the functions that are supposed to be defined to port Petit\+Modbus to this specific microcontroller. 
+
+Definition in file \mbox{\hyperlink{_petit_modbus_port_8c_source}{Petit\+Modbus\+Port.\+c}}.
+

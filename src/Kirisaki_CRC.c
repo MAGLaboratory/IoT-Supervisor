@@ -5,7 +5,9 @@
  *      Author: brandon k
  */
 #include <stdint.h>
-
+/**
+ * CRC table, probably from crccalc.com
+ */
 code const uint16_t KirisakiCRCtable[256] = {
 	0x0000, 0xC0C1, 0xC181, 0x0140, 0xC301, 0x03C0, 0x0280, 0xC241,
 	0xC601, 0x06C0, 0x0780, 0xC741, 0x0500, 0xC5C1, 0xC481, 0x0440,
@@ -41,6 +43,12 @@ code const uint16_t KirisakiCRCtable[256] = {
 	0x8201, 0x42C0, 0x4380, 0x8341, 0x4100, 0x81C1, 0x8081, 0x4040
 };
 
+/**
+ * This function calculates the CRC based on the CRC table.
+ * @note The CRC has to be initialized and final-xor'd outside of this function
+ * @param[in] Data to continue CRC calculation on
+ * @param[inout] CRC pointer to CRC source and CRC output
+ */
 void KirisakiCRC16Calc(uint8_t Data, uint16_t* CRC)
 {
 	*CRC = (*CRC >> 8) ^

@@ -1,9 +1,12 @@
-/*
- * IoT_Supervisor.h
+/******************************************************************************
+ * @file IoT_Supervisor.h
  *
- *  Created on: Aug 29, 2023
- *      Author: brandon
- */
+ * This file contains globals that are used throughout this application.
+ * (Or at least from the main file and the interrupts...)
+ *
+ * @date Aug 29, 2023
+ * @author brandon
+ *****************************************************************************/
 
 #ifndef INC_IOT_SUPERVISOR_H_
 #define INC_IOT_SUPERVISOR_H_
@@ -93,10 +96,10 @@ typedef struct
 //-----------------------------------------------------------------------------
 // Globals
 //-----------------------------------------------------------------------------
-extern uint8_t t1Count;
-extern bool cprif;
+extern volatile uint8_t t1Count;
+extern volatile bool cprif;
 
-extern uint8_t t0Count;
+extern volatile uint8_t t0Count;
 extern uint8_t T0C_TOP;
 
 extern sv_dev_sta_t sv_dev_sta;

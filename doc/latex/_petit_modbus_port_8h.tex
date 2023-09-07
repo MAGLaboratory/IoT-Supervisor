@@ -1,0 +1,175 @@
+\doxysection{Petit\+Modbus/inc/\+Petit\+Modbus\+Port.h File Reference}
+\hypertarget{_petit_modbus_port_8h}{}\label{_petit_modbus_port_8h}\index{PetitModbus/inc/PetitModbusPort.h@{PetitModbus/inc/PetitModbusPort.h}}
+{\ttfamily \#include "{}Petit\+Modbus\+User\+Port.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_petit_modbus_port_8h_aa93f0eb578d23995850d61f7d61c55c1}{FALSE}}~(0)
+\item 
+\#define \mbox{\hyperlink{_petit_modbus_port_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE}}~(1)
+\item 
+\#define \mbox{\hyperlink{_petit_modbus_port_8h_af89bf53bd796ef0948cf8ef1c9e6e480}{PETIT\+\_\+\+CRC\+\_\+\+TABULAR}}~(0x4040)
+\item 
+\#define \mbox{\hyperlink{_petit_modbus_port_8h_ab97fba56915b71633a861e3a0d14772b}{PETIT\+\_\+\+CRC\+\_\+\+BITWISE}}~(0x2020)
+\item 
+\#define \mbox{\hyperlink{_petit_modbus_port_8h_a07fc8e8819b801ba517d99a82974334e}{PETIT\+\_\+\+CRC\+\_\+\+EXTERNAL}}~(0x9090)
+\item 
+\#define \mbox{\hyperlink{_petit_modbus_port_8h_ae0647f4e3383d710744ecc345062e67f}{PETIT\+\_\+\+REG\+\_\+\+INTERNAL}}~(0x1333)
+\item 
+\#define \mbox{\hyperlink{_petit_modbus_port_8h_a3eb305f5f7f8a8d96cd528ec9bb72bd0}{PETIT\+\_\+\+REG\+\_\+\+BOTH}}~(0x1222)
+\item 
+\#define \mbox{\hyperlink{_petit_modbus_port_8h_a8e04421b0cf3ca305d020bcf03881097}{PETIT\+\_\+\+REG\+\_\+\+EXTERNAL}}~(0x2222)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_petit_modbus_port_8h_a40518f778342c63feb55e1a33e661bc8}{Petit\+Rx\+Buffer\+Reset}} (void)
+\item 
+\mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\+\_\+t}} \mbox{\hyperlink{_petit_modbus_port_8h_ad88239bde4899b1be809af81b121c656}{Petit\+Rx\+Buffer\+Insert}} (\mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\+\_\+t}} rcvd)
+\item 
+\mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\+\_\+t}} \mbox{\hyperlink{_petit_modbus_port_8h_af6065cec82799ffca180fb2dc6688008}{Petit\+Tx\+Buffer\+Pop}} (\mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\+\_\+t}} \texorpdfstring{$\ast$}{*}tx)
+\item 
+void \mbox{\hyperlink{_petit_modbus_port_8h_ad7806b34429c3faec1d472a1fb146e81}{Petit\+Port\+Tx\+Begin}} (\mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\+\_\+t}} tx)
+\item 
+void \mbox{\hyperlink{_petit_modbus_port_8h_ae7ce961ccb117e9b42aa83bd051448be}{Petit\+Port\+Timer\+Start}} (void)
+\item 
+void \mbox{\hyperlink{_petit_modbus_port_8h_a26c4d97e7f4a6d5ed230404d8c0fc8b2}{Petit\+Port\+Timer\+Stop}} (void)
+\item 
+void \mbox{\hyperlink{_petit_modbus_port_8h_aa293caeb2a9693ff090d6fa4c8a7579d}{Petit\+Port\+Dir\+Tx}} (void)
+\item 
+void \mbox{\hyperlink{_petit_modbus_port_8h_a3686852a982a443cf643e201ff19f64c}{Petit\+Port\+Dir\+Rx}} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\+\_\+t}} \mbox{\hyperlink{_petit_modbus_port_8h_a1bf2bbd7eedc596e7f3a418389fd793f}{Petit\+Reg\+Change}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_petit_modbus_port_8h_aa93f0eb578d23995850d61f7d61c55c1}\label{_petit_modbus_port_8h_aa93f0eb578d23995850d61f7d61c55c1} 
+\index{PetitModbusPort.h@{PetitModbusPort.h}!FALSE@{FALSE}}
+\index{FALSE@{FALSE}!PetitModbusPort.h@{PetitModbusPort.h}}
+\doxysubsubsection{\texorpdfstring{FALSE}{FALSE}}
+{\footnotesize\ttfamily \#define FALSE~(0)}
+
+\Hypertarget{_petit_modbus_port_8h_ab97fba56915b71633a861e3a0d14772b}\label{_petit_modbus_port_8h_ab97fba56915b71633a861e3a0d14772b} 
+\index{PetitModbusPort.h@{PetitModbusPort.h}!PETIT\_CRC\_BITWISE@{PETIT\_CRC\_BITWISE}}
+\index{PETIT\_CRC\_BITWISE@{PETIT\_CRC\_BITWISE}!PetitModbusPort.h@{PetitModbusPort.h}}
+\doxysubsubsection{\texorpdfstring{PETIT\_CRC\_BITWISE}{PETIT\_CRC\_BITWISE}}
+{\footnotesize\ttfamily \#define PETIT\+\_\+\+CRC\+\_\+\+BITWISE~(0x2020)}
+
+\Hypertarget{_petit_modbus_port_8h_a07fc8e8819b801ba517d99a82974334e}\label{_petit_modbus_port_8h_a07fc8e8819b801ba517d99a82974334e} 
+\index{PetitModbusPort.h@{PetitModbusPort.h}!PETIT\_CRC\_EXTERNAL@{PETIT\_CRC\_EXTERNAL}}
+\index{PETIT\_CRC\_EXTERNAL@{PETIT\_CRC\_EXTERNAL}!PetitModbusPort.h@{PetitModbusPort.h}}
+\doxysubsubsection{\texorpdfstring{PETIT\_CRC\_EXTERNAL}{PETIT\_CRC\_EXTERNAL}}
+{\footnotesize\ttfamily \#define PETIT\+\_\+\+CRC\+\_\+\+EXTERNAL~(0x9090)}
+
+\Hypertarget{_petit_modbus_port_8h_af89bf53bd796ef0948cf8ef1c9e6e480}\label{_petit_modbus_port_8h_af89bf53bd796ef0948cf8ef1c9e6e480} 
+\index{PetitModbusPort.h@{PetitModbusPort.h}!PETIT\_CRC\_TABULAR@{PETIT\_CRC\_TABULAR}}
+\index{PETIT\_CRC\_TABULAR@{PETIT\_CRC\_TABULAR}!PetitModbusPort.h@{PetitModbusPort.h}}
+\doxysubsubsection{\texorpdfstring{PETIT\_CRC\_TABULAR}{PETIT\_CRC\_TABULAR}}
+{\footnotesize\ttfamily \#define PETIT\+\_\+\+CRC\+\_\+\+TABULAR~(0x4040)}
+
+\Hypertarget{_petit_modbus_port_8h_a3eb305f5f7f8a8d96cd528ec9bb72bd0}\label{_petit_modbus_port_8h_a3eb305f5f7f8a8d96cd528ec9bb72bd0} 
+\index{PetitModbusPort.h@{PetitModbusPort.h}!PETIT\_REG\_BOTH@{PETIT\_REG\_BOTH}}
+\index{PETIT\_REG\_BOTH@{PETIT\_REG\_BOTH}!PetitModbusPort.h@{PetitModbusPort.h}}
+\doxysubsubsection{\texorpdfstring{PETIT\_REG\_BOTH}{PETIT\_REG\_BOTH}}
+{\footnotesize\ttfamily \#define PETIT\+\_\+\+REG\+\_\+\+BOTH~(0x1222)}
+
+\Hypertarget{_petit_modbus_port_8h_a8e04421b0cf3ca305d020bcf03881097}\label{_petit_modbus_port_8h_a8e04421b0cf3ca305d020bcf03881097} 
+\index{PetitModbusPort.h@{PetitModbusPort.h}!PETIT\_REG\_EXTERNAL@{PETIT\_REG\_EXTERNAL}}
+\index{PETIT\_REG\_EXTERNAL@{PETIT\_REG\_EXTERNAL}!PetitModbusPort.h@{PetitModbusPort.h}}
+\doxysubsubsection{\texorpdfstring{PETIT\_REG\_EXTERNAL}{PETIT\_REG\_EXTERNAL}}
+{\footnotesize\ttfamily \#define PETIT\+\_\+\+REG\+\_\+\+EXTERNAL~(0x2222)}
+
+\Hypertarget{_petit_modbus_port_8h_ae0647f4e3383d710744ecc345062e67f}\label{_petit_modbus_port_8h_ae0647f4e3383d710744ecc345062e67f} 
+\index{PetitModbusPort.h@{PetitModbusPort.h}!PETIT\_REG\_INTERNAL@{PETIT\_REG\_INTERNAL}}
+\index{PETIT\_REG\_INTERNAL@{PETIT\_REG\_INTERNAL}!PetitModbusPort.h@{PetitModbusPort.h}}
+\doxysubsubsection{\texorpdfstring{PETIT\_REG\_INTERNAL}{PETIT\_REG\_INTERNAL}}
+{\footnotesize\ttfamily \#define PETIT\+\_\+\+REG\+\_\+\+INTERNAL~(0x1333)}
+
+\Hypertarget{_petit_modbus_port_8h_aa8cecfc5c5c054d2875c03e77b7be15d}\label{_petit_modbus_port_8h_aa8cecfc5c5c054d2875c03e77b7be15d} 
+\index{PetitModbusPort.h@{PetitModbusPort.h}!TRUE@{TRUE}}
+\index{TRUE@{TRUE}!PetitModbusPort.h@{PetitModbusPort.h}}
+\doxysubsubsection{\texorpdfstring{TRUE}{TRUE}}
+{\footnotesize\ttfamily \#define TRUE~(1)}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_petit_modbus_port_8h_a3686852a982a443cf643e201ff19f64c}\label{_petit_modbus_port_8h_a3686852a982a443cf643e201ff19f64c} 
+\index{PetitModbusPort.h@{PetitModbusPort.h}!PetitPortDirRx@{PetitPortDirRx}}
+\index{PetitPortDirRx@{PetitPortDirRx}!PetitModbusPort.h@{PetitModbusPort.h}}
+\doxysubsubsection{\texorpdfstring{PetitPortDirRx()}{PetitPortDirRx()}}
+{\footnotesize\ttfamily void Petit\+Port\+Dir\+Rx (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+sets the rs485 transciever direction pin for receive \Hypertarget{_petit_modbus_port_8h_aa293caeb2a9693ff090d6fa4c8a7579d}\label{_petit_modbus_port_8h_aa293caeb2a9693ff090d6fa4c8a7579d} 
+\index{PetitModbusPort.h@{PetitModbusPort.h}!PetitPortDirTx@{PetitPortDirTx}}
+\index{PetitPortDirTx@{PetitPortDirTx}!PetitModbusPort.h@{PetitModbusPort.h}}
+\doxysubsubsection{\texorpdfstring{PetitPortDirTx()}{PetitPortDirTx()}}
+{\footnotesize\ttfamily void Petit\+Port\+Dir\+Tx (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+sets the rs485 transciever direction pin for transmit \Hypertarget{_petit_modbus_port_8h_ae7ce961ccb117e9b42aa83bd051448be}\label{_petit_modbus_port_8h_ae7ce961ccb117e9b42aa83bd051448be} 
+\index{PetitModbusPort.h@{PetitModbusPort.h}!PetitPortTimerStart@{PetitPortTimerStart}}
+\index{PetitPortTimerStart@{PetitPortTimerStart}!PetitModbusPort.h@{PetitModbusPort.h}}
+\doxysubsubsection{\texorpdfstring{PetitPortTimerStart()}{PetitPortTimerStart()}}
+{\footnotesize\ttfamily void Petit\+Port\+Timer\+Start (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+starts the inter-\/byte timer. if the timer fires, the rx buffer is invalid \Hypertarget{_petit_modbus_port_8h_a26c4d97e7f4a6d5ed230404d8c0fc8b2}\label{_petit_modbus_port_8h_a26c4d97e7f4a6d5ed230404d8c0fc8b2} 
+\index{PetitModbusPort.h@{PetitModbusPort.h}!PetitPortTimerStop@{PetitPortTimerStop}}
+\index{PetitPortTimerStop@{PetitPortTimerStop}!PetitModbusPort.h@{PetitModbusPort.h}}
+\doxysubsubsection{\texorpdfstring{PetitPortTimerStop()}{PetitPortTimerStop()}}
+{\footnotesize\ttfamily void Petit\+Port\+Timer\+Stop (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+stops the inter-\/byte timer. petitmodbus calls this if the message has a valid servant address and size \Hypertarget{_petit_modbus_port_8h_ad7806b34429c3faec1d472a1fb146e81}\label{_petit_modbus_port_8h_ad7806b34429c3faec1d472a1fb146e81} 
+\index{PetitModbusPort.h@{PetitModbusPort.h}!PetitPortTxBegin@{PetitPortTxBegin}}
+\index{PetitPortTxBegin@{PetitPortTxBegin}!PetitModbusPort.h@{PetitModbusPort.h}}
+\doxysubsubsection{\texorpdfstring{PetitPortTxBegin()}{PetitPortTxBegin()}}
+{\footnotesize\ttfamily void Petit\+Port\+Tx\+Begin (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\+\_\+t}}}]{tx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+sends the first byte to begin sending the rest of the response \Hypertarget{_petit_modbus_port_8h_ad88239bde4899b1be809af81b121c656}\label{_petit_modbus_port_8h_ad88239bde4899b1be809af81b121c656} 
+\index{PetitModbusPort.h@{PetitModbusPort.h}!PetitRxBufferInsert@{PetitRxBufferInsert}}
+\index{PetitRxBufferInsert@{PetitRxBufferInsert}!PetitModbusPort.h@{PetitModbusPort.h}}
+\doxysubsubsection{\texorpdfstring{PetitRxBufferInsert()}{PetitRxBufferInsert()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\+\_\+t}} Petit\+Rx\+Buffer\+Insert (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\+\_\+t}}}]{rcvd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+Inserts bits into the buffer on device receive. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em rcvd} & the byte to insert into the buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bytes left to insert (0 if byte insertion failed) 
+\end{DoxyReturn}
+\Hypertarget{_petit_modbus_port_8h_a40518f778342c63feb55e1a33e661bc8}\label{_petit_modbus_port_8h_a40518f778342c63feb55e1a33e661bc8} 
+\index{PetitModbusPort.h@{PetitModbusPort.h}!PetitRxBufferReset@{PetitRxBufferReset}}
+\index{PetitRxBufferReset@{PetitRxBufferReset}!PetitModbusPort.h@{PetitModbusPort.h}}
+\doxysubsubsection{\texorpdfstring{PetitRxBufferReset()}{PetitRxBufferReset()}}
+{\footnotesize\ttfamily void Petit\+Rx\+Buffer\+Reset (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+Reset the modbus buffer.
+
+This function is called by the interrupt code that handles byte to byte time overrun. It is also called by the validation function to reject data that is not for this device before more system resources are taken. \Hypertarget{_petit_modbus_port_8h_af6065cec82799ffca180fb2dc6688008}\label{_petit_modbus_port_8h_af6065cec82799ffca180fb2dc6688008} 
+\index{PetitModbusPort.h@{PetitModbusPort.h}!PetitTxBufferPop@{PetitTxBufferPop}}
+\index{PetitTxBufferPop@{PetitTxBufferPop}!PetitModbusPort.h@{PetitModbusPort.h}}
+\doxysubsubsection{\texorpdfstring{PetitTxBufferPop()}{PetitTxBufferPop()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\+\_\+t}} Petit\+Tx\+Buffer\+Pop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+This function removes a byte from the buffer and places it on "{}tx"{} to be sent over rs485. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em tx} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if there is a byte to be sent, 0 otherwise if the buffer is empty 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{_petit_modbus_port_8h_a1bf2bbd7eedc596e7f3a418389fd793f}\label{_petit_modbus_port_8h_a1bf2bbd7eedc596e7f3a418389fd793f} 
+\index{PetitModbusPort.h@{PetitModbusPort.h}!PetitRegChange@{PetitRegChange}}
+\index{PetitRegChange@{PetitRegChange}!PetitModbusPort.h@{PetitModbusPort.h}}
+\doxysubsubsection{\texorpdfstring{PetitRegChange}{PetitRegChange}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\+\_\+t}} Petit\+Reg\+Change\hspace{0.3cm}{\ttfamily [extern]}}
+

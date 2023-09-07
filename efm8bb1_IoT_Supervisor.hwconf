@@ -80,6 +80,7 @@
     <property object="TIMER_SETUP_0" propertyId="timer_setup.timer1firmwarecontrol.timeroverflowflag" value="No overflow flag"/>
     <property object="TIMER_SETUP_0" propertyId="timer_setup.timer1firmwarecontrol.timerstartorstop" value="Switch mode by T1M(TMOD[5:4])"/>
     <property object="UART_0" propertyId="uart.serialportcontrol.enablereceive" value="Enabled"/>
+    <property object="VDDMON_0" propertyId="ABPeripheral.included" value="true"/>
     <property object="VREF_0" propertyId="ABPeripheral.included" value="true"/>
     <property object="WDT_0" propertyId="ABPeripheral.included" value="true"/>
     <property object="WDT_0" propertyId="wdt.watchdogcontrol.wdtinitialvalue" value="1"/>
@@ -182,6 +183,7 @@
     <property object="TIMER_SETUP_0" propertyId="timer_setup.timer1firmwarecontrol.timerinterruptpendingflag" value="No interrupt Flag"/>
     <property object="TIMER_SETUP_0" propertyId="timer_setup.timer1firmwarecontrol.timeroverflowflag" value="No overflow flag"/>
     <property object="TIMER_SETUP_0" propertyId="timer_setup.timer1firmwarecontrol.timerstartorstop" value="Switch mode by T1M(TMOD[5:4])"/>
+    <property object="VDDMON_0" propertyId="ABPeripheral.included" value="true"/>
     <property object="VREF_0" propertyId="ABPeripheral.included" value="true"/>
     <property object="WDT_0" propertyId="ABPeripheral.included" value="true"/>
     <property object="WDT_0" propertyId="wdt.watchdogcontrol.wdtinitialvalue" value="1"/>

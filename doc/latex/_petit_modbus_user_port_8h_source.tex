@@ -1,0 +1,59 @@
+\doxysection{Petit\+Modbus\+User\+Port.\+h}
+\hypertarget{_petit_modbus_user_port_8h_source}{}\label{_petit_modbus_user_port_8h_source}\index{inc/PetitModbusUserPort.h@{inc/PetitModbusUserPort.h}}
+\mbox{\hyperlink{_petit_modbus_user_port_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00008}00008\ \textcolor{preprocessor}{\#ifndef\ INC\_PETITMODBUSUSERPORT\_H\_}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00009}00009\ \textcolor{preprocessor}{\#define\ INC\_PETITMODBUSUSERPORT\_H\_}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00012}00012\ \textcolor{comment}{//\ Petit\ Modbus\ RTU\ Slave\ Output\ Register\ Number}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00013}00013\ \textcolor{comment}{//\ Have\ to\ put\ a\ number\ of\ registers\ here}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00014}00014\ \textcolor{comment}{//\ It\ has\ to\ be\ bigger\ than\ 0\ (zero)!!}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00015}\mbox{\hyperlink{_petit_modbus_user_port_8h_a3e688be79d93b64465b56a79f5abb1b6}{00015}}\ \textcolor{preprocessor}{\#define\ NUMBER\_OF\_PETITREGISTERS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\ 5\ )}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00016}\mbox{\hyperlink{_petit_modbus_user_port_8h_ab2c85428515f7f5db5aebc75985f22a7}{00016}}\ \textcolor{preprocessor}{\#define\ NUMBER\_OF\_INPUT\_PETITREGISTERS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\ 1\ )}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00017}\mbox{\hyperlink{_petit_modbus_user_port_8h_af4ebe6d82ada506a09972cd6e9696070}{00017}}\ \textcolor{preprocessor}{\#define\ NUMBER\_OF\_REGISTERS\_IN\_BUFFER\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\ 3\ )}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00019}\mbox{\hyperlink{_petit_modbus_user_port_8h_a39f1014281cf1c62a3b96cda27cfae74}{00019}}\ \textcolor{preprocessor}{\#define\ PETITMODBUS\_READ\_HOLDING\_REGISTERS\_ENABLED\ \ \ \ \ \ (\ 1\ )}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00020}\mbox{\hyperlink{_petit_modbus_user_port_8h_a8216964aef9b5e3f6f48cf1780f26bc7}{00020}}\ \textcolor{preprocessor}{\#define\ PETITMODBUSWRITE\_SINGLE\_REGISTER\_ENABLED\ \ \ \ \ \ \ \ (\ 1\ )}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00021}\mbox{\hyperlink{_petit_modbus_user_port_8h_a9c859ce921bb9ee74747191750c469ef}{00021}}\ \textcolor{preprocessor}{\#define\ PETITMODBUS\_WRITE\_MULTIPLE\_REGISTERS\_ENABLED\ \ \ \ (\ 1\ )}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00022}\mbox{\hyperlink{_petit_modbus_user_port_8h_a602a42c0a5123aab7a04d5ad1f7cc197}{00022}}\ \textcolor{preprocessor}{\#define\ PETITMODBUS\_READ\_INPUT\_REGISTERS\_ENABLED\ \ \ \ \ \ \ \ (\ 1\ )}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00023}00023\ \textcolor{comment}{//\ Where\ to\ process\ our\ modbus\ message}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00024}00024\ \textcolor{comment}{//\ 0\ for\ processing\ in\ its\ own\ cycle}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00025}00025\ \textcolor{comment}{//\ 1\ for\ processing\ in\ the\ same\ cycle\ as\ TX\ CRC\ calculation}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00026}\mbox{\hyperlink{_petit_modbus_user_port_8h_af7aea29ee2c3716929c26fbaeb3db664}{00026}}\ \textcolor{preprocessor}{\#define\ PETITMODBUS\_PROCESS\_POSITION\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\ 0\ )}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00027}00027\ \textcolor{comment}{//\ Cycles\ to\ delay\ TX\ once\ the\ CRC\ finishes\ calculation}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00028}00028\ \textcolor{comment}{//\ \#define\ PETITMODBUS\_DLY\_TOP\ (0)}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00029}00029\ \textcolor{comment}{//\ Address\ of\ this\ device}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00030}00030\ \textcolor{comment}{//\ \#define\ PETITMODBUS\_SLAVE\_ADDRESS\ (1)}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00032}00032\ \textcolor{comment}{//\ how\ to\ process\ the\ CRC}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00033}00033\ \textcolor{comment}{//\ PETIT\_CRC\_TABULAR\ takes\ up\ code\ space\ but\ is\ the\ fastest.}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00034}00034\ \textcolor{comment}{//\ \ \ \ \ this\ should\ probably\ be\ your\ default\ choice}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00035}00035\ \textcolor{comment}{//\ PETIT\_CRC\_BITWISE\ takes\ up\ cycles\ but\ is\ space\ efficient}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00036}00036\ \textcolor{comment}{//\ PETIT\_CRC\_EXTERNAL\ requires\ you\ to\ define\ PetitPortCRC16Calc.}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00037}00037\ \textcolor{comment}{//\ \ \ \ \ it\ is\ possible\ to\ use\ hardware\ CRC\ calculation\ with\ this.}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00038}\mbox{\hyperlink{_petit_modbus_user_port_8h_a8b7006091f7316b43c5dd5cdc0b9f6f6}{00038}}\ \textcolor{preprocessor}{\#define\ PETIT\_CRC\ PETIT\_CRC\_EXTERNAL}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00040}\mbox{\hyperlink{_petit_modbus_user_port_8h_a1cc836ded84d345bc34413235357fff7}{00040}}\ \textcolor{preprocessor}{\#define\ PETIT\_REG\ PETIT\_REG\_EXTERNAL}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00042}\mbox{\hyperlink{_petit_modbus_user_port_8h_ab7f947aa4720388122b6a42c168c2757}{00042}}\ \textcolor{preprocessor}{\#define\ PETIT\_INPUT\_REG\ PETIT\_REG\_INTERNAL}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00045}00045\ \textcolor{comment}{//\ define\ this\ to\ let\ the\ CRC\ table\ reside\ in\ code\ memory\ rather\ than\ RAM}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00046}\mbox{\hyperlink{_petit_modbus_user_port_8h_a8fa53bea1dafb32216f829594981435a}{00046}}\ \textcolor{preprocessor}{\#define\ PETIT\_CODE\ code}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00047}00047\ \textcolor{comment}{//\ define\ this\ for\ booleans}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00048}\mbox{\hyperlink{_petit_modbus_user_port_8h_afd4ae3efcf82687fa69481d6e27efad3}{00048}}\ \textcolor{preprocessor}{\#define\ pb\_t\ bool}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00049}00049\ \textcolor{comment}{//\ define\ this\ for\ unsigned\ octets}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00050}\mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{00050}}\ \textcolor{preprocessor}{\#define\ pu8\_t\ uint8\_t}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00051}00051\ \textcolor{comment}{//\ define\ this\ for\ 16-\/bit\ unsigned}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00052}\mbox{\hyperlink{_petit_modbus_user_port_8h_a01c483557b33c4176a1d15e40e35dc75}{00052}}\ \textcolor{preprocessor}{\#define\ pu16\_t\ uint16\_t}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00053}00053\ \textcolor{comment}{//\ substitute\ the\ PetitPortCRC16Calc\ function\ call\ for\ our\ own}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00054}\mbox{\hyperlink{_petit_modbus_user_port_8h_a75da6d92fc5731207c41bce439e995ca}{00054}}\ \textcolor{preprocessor}{\#define\ PetitPortCRC16Calc(a,\ d)\ KirisakiCRC16Calc(a,\ d)}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00055}00055\ \textcolor{comment}{//\ Cycles\ to\ delay\ TX\ once\ the\ CRC\ finishes\ calculation}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00056}00056\ \textcolor{keyword}{extern}\ uint8\_t\ \mbox{\hyperlink{group___modbus___middle_ware_ga9622a98d515bab04ca2a83558b0f571a}{PETITMODBUS\_DLY\_TOP}};}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00057}00057\ \textcolor{comment}{//\ Address\ of\ this\ device}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00058}00058\ \textcolor{keyword}{extern}\ uint8\_t\ \mbox{\hyperlink{group___modbus___middle_ware_ga25a0ea5f5173ae31a717fec624fd0a8c}{PETITMODBUS\_SLAVE\_ADDRESS}};}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_petit_modbus_user_port_8h_source_l00060}00060\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ INC\_PETITMODBUSUSERPORT\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

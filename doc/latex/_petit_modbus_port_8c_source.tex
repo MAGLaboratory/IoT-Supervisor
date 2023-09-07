@@ -1,0 +1,158 @@
+\doxysection{Petit\+Modbus\+Port.\+c}
+\hypertarget{_petit_modbus_port_8c_source}{}\label{_petit_modbus_port_8c_source}\index{src/PetitModbusPort.c@{src/PetitModbusPort.c}}
+\mbox{\hyperlink{_petit_modbus_port_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00012}00012\ \textcolor{comment}{//\ Necessary\ Petit\ Modbus\ Includes}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00013}00013\ \textcolor{preprocessor}{\#include\ "{}PetitModbusPort.h"{}}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00014}00014\ \textcolor{comment}{//\ User\ Includes}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00015}00015\ \textcolor{preprocessor}{\#include\ <SI\_EFM8BB1\_Register\_Enums.h>}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00016}00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_io_t___supervisor_8h}{IoT\_Supervisor.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_modbus_middle_ware_8h}{ModbusMiddleWare.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00028}\mbox{\hyperlink{group___petit___modbus___porting___functions_ga44d78866eb528ef7f1152737e018706e}{00028}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___petit___modbus___porting___functions_ga44d78866eb528ef7f1152737e018706e}{PetitPortTimerStart}}()}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00029}00029\ \{}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00030}00030\ \ \ \ \ \mbox{\hyperlink{group___main___application_ga9f016462fc2803075b67d903c4045aa7}{t0Count}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00031}00031\ \ \ \ \ TL0\ =\ (0x20\ <<\ TL0\_TL0\_\_SHIFT);}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00032}00032\ \ \ \ \ TCON\_TR0\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00033}00033\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00034}00034\ \}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00040}\mbox{\hyperlink{group___petit___modbus___porting___functions_gaf6adc888121879ba74010f58659a2b55}{00040}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___petit___modbus___porting___functions_gaf6adc888121879ba74010f58659a2b55}{PetitPortTimerStop}}()}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00041}00041\ \{}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00042}00042\ \ \ \ \ TCON\_TR0\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00043}00043\ \ \ \ \ TL0\ =\ (0x20\ <<\ TL0\_TL0\_\_SHIFT);}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00044}00044\ \ \ \ \ \mbox{\hyperlink{group___main___application_ga9f016462fc2803075b67d903c4045aa7}{t0Count}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00045}00045\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00046}00046\ \}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00051}\mbox{\hyperlink{group___petit___modbus___porting___functions_gaf0ee2372c22e97ffa56b05f5e6f6fe37}{00051}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___petit___modbus___porting___functions_gaf0ee2372c22e97ffa56b05f5e6f6fe37}{PetitPortDirTx}}()}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00052}00052\ \{}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00053}00053\ \ \ \ \ P0\_B3\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00054}00054\ \ \ \ \ \mbox{\hyperlink{group___configuration___state___machine_ga4310b6cbe0d1f02c0d8bacadf8fa09a2}{dir\_tx}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00055}00055\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00056}00056\ \}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00061}\mbox{\hyperlink{group___petit___modbus___porting___functions_gadcc9e71a85b07580f8c711c39ddd1a03}{00061}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___petit___modbus___porting___functions_gadcc9e71a85b07580f8c711c39ddd1a03}{PetitPortDirRx}}()}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00062}00062\ \{}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00063}00063\ \ \ \ \ P0\_B3\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00064}00064\ \ \ \ \ \mbox{\hyperlink{group___configuration___state___machine_ga4310b6cbe0d1f02c0d8bacadf8fa09a2}{dir\_tx}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00065}00065\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00066}00066\ \}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00071}\mbox{\hyperlink{group___petit___modbus___porting___functions_gad7806b34429c3faec1d472a1fb146e81}{00071}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___petit___modbus___porting___functions_gad7806b34429c3faec1d472a1fb146e81}{PetitPortTxBegin}}(\mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\_t}}\ tx)}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00072}00072\ \{}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00073}00073\ \ \ \ \ \mbox{\hyperlink{group___petit___modbus___porting___functions_gaf0ee2372c22e97ffa56b05f5e6f6fe37}{PetitPortDirTx}}();}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00074}00074\ \ \ \ \ \textcolor{comment}{//\ no\ need\ to\ check\ here,\ this\ function\ should\ only\ be\ called\ by\ }}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00075}00075\ \ \ \ \ \textcolor{comment}{//\ petitmodbus\ on\ the\ first\ character\ anyway}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00076}00076\ \ \ \ \ SBUF0\ =\ tx;}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00077}00077\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00078}00078\ \}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00086}\mbox{\hyperlink{group___petit___modbus___porting___functions_ga8c879da6e57433f788bec497418f778f}{00086}}\ \mbox{\hyperlink{_petit_modbus_user_port_8h_afd4ae3efcf82687fa69481d6e27efad3}{pb\_t}}\ \mbox{\hyperlink{group___petit___modbus___porting___functions_ga8c879da6e57433f788bec497418f778f}{PetitPortRegWrite}}(\mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\_t}}\ Address,\ \mbox{\hyperlink{_petit_modbus_user_port_8h_a01c483557b33c4176a1d15e40e35dc75}{pu16\_t}}\ Data)}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00087}00087\ \{}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00088}00088\ \ \ \ \ \textcolor{comment}{//\ check\ if\ you\ can\ write\ to\ this}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00089}00089\ \ \ \ \ \textcolor{keywordflow}{if}\ (Address\ >\ \mbox{\hyperlink{_modbus_middle_ware_8h_ae15b34c23dde54da2ab2f40099e63cd7a9e0f8f62c78b0abcc482c8b9d5415ffd}{eMMW\_HR\_CFG}}\ \&\&\ \mbox{\hyperlink{group___configuration___state___machine_ga6c9c723896f1d714b5d1caeb1afceda6}{cfgSmS}}\ !=\ \mbox{\hyperlink{_io_t___supervisor_8h_a2e2885d00577c7076677cc277ac4f238a043ae948bd3634b5a2b9a9d2bfd3f69b}{eCFG\_Cache}})}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00090}00090\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00092}00092\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00093}00093\ \ \ \ \ \textcolor{keywordflow}{if}\ (Address\ ==\ \mbox{\hyperlink{_modbus_middle_ware_8h_ae15b34c23dde54da2ab2f40099e63cd7add4e83572d4663579adad05204248312}{eMMW\_HR\_STA}})}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00094}00094\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00095}00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Data\ ==\ \mbox{\hyperlink{_io_t___supervisor_8h_a8f2ab3d655054566ca4857f1ffbeb938}{C\_WDT\_PET}})}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00096}00096\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___modbus___w_d_t___state___machine_ga25dc89f8181779a398b5b593342f6783}{mbWDTpet}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___modbus___w_d_t___state___machine_gabc0aa6fcb559a316edc1f101fea54a5e}{mbWDTen}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00099}00099\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00100}00100\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (Data\ ==\ \mbox{\hyperlink{_io_t___supervisor_8h_a297e9ea9b92297b1cf3d85e3b12e8f30}{C\_WDT\_DIS}})}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00101}00101\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___modbus___w_d_t___state___machine_gabc0aa6fcb559a316edc1f101fea54a5e}{mbWDTen}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00103}00103\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00104}00104\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00105}00105\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00107}00107\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00108}00108\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00109}00109\ \ \ \ \ \textcolor{keywordflow}{if}\ (Address\ ==\ \mbox{\hyperlink{_modbus_middle_ware_8h_ae15b34c23dde54da2ab2f40099e63cd7a9e0f8f62c78b0abcc482c8b9d5415ffd}{eMMW\_HR\_CFG}})}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00110}00110\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00111}00111\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___configuration___state___machine_ga1edfc8756590da90a14f41af9bd71dc4}{pw}}\ =\ Data;}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00112}00112\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___configuration___state___machine_ga0959e8576e2d8601bc958bbf7680f0d4}{pw\_flag}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00113}00113\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00114}00114\ \ \ \ \ \textcolor{keywordflow}{if}\ (Address\ ==\ \mbox{\hyperlink{_modbus_middle_ware_8h_ae15b34c23dde54da2ab2f40099e63cd7ac60cb5800869e84a422a88476e11a768}{eMMW\_HR\_MB}})}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00115}00115\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00116}00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((Data\ \&\ 0xFF)\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00117}00117\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((Data\ \&\ 0xFF)\ <\ 248)}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___configuration___state___machine_ga14ee0f41b2e64cad6f4c28cbb3fcb39b}{cfg}}.\mbox{\hyperlink{structcfg__t_a643b84b97b9a1544e5fc8b949fc4ba60}{sid}}\ =\ Data\ \&\ 0xFF;}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00122}00122\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00123}00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Data\ >>\ 8\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00124}00124\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Data\ >>\ 8\ <\ \mbox{\hyperlink{_modbus_middle_ware_8h_ac4b55353c236e4425b062d426cb99eacaf518145fe38ea36c4539548d591a1b6f}{eMMW\_B\_NUM}})}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___configuration___state___machine_ga14ee0f41b2e64cad6f4c28cbb3fcb39b}{cfg}}.\mbox{\hyperlink{structcfg__t_ae6a3e8755dc67d806f4689f25b386636}{baud}}\ =\ Data\ >>\ 8;}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00129}00129\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00130}00130\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00131}00131\ \ \ \ \ \textcolor{keywordflow}{if}\ (Address\ ==\ \mbox{\hyperlink{_modbus_middle_ware_8h_ae15b34c23dde54da2ab2f40099e63cd7a02f9a325325078c1be53644e68132026}{eMMW\_HR\_WDT}})}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00132}00132\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00133}00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Data\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00134}00134\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___configuration___state___machine_ga14ee0f41b2e64cad6f4c28cbb3fcb39b}{cfg}}.\mbox{\hyperlink{structcfg__t_a9103f5dbd646774eb03bc79a5811166d}{wdto}}\ =\ Data;}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00136}00136\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00137}00137\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00138}00138\ \ \ \ \ \textcolor{keywordflow}{if}\ (Address\ ==\ \mbox{\hyperlink{_modbus_middle_ware_8h_ae15b34c23dde54da2ab2f40099e63cd7a1bc2cad258457c7b434418f8ff350472}{eMMW\_HR\_PW}})}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00139}00139\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00140}00140\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Data\ !=\ 0\ \&\&\ Data\ !=\ \mbox{\hyperlink{_io_t___supervisor_8h_a35004385fd057486275757ee2d0dd1e9}{C\_CMD\_COMMIT}}\ \&\&\ Data\ !=\ \mbox{\hyperlink{_io_t___supervisor_8h_a3eeb3473a2e1cd78451afc01b331d89f}{C\_CMD\_CANCEL}})}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00141}00141\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___configuration___state___machine_ga14ee0f41b2e64cad6f4c28cbb3fcb39b}{cfg}}.\mbox{\hyperlink{structcfg__t_a1edfc8756590da90a14f41af9bd71dc4}{pw}}\ =\ Data;}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00143}00143\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00144}00144\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00146}00146\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00147}00147\ \}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00155}\mbox{\hyperlink{group___petit___modbus___porting___functions_gaa9a6de5673735007f9db7fef4d23ed59}{00155}}\ \mbox{\hyperlink{_petit_modbus_user_port_8h_afd4ae3efcf82687fa69481d6e27efad3}{pb\_t}}\ \mbox{\hyperlink{group___petit___modbus___porting___functions_gaa9a6de5673735007f9db7fef4d23ed59}{PetitPortRegRead}}(\mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\_t}}\ Address,\ \mbox{\hyperlink{_petit_modbus_user_port_8h_a01c483557b33c4176a1d15e40e35dc75}{pu16\_t}}*\ Data)}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00156}00156\ \{}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00157}00157\ \ \ \ \ \textcolor{comment}{//\ check\ if\ you\ can\ access\ this}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00158}00158\ \ \ \ \ \textcolor{keywordflow}{if}\ (Address\ >\ \mbox{\hyperlink{_modbus_middle_ware_8h_ae15b34c23dde54da2ab2f40099e63cd7a9e0f8f62c78b0abcc482c8b9d5415ffd}{eMMW\_HR\_CFG}}\ \&\&}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ (\mbox{\hyperlink{group___configuration___state___machine_ga6c9c723896f1d714b5d1caeb1afceda6}{cfgSmS}}\ !=\ \mbox{\hyperlink{_io_t___supervisor_8h_a2e2885d00577c7076677cc277ac4f238a043ae948bd3634b5a2b9a9d2bfd3f69b}{eCFG\_Cache}}\ \&\&\ \mbox{\hyperlink{group___configuration___state___machine_ga6c9c723896f1d714b5d1caeb1afceda6}{cfgSmS}}\ !=\ \mbox{\hyperlink{_io_t___supervisor_8h_a2e2885d00577c7076677cc277ac4f238a87a1adc98bfaf1f2d90f0f89416e0884}{eCFG\_Commit}}))}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00160}00160\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00161}00161\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00162}00162\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00163}00163\ \ \ \ \ \textcolor{keywordflow}{if}\ (Address\ ==\ \mbox{\hyperlink{_modbus_middle_ware_8h_ae15b34c23dde54da2ab2f40099e63cd7add4e83572d4663579adad05204248312}{eMMW\_HR\_STA}})}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00164}00164\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00165}00165\ \ \ \ \ \ \ \ \ *Data\ =\ \mbox{\hyperlink{group___main___application_ga5aeeb2c06cb9bc8498f6ca5a520157d5}{sv\_dev\_sta}}.\mbox{\hyperlink{unionsv__dev__sta__t_a4313c9563516f94387762ab05763456b}{b}};}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00166}00166\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00167}00167\ \ \ \ \ \textcolor{keywordflow}{if}\ (Address\ ==\ \mbox{\hyperlink{_modbus_middle_ware_8h_ae15b34c23dde54da2ab2f40099e63cd7a9e0f8f62c78b0abcc482c8b9d5415ffd}{eMMW\_HR\_CFG}})}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00168}00168\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00169}00169\ \ \ \ \ \ \ \ \ *Data\ =\ \mbox{\hyperlink{group___configuration___state___machine_ga6c9c723896f1d714b5d1caeb1afceda6}{cfgSmS}};}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00170}00170\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00171}00171\ \ \ \ \ \textcolor{keywordflow}{if}\ (Address\ ==\ \mbox{\hyperlink{_modbus_middle_ware_8h_ae15b34c23dde54da2ab2f40099e63cd7ac60cb5800869e84a422a88476e11a768}{eMMW\_HR\_MB}})}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00172}00172\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00173}00173\ \ \ \ \ \ \ \ \ *Data\ =\ \mbox{\hyperlink{group___configuration___state___machine_ga14ee0f41b2e64cad6f4c28cbb3fcb39b}{cfg}}.\mbox{\hyperlink{structcfg__t_ae6a3e8755dc67d806f4689f25b386636}{baud}}\ <<\ 8\ |\ \mbox{\hyperlink{group___configuration___state___machine_ga14ee0f41b2e64cad6f4c28cbb3fcb39b}{cfg}}.\mbox{\hyperlink{structcfg__t_a643b84b97b9a1544e5fc8b949fc4ba60}{sid}};}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00174}00174\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00175}00175\ \ \ \ \ \textcolor{keywordflow}{if}\ (Address\ ==\ \mbox{\hyperlink{_modbus_middle_ware_8h_ae15b34c23dde54da2ab2f40099e63cd7a02f9a325325078c1be53644e68132026}{eMMW\_HR\_WDT}})}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00176}00176\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00177}00177\ \ \ \ \ \ \ \ \ *Data\ =\ \mbox{\hyperlink{group___modbus___w_d_t___state___machine_gab9eb643439bfb234f1a6da202f1cbf60}{MB\_WD\_TIMEOUT}};}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00178}00178\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00179}00179\ \ \ \ \ \textcolor{keywordflow}{if}\ (Address\ ==\ \mbox{\hyperlink{_modbus_middle_ware_8h_ae15b34c23dde54da2ab2f40099e63cd7a1bc2cad258457c7b434418f8ff350472}{eMMW\_HR\_PW}})}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00180}00180\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00181}00181\ \ \ \ \ \ \ \ \ *Data\ =\ \mbox{\hyperlink{group___configuration___state___machine_ga14ee0f41b2e64cad6f4c28cbb3fcb39b}{cfg}}.\mbox{\hyperlink{structcfg__t_a1edfc8756590da90a14f41af9bd71dc4}{pw}};}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00182}00182\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00183}00183\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00184}00184\ \}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00193}00193\ \textcolor{comment}{//\ this\ function\ is\ basically\ here\ as\ an\ example,\ it\ is\ not\ used.}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00194}00194\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00195}00195\ \textcolor{comment}{pu8\_t\ PetitPortInputRegRead(pu8\_t\ Address,\ pu16\_t*\ Data)}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00196}00196\ \textcolor{comment}{\{}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00197}00197\ \textcolor{comment}{\ \ \ \ return\ 1;}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00198}00198\ \textcolor{comment}{\}}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00199}00199\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00200}00200\ }
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00201}00201\ \textcolor{comment}{//\ group\ Petit\ Modbus\ Porting\ Functions}}
+\DoxyCodeLine{\Hypertarget{_petit_modbus_port_8c_source_l00206}00206\ \textcolor{comment}{//\ group\ Petit\ Modbus\ Support}}
+
+\end{DoxyCode}

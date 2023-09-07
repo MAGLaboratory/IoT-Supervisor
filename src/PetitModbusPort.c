@@ -1,18 +1,29 @@
-//==============================================================================
-// PetitModbusPort.c
-// This file contains the functions that are supposed to be defined to port
-// PetitModbus to this specific microcontroller.
-//==============================================================================
+/*******************************************************************************
+ * @file PetitModbusPort.c
+ * This file contains the functions that are supposed to be defined to port
+ * PetitModbus to this specific microcontroller.
+ ******************************************************************************/
 
+/**
+ * @defgroup Petit_Modbus_Support Petit Modbus Support
+ * @{
+ */
+
+// Necessary Petit Modbus Includes
 #include "PetitModbusPort.h"
+// User Includes
 #include <SI_EFM8BB1_Register_Enums.h>
 #include "IoT_Supervisor.h"
 #include "ModbusMiddleWare.h"
 
-/*
- * Function Name: PetitPortTimerStart
- * @Description:
- *   starts the inter-byte timer.  if the timer fires, the rx buffer is invalid
+
+/**
+ * @defgroup Petit_Modbus_Porting_Functions Petit Modbus Porting Functions
+ * @brief These functions allow Petit Modbus to work with our hardware
+ * @{
+ */
+/**
+ *  starts the inter-byte timer.  if the timer fires, the rx buffer is invalid
  */
 void PetitPortTimerStart()
 {
@@ -22,9 +33,7 @@ void PetitPortTimerStart()
 	return;
 }
 
-/*
- * Function Name: PetitPortTimerStop
- * @Description:
+/**
  *   stops the inter-byte timer.  petitmodbus calls this if the message has a
  *   valid servant address and size
  */
@@ -36,9 +45,8 @@ void PetitPortTimerStop()
 	return;
 }
 
-/*
- * Function Name: PetitPortDirTx
- * @Description: sets the rs485 transciever direction pin for transmit
+/**
+ * sets the rs485 transciever direction pin for transmit
  */
 void PetitPortDirTx()
 {
@@ -47,9 +55,8 @@ void PetitPortDirTx()
 	return;
 }
 
-/*
- * Function Name: PetitPortDirRx
- * @Description: sets the rs485 transciever direction pin for receive
+/**
+ * sets the rs485 transciever direction pin for receive
  */
 void PetitPortDirRx()
 {
@@ -58,9 +65,8 @@ void PetitPortDirRx()
 	return;
 }
 
-/*
- * Function Name: PetitPortTxBegin
- * @Description: sends the first byte to begin sending the rest of the response
+/**
+ * sends the first byte to begin sending the rest of the response
  */
 void PetitPortTxBegin(pu8_t tx)
 {
@@ -71,14 +77,13 @@ void PetitPortTxBegin(pu8_t tx)
 	return;
 }
 
-/*
- * Function Name: PetitPortRegWrite
- * @Description: writes to the registers
- * @Return: the number of registers written
+/**
+ * writes to the registers
+ * @return the number of registers written
  *   0 if an error occurred during processing
  *   1 if everything went smoothly
  */
-pu8_t PetitPortRegWrite(pu8_t Address, pu16_t Data)
+pb_t PetitPortRegWrite(pu8_t Address, pu16_t Data)
 {
 	// check if you can write to this
 	if (Address > eMMW_HR_CFG && cfgSmS != eCFG_Cache)
@@ -141,14 +146,13 @@ pu8_t PetitPortRegWrite(pu8_t Address, pu16_t Data)
 	return 1;
 }
 
-/*
- * Function Name: PetitPortRegRead
- * @Description: reads the registers
- * @Return: the number of registers read
+/**
+ * reads the registers
+ * @return: the number of registers read
  *   0 if an error occurred during processing
  *   1 if everything went smoothly
  */
-pu8_t PetitPortRegRead(pu8_t Address, pu16_t* Data)
+pb_t PetitPortRegRead(pu8_t Address, pu16_t* Data)
 {
 	// check if you can access this
 	if (Address > eMMW_HR_CFG &&
@@ -179,10 +183,10 @@ pu8_t PetitPortRegRead(pu8_t Address, pu16_t* Data)
 	return 1;
 }
 
-/*
- * Function Name: PetitPortInputRegRead
- * @Description: reads input registers
- * @Return: the number of registers read
+/**
+ * @fn PetitPortInputRegRead
+ * reads input registers
+ * @return: the number of registers read
  *   0 if an error occurred during processing
  *   1 if everything went smoothly
  */
@@ -194,4 +198,12 @@ pu8_t PetitPortInputRegRead(pu8_t Address, pu16_t* Data)
 }
 */
 
+// group Petit Modbus Porting Functions
+/**
+ * @}
+ */
 
+// group Petit Modbus Support
+/**
+ * @}
+ */

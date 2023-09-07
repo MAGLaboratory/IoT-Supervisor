@@ -1,0 +1,72 @@
+\doxysection{Petit\+Modbus\+Port.\+h}
+\hypertarget{_petit_modbus_port_8h_source}{}\label{_petit_modbus_port_8h_source}\index{PetitModbus/inc/PetitModbusPort.h@{PetitModbus/inc/PetitModbusPort.h}}
+\mbox{\hyperlink{_petit_modbus_port_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ PetitModbusPort.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ This\ is\ a\ file\ to\ support\ porting\ PetitModbus}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ \_\_PETIT\_MODBUS\_PORT\_H\_\_}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ \_\_PETIT\_MODBUS\_PORT\_H\_\_}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{comment}{/**************************Petit\ Modbus\ Contents*******************************/}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ FALSE}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ FALSE\ (0)}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ TRUE}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ TRUE\ (1)}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ PETIT\_CRC\_TABULAR\ \ (0x4040)}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ PETIT\_CRC\_BITWISE\ \ (0x2020)}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ PETIT\_CRC\_EXTERNAL\ (0x9090)}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ PETIT\_REG\_INTERNAL\ (0x1333)}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ PETIT\_REG\_BOTH\ \ \ \ \ (0x1222)}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ PETIT\_REG\_EXTERNAL\ (0x2222)}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ file\ with\ user-\/defined\ constants}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_petit_modbus_user_port_8h}{PetitModbusUserPort.h}}"{}}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{comment}{//\ functions\ defined\ by\ petit\ modbus}}
+\DoxyCodeLine{00028\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_petit_modbus_port_8h_a40518f778342c63feb55e1a33e661bc8}{PetitRxBufferReset}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00029\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\_t}}\ \mbox{\hyperlink{_petit_modbus_port_8h_ad88239bde4899b1be809af81b121c656}{PetitRxBufferInsert}}(\mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\_t}}\ rcvd);}
+\DoxyCodeLine{00030\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\_t}}\ \mbox{\hyperlink{_petit_modbus_port_8h_af6065cec82799ffca180fb2dc6688008}{PetitTxBufferPop}}(\mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\_t}}*\ tx);}
+\DoxyCodeLine{00031\ \textcolor{comment}{/******************************User\ Content************************************/}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{comment}{//\ data\ defined\ for\ porting}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#if\ defined(PETIT\_REG)\ \&\&\ \(\backslash\)}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\ \ \ \ (PETIT\_REG\ ==\ PETIT\_REG\_INTERNAL\ ||\ PETIT\_REG\ ==\ PETIT\_REG\_BOTH)}}
+\DoxyCodeLine{00036\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{_petit_modbus_user_port_8h_a01c483557b33c4176a1d15e40e35dc75}{pu16\_t}}\ PetitRegisters[\mbox{\hyperlink{_petit_modbus_user_port_8h_a3e688be79d93b64465b56a79f5abb1b6}{NUMBER\_OF\_PETITREGISTERS}}];}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00038\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\_t}}\ \mbox{\hyperlink{_petit_modbus_port_8h_a1bf2bbd7eedc596e7f3a418389fd793f}{PetitRegChange}};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#if\ defined(PETIT\_INPUT\_REG)\ \&\&\ \(\backslash\)}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\ \ \ \ (PETIT\_INPUT\_REG\ ==\ PETIT\_REG\_INTERNAL\ ||\(\backslash\)}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PETIT\_INPUT\_REG\ ==\ PETIT\_REG\_BOTH)}}
+\DoxyCodeLine{00043\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{_petit_modbus_user_port_8h_a01c483557b33c4176a1d15e40e35dc75}{pu16\_t}}\ PetitInputRegisters[\mbox{\hyperlink{_petit_modbus_user_port_8h_ab2c85428515f7f5db5aebc75985f22a7}{NUMBER\_OF\_INPUT\_PETITREGISTERS}}];}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{comment}{//\ functions\ to\ be\ defined\ for\ porting}}
+\DoxyCodeLine{00047\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_petit_modbus_port_8h_ad7806b34429c3faec1d472a1fb146e81}{PetitPortTxBegin}}(\mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\_t}}\ tx);}
+\DoxyCodeLine{00048\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_petit_modbus_port_8h_ae7ce961ccb117e9b42aa83bd051448be}{PetitPortTimerStart}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00049\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_petit_modbus_port_8h_a26c4d97e7f4a6d5ed230404d8c0fc8b2}{PetitPortTimerStop}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00050\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_petit_modbus_port_8h_aa293caeb2a9693ff090d6fa4c8a7579d}{PetitPortDirTx}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00051\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_petit_modbus_port_8h_a3686852a982a443cf643e201ff19f64c}{PetitPortDirRx}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#if\ defined(PETIT\_CRC)\ \&\&\ PETIT\_CRC\ ==\ PETIT\_CRC\_EXTERNAL}}
+\DoxyCodeLine{00053\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_petit_modbus_user_port_8h_a75da6d92fc5731207c41bce439e995ca}{PetitPortCRC16Calc}}(\mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\_t}}\ Data,\ \mbox{\hyperlink{_petit_modbus_user_port_8h_a01c483557b33c4176a1d15e40e35dc75}{pu16\_t}}*\ CRC);}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#if\ defined(PETIT\_REG)\ \&\&\ \(\backslash\)}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\ \ \ \ (PETIT\_REG\ ==\ PETIT\_REG\_EXTERNAL\ ||\ PETIT\_REG\ ==\ PETIT\_REG\_BOTH)}}
+\DoxyCodeLine{00058\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\_t}}\ \mbox{\hyperlink{src_2_petit_modbus_port_8c_a58458f8b49b4a1e0c28cd715b71247b6}{PetitPortRegRead}}(\mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\_t}}\ Addr,\ \mbox{\hyperlink{_petit_modbus_user_port_8h_a01c483557b33c4176a1d15e40e35dc75}{pu16\_t}}*\ Data);}
+\DoxyCodeLine{00059\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\_t}}\ \mbox{\hyperlink{src_2_petit_modbus_port_8c_a60af1c52db07adfff21e2e8956c61f34}{PetitPortRegWrite}}(\mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\_t}}\ Addr,\ \mbox{\hyperlink{_petit_modbus_user_port_8h_a01c483557b33c4176a1d15e40e35dc75}{pu16\_t}}\ Data);}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#if\ defined(PETIT\_INPUT\_REG)\ \&\&\ \(\backslash\)}}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\ \ \ \ (PETIT\_INPUT\_REG\ ==\ PETIT\_REG\_EXTERNAL\ ||\ \(\backslash\)}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PETIT\_INPUT\_REG\ ==\ PETIT\_REG\_BOTH)}}
+\DoxyCodeLine{00064\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\_t}}\ PetitPortInputRegRead(\mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\_t}}\ Addr,\ \mbox{\hyperlink{_petit_modbus_user_port_8h_a01c483557b33c4176a1d15e40e35dc75}{pu16\_t}}*\ Data);}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_\_PETIT\_MODBUS\_PORT\_H\_\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

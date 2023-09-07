@@ -1,0 +1,108 @@
+\doxysection{Modbus Porting Functions"{}}
+\hypertarget{group___petit}{}\label{group___petit}\index{Modbus Porting Functions"{}@{Modbus Porting Functions""}}
+
+
+These functions allow Petit Modbus to work with our hardware.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group___petit_ga44d78866eb528ef7f1152737e018706e}{Petit\+Port\+Timer\+Start}} ()
+\item 
+void \mbox{\hyperlink{group___petit_gaf6adc888121879ba74010f58659a2b55}{Petit\+Port\+Timer\+Stop}} ()
+\item 
+void \mbox{\hyperlink{group___petit_gaf0ee2372c22e97ffa56b05f5e6f6fe37}{Petit\+Port\+Dir\+Tx}} ()
+\item 
+void \mbox{\hyperlink{group___petit_gadcc9e71a85b07580f8c711c39ddd1a03}{Petit\+Port\+Dir\+Rx}} ()
+\item 
+void \mbox{\hyperlink{group___petit_gad7806b34429c3faec1d472a1fb146e81}{Petit\+Port\+Tx\+Begin}} (\mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\+\_\+t}} tx)
+\item 
+\mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\+\_\+t}} \mbox{\hyperlink{group___petit_ga60af1c52db07adfff21e2e8956c61f34}{Petit\+Port\+Reg\+Write}} (\mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\+\_\+t}} Address, \mbox{\hyperlink{_petit_modbus_user_port_8h_a01c483557b33c4176a1d15e40e35dc75}{pu16\+\_\+t}} Data)
+\item 
+\mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\+\_\+t}} \mbox{\hyperlink{group___petit_ga58458f8b49b4a1e0c28cd715b71247b6}{Petit\+Port\+Reg\+Read}} (\mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\+\_\+t}} Address, \mbox{\hyperlink{_petit_modbus_user_port_8h_a01c483557b33c4176a1d15e40e35dc75}{pu16\+\_\+t}} \texorpdfstring{$\ast$}{*}Data)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+These functions allow Petit Modbus to work with our hardware. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{group___petit_gadcc9e71a85b07580f8c711c39ddd1a03}\label{group___petit_gadcc9e71a85b07580f8c711c39ddd1a03} 
+\index{Modbus Porting Functions"{}@{Modbus Porting Functions""}!PetitPortDirRx@{PetitPortDirRx}}
+\index{PetitPortDirRx@{PetitPortDirRx}!Modbus Porting Functions"{}@{Modbus Porting Functions""}}
+\doxysubsubsection{\texorpdfstring{PetitPortDirRx()}{PetitPortDirRx()}}
+{\footnotesize\ttfamily void Petit\+Port\+Dir\+Rx (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+sets the rs485 transciever direction pin for receive 
+
+Definition at line \mbox{\hyperlink{_petit_modbus_port_8c_source_l00059}{59}} of file \mbox{\hyperlink{_petit_modbus_port_8c_source}{Petit\+Modbus\+Port.\+c}}.
+
+\Hypertarget{group___petit_gaf0ee2372c22e97ffa56b05f5e6f6fe37}\label{group___petit_gaf0ee2372c22e97ffa56b05f5e6f6fe37} 
+\index{Modbus Porting Functions"{}@{Modbus Porting Functions""}!PetitPortDirTx@{PetitPortDirTx}}
+\index{PetitPortDirTx@{PetitPortDirTx}!Modbus Porting Functions"{}@{Modbus Porting Functions""}}
+\doxysubsubsection{\texorpdfstring{PetitPortDirTx()}{PetitPortDirTx()}}
+{\footnotesize\ttfamily void Petit\+Port\+Dir\+Tx (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+sets the rs485 transciever direction pin for transmit 
+
+Definition at line \mbox{\hyperlink{_petit_modbus_port_8c_source_l00049}{49}} of file \mbox{\hyperlink{_petit_modbus_port_8c_source}{Petit\+Modbus\+Port.\+c}}.
+
+\Hypertarget{group___petit_ga58458f8b49b4a1e0c28cd715b71247b6}\label{group___petit_ga58458f8b49b4a1e0c28cd715b71247b6} 
+\index{Modbus Porting Functions"{}@{Modbus Porting Functions""}!PetitPortRegRead@{PetitPortRegRead}}
+\index{PetitPortRegRead@{PetitPortRegRead}!Modbus Porting Functions"{}@{Modbus Porting Functions""}}
+\doxysubsubsection{\texorpdfstring{PetitPortRegRead()}{PetitPortRegRead()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\+\_\+t}} Petit\+Port\+Reg\+Read (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\+\_\+t}}}]{Address,  }\item[{\mbox{\hyperlink{_petit_modbus_user_port_8h_a01c483557b33c4176a1d15e40e35dc75}{pu16\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{Data }\end{DoxyParamCaption})}
+
+reads the registers \begin{DoxyReturn}{Returns}
+\+: the number of registers read 0 if an error occurred during processing 1 if everything went smoothly 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_petit_modbus_port_8c_source_l00153}{153}} of file \mbox{\hyperlink{_petit_modbus_port_8c_source}{Petit\+Modbus\+Port.\+c}}.
+
+\Hypertarget{group___petit_ga60af1c52db07adfff21e2e8956c61f34}\label{group___petit_ga60af1c52db07adfff21e2e8956c61f34} 
+\index{Modbus Porting Functions"{}@{Modbus Porting Functions""}!PetitPortRegWrite@{PetitPortRegWrite}}
+\index{PetitPortRegWrite@{PetitPortRegWrite}!Modbus Porting Functions"{}@{Modbus Porting Functions""}}
+\doxysubsubsection{\texorpdfstring{PetitPortRegWrite()}{PetitPortRegWrite()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\+\_\+t}} Petit\+Port\+Reg\+Write (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\+\_\+t}}}]{Address,  }\item[{\mbox{\hyperlink{_petit_modbus_user_port_8h_a01c483557b33c4176a1d15e40e35dc75}{pu16\+\_\+t}}}]{Data }\end{DoxyParamCaption})}
+
+writes to the registers \begin{DoxyReturn}{Returns}
+the number of registers written 0 if an error occurred during processing 1 if everything went smoothly 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_petit_modbus_port_8c_source_l00084}{84}} of file \mbox{\hyperlink{_petit_modbus_port_8c_source}{Petit\+Modbus\+Port.\+c}}.
+
+\Hypertarget{group___petit_ga44d78866eb528ef7f1152737e018706e}\label{group___petit_ga44d78866eb528ef7f1152737e018706e} 
+\index{Modbus Porting Functions"{}@{Modbus Porting Functions""}!PetitPortTimerStart@{PetitPortTimerStart}}
+\index{PetitPortTimerStart@{PetitPortTimerStart}!Modbus Porting Functions"{}@{Modbus Porting Functions""}}
+\doxysubsubsection{\texorpdfstring{PetitPortTimerStart()}{PetitPortTimerStart()}}
+{\footnotesize\ttfamily void Petit\+Port\+Timer\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+starts the inter-\/byte timer. if the timer fires, the rx buffer is invalid 
+
+Definition at line \mbox{\hyperlink{_petit_modbus_port_8c_source_l00026}{26}} of file \mbox{\hyperlink{_petit_modbus_port_8c_source}{Petit\+Modbus\+Port.\+c}}.
+
+\Hypertarget{group___petit_gaf6adc888121879ba74010f58659a2b55}\label{group___petit_gaf6adc888121879ba74010f58659a2b55} 
+\index{Modbus Porting Functions"{}@{Modbus Porting Functions""}!PetitPortTimerStop@{PetitPortTimerStop}}
+\index{PetitPortTimerStop@{PetitPortTimerStop}!Modbus Porting Functions"{}@{Modbus Porting Functions""}}
+\doxysubsubsection{\texorpdfstring{PetitPortTimerStop()}{PetitPortTimerStop()}}
+{\footnotesize\ttfamily void Petit\+Port\+Timer\+Stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+stops the inter-\/byte timer. petitmodbus calls this if the message has a valid servant address and size 
+
+Definition at line \mbox{\hyperlink{_petit_modbus_port_8c_source_l00038}{38}} of file \mbox{\hyperlink{_petit_modbus_port_8c_source}{Petit\+Modbus\+Port.\+c}}.
+
+\Hypertarget{group___petit_gad7806b34429c3faec1d472a1fb146e81}\label{group___petit_gad7806b34429c3faec1d472a1fb146e81} 
+\index{Modbus Porting Functions"{}@{Modbus Porting Functions""}!PetitPortTxBegin@{PetitPortTxBegin}}
+\index{PetitPortTxBegin@{PetitPortTxBegin}!Modbus Porting Functions"{}@{Modbus Porting Functions""}}
+\doxysubsubsection{\texorpdfstring{PetitPortTxBegin()}{PetitPortTxBegin()}}
+{\footnotesize\ttfamily void Petit\+Port\+Tx\+Begin (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_petit_modbus_user_port_8h_ad329e70ea3dcb34f673487fc00ac69d5}{pu8\+\_\+t}}}]{tx }\end{DoxyParamCaption})}
+
+sends the first byte to begin sending the rest of the response 
+
+Definition at line \mbox{\hyperlink{_petit_modbus_port_8c_source_l00069}{69}} of file \mbox{\hyperlink{_petit_modbus_port_8c_source}{Petit\+Modbus\+Port.\+c}}.
+

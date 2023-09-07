@@ -1,0 +1,46 @@
+\chapter{MAG Laboratory IoT Supervisor}
+\hypertarget{md__r_e_a_d_m_e}{}\label{md__r_e_a_d_m_e}\index{MAG Laboratory IoT Supervisor@{MAG Laboratory IoT Supervisor}}
+\label{md__r_e_a_d_m_e_autotoc_md0}%
+\Hypertarget{md__r_e_a_d_m_e_autotoc_md0}%
+An IoT supervisor board\hypertarget{md__r_e_a_d_m_e_autotoc_md1}{}\doxysection{\texorpdfstring{Project Description}{Project Description}}\label{md__r_e_a_d_m_e_autotoc_md1}
+This is an IoT SBC supervisor for the MAG Laboratory IoT devices.
+
+Included are a voltage comparator which automatically resets devices if the input voltage drops below an acceptable voltage. (Manually configured through a resistor divider)\hypertarget{md__r_e_a_d_m_e_autotoc_md2}{}\doxysection{\texorpdfstring{Branch Description}{Branch Description}}\label{md__r_e_a_d_m_e_autotoc_md2}
+This branch is for initial development. The style of calling something "{}zero"{} came from a style of anime calling their prequel series "{}zero."{}\hypertarget{md__r_e_a_d_m_e_autotoc_md3}{}\doxysection{\texorpdfstring{TODO}{TODO}}\label{md__r_e_a_d_m_e_autotoc_md3}
+
+\begin{DoxyItemize}
+\item More documentation, especially the state machines.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md4}{}\doxysection{\texorpdfstring{Deployment}{Deployment}}\label{md__r_e_a_d_m_e_autotoc_md4}
+Is this section supposed to be about how this project was developed or how to start developing for it?
+
+The project started in 2019 after a lot of SBC\textquotesingle{}s were found hung and needing manual intervention. Hopefully, after two years of development, this project can automatically reset boards.
+
+Development and builds can be done with the Keil C51 toolchain and Silicon Labs Simplicity Studio v5. Unfortunately, SDCC support and other (let me know which, pls) compilers that may support the 8051 instruction set are not supported at the moment.\hypertarget{md__r_e_a_d_m_e_autotoc_md5}{}\doxysubsection{\texorpdfstring{Building}{Building}}\label{md__r_e_a_d_m_e_autotoc_md5}
+Building the project while utilizing the built-\/in program memory CRC requires some manual intervention and two cycles of clicking the "{}build"{} button. It is possible to build and use the supervisor without using the program memory CRC. The only caveat to this is that the supervisor will always report a program CRC error.
+
+When creating a build, please look in the {\ttfamily .m51} file for information regarding the end of code memory. The constant {\ttfamily C\+\_\+\+FOUND\+\_\+\+PROG\+\_\+\+END} in the file {\ttfamily IoT Supervisor.\+c} should be manually changed based on the information in the {\ttfamily .m51} file\+:
+\begin{DoxyItemize}
+\item Look for a section called {\ttfamily C O D E M E M O R Y}.
+\item Under that section, look for a {\ttfamily \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+GAP\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}} before {\ttfamily ?CO?KIRISAKI\+\_\+\+CRC}.
+\item Copy the {\ttfamily START} address of the {\ttfamily \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+GAP\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}} to be the constant called {\ttfamily C\+\_\+\+FOUND\+\_\+\+PROG\+\_\+\+END} in {\ttfamily IoT Supervisor.\+c}.
+\end{DoxyItemize}
+
+\hypertarget{md__r_e_a_d_m_e_autotoc_md6}{}\doxysection{\texorpdfstring{Help}{Help}}\label{md__r_e_a_d_m_e_autotoc_md6}
+Please feel free to leave a bug report or start development on your own branch.
+
+Other forms of communication are acceptable.\hypertarget{md__r_e_a_d_m_e_autotoc_md7}{}\doxysection{\texorpdfstring{Version History}{Version History}}\label{md__r_e_a_d_m_e_autotoc_md7}
+
+\begin{DoxyItemize}
+\item Initial Commit
+\begin{DoxyItemize}
+\item Low Voltage Comparator
+\item Startup delay
+\item Modbus, I guess
+\end{DoxyItemize}
+\item v0.\+0
+\begin{DoxyItemize}
+\item It now supports configuration memory in FLASH.
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md8}{}\doxysection{\texorpdfstring{License}{License}}\label{md__r_e_a_d_m_e_autotoc_md8}
+GNU GPL v3\hypertarget{md__r_e_a_d_m_e_autotoc_md9}{}\doxysection{\texorpdfstring{Authors}{Authors}}\label{md__r_e_a_d_m_e_autotoc_md9}
+Brandon Kirisaki 

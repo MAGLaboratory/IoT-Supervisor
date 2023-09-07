@@ -1,0 +1,105 @@
+\doxysection{inc/\+EFM8\+BB1\+\_\+\+Flash\+Primitives.h File Reference}
+\hypertarget{_e_f_m8_b_b1___flash_primitives_8h}{}\label{_e_f_m8_b_b1___flash_primitives_8h}\index{inc/EFM8BB1\_FlashPrimitives.h@{inc/EFM8BB1\_FlashPrimitives.h}}
+{\ttfamily \#include $<$SI\+\_\+\+EFM8\+BB1\+\_\+\+Register\+\_\+\+Enums.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_e_f_m8_b_b1___flash_primitives_8h_a521ec11c3239cbfc66a272d20081b882}{FLASH\+\_\+\+PAGESIZE}}~512
+\item 
+\#define \mbox{\hyperlink{_e_f_m8_b_b1___flash_primitives_8h_aa4a9834be732240c3a58ee6f688f76b9}{FLASH\+\_\+\+TEMP}}~0x1\+C00L
+\item 
+\#define \mbox{\hyperlink{_e_f_m8_b_b1___flash_primitives_8h_a7197e3e6d38fd3d3b202c9dc5c0e2caa}{FLASH\+\_\+\+LAST}}~0x1\+E00L
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef uint16\+\_\+t \mbox{\hyperlink{_e_f_m8_b_b1___flash_primitives_8h_aa61cb7cad28b5176ba0be3d4ee2f1f18}{FLADDR}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_e_f_m8_b_b1___flash_primitives_8h_aab0e9302febb724eb8fb37a34c0a6c79}{FLASH\+\_\+\+Byte\+Write}} (\mbox{\hyperlink{_e_f_m8_b_b1___flash_primitives_8h_aa61cb7cad28b5176ba0be3d4ee2f1f18}{FLADDR}} addr, uint8\+\_\+t byte)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_e_f_m8_b_b1___flash_primitives_8h_a97b5ff36abd29b47548798d3dffcbd5c}{FLASH\+\_\+\+Byte\+Read}} (\mbox{\hyperlink{_e_f_m8_b_b1___flash_primitives_8h_aa61cb7cad28b5176ba0be3d4ee2f1f18}{FLADDR}} addr)
+\item 
+void \mbox{\hyperlink{_e_f_m8_b_b1___flash_primitives_8h_ae1aa31c6270524d6810b78380e9b999b}{FLASH\+\_\+\+Page\+Erase}} (\mbox{\hyperlink{_e_f_m8_b_b1___flash_primitives_8h_aa61cb7cad28b5176ba0be3d4ee2f1f18}{FLADDR}} addr)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_e_f_m8_b_b1___flash_primitives_8h_a7197e3e6d38fd3d3b202c9dc5c0e2caa}\label{_e_f_m8_b_b1___flash_primitives_8h_a7197e3e6d38fd3d3b202c9dc5c0e2caa} 
+\index{EFM8BB1\_FlashPrimitives.h@{EFM8BB1\_FlashPrimitives.h}!FLASH\_LAST@{FLASH\_LAST}}
+\index{FLASH\_LAST@{FLASH\_LAST}!EFM8BB1\_FlashPrimitives.h@{EFM8BB1\_FlashPrimitives.h}}
+\doxysubsubsection{\texorpdfstring{FLASH\_LAST}{FLASH\_LAST}}
+{\footnotesize\ttfamily \#define FLASH\+\_\+\+LAST~0x1\+E00L}
+
+
+
+Definition at line \mbox{\hyperlink{_e_f_m8_b_b1___flash_primitives_8h_source_l00047}{47}} of file \mbox{\hyperlink{_e_f_m8_b_b1___flash_primitives_8h_source}{EFM8\+BB1\+\_\+\+Flash\+Primitives.\+h}}.
+
+\Hypertarget{_e_f_m8_b_b1___flash_primitives_8h_a521ec11c3239cbfc66a272d20081b882}\label{_e_f_m8_b_b1___flash_primitives_8h_a521ec11c3239cbfc66a272d20081b882} 
+\index{EFM8BB1\_FlashPrimitives.h@{EFM8BB1\_FlashPrimitives.h}!FLASH\_PAGESIZE@{FLASH\_PAGESIZE}}
+\index{FLASH\_PAGESIZE@{FLASH\_PAGESIZE}!EFM8BB1\_FlashPrimitives.h@{EFM8BB1\_FlashPrimitives.h}}
+\doxysubsubsection{\texorpdfstring{FLASH\_PAGESIZE}{FLASH\_PAGESIZE}}
+{\footnotesize\ttfamily \#define FLASH\+\_\+\+PAGESIZE~512}
+
+
+
+Definition at line \mbox{\hyperlink{_e_f_m8_b_b1___flash_primitives_8h_source_l00037}{37}} of file \mbox{\hyperlink{_e_f_m8_b_b1___flash_primitives_8h_source}{EFM8\+BB1\+\_\+\+Flash\+Primitives.\+h}}.
+
+\Hypertarget{_e_f_m8_b_b1___flash_primitives_8h_aa4a9834be732240c3a58ee6f688f76b9}\label{_e_f_m8_b_b1___flash_primitives_8h_aa4a9834be732240c3a58ee6f688f76b9} 
+\index{EFM8BB1\_FlashPrimitives.h@{EFM8BB1\_FlashPrimitives.h}!FLASH\_TEMP@{FLASH\_TEMP}}
+\index{FLASH\_TEMP@{FLASH\_TEMP}!EFM8BB1\_FlashPrimitives.h@{EFM8BB1\_FlashPrimitives.h}}
+\doxysubsubsection{\texorpdfstring{FLASH\_TEMP}{FLASH\_TEMP}}
+{\footnotesize\ttfamily \#define FLASH\+\_\+\+TEMP~0x1\+C00L}
+
+
+
+Definition at line \mbox{\hyperlink{_e_f_m8_b_b1___flash_primitives_8h_source_l00041}{41}} of file \mbox{\hyperlink{_e_f_m8_b_b1___flash_primitives_8h_source}{EFM8\+BB1\+\_\+\+Flash\+Primitives.\+h}}.
+
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{_e_f_m8_b_b1___flash_primitives_8h_aa61cb7cad28b5176ba0be3d4ee2f1f18}\label{_e_f_m8_b_b1___flash_primitives_8h_aa61cb7cad28b5176ba0be3d4ee2f1f18} 
+\index{EFM8BB1\_FlashPrimitives.h@{EFM8BB1\_FlashPrimitives.h}!FLADDR@{FLADDR}}
+\index{FLADDR@{FLADDR}!EFM8BB1\_FlashPrimitives.h@{EFM8BB1\_FlashPrimitives.h}}
+\doxysubsubsection{\texorpdfstring{FLADDR}{FLADDR}}
+{\footnotesize\ttfamily typedef uint16\+\_\+t \mbox{\hyperlink{_e_f_m8_b_b1___flash_primitives_8h_aa61cb7cad28b5176ba0be3d4ee2f1f18}{FLADDR}}}
+
+
+
+Definition at line \mbox{\hyperlink{_e_f_m8_b_b1___flash_primitives_8h_source_l00031}{31}} of file \mbox{\hyperlink{_e_f_m8_b_b1___flash_primitives_8h_source}{EFM8\+BB1\+\_\+\+Flash\+Primitives.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_e_f_m8_b_b1___flash_primitives_8h_a97b5ff36abd29b47548798d3dffcbd5c}\label{_e_f_m8_b_b1___flash_primitives_8h_a97b5ff36abd29b47548798d3dffcbd5c} 
+\index{EFM8BB1\_FlashPrimitives.h@{EFM8BB1\_FlashPrimitives.h}!FLASH\_ByteRead@{FLASH\_ByteRead}}
+\index{FLASH\_ByteRead@{FLASH\_ByteRead}!EFM8BB1\_FlashPrimitives.h@{EFM8BB1\_FlashPrimitives.h}}
+\doxysubsubsection{\texorpdfstring{FLASH\_ByteRead()}{FLASH\_ByteRead()}}
+{\footnotesize\ttfamily uint8\+\_\+t FLASH\+\_\+\+Byte\+Read (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_e_f_m8_b_b1___flash_primitives_8h_aa61cb7cad28b5176ba0be3d4ee2f1f18}{FLADDR}}}]{addr }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_e_f_m8_b_b1___flash_primitives_8c_source_l00083}{83}} of file \mbox{\hyperlink{_e_f_m8_b_b1___flash_primitives_8c_source}{EFM8\+BB1\+\_\+\+Flash\+Primitives.\+c}}.
+
+\Hypertarget{_e_f_m8_b_b1___flash_primitives_8h_aab0e9302febb724eb8fb37a34c0a6c79}\label{_e_f_m8_b_b1___flash_primitives_8h_aab0e9302febb724eb8fb37a34c0a6c79} 
+\index{EFM8BB1\_FlashPrimitives.h@{EFM8BB1\_FlashPrimitives.h}!FLASH\_ByteWrite@{FLASH\_ByteWrite}}
+\index{FLASH\_ByteWrite@{FLASH\_ByteWrite}!EFM8BB1\_FlashPrimitives.h@{EFM8BB1\_FlashPrimitives.h}}
+\doxysubsubsection{\texorpdfstring{FLASH\_ByteWrite()}{FLASH\_ByteWrite()}}
+{\footnotesize\ttfamily void FLASH\+\_\+\+Byte\+Write (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_e_f_m8_b_b1___flash_primitives_8h_aa61cb7cad28b5176ba0be3d4ee2f1f18}{FLADDR}}}]{addr,  }\item[{uint8\+\_\+t}]{byte }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_e_f_m8_b_b1___flash_primitives_8c_source_l00041}{41}} of file \mbox{\hyperlink{_e_f_m8_b_b1___flash_primitives_8c_source}{EFM8\+BB1\+\_\+\+Flash\+Primitives.\+c}}.
+
+\Hypertarget{_e_f_m8_b_b1___flash_primitives_8h_ae1aa31c6270524d6810b78380e9b999b}\label{_e_f_m8_b_b1___flash_primitives_8h_ae1aa31c6270524d6810b78380e9b999b} 
+\index{EFM8BB1\_FlashPrimitives.h@{EFM8BB1\_FlashPrimitives.h}!FLASH\_PageErase@{FLASH\_PageErase}}
+\index{FLASH\_PageErase@{FLASH\_PageErase}!EFM8BB1\_FlashPrimitives.h@{EFM8BB1\_FlashPrimitives.h}}
+\doxysubsubsection{\texorpdfstring{FLASH\_PageErase()}{FLASH\_PageErase()}}
+{\footnotesize\ttfamily void FLASH\+\_\+\+Page\+Erase (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_e_f_m8_b_b1___flash_primitives_8h_aa61cb7cad28b5176ba0be3d4ee2f1f18}{FLADDR}}}]{addr }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_e_f_m8_b_b1___flash_primitives_8c_source_l00116}{116}} of file \mbox{\hyperlink{_e_f_m8_b_b1___flash_primitives_8c_source}{EFM8\+BB1\+\_\+\+Flash\+Primitives.\+c}}.
+

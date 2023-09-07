@@ -3,7 +3,22 @@
 #include <stdint.h>
 #include <SI_EFM8BB1_Register_Enums.h>
 
-// modbus middle ware configuration table
+/**
+ * @defgroup Modbus_MiddleWare Modbus MiddleWare
+ * This section contains the intersection between the petit modbus library and
+ * the application.  It exists because the modbus library does not handle sid
+ * switching or baud rate switching.  The library also does not handle the
+ * hardware when the baud rate switches.
+ * @{
+ */
+
+/**
+ * Modbus configuration table containing variables for each standard modbus
+ * speed.
+ *
+ * These constants were generated largely with aid from the device
+ * configurator and with simple pen and paper calculations.
+ */
 code const uint8_t mmw_ct[eMMW_B_NUM][eMMW_CT_NUM] =
 {
 	{0, 0xEC,  0, 0},
@@ -18,7 +33,14 @@ uint8_t PETITMODBUS_DLY_TOP = 0;
 uint8_t PETITMODBUS_SLAVE_ADDRESS = 0;
 
 // Functions
-
+/**
+ * Modbus MiddleWare Init function takes an SID and a baud rate enumeration and
+ * applies it to device hardware and functions to support that selected baud.
+ * @param sid  Which ID this device should respond to
+ * @param baud rate at which the device communicates on RS485.
+ *  This is an enumeration that is set to one higher than the
+ *  index in the #mmw_ct table.
+ */
 void mmw_init(uint8_t sid, uint8_t baud)
 {
 	PETITMODBUS_SLAVE_ADDRESS = sid;
@@ -62,3 +84,5 @@ void mmw_init(uint8_t sid, uint8_t baud)
 	PETITMODBUS_DLY_TOP = mmw_ct[baud - 1][eMMW_CT_PETIT_TOP];
 	T0C_TOP = mmw_ct[baud - 1][eMMW_CT_TL0_TOP];
 }
+
+/** @} */ // group Modbus_MiddleWare

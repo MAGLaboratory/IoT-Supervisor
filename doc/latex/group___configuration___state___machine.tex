@@ -1,0 +1,393 @@
+\doxysubsection{Configuration State Machine}
+\hypertarget{group___configuration___state___machine}{}\label{group___configuration___state___machine}\index{Configuration State Machine@{Configuration State Machine}}
+\doxysubsubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group___configuration___state___machine_gaa240e519cb5b99446d79d4aad8420dd1}{C\+\_\+\+FLASH\+\_\+\+CONF}}~(0x1\+E00)
+\item 
+\#define \mbox{\hyperlink{group___configuration___state___machine_gab1cca6a1cf1c6efba75c3ccab43e1518}{p\+FLASH\+\_\+\+CONF}}~((uint8\+\_\+t code\texorpdfstring{$\ast$}{*})\mbox{\hyperlink{group___configuration___state___machine_gaa240e519cb5b99446d79d4aad8420dd1}{C\+\_\+\+FLASH\+\_\+\+CONF}})/\texorpdfstring{$\ast$}{*} pointer to the flash \mbox{\hyperlink{group___configuration___state___machine_ga14ee0f41b2e64cad6f4c28cbb3fcb39b}{cfg}} \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{group___configuration___state___machine_ga0f6656888b6da3d751ce6bb0644d0dd9}{C\+\_\+\+PW\+\_\+\+DEFAULT}}~(0x\+DEFA)
+\item 
+\#define \mbox{\hyperlink{group___configuration___state___machine_ga2b8473431a4fe63b20294043b9ae4773}{C\+\_\+\+FOUND\+\_\+\+PROG\+\_\+\+END}}~(0x0\+FA2)
+\item 
+\#define \mbox{\hyperlink{group___configuration___state___machine_ga36de940e9065f10013db52ed98a34b1f}{C\+\_\+\+CFG\+\_\+\+HEADER\+\_\+\+LEN}}~(8)
+\item 
+\#define \mbox{\hyperlink{group___configuration___state___machine_ga65c7887c0e26969205a3e5b038fe403a}{C\+\_\+\+CFG\+\_\+\+DATA\+\_\+\+LEN}}~(5)
+\item 
+\#define \mbox{\hyperlink{group___configuration___state___machine_ga1cf8a7c45bd5eafaa45862c9f304da4c}{C\+\_\+\+CFG\+\_\+\+C\+\_\+\+CRC\+\_\+\+LEN}}~(2)
+\item 
+\#define \mbox{\hyperlink{group___configuration___state___machine_gaba2ebeddce6013b0ef742209113a58b7}{C\+\_\+\+CFG\+\_\+\+P\+\_\+\+CRC\+\_\+\+LEN}}~(2)
+\item 
+\#define \mbox{\hyperlink{group___configuration___state___machine_gad29b0843a725184d4dcde51268edc086}{C\+\_\+\+CFG\+\_\+\+DATA\+\_\+\+END}}~(\mbox{\hyperlink{group___configuration___state___machine_ga36de940e9065f10013db52ed98a34b1f}{C\+\_\+\+CFG\+\_\+\+HEADER\+\_\+\+LEN}} + \mbox{\hyperlink{group___configuration___state___machine_ga65c7887c0e26969205a3e5b038fe403a}{C\+\_\+\+CFG\+\_\+\+DATA\+\_\+\+LEN}})
+\item 
+\#define \mbox{\hyperlink{group___configuration___state___machine_ga19952ec2f55ea62e4cdaf7637fb29e4e}{C\+\_\+\+CFG\+\_\+\+C\+\_\+\+CRC\+\_\+\+END}}~(\mbox{\hyperlink{group___configuration___state___machine_gad29b0843a725184d4dcde51268edc086}{C\+\_\+\+CFG\+\_\+\+DATA\+\_\+\+END}} + \mbox{\hyperlink{group___configuration___state___machine_ga1cf8a7c45bd5eafaa45862c9f304da4c}{C\+\_\+\+CFG\+\_\+\+C\+\_\+\+CRC\+\_\+\+LEN}})
+\item 
+\#define \mbox{\hyperlink{group___configuration___state___machine_ga0ae2d8806fe25d3e6b27511f76385ae6}{C\+\_\+\+CFG\+\_\+\+P\+\_\+\+CRC\+\_\+\+END}}~(\mbox{\hyperlink{group___configuration___state___machine_ga19952ec2f55ea62e4cdaf7637fb29e4e}{C\+\_\+\+CFG\+\_\+\+C\+\_\+\+CRC\+\_\+\+END}} + \mbox{\hyperlink{group___configuration___state___machine_gaba2ebeddce6013b0ef742209113a58b7}{C\+\_\+\+CFG\+\_\+\+P\+\_\+\+CRC\+\_\+\+LEN}})
+\end{DoxyCompactItemize}
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{group___configuration___state___machine_gadb26e03a4457120c3b24c6316b9dcabe}{ccfg\+\_\+check}} (void)
+\item 
+bool \mbox{\hyperlink{group___configuration___state___machine_ga788ff1c4a563985fc673182073aed78c}{dcfg\+\_\+check}} ()
+\item 
+void \mbox{\hyperlink{group___configuration___state___machine_gaa517964897d449243fda50976465744a}{cfg\+\_\+load}} ()
+\item 
+void \mbox{\hyperlink{group___configuration___state___machine_gaebd0a8f26aa5dfb3610e419c7c5070b7}{cfg\+\_\+write}} (void)
+\item 
+void \mbox{\hyperlink{group___configuration___state___machine_gaaa703efb79709d2f2e12561f47f253b7}{CFGsm}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+code const uint8\+\_\+t \mbox{\hyperlink{group___configuration___state___machine_ga4786f95f528dfb7d6225d35b27072418}{ex\+\_\+cfg\+\_\+header}} \mbox{[}$\,$\mbox{]}
+\item 
+code const \mbox{\hyperlink{structcfg__t}{cfg\+\_\+t}} \mbox{\hyperlink{group___configuration___state___machine_ga35236392c891bc6d5ccee8f619d2f92a}{default\+\_\+cfg}}
+\item 
+\mbox{\hyperlink{_io_t___supervisor_8h_a2e2885d00577c7076677cc277ac4f238}{Cfg\+SM\+\_\+t}} \mbox{\hyperlink{group___configuration___state___machine_ga6c9c723896f1d714b5d1caeb1afceda6}{cfg\+SmS}} = \mbox{\hyperlink{_io_t___supervisor_8h_a2e2885d00577c7076677cc277ac4f238a77c6aa8579abb456a1022f2c0749809b}{e\+CFG\+\_\+\+Load}}
+\item 
+bool \mbox{\hyperlink{group___configuration___state___machine_ga0959e8576e2d8601bc958bbf7680f0d4}{pw\+\_\+flag}} = false
+\item 
+bool \mbox{\hyperlink{group___configuration___state___machine_ga4310b6cbe0d1f02c0d8bacadf8fa09a2}{dir\+\_\+tx}} = false
+\item 
+bool \mbox{\hyperlink{group___configuration___state___machine_ga7624452708e1f4a54f678332e81c4867}{run\+\_\+petitmodbus}} = false
+\item 
+uint16\+\_\+t \mbox{\hyperlink{group___configuration___state___machine_ga1edfc8756590da90a14f41af9bd71dc4}{pw}}
+\item 
+\mbox{\hyperlink{structcfg__t}{cfg\+\_\+t}} \mbox{\hyperlink{group___configuration___state___machine_ga14ee0f41b2e64cad6f4c28cbb3fcb39b}{cfg}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{group___configuration___state___machine_gaa8b9a108114d596023dc16a2f4629665}{cfg\+\_\+write\+\_\+idx}} = 0
+\item 
+uint16\+\_\+t \mbox{\hyperlink{group___configuration___state___machine_ga2e76b6ae721cc46405d326ebb01396ee}{calc\+\_\+cfg\+\_\+crc}} = 0x\+FFFF
+\item 
+uint16\+\_\+t \mbox{\hyperlink{group___configuration___state___machine_ga2af04e4d032e98d5461d108969d9c8bd}{calc\+\_\+prog\+\_\+crc}} = 0x\+FFFF
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+The configuration state machine implements the startup and configuration tasks of this application. On startup, the configuration is read from memory and the program memory is checked against a stored CRC. On configuration commit, a cached configuration from modbus is applied to the application. On configuration write, the committed configuration is written into flash along with the newly calculated CRC. 
+
+\doxysubsubsection{Macro Definition Documentation}
+\Hypertarget{group___configuration___state___machine_ga19952ec2f55ea62e4cdaf7637fb29e4e}\label{group___configuration___state___machine_ga19952ec2f55ea62e4cdaf7637fb29e4e} 
+\index{Configuration State Machine@{Configuration State Machine}!C\_CFG\_C\_CRC\_END@{C\_CFG\_C\_CRC\_END}}
+\index{C\_CFG\_C\_CRC\_END@{C\_CFG\_C\_CRC\_END}!Configuration State Machine@{Configuration State Machine}}
+\doxysubsubsubsection{\texorpdfstring{C\_CFG\_C\_CRC\_END}{C\_CFG\_C\_CRC\_END}}
+{\footnotesize\ttfamily \#define C\+\_\+\+CFG\+\_\+\+C\+\_\+\+CRC\+\_\+\+END~(\mbox{\hyperlink{group___configuration___state___machine_gad29b0843a725184d4dcde51268edc086}{C\+\_\+\+CFG\+\_\+\+DATA\+\_\+\+END}} + \mbox{\hyperlink{group___configuration___state___machine_ga1cf8a7c45bd5eafaa45862c9f304da4c}{C\+\_\+\+CFG\+\_\+\+C\+\_\+\+CRC\+\_\+\+LEN}})}
+
+End of configuration CRC offset in configuration page. 
+
+Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00331}{331}} of file \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source}{Io\+T Supervisor\+\_\+main.\+c}}.
+
+\Hypertarget{group___configuration___state___machine_ga1cf8a7c45bd5eafaa45862c9f304da4c}\label{group___configuration___state___machine_ga1cf8a7c45bd5eafaa45862c9f304da4c} 
+\index{Configuration State Machine@{Configuration State Machine}!C\_CFG\_C\_CRC\_LEN@{C\_CFG\_C\_CRC\_LEN}}
+\index{C\_CFG\_C\_CRC\_LEN@{C\_CFG\_C\_CRC\_LEN}!Configuration State Machine@{Configuration State Machine}}
+\doxysubsubsubsection{\texorpdfstring{C\_CFG\_C\_CRC\_LEN}{C\_CFG\_C\_CRC\_LEN}}
+{\footnotesize\ttfamily \#define C\+\_\+\+CFG\+\_\+\+C\+\_\+\+CRC\+\_\+\+LEN~(2)}
+
+configuration CRC length (16 bits) 
+
+Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00321}{321}} of file \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source}{Io\+T Supervisor\+\_\+main.\+c}}.
+
+\Hypertarget{group___configuration___state___machine_gad29b0843a725184d4dcde51268edc086}\label{group___configuration___state___machine_gad29b0843a725184d4dcde51268edc086} 
+\index{Configuration State Machine@{Configuration State Machine}!C\_CFG\_DATA\_END@{C\_CFG\_DATA\_END}}
+\index{C\_CFG\_DATA\_END@{C\_CFG\_DATA\_END}!Configuration State Machine@{Configuration State Machine}}
+\doxysubsubsubsection{\texorpdfstring{C\_CFG\_DATA\_END}{C\_CFG\_DATA\_END}}
+{\footnotesize\ttfamily \#define C\+\_\+\+CFG\+\_\+\+DATA\+\_\+\+END~(\mbox{\hyperlink{group___configuration___state___machine_ga36de940e9065f10013db52ed98a34b1f}{C\+\_\+\+CFG\+\_\+\+HEADER\+\_\+\+LEN}} + \mbox{\hyperlink{group___configuration___state___machine_ga65c7887c0e26969205a3e5b038fe403a}{C\+\_\+\+CFG\+\_\+\+DATA\+\_\+\+LEN}})}
+
+End of configuration data offset in configuration page. 
+
+Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00327}{327}} of file \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source}{Io\+T Supervisor\+\_\+main.\+c}}.
+
+\Hypertarget{group___configuration___state___machine_ga65c7887c0e26969205a3e5b038fe403a}\label{group___configuration___state___machine_ga65c7887c0e26969205a3e5b038fe403a} 
+\index{Configuration State Machine@{Configuration State Machine}!C\_CFG\_DATA\_LEN@{C\_CFG\_DATA\_LEN}}
+\index{C\_CFG\_DATA\_LEN@{C\_CFG\_DATA\_LEN}!Configuration State Machine@{Configuration State Machine}}
+\doxysubsubsubsection{\texorpdfstring{C\_CFG\_DATA\_LEN}{C\_CFG\_DATA\_LEN}}
+{\footnotesize\ttfamily \#define C\+\_\+\+CFG\+\_\+\+DATA\+\_\+\+LEN~(5)}
+
+Configuration data length
+
+The password is stored in two bytes. 
+
+Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00319}{319}} of file \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source}{Io\+T Supervisor\+\_\+main.\+c}}.
+
+\Hypertarget{group___configuration___state___machine_ga36de940e9065f10013db52ed98a34b1f}\label{group___configuration___state___machine_ga36de940e9065f10013db52ed98a34b1f} 
+\index{Configuration State Machine@{Configuration State Machine}!C\_CFG\_HEADER\_LEN@{C\_CFG\_HEADER\_LEN}}
+\index{C\_CFG\_HEADER\_LEN@{C\_CFG\_HEADER\_LEN}!Configuration State Machine@{Configuration State Machine}}
+\doxysubsubsubsection{\texorpdfstring{C\_CFG\_HEADER\_LEN}{C\_CFG\_HEADER\_LEN}}
+{\footnotesize\ttfamily \#define C\+\_\+\+CFG\+\_\+\+HEADER\+\_\+\+LEN~(8)}
+
+Configuration header length 
+
+Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00300}{300}} of file \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source}{Io\+T Supervisor\+\_\+main.\+c}}.
+
+\Hypertarget{group___configuration___state___machine_ga0ae2d8806fe25d3e6b27511f76385ae6}\label{group___configuration___state___machine_ga0ae2d8806fe25d3e6b27511f76385ae6} 
+\index{Configuration State Machine@{Configuration State Machine}!C\_CFG\_P\_CRC\_END@{C\_CFG\_P\_CRC\_END}}
+\index{C\_CFG\_P\_CRC\_END@{C\_CFG\_P\_CRC\_END}!Configuration State Machine@{Configuration State Machine}}
+\doxysubsubsubsection{\texorpdfstring{C\_CFG\_P\_CRC\_END}{C\_CFG\_P\_CRC\_END}}
+{\footnotesize\ttfamily \#define C\+\_\+\+CFG\+\_\+\+P\+\_\+\+CRC\+\_\+\+END~(\mbox{\hyperlink{group___configuration___state___machine_ga19952ec2f55ea62e4cdaf7637fb29e4e}{C\+\_\+\+CFG\+\_\+\+C\+\_\+\+CRC\+\_\+\+END}} + \mbox{\hyperlink{group___configuration___state___machine_gaba2ebeddce6013b0ef742209113a58b7}{C\+\_\+\+CFG\+\_\+\+P\+\_\+\+CRC\+\_\+\+LEN}})}
+
+End of program CRC offset in configuration page. Total configuration length. 
+
+Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00336}{336}} of file \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source}{Io\+T Supervisor\+\_\+main.\+c}}.
+
+\Hypertarget{group___configuration___state___machine_gaba2ebeddce6013b0ef742209113a58b7}\label{group___configuration___state___machine_gaba2ebeddce6013b0ef742209113a58b7} 
+\index{Configuration State Machine@{Configuration State Machine}!C\_CFG\_P\_CRC\_LEN@{C\_CFG\_P\_CRC\_LEN}}
+\index{C\_CFG\_P\_CRC\_LEN@{C\_CFG\_P\_CRC\_LEN}!Configuration State Machine@{Configuration State Machine}}
+\doxysubsubsubsection{\texorpdfstring{C\_CFG\_P\_CRC\_LEN}{C\_CFG\_P\_CRC\_LEN}}
+{\footnotesize\ttfamily \#define C\+\_\+\+CFG\+\_\+\+P\+\_\+\+CRC\+\_\+\+LEN~(2)}
+
+program CRC length (16 bits) 
+
+Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00323}{323}} of file \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source}{Io\+T Supervisor\+\_\+main.\+c}}.
+
+\Hypertarget{group___configuration___state___machine_gaa240e519cb5b99446d79d4aad8420dd1}\label{group___configuration___state___machine_gaa240e519cb5b99446d79d4aad8420dd1} 
+\index{Configuration State Machine@{Configuration State Machine}!C\_FLASH\_CONF@{C\_FLASH\_CONF}}
+\index{C\_FLASH\_CONF@{C\_FLASH\_CONF}!Configuration State Machine@{Configuration State Machine}}
+\doxysubsubsubsection{\texorpdfstring{C\_FLASH\_CONF}{C\_FLASH\_CONF}}
+{\footnotesize\ttfamily \#define C\+\_\+\+FLASH\+\_\+\+CONF~(0x1\+E00)}
+
+Configuration page start address in program memory (code memory). 
+
+Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00269}{269}} of file \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source}{Io\+T Supervisor\+\_\+main.\+c}}.
+
+\Hypertarget{group___configuration___state___machine_ga2b8473431a4fe63b20294043b9ae4773}\label{group___configuration___state___machine_ga2b8473431a4fe63b20294043b9ae4773} 
+\index{Configuration State Machine@{Configuration State Machine}!C\_FOUND\_PROG\_END@{C\_FOUND\_PROG\_END}}
+\index{C\_FOUND\_PROG\_END@{C\_FOUND\_PROG\_END}!Configuration State Machine@{Configuration State Machine}}
+\doxysubsubsubsection{\texorpdfstring{C\_FOUND\_PROG\_END}{C\_FOUND\_PROG\_END}}
+{\footnotesize\ttfamily \#define C\+\_\+\+FOUND\+\_\+\+PROG\+\_\+\+END~(0x0\+FA2)}
+
+
+
+Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00284}{284}} of file \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source}{Io\+T Supervisor\+\_\+main.\+c}}.
+
+\Hypertarget{group___configuration___state___machine_ga0f6656888b6da3d751ce6bb0644d0dd9}\label{group___configuration___state___machine_ga0f6656888b6da3d751ce6bb0644d0dd9} 
+\index{Configuration State Machine@{Configuration State Machine}!C\_PW\_DEFAULT@{C\_PW\_DEFAULT}}
+\index{C\_PW\_DEFAULT@{C\_PW\_DEFAULT}!Configuration State Machine@{Configuration State Machine}}
+\doxysubsubsubsection{\texorpdfstring{C\_PW\_DEFAULT}{C\_PW\_DEFAULT}}
+{\footnotesize\ttfamily \#define C\+\_\+\+PW\+\_\+\+DEFAULT~(0x\+DEFA)}
+
+The default password used to enter configuration cache or configuration page erase and write. 
+
+Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00275}{275}} of file \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source}{Io\+T Supervisor\+\_\+main.\+c}}.
+
+\Hypertarget{group___configuration___state___machine_gab1cca6a1cf1c6efba75c3ccab43e1518}\label{group___configuration___state___machine_gab1cca6a1cf1c6efba75c3ccab43e1518} 
+\index{Configuration State Machine@{Configuration State Machine}!pFLASH\_CONF@{pFLASH\_CONF}}
+\index{pFLASH\_CONF@{pFLASH\_CONF}!Configuration State Machine@{Configuration State Machine}}
+\doxysubsubsubsection{\texorpdfstring{pFLASH\_CONF}{pFLASH\_CONF}}
+{\footnotesize\ttfamily \#define p\+FLASH\+\_\+\+CONF~((uint8\+\_\+t code\texorpdfstring{$\ast$}{*})\mbox{\hyperlink{group___configuration___state___machine_gaa240e519cb5b99446d79d4aad8420dd1}{C\+\_\+\+FLASH\+\_\+\+CONF}})/\texorpdfstring{$\ast$}{*} pointer to the flash \mbox{\hyperlink{group___configuration___state___machine_ga14ee0f41b2e64cad6f4c28cbb3fcb39b}{cfg}} \texorpdfstring{$\ast$}{*}/}
+
+
+
+Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00270}{270}} of file \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source}{Io\+T Supervisor\+\_\+main.\+c}}.
+
+
+
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group___configuration___state___machine_gadb26e03a4457120c3b24c6316b9dcabe}\label{group___configuration___state___machine_gadb26e03a4457120c3b24c6316b9dcabe} 
+\index{Configuration State Machine@{Configuration State Machine}!ccfg\_check@{ccfg\_check}}
+\index{ccfg\_check@{ccfg\_check}!Configuration State Machine@{Configuration State Machine}}
+\doxysubsubsubsection{\texorpdfstring{ccfg\_check()}{ccfg\_check()}}
+{\footnotesize\ttfamily bool ccfg\+\_\+check (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+This function performs the code memory configuration checks. It first checks if the values from memory are in-\/range and then checks if the CRC against the value stored in code memory.
+
+\begin{DoxyReturn}{Returns}
+the validity of the code memory configuration. true if okay. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00355}{355}} of file \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source}{Io\+T Supervisor\+\_\+main.\+c}}.
+
+\Hypertarget{group___configuration___state___machine_gaa517964897d449243fda50976465744a}\label{group___configuration___state___machine_gaa517964897d449243fda50976465744a} 
+\index{Configuration State Machine@{Configuration State Machine}!cfg\_load@{cfg\_load}}
+\index{cfg\_load@{cfg\_load}!Configuration State Machine@{Configuration State Machine}}
+\doxysubsubsubsection{\texorpdfstring{cfg\_load()}{cfg\_load()}}
+{\footnotesize\ttfamily void cfg\+\_\+load (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This function performs the tasks in the configuration load state in the configuration state machine. This includes loading the configuration from code memory and checking the CRC of program memory.
+
+The verification status is set based on greater than logic. If code memory lacks the correct configuration header, the verification status is "{}\+Setup."{} If the program memory CRC does not match what is stored in the configuration, the verification status is "{}\+Program \mbox{[}invalid\mbox{]}."{} If code memory is invalid or deemed corrupted by an incorrect CRC, the verification status is "{}\+Configuration \mbox{[}invalid\mbox{]}."{} 
+
+Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00483}{483}} of file \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source}{Io\+T Supervisor\+\_\+main.\+c}}.
+
+\Hypertarget{group___configuration___state___machine_gaebd0a8f26aa5dfb3610e419c7c5070b7}\label{group___configuration___state___machine_gaebd0a8f26aa5dfb3610e419c7c5070b7} 
+\index{Configuration State Machine@{Configuration State Machine}!cfg\_write@{cfg\_write}}
+\index{cfg\_write@{cfg\_write}!Configuration State Machine@{Configuration State Machine}}
+\doxysubsubsubsection{\texorpdfstring{cfg\_write()}{cfg\_write()}}
+{\footnotesize\ttfamily void cfg\+\_\+write (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+This function writes the data memory configuration into code memory. It also calculates the CRC so that later reads can determine the integrity of the configuration data. 
+
+Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00537}{537}} of file \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source}{Io\+T Supervisor\+\_\+main.\+c}}.
+
+\Hypertarget{group___configuration___state___machine_gaaa703efb79709d2f2e12561f47f253b7}\label{group___configuration___state___machine_gaaa703efb79709d2f2e12561f47f253b7} 
+\index{Configuration State Machine@{Configuration State Machine}!CFGsm@{CFGsm}}
+\index{CFGsm@{CFGsm}!Configuration State Machine@{Configuration State Machine}}
+\doxysubsubsubsection{\texorpdfstring{CFGsm()}{CFGsm()}}
+{\footnotesize\ttfamily void CFGsm (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This function implements the configuration state machine which controls various parts of the supervisor\textquotesingle{}s behavior. It controls the modbus sid, modbus baud rate, watchdog timer, and configuration memory password.
+
+The configuration state machine locks the modbus master out of reading or writing the configuration memory if the state machine is not put into either cache or commit state.
+
+Caches or commits can be escaped from if the modbus user does not want to write data to code memory. 
+
+Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00585}{585}} of file \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source}{Io\+T Supervisor\+\_\+main.\+c}}.
+
+\Hypertarget{group___configuration___state___machine_ga788ff1c4a563985fc673182073aed78c}\label{group___configuration___state___machine_ga788ff1c4a563985fc673182073aed78c} 
+\index{Configuration State Machine@{Configuration State Machine}!dcfg\_check@{dcfg\_check}}
+\index{dcfg\_check@{dcfg\_check}!Configuration State Machine@{Configuration State Machine}}
+\doxysubsubsubsection{\texorpdfstring{dcfg\_check()}{dcfg\_check()}}
+{\footnotesize\ttfamily bool dcfg\+\_\+check (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This function checks the configuration stored in data memory. It does not perform a CRC.
+
+\begin{DoxyReturn}{Returns}
+the validity of the configuration. true if okay. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00444}{444}} of file \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source}{Io\+T Supervisor\+\_\+main.\+c}}.
+
+
+
+\doxysubsubsection{Variable Documentation}
+\Hypertarget{group___configuration___state___machine_ga2e76b6ae721cc46405d326ebb01396ee}\label{group___configuration___state___machine_ga2e76b6ae721cc46405d326ebb01396ee} 
+\index{Configuration State Machine@{Configuration State Machine}!calc\_cfg\_crc@{calc\_cfg\_crc}}
+\index{calc\_cfg\_crc@{calc\_cfg\_crc}!Configuration State Machine@{Configuration State Machine}}
+\doxysubsubsubsection{\texorpdfstring{calc\_cfg\_crc}{calc\_cfg\_crc}}
+{\footnotesize\ttfamily uint16\+\_\+t calc\+\_\+cfg\+\_\+crc = 0x\+FFFF}
+
+
+
+Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00345}{345}} of file \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source}{Io\+T Supervisor\+\_\+main.\+c}}.
+
+\Hypertarget{group___configuration___state___machine_ga2af04e4d032e98d5461d108969d9c8bd}\label{group___configuration___state___machine_ga2af04e4d032e98d5461d108969d9c8bd} 
+\index{Configuration State Machine@{Configuration State Machine}!calc\_prog\_crc@{calc\_prog\_crc}}
+\index{calc\_prog\_crc@{calc\_prog\_crc}!Configuration State Machine@{Configuration State Machine}}
+\doxysubsubsubsection{\texorpdfstring{calc\_prog\_crc}{calc\_prog\_crc}}
+{\footnotesize\ttfamily uint16\+\_\+t calc\+\_\+prog\+\_\+crc = 0x\+FFFF}
+
+
+
+Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00346}{346}} of file \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source}{Io\+T Supervisor\+\_\+main.\+c}}.
+
+\Hypertarget{group___configuration___state___machine_ga14ee0f41b2e64cad6f4c28cbb3fcb39b}\label{group___configuration___state___machine_ga14ee0f41b2e64cad6f4c28cbb3fcb39b} 
+\index{Configuration State Machine@{Configuration State Machine}!cfg@{cfg}}
+\index{cfg@{cfg}!Configuration State Machine@{Configuration State Machine}}
+\doxysubsubsubsection{\texorpdfstring{cfg}{cfg}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcfg__t}{cfg\+\_\+t}} cfg}
+
+entered password, not necessarily the correct password 
+
+Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00343}{343}} of file \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source}{Io\+T Supervisor\+\_\+main.\+c}}.
+
+\Hypertarget{group___configuration___state___machine_gaa8b9a108114d596023dc16a2f4629665}\label{group___configuration___state___machine_gaa8b9a108114d596023dc16a2f4629665} 
+\index{Configuration State Machine@{Configuration State Machine}!cfg\_write\_idx@{cfg\_write\_idx}}
+\index{cfg\_write\_idx@{cfg\_write\_idx}!Configuration State Machine@{Configuration State Machine}}
+\doxysubsubsubsection{\texorpdfstring{cfg\_write\_idx}{cfg\_write\_idx}}
+{\footnotesize\ttfamily uint8\+\_\+t cfg\+\_\+write\+\_\+idx = 0}
+
+
+
+Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00344}{344}} of file \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source}{Io\+T Supervisor\+\_\+main.\+c}}.
+
+\Hypertarget{group___configuration___state___machine_ga6c9c723896f1d714b5d1caeb1afceda6}\label{group___configuration___state___machine_ga6c9c723896f1d714b5d1caeb1afceda6} 
+\index{Configuration State Machine@{Configuration State Machine}!cfgSmS@{cfgSmS}}
+\index{cfgSmS@{cfgSmS}!Configuration State Machine@{Configuration State Machine}}
+\doxysubsubsubsection{\texorpdfstring{cfgSmS}{cfgSmS}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_io_t___supervisor_8h_a2e2885d00577c7076677cc277ac4f238}{Cfg\+SM\+\_\+t}} cfg\+SmS = \mbox{\hyperlink{_io_t___supervisor_8h_a2e2885d00577c7076677cc277ac4f238a77c6aa8579abb456a1022f2c0749809b}{e\+CFG\+\_\+\+Load}}}
+
+
+
+Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00338}{338}} of file \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source}{Io\+T Supervisor\+\_\+main.\+c}}.
+
+\Hypertarget{group___configuration___state___machine_ga35236392c891bc6d5ccee8f619d2f92a}\label{group___configuration___state___machine_ga35236392c891bc6d5ccee8f619d2f92a} 
+\index{Configuration State Machine@{Configuration State Machine}!default\_cfg@{default\_cfg}}
+\index{default\_cfg@{default\_cfg}!Configuration State Machine@{Configuration State Machine}}
+\doxysubsubsubsection{\texorpdfstring{default\_cfg}{default\_cfg}}
+{\footnotesize\ttfamily code const \mbox{\hyperlink{structcfg__t}{cfg\+\_\+t}} default\+\_\+cfg}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ 255,\ }
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{_modbus_middle_ware_8h_ac4b55353c236e4425b062d426cb99eaca3935af3a6cf121e677eef008dcd07ead}{eMMW\_B\_38400}},\ }
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{group___modbus___w_d_t___state___machine_gab4cd620a6ff382f2308515027d02e9b2}{C\_DEFAULT\_MB\_WD\_TIMEOUT}},\ }
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{group___configuration___state___machine_ga0f6656888b6da3d751ce6bb0644d0dd9}{C\_PW\_DEFAULT}}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+Stores the default configuration data.
+
+\begin{DoxyNote}{Note}
+The default modbus sid is 255 because this sid is specifically reserved for devices that have not been configured yet. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00307}{307}} of file \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source}{Io\+T Supervisor\+\_\+main.\+c}}.
+
+\Hypertarget{group___configuration___state___machine_ga4310b6cbe0d1f02c0d8bacadf8fa09a2}\label{group___configuration___state___machine_ga4310b6cbe0d1f02c0d8bacadf8fa09a2} 
+\index{Configuration State Machine@{Configuration State Machine}!dir\_tx@{dir\_tx}}
+\index{dir\_tx@{dir\_tx}!Configuration State Machine@{Configuration State Machine}}
+\doxysubsubsubsection{\texorpdfstring{dir\_tx}{dir\_tx}}
+{\footnotesize\ttfamily bool dir\+\_\+tx = false}
+
+
+
+Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00340}{340}} of file \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source}{Io\+T Supervisor\+\_\+main.\+c}}.
+
+\Hypertarget{group___configuration___state___machine_ga4786f95f528dfb7d6225d35b27072418}\label{group___configuration___state___machine_ga4786f95f528dfb7d6225d35b27072418} 
+\index{Configuration State Machine@{Configuration State Machine}!ex\_cfg\_header@{ex\_cfg\_header}}
+\index{ex\_cfg\_header@{ex\_cfg\_header}!Configuration State Machine@{Configuration State Machine}}
+\doxysubsubsubsection{\texorpdfstring{ex\_cfg\_header}{ex\_cfg\_header}}
+{\footnotesize\ttfamily code const uint8\+\_\+t ex\+\_\+cfg\+\_\+header\mbox{[}$\,$\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{charliteral}{'M'},\textcolor{charliteral}{'A'},\textcolor{charliteral}{'G'},\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{charliteral}{'S'},\textcolor{charliteral}{'V'},\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{charliteral}{'0'},\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{charliteral}{'0'},\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{charliteral}{'0'}\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+Stores the header of the configuration page in FLASH 
+
+Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00291}{291}} of file \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source}{Io\+T Supervisor\+\_\+main.\+c}}.
+
+\Hypertarget{group___configuration___state___machine_ga1edfc8756590da90a14f41af9bd71dc4}\label{group___configuration___state___machine_ga1edfc8756590da90a14f41af9bd71dc4} 
+\index{Configuration State Machine@{Configuration State Machine}!pw@{pw}}
+\index{pw@{pw}!Configuration State Machine@{Configuration State Machine}}
+\doxysubsubsubsection{\texorpdfstring{pw}{pw}}
+{\footnotesize\ttfamily uint16\+\_\+t pw}
+
+
+
+Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00342}{342}} of file \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source}{Io\+T Supervisor\+\_\+main.\+c}}.
+
+\Hypertarget{group___configuration___state___machine_ga0959e8576e2d8601bc958bbf7680f0d4}\label{group___configuration___state___machine_ga0959e8576e2d8601bc958bbf7680f0d4} 
+\index{Configuration State Machine@{Configuration State Machine}!pw\_flag@{pw\_flag}}
+\index{pw\_flag@{pw\_flag}!Configuration State Machine@{Configuration State Machine}}
+\doxysubsubsubsection{\texorpdfstring{pw\_flag}{pw\_flag}}
+{\footnotesize\ttfamily bool pw\+\_\+flag = false}
+
+
+
+Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00339}{339}} of file \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source}{Io\+T Supervisor\+\_\+main.\+c}}.
+
+\Hypertarget{group___configuration___state___machine_ga7624452708e1f4a54f678332e81c4867}\label{group___configuration___state___machine_ga7624452708e1f4a54f678332e81c4867} 
+\index{Configuration State Machine@{Configuration State Machine}!run\_petitmodbus@{run\_petitmodbus}}
+\index{run\_petitmodbus@{run\_petitmodbus}!Configuration State Machine@{Configuration State Machine}}
+\doxysubsubsubsection{\texorpdfstring{run\_petitmodbus}{run\_petitmodbus}}
+{\footnotesize\ttfamily bool run\+\_\+petitmodbus = false}
+
+
+
+Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00341}{341}} of file \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source}{Io\+T Supervisor\+\_\+main.\+c}}.
+

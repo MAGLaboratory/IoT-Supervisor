@@ -1,0 +1,126 @@
+\doxysubsection{Reset State Machine}
+\hypertarget{group___reset___state___machine}{}\label{group___reset___state___machine}\index{Reset State Machine@{Reset State Machine}}
+
+
+vin and reset the state machine  
+
+
+\doxysubsubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group___reset___state___machine_gafc1dec4dc888692cdf30987658c2ab88}{SCOUNTER\+\_\+\+ONE\+\_\+\+SECOND}}~(125)
+\end{DoxyCompactItemize}
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group___reset___state___machine_gae07580e6a3e7427894a9809c979f3f65}{Vin\+Sm}} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{group___reset___state___machine_ga31390fb09ef36dd888ed0850ab41521d}{n\+Reset}} = false
+\item 
+bool \mbox{\hyperlink{group___reset___state___machine_ga0483e3e419cbb0dcb1a54e2d9d7b78e6}{modbus\+Wdt\+Sm\+En}} = false
+\item 
+bool \mbox{\hyperlink{group___reset___state___machine_ga59f537ef8b7df61f7a1a3b477f5fc340}{cprif}} = false
+\item 
+bool \mbox{\hyperlink{group___reset___state___machine_gad7452351720eb5866550eadd22acf654}{modbus\+Wdt\+Exp}} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+vin and reset the state machine 
+
+\begin{DoxyVerb}                         VinLow == False
+ ┌────────────────────────────────────────────────────────────┐
+ │                                                            │
+ │                       VinLow Interrupt    ┌────────────┐   │
+ │                  ┌───────────────────────►│            │   │
+ │                  │                        │    VLow    ├───┘
+ │   ┌────────────┐ │                     ┌─►│            │
+ │   │            ├─┘                     │  └────────────┘
+ ├──►│    Init    │                       │  nReset = low
+ │   │            ├─┐     VinLow Interrupt│
+ │   └────────────┘ │                     │
+ │   nReset = low   │                     │
+ │                  │                     │  ┌────────────┐
+ │                  │ VinLow == False     └──┤            │
+ │                  │    2 seconds           │     OK     ├───┐
+ │                  └───────────────────────►│            │   │
+ │                                           └────────────┘   │
+ │                                            nReset = high   │
+ │                                           Modbus WDT SMEn  │
+ │                 Modbus WDT Timeout                         │
+ └────────────────────────────────────────────────────────────┘
+\end{DoxyVerb}
+ 
+
+\doxysubsubsection{Macro Definition Documentation}
+\Hypertarget{group___reset___state___machine_gafc1dec4dc888692cdf30987658c2ab88}\label{group___reset___state___machine_gafc1dec4dc888692cdf30987658c2ab88} 
+\index{Reset State Machine@{Reset State Machine}!SCOUNTER\_ONE\_SECOND@{SCOUNTER\_ONE\_SECOND}}
+\index{SCOUNTER\_ONE\_SECOND@{SCOUNTER\_ONE\_SECOND}!Reset State Machine@{Reset State Machine}}
+\doxysubsubsubsection{\texorpdfstring{SCOUNTER\_ONE\_SECOND}{SCOUNTER\_ONE\_SECOND}}
+{\footnotesize\ttfamily \#define SCOUNTER\+\_\+\+ONE\+\_\+\+SECOND~(125)}
+
+
+
+Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00096}{96}} of file \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source}{Io\+T Supervisor\+\_\+main.\+c}}.
+
+
+
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group___reset___state___machine_gae07580e6a3e7427894a9809c979f3f65}\label{group___reset___state___machine_gae07580e6a3e7427894a9809c979f3f65} 
+\index{Reset State Machine@{Reset State Machine}!VinSm@{VinSm}}
+\index{VinSm@{VinSm}!Reset State Machine@{Reset State Machine}}
+\doxysubsubsubsection{\texorpdfstring{VinSm()}{VinSm()}}
+{\footnotesize\ttfamily void Vin\+Sm (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Voltage in state machine. Perhaps this could be called the main state machine in this application.
+
+The state machine starts in the reset mode to enable a boot-\/up delay on the SBC so that screens and stuff can initialize before the board does. 
+
+Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00106}{106}} of file \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source}{Io\+T Supervisor\+\_\+main.\+c}}.
+
+
+
+\doxysubsubsection{Variable Documentation}
+\Hypertarget{group___reset___state___machine_ga59f537ef8b7df61f7a1a3b477f5fc340}\label{group___reset___state___machine_ga59f537ef8b7df61f7a1a3b477f5fc340} 
+\index{Reset State Machine@{Reset State Machine}!cprif@{cprif}}
+\index{cprif@{cprif}!Reset State Machine@{Reset State Machine}}
+\doxysubsubsubsection{\texorpdfstring{cprif}{cprif}}
+{\footnotesize\ttfamily bool cprif = false}
+
+
+
+Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00091}{91}} of file \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source}{Io\+T Supervisor\+\_\+main.\+c}}.
+
+\Hypertarget{group___reset___state___machine_gad7452351720eb5866550eadd22acf654}\label{group___reset___state___machine_gad7452351720eb5866550eadd22acf654} 
+\index{Reset State Machine@{Reset State Machine}!modbusWdtExp@{modbusWdtExp}}
+\index{modbusWdtExp@{modbusWdtExp}!Reset State Machine@{Reset State Machine}}
+\doxysubsubsubsection{\texorpdfstring{modbusWdtExp}{modbusWdtExp}}
+{\footnotesize\ttfamily bool modbus\+Wdt\+Exp = false}
+
+
+
+Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00093}{93}} of file \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source}{Io\+T Supervisor\+\_\+main.\+c}}.
+
+\Hypertarget{group___reset___state___machine_ga0483e3e419cbb0dcb1a54e2d9d7b78e6}\label{group___reset___state___machine_ga0483e3e419cbb0dcb1a54e2d9d7b78e6} 
+\index{Reset State Machine@{Reset State Machine}!modbusWdtSmEn@{modbusWdtSmEn}}
+\index{modbusWdtSmEn@{modbusWdtSmEn}!Reset State Machine@{Reset State Machine}}
+\doxysubsubsubsection{\texorpdfstring{modbusWdtSmEn}{modbusWdtSmEn}}
+{\footnotesize\ttfamily bool modbus\+Wdt\+Sm\+En = false}
+
+
+
+Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00088}{88}} of file \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source}{Io\+T Supervisor\+\_\+main.\+c}}.
+
+\Hypertarget{group___reset___state___machine_ga31390fb09ef36dd888ed0850ab41521d}\label{group___reset___state___machine_ga31390fb09ef36dd888ed0850ab41521d} 
+\index{Reset State Machine@{Reset State Machine}!nReset@{nReset}}
+\index{nReset@{nReset}!Reset State Machine@{Reset State Machine}}
+\doxysubsubsubsection{\texorpdfstring{nReset}{nReset}}
+{\footnotesize\ttfamily bool n\+Reset = false}
+
+
+
+Definition at line \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source_l00087}{87}} of file \mbox{\hyperlink{_io_t_01_supervisor__main_8c_source}{Io\+T Supervisor\+\_\+main.\+c}}.
+

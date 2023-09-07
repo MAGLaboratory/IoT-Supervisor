@@ -1,0 +1,93 @@
+\doxysection{Petit\+Modbus/inc/\+Petit\+Modbus.h File Reference}
+\hypertarget{_petit_modbus_8h}{}\label{_petit_modbus_8h}\index{PetitModbus/inc/PetitModbus.h@{PetitModbus/inc/PetitModbus.h}}
+{\ttfamily \#include "{}Petit\+Modbus\+Port.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_petit_modbus_8h_abac00eeae9e2d13662e5eed7760f10dd}{PETITMODBUS\+\_\+\+RXTX\+\_\+\+BUFFER\+\_\+\+SIZE}}~(2\texorpdfstring{$\ast$}{*}(\mbox{\hyperlink{_petit_modbus_user_port_8h_af4ebe6d82ada506a09972cd6e9696070}{NUMBER\+\_\+\+OF\+\_\+\+REGISTERS\+\_\+\+IN\+\_\+\+BUFFER}}) + 9)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{_petit_modbus_8h_a416ceb2c1c6976a28c49fe9fe817c719}{PETIT\+\_\+\+RXTX\+\_\+\+STATE}} \{ \newline
+\mbox{\hyperlink{_petit_modbus_8h_a416ceb2c1c6976a28c49fe9fe817c719a0ed5e421bfe56a5dc3001ff0f7edb99e}{PETIT\+\_\+\+RXTX\+\_\+\+RX}} = 0
+, \mbox{\hyperlink{_petit_modbus_8h_a416ceb2c1c6976a28c49fe9fe817c719a58295e47943cd05f9beea5990ac95072}{PETIT\+\_\+\+RXTX\+\_\+\+PROCESS}}
+, \mbox{\hyperlink{_petit_modbus_8h_a416ceb2c1c6976a28c49fe9fe817c719ae3b8f1a0c9b2bacd260fa4379e630677}{PETIT\+\_\+\+RXTX\+\_\+\+TX\+\_\+\+DATABUF}}
+, \mbox{\hyperlink{_petit_modbus_8h_a416ceb2c1c6976a28c49fe9fe817c719a2fe4acfcb5e852537baafb458c0356f4}{PETIT\+\_\+\+RXTX\+\_\+\+TX\+\_\+\+DLY}}
+, \newline
+\mbox{\hyperlink{_petit_modbus_8h_a416ceb2c1c6976a28c49fe9fe817c719ab5c76f408b1f58388769d764fdd4ae04}{PETIT\+\_\+\+RXTX\+\_\+\+TX}}
+, \mbox{\hyperlink{_petit_modbus_8h_a416ceb2c1c6976a28c49fe9fe817c719a977bd1ab6ce8ad560a7ff3a712567e3a}{PETIT\+\_\+\+RXTX\+\_\+\+TIMEOUT}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_petit_modbus_8h_a7265c15b3b4be196691eb68b682b60ca}{Process\+Petit\+Modbus}} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_petit_modbus_8h_a416ceb2c1c6976a28c49fe9fe817c719}{PETIT\+\_\+\+RXTX\+\_\+\+STATE}} \mbox{\hyperlink{_petit_modbus_8h_a5e9ea8b66a92b4c5bd6d48903ddad114}{Petit\+\_\+\+Rx\+Tx\+\_\+\+State}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_petit_modbus_8h_abac00eeae9e2d13662e5eed7760f10dd}\label{_petit_modbus_8h_abac00eeae9e2d13662e5eed7760f10dd} 
+\index{PetitModbus.h@{PetitModbus.h}!PETITMODBUS\_RXTX\_BUFFER\_SIZE@{PETITMODBUS\_RXTX\_BUFFER\_SIZE}}
+\index{PETITMODBUS\_RXTX\_BUFFER\_SIZE@{PETITMODBUS\_RXTX\_BUFFER\_SIZE}!PetitModbus.h@{PetitModbus.h}}
+\doxysubsubsection{\texorpdfstring{PETITMODBUS\_RXTX\_BUFFER\_SIZE}{PETITMODBUS\_RXTX\_BUFFER\_SIZE}}
+{\footnotesize\ttfamily \#define PETITMODBUS\+\_\+\+RXTX\+\_\+\+BUFFER\+\_\+\+SIZE~(2\texorpdfstring{$\ast$}{*}(\mbox{\hyperlink{_petit_modbus_user_port_8h_af4ebe6d82ada506a09972cd6e9696070}{NUMBER\+\_\+\+OF\+\_\+\+REGISTERS\+\_\+\+IN\+\_\+\+BUFFER}}) + 9)}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{_petit_modbus_8h_a416ceb2c1c6976a28c49fe9fe817c719}\label{_petit_modbus_8h_a416ceb2c1c6976a28c49fe9fe817c719} 
+\index{PetitModbus.h@{PetitModbus.h}!PETIT\_RXTX\_STATE@{PETIT\_RXTX\_STATE}}
+\index{PETIT\_RXTX\_STATE@{PETIT\_RXTX\_STATE}!PetitModbus.h@{PetitModbus.h}}
+\doxysubsubsection{\texorpdfstring{PETIT\_RXTX\_STATE}{PETIT\_RXTX\_STATE}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_petit_modbus_8h_a416ceb2c1c6976a28c49fe9fe817c719}{PETIT\+\_\+\+RXTX\+\_\+\+STATE}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PETIT\_RXTX\_RX@{PETIT\_RXTX\_RX}!PetitModbus.h@{PetitModbus.h}}\index{PetitModbus.h@{PetitModbus.h}!PETIT\_RXTX\_RX@{PETIT\_RXTX\_RX}}}\Hypertarget{_petit_modbus_8h_a416ceb2c1c6976a28c49fe9fe817c719a0ed5e421bfe56a5dc3001ff0f7edb99e}\label{_petit_modbus_8h_a416ceb2c1c6976a28c49fe9fe817c719a0ed5e421bfe56a5dc3001ff0f7edb99e} 
+PETIT\+\_\+\+RXTX\+\_\+\+RX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PETIT\_RXTX\_PROCESS@{PETIT\_RXTX\_PROCESS}!PetitModbus.h@{PetitModbus.h}}\index{PetitModbus.h@{PetitModbus.h}!PETIT\_RXTX\_PROCESS@{PETIT\_RXTX\_PROCESS}}}\Hypertarget{_petit_modbus_8h_a416ceb2c1c6976a28c49fe9fe817c719a58295e47943cd05f9beea5990ac95072}\label{_petit_modbus_8h_a416ceb2c1c6976a28c49fe9fe817c719a58295e47943cd05f9beea5990ac95072} 
+PETIT\+\_\+\+RXTX\+\_\+\+PROCESS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PETIT\_RXTX\_TX\_DATABUF@{PETIT\_RXTX\_TX\_DATABUF}!PetitModbus.h@{PetitModbus.h}}\index{PetitModbus.h@{PetitModbus.h}!PETIT\_RXTX\_TX\_DATABUF@{PETIT\_RXTX\_TX\_DATABUF}}}\Hypertarget{_petit_modbus_8h_a416ceb2c1c6976a28c49fe9fe817c719ae3b8f1a0c9b2bacd260fa4379e630677}\label{_petit_modbus_8h_a416ceb2c1c6976a28c49fe9fe817c719ae3b8f1a0c9b2bacd260fa4379e630677} 
+PETIT\+\_\+\+RXTX\+\_\+\+TX\+\_\+\+DATABUF&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PETIT\_RXTX\_TX\_DLY@{PETIT\_RXTX\_TX\_DLY}!PetitModbus.h@{PetitModbus.h}}\index{PetitModbus.h@{PetitModbus.h}!PETIT\_RXTX\_TX\_DLY@{PETIT\_RXTX\_TX\_DLY}}}\Hypertarget{_petit_modbus_8h_a416ceb2c1c6976a28c49fe9fe817c719a2fe4acfcb5e852537baafb458c0356f4}\label{_petit_modbus_8h_a416ceb2c1c6976a28c49fe9fe817c719a2fe4acfcb5e852537baafb458c0356f4} 
+PETIT\+\_\+\+RXTX\+\_\+\+TX\+\_\+\+DLY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PETIT\_RXTX\_TX@{PETIT\_RXTX\_TX}!PetitModbus.h@{PetitModbus.h}}\index{PetitModbus.h@{PetitModbus.h}!PETIT\_RXTX\_TX@{PETIT\_RXTX\_TX}}}\Hypertarget{_petit_modbus_8h_a416ceb2c1c6976a28c49fe9fe817c719ab5c76f408b1f58388769d764fdd4ae04}\label{_petit_modbus_8h_a416ceb2c1c6976a28c49fe9fe817c719ab5c76f408b1f58388769d764fdd4ae04} 
+PETIT\+\_\+\+RXTX\+\_\+\+TX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PETIT\_RXTX\_TIMEOUT@{PETIT\_RXTX\_TIMEOUT}!PetitModbus.h@{PetitModbus.h}}\index{PetitModbus.h@{PetitModbus.h}!PETIT\_RXTX\_TIMEOUT@{PETIT\_RXTX\_TIMEOUT}}}\Hypertarget{_petit_modbus_8h_a416ceb2c1c6976a28c49fe9fe817c719a977bd1ab6ce8ad560a7ff3a712567e3a}\label{_petit_modbus_8h_a416ceb2c1c6976a28c49fe9fe817c719a977bd1ab6ce8ad560a7ff3a712567e3a} 
+PETIT\+\_\+\+RXTX\+\_\+\+TIMEOUT&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_petit_modbus_8h_a7265c15b3b4be196691eb68b682b60ca}\label{_petit_modbus_8h_a7265c15b3b4be196691eb68b682b60ca} 
+\index{PetitModbus.h@{PetitModbus.h}!ProcessPetitModbus@{ProcessPetitModbus}}
+\index{ProcessPetitModbus@{ProcessPetitModbus}!PetitModbus.h@{PetitModbus.h}}
+\doxysubsubsection{\texorpdfstring{ProcessPetitModbus()}{ProcessPetitModbus()}}
+{\footnotesize\ttfamily Process\+Petit\+Modbus (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+Mod\+Bus main core! Call this function into main! 
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{_petit_modbus_8h_a5e9ea8b66a92b4c5bd6d48903ddad114}\label{_petit_modbus_8h_a5e9ea8b66a92b4c5bd6d48903ddad114} 
+\index{PetitModbus.h@{PetitModbus.h}!Petit\_RxTx\_State@{Petit\_RxTx\_State}}
+\index{Petit\_RxTx\_State@{Petit\_RxTx\_State}!PetitModbus.h@{PetitModbus.h}}
+\doxysubsubsection{\texorpdfstring{Petit\_RxTx\_State}{Petit\_RxTx\_State}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_petit_modbus_8h_a416ceb2c1c6976a28c49fe9fe817c719}{PETIT\+\_\+\+RXTX\+\_\+\+STATE}} Petit\+\_\+\+Rx\+Tx\+\_\+\+State\hspace{0.3cm}{\ttfamily [extern]}}
+
