@@ -204,33 +204,32 @@ bool mbWDTpet = false;
 void mbWDTsm(void)
 {
 	// statics
-	static mbWDTsmS_t mbWDTsmS = eMW_Ini;
 	static uint16_t mbWDTc = 0;		// modbus watchdog timer counter
-	static uint8_t mbWDTcM = 0;	// modbus watchdog timer counter (minute)
+	static uint16_t mbWDTcM = 0;	// modbus watchdog timer counter (minute)
 
 	// transitions
-	switch (mbWDTsmS)
+	switch (sv_dev_sta.v.wdtSmS)
 	{
 	case eMW_Ini:
 		if (mbWDTen && modbusWdtSmEn)
-			mbWDTsmS = eMW_En;
+			sv_dev_sta.v.wdtSmS = eMW_En;
 		break;
 	case eMW_En:
 		if (!mbWDTen || mbWDTpet)
-			mbWDTsmS = eMW_Ini;
+			sv_dev_sta.v.wdtSmS = eMW_Ini;
 		if (mbWDTcM >= MB_WD_TIMEOUT)
-			mbWDTsmS = eMW_Timeout;
+			sv_dev_sta.v.wdtSmS = eMW_Timeout;
 		break;
 	case eMW_Timeout:
-		mbWDTsmS = eMW_Ini;
+		sv_dev_sta.v.wdtSmS = eMW_Ini;
 		break;
 	default:
-		mbWDTsmS = eMW_Ini;
+		sv_dev_sta.v.wdtSmS = eMW_Ini;
 		break;
 	}
 
 	// output
-	switch (mbWDTsmS)
+	switch (sv_dev_sta.v.wdtSmS)
 	{
 	case eMW_Ini:
 		mbWDTc = 0;
@@ -239,7 +238,10 @@ void mbWDTsm(void)
 	case eMW_En:
 		mbWDTc++;
 		if (mbWDTc >= C_MB_WD_COUNT2MIN)
+		{
 			mbWDTcM++;
+			mbWDTc = 0;
+		}
 		break;
 	case eMW_Timeout:
 		mbWDTen = false;

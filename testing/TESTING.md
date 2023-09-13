@@ -96,9 +96,9 @@ The default timeout is `15` minutes.
 This test activates the timer, pets it `7.5` minutes (or halfway into the
 cycle) and lets it time out.
 
-1. Write `0x5A` to pet the watchdog and start the watchdog timer.
+1. Write `0x5A` to register `0` to pet the watchdog and start the watchdog timer.
 2. Wait 7.5 minutes.
-3. Write `0x5A` to pet the watchdog and reset the watchdog timer.
+3. Write `0x5A` to register `0` to pet the watchdog and reset the watchdog timer.
 4. Wait until the watchdog resets in 15 minutes.
 
 
