@@ -170,7 +170,7 @@ void VinSm(void)
 
 	// output signals
 	RESET_P = nReset;
-	nLED = nReset;
+	RESET_LED_SET(nReset);
 
 	// reset flags
 	cprif = false;
@@ -249,6 +249,9 @@ void mbWDTsm(void)
 		break;
 	}
 
+	// inverse logic
+	WDT_LED_SET(sv_dev_sta.v.wdtSmS != eMW_En);
+
 	mbWDTpet = false;
 }
 /** @} */ // section Modbus WDT State Machine
@@ -283,7 +286,7 @@ void mbWDTsm(void)
  */
 #define C_FOUND_PROG_END (0x0FD5) // end of program memory to check (exclusive)
 #else
-#define C_FOUND_PROG_END (0x0F9F) // determine me
+#define C_FOUND_PROG_END (0x0FC9) // determine me
 #endif
 
 // configuration variables

@@ -93,21 +93,24 @@ pb_t PetitPortRegWrite(pu8_t Address, pu16_t Data)
 	{
 		return 0;
 	}
-	// the status register only accepts two values, and petting the watchdog
-	// automatically enables it
+	// the status register only accepts a few values, and petting the watchdog
+	// automatically enables the watchdog
+	// the reset source can be reset to 0 by writing 0 to this register
 	if (Address == eMMW_HR_STA)
 	{
-		if (Data == C_WDT_PET)
+		switch (Data)
 		{
+		case 0:
+			sv_dev_sta.v.lastRstS = eLR_Init;
+			break;
+		case C_WDT_PET:
 			mbWDTpet = true;
 			mbWDTen = true;
-		}
-		else if (Data == C_WDT_DIS)
-		{
+			break;
+		case C_WDT_DIS:
 			mbWDTen = false;
-		}
-		else
-		{
+			break;
+		default:
 			return 0;
 		}
 	}

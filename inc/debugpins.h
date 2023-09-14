@@ -42,6 +42,9 @@
 #define MAIN_PIN_OFF()
 #define PETIT_PROCESS_ON() DBG3 = 1;
 #define PETIT_PROCESS_OFF() DBG3 = 0;
+// note that these respond to inverse logic
+#define RESET_LED_SET(nSTATE)
+#define WDT_LED_SET(nSTATE) nLED = (nSTATE);
 #else
 // empty declarations
 #define TIMER0_PINO_ON()
@@ -58,6 +61,8 @@
 #define MAIN_PIN_OFF()
 #define PETIT_PROCESS_ON()
 #define PETIT_PROCESS_OFF()
+#define RESET_LED_SET(nSTATE)
+#define WDT_LED_SET(nSTATE)
 #endif
 
 #endif /* INC_DEBUGPINS_H_ */
