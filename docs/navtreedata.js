@@ -26,16 +26,16 @@ var NAVTREE =
 [
   [ "IoT Supervisor", "index.html", [
     [ "MAG Laboratory IoT Supervisor", "index.html", "index" ],
-    [ "Testing Procedures", "md_testing_2_t_e_s_t_i_n_g.html", [
-      [ "Interrupts", "md_testing_2_t_e_s_t_i_n_g.html#autotoc_md10", null ],
-      [ "Configuration", "md_testing_2_t_e_s_t_i_n_g.html#autotoc_md11", [
-        [ "Address and CRC Instructions", "md_testing_2_t_e_s_t_i_n_g.html#autotoc_md12", null ],
-        [ "Generic Baud Instructions", "md_testing_2_t_e_s_t_i_n_g.html#autotoc_md13", null ],
-        [ "Specific Baud Instructions", "md_testing_2_t_e_s_t_i_n_g.html#autotoc_md14", null ]
+    [ "Testing Procedures", "testing-procedures.html", [
+      [ "Interrupts", "testing-procedures.html#interrupts", null ],
+      [ "Configuration", "testing-procedures.html#configuration", [
+        [ "Address and CRC Instructions", "testing-procedures.html#address-and-crc-instructions", null ],
+        [ "Generic Baud Instructions", "testing-procedures.html#generic-baud-instructions", null ],
+        [ "Specific Baud Instructions", "testing-procedures.html#specific-baud-instructions", null ]
       ] ],
-      [ "Middleware, Main", "md_testing_2_t_e_s_t_i_n_g.html#autotoc_md15", null ],
-      [ "Modbus Timer", "md_testing_2_t_e_s_t_i_n_g.html#autotoc_md16", null ],
-      [ "Voltage In Comparator", "md_testing_2_t_e_s_t_i_n_g.html#autotoc_md17", null ]
+      [ "Middleware, Main", "testing-procedures.html#middleware-main", null ],
+      [ "Modbus Timer", "testing-procedures.html#modbus-timer", null ],
+      [ "Voltage In Comparator", "testing-procedures.html#voltage-in-comparator", null ]
     ] ],
     [ "Topics", "topics.html", "topics" ],
     [ "Data Structures", "annotated.html", [

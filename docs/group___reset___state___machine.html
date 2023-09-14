@@ -1,3 +1,4 @@
+<!-- HTML header for doxygen 1.9.8-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
 <head>
@@ -16,9 +17,10 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
-<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="stylesheet.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
@@ -123,28 +125,32 @@ Variables</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>vin and reset the state machine </p>
-<pre class="fragment">                         VinLow == False
- ┌────────────────────────────────────────────────────────────┐
- │                                                            │
- │                       VinLow Interrupt    ┌────────────┐   │
- │                  ┌───────────────────────►│            │   │
- │                  │                        │    VLow    ├───┘
- │   ┌────────────┐ │                     ┌─►│            │
- │   │            ├─┘                     │  └────────────┘
- ├──►│    Init    │                       │  nReset = low
- │   │            ├─┐     VinLow Interrupt│
- │   └────────────┘ │                     │
- │   nReset = low   │                     │
- │                  │                     │  ┌────────────┐
- │                  │ VinLow == False     └──┤            │
- │                  │    2 seconds           │     OK     ├───┐
- │                  └───────────────────────►│            │   │
- │                                           └────────────┘   │
- │                                            nReset = high   │
- │                                           Modbus WDT SMEn  │
- │                 Modbus WDT Timeout                         │
- └────────────────────────────────────────────────────────────┘
-</pre> <h2 class="groupheader">Macro Definition Documentation</h2>
+<p> <div class="mermaid"> 
+   stateDiagram-v2
+ direction LR
+ [*] --> Init
+ Init --> OK: Two Seconds
+ Init --> VLow: Voltage In Low
+ OK --> VLow: Voltage In Low
+ OK --> VLow: Modbus Timeout
+ VLow --> Init: Voltage In Normal
+  
+  </div>   <div class="mermaid"> 
+   flowchart LR
+ start(( ))
+ subgraph Interrupts.c
+ subgraph TIMER1_ISR["TIMER1_ISR()"]
+ div8["Divide By 8 Calls"]
+ end
+ end
+ subgraph IoT supervisor_main.c
+ VinSm["VinSm( )"]
+ end
+ start -->|every 1 ms| div8
+ div8 -->|every 8 ms| VinSm
+  
+  </div>  The reset and voltage in state machine responds to reset sources and pulls the reset line down for two seconds upon the reset source triggering. The detailed implementation is different for each reset source. The voltage in reset source pulls down for as long as it is running. It only reaches the two second countdown once the vin state is cleared. The WDT reset source fires once and automatically reaches the two second countdown. </p>
+<h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="gafc1dec4dc888692cdf30987658c2ab88" name="gafc1dec4dc888692cdf30987658c2ab88"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gafc1dec4dc888692cdf30987658c2ab88">&#9670;&#160;</a></span>SCOUNTER_ONE_SECOND</h2>
 
@@ -157,7 +163,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00096">96</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00083">83</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -180,7 +186,7 @@ Variables</h2></td></tr>
 <p>Voltage in state machine. Perhaps this could be called the main state machine in this application.</p>
 <p>The state machine starts in the reset mode to enable a boot-up delay on the SBC so that screens and stuff can initialize before the board does. </p>
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00106">106</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00093">93</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -197,7 +203,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00091">91</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00078">78</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -213,7 +219,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00093">93</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00080">80</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -229,7 +235,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00088">88</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00075">75</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -245,17 +251,25 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00087">87</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00074">74</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.8-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
+<script>
+  const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: isDarkMode ? 'dark' : 'default', 
+  });
+</script>
 </body>
 </html>

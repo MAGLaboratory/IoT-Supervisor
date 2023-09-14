@@ -31,9 +31,9 @@ var searchData=
   ['cfgsms_28',['cfgsms',['../group___configuration___state___machine.html#ga6c9c723896f1d714b5d1caeb1afceda6',1,'cfgSmS:&#160;IoT Supervisor_main.c'],['../group___configuration___state___machine.html#ga6c9c723896f1d714b5d1caeb1afceda6',1,'cfgSmS:&#160;IoT Supervisor_main.c']]],
   ['clock_5f0_5fenter_5fdefaultmode_5ffrom_5freset_29',['clock_0_enter_defaultmode_from_reset',['../_init_device_8h.html#a1324d232ac9b74a7e74cdffa0acc6aff',1,'CLOCK_0_enter_DefaultMode_from_RESET(void):&#160;InitDevice.c'],['../_init_device_8c.html#a1324d232ac9b74a7e74cdffa0acc6aff',1,'CLOCK_0_enter_DefaultMode_from_RESET(void):&#160;InitDevice.c']]],
   ['cmp_5f0_5fenter_5fdefaultmode_5ffrom_5freset_30',['cmp_0_enter_defaultmode_from_reset',['../_init_device_8h.html#afe08d0765f5fdb9182ccab7422364bb5',1,'CMP_0_enter_DefaultMode_from_RESET(void):&#160;InitDevice.c'],['../_init_device_8c.html#afe08d0765f5fdb9182ccab7422364bb5',1,'CMP_0_enter_DefaultMode_from_RESET(void):&#160;InitDevice.c']]],
-  ['comparator_31',['Voltage In Comparator',['../md_testing_2_t_e_s_t_i_n_g.html#autotoc_md17',1,'']]],
-  ['configuration_32',['Configuration',['../md_testing_2_t_e_s_t_i_n_g.html#autotoc_md11',1,'']]],
+  ['comparator_31',['Voltage In Comparator',['../testing-procedures.html#voltage-in-comparator',1,'']]],
+  ['configuration_32',['Configuration',['../testing-procedures.html#configuration',1,'']]],
   ['configuration_20state_20machine_33',['Configuration State Machine',['../group___configuration___state___machine.html',1,'']]],
   ['cprif_34',['cprif',['../group___reset___state___machine.html#ga59f537ef8b7df61f7a1a3b477f5fc340',1,'cprif:&#160;IoT Supervisor_main.c'],['../group___reset___state___machine.html#ga59f537ef8b7df61f7a1a3b477f5fc340',1,'cprif:&#160;IoT Supervisor_main.c']]],
-  ['crc_20instructions_35',['Address and CRC Instructions',['../md_testing_2_t_e_s_t_i_n_g.html#autotoc_md12',1,'']]]
+  ['crc_20instructions_35',['Address and CRC Instructions',['../testing-procedures.html#address-and-crc-instructions',1,'']]]
 ];

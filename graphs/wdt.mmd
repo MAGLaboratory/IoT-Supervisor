@@ -1,0 +1,6 @@
+stateDiagram-v2
+ direction LR
+ [*] --> Ini
+ Ini --> En: WDT Enable
+ En --> Timeout: WDT Timeout
+ Timeout --> Ini

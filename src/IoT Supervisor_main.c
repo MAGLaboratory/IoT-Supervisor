@@ -59,29 +59,16 @@ uint8_t T0C_TOP = 0;
  ******************************************************************************
  * @{
  * @brief vin and reset the state machine
- @verbatim
-                          VinLow == False
-  ┌────────────────────────────────────────────────────────────┐
-  │                                                            │
-  │                       VinLow Interrupt    ┌────────────┐   │
-  │                  ┌───────────────────────►│            │   │
-  │                  │                        │    VLow    ├───┘
-  │   ┌────────────┐ │                     ┌─►│            │
-  │   │            ├─┘                     │  └────────────┘
-  ├──►│    Init    │                       │  nReset = low
-  │   │            ├─┐     VinLow Interrupt│
-  │   └────────────┘ │                     │
-  │   nReset = low   │                     │
-  │                  │                     │  ┌────────────┐
-  │                  │ VinLow == False     └──┤            │
-  │                  │    2 seconds           │     OK     ├───┐
-  │                  └───────────────────────►│            │   │
-  │                                           └────────────┘   │
-  │                                            nReset = high   │
-  │                                           Modbus WDT SMEn  │
-  │                 Modbus WDT Timeout                         │
-  └────────────────────────────────────────────────────────────┘
- @endverbatim
+ *
+ * @mermaid{vin}
+ * @mermaid{vin_timing}
+ * The reset and voltage in state machine responds to reset sources and pulls
+ * the reset line down for two seconds upon the reset source triggering.
+ * The detailed implementation is different for each reset source.
+ * The voltage in reset source pulls down for as long as it is running.
+ * It only reaches the two second countdown once the vin state is cleared.
+ * The WDT reset source fires once and automatically reaches the two second
+ * countdown.
  *****************************************************************************/
 // == outputs ==
 bool nReset = false; // inverse logic
@@ -180,11 +167,16 @@ void VinSm(void)
  * @defgroup Modbus_WDT_State_Machine Modbus WDT State Machine
  ******************************************************************************
  * @{
+ * @brief The modbus watchdog timer state machine.
+ * 
+ * @mermaid{wdt}
+ * @mermaid{wdt_timing}
  * The watchdog state machine is specifically implemented to "bite" after it
  * has not received a watchdog "pet" for a certain number of minutes
  * (configurable).
  *
  * It starts as disabled and can be enabled through modbus.
+ * After biting, it returns to being disabled.
  *****************************************************************************/
 /** Default number of minutes before modbus timeout. */
 #define C_DEFAULT_MB_WD_TIMEOUT (15)
@@ -259,6 +251,10 @@ void mbWDTsm(void)
  * @defgroup Configuration_State_Machine Configuration State Machine
  ******************************************************************************
  * @{
+ * @brief The configuration state machine starts and maintains the system 
+ * configuration.
+ *
+ * @mermaid{cfgsm}
  * The configuration state machine implements the startup and configuration
  * tasks of this application.
  * On startup, the configuration is read from memory and the program memory
@@ -272,7 +268,8 @@ void mbWDTsm(void)
  * Configuration page start address in program memory (code memory).
  */
 #define C_FLASH_CONF (0x1E00)
-#define pFLASH_CONF ((uint8_t code*)C_FLASH_CONF)/* pointer to the flash cfg */
+/** Pointer to the flash config */
+#define pFLASH_CONF ((uint8_t code*)C_FLASH_CONF)
 /**
  * The default password used to enter configuration cache or configuration page
  * erase and write.
@@ -284,9 +281,9 @@ void mbWDTsm(void)
  * The program memory end should be determined using manual methods.  These
  * should be documented in the readme included with this application.
  */
-#define C_FOUND_PROG_END (0x0FD5) // end of program memory to check (exclusive)
+#define C_FOUND_PROG_END (0x101F) // end of program memory to check (exclusive)
 #else
-#define C_FOUND_PROG_END (0x0FC9) // determine me
+#define C_FOUND_PROG_END (0x0FE5) // determine me
 #endif
 
 // configuration variables

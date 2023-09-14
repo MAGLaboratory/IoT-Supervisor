@@ -1,3 +1,4 @@
+<!-- HTML header for doxygen 1.9.8-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
 <head>
@@ -16,9 +17,10 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
-<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="stylesheet.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
@@ -96,6 +98,9 @@ $(document).ready(function(){initNavTree('group___modbus___w_d_t___state___machi
   <div class="headertitle"><div class="title">Modbus WDT State Machine<div class="ingroups"><a class="el" href="group___main___application.html">Main Application</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>The modbus watchdog timer state machine.  
+<a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
@@ -123,8 +128,31 @@ Variables</h2></td></tr>
 <tr class="separator:ga25dc89f8181779a398b5b593342f6783"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>The watchdog state machine is specifically implemented to "bite" after it has not received a watchdog "pet" for a certain number of minutes (configurable).</p>
-<p>It starts as disabled and can be enabled through modbus. </p>
+<p>The modbus watchdog timer state machine. </p>
+<p> <div class="mermaid"> 
+   stateDiagram-v2
+ direction LR
+ [*] --> Ini
+ Ini --> En: WDT Enable
+ En --> Timeout: WDT Timeout
+ Timeout --> Ini
+  
+  </div>   <div class="mermaid"> 
+   flowchart LR
+ start(( ))
+ subgraph Interrupts.c
+ subgraph TIMER1_ISR["TIMER1_ISR()"]
+ div8["Divide By 8 Calls"]
+ end
+ end
+ subgraph IoT supervisor_main.c
+ mbWDTsm["mbWDTsm( )"]
+ end
+ start -->|every 1 ms| div8
+ div8 -->|every 8 ms| mbWDTsm
+  
+  </div>  The watchdog state machine is specifically implemented to "bite" after it has not received a watchdog "pet" for a certain number of minutes (configurable).</p>
+<p>It starts as disabled and can be enabled through modbus. After biting, it returns to being disabled. </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="gab4cd620a6ff382f2308515027d02e9b2" name="gab4cd620a6ff382f2308515027d02e9b2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gab4cd620a6ff382f2308515027d02e9b2">&#9670;&#160;</a></span>C_DEFAULT_MB_WD_TIMEOUT</h2>
@@ -139,7 +167,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Default number of minutes before modbus timeout. </p>
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00190">190</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00182">182</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -156,7 +184,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>number of watchdog counts to minutes </p>
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00192">192</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00184">184</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -211,7 +239,7 @@ Variables</h2></td></tr>
 <p>This is the implementation of the modbus watchdog state machine.</p>
 <p>It follows the same structure as the rest of the state machines in this application where the transitions are first and the states follow. </p>
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00204">204</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00196">196</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -228,7 +256,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00194">194</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00186">186</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -244,7 +272,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00195">195</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00187">187</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -260,17 +288,25 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00196">196</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00188">188</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.9.8-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
+<script>
+  const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: isDarkMode ? 'dark' : 'default', 
+  });
+</script>
 </body>
 </html>
