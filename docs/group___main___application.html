@@ -148,7 +148,7 @@ Variables</h2></td></tr>
 <p>The main function takes into consideration the reset condition to determine whether the vin state machine should start into the "ok" state or the "Init" state.</p>
 <p>The main function implements a counter-based system using the <a class="el" href="group___main___application.html#gabff40580a49bdbf86db348e6ab0a8dc1">t1Count</a> global which is incremented once a millisecond. An internal counter is incremented each time the modbus loop is executed. This makes it acceptable for the modbus process to overrun its timeslot through multiple cycles without affecting the number of times it is executed for timing purposes. Note that there is an anti-windup feature activated when <a class="el" href="group___configuration___state___machine.html#ga7624452708e1f4a54f678332e81c4867">run_petitmodbus</a> is not set where the internal counter is immediately set to the value of <a class="el" href="group___main___application.html#gabff40580a49bdbf86db348e6ab0a8dc1">t1Count</a> rather than incremented upon each execution. </p><dl class="section return"><dt>Returns</dt><dd>main functions usually have a return that should never get reached. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00702">702</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00707">707</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>

@@ -26,6 +26,17 @@ var NAVTREE =
 [
   [ "IoT Supervisor", "index.html", [
     [ "MAG Laboratory IoT Supervisor", "index.html", "index" ],
+    [ "Testing Procedures", "md_testing_2_t_e_s_t_i_n_g.html", [
+      [ "Interrupts", "md_testing_2_t_e_s_t_i_n_g.html#autotoc_md10", null ],
+      [ "Configuration", "md_testing_2_t_e_s_t_i_n_g.html#autotoc_md11", [
+        [ "Address and CRC Instructions", "md_testing_2_t_e_s_t_i_n_g.html#autotoc_md12", null ],
+        [ "Generic Baud Instructions", "md_testing_2_t_e_s_t_i_n_g.html#autotoc_md13", null ],
+        [ "Specific Baud Instructions", "md_testing_2_t_e_s_t_i_n_g.html#autotoc_md14", null ]
+      ] ],
+      [ "Middleware, Main", "md_testing_2_t_e_s_t_i_n_g.html#autotoc_md15", null ],
+      [ "Modbus Timer", "md_testing_2_t_e_s_t_i_n_g.html#autotoc_md16", null ],
+      [ "Voltage In Comparator", "md_testing_2_t_e_s_t_i_n_g.html#autotoc_md17", null ]
+    ] ],
     [ "Topics", "topics.html", "topics" ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
@@ -53,7 +64,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_e_f_m8_b_b1___flash_primitives_8c.html",
-"group___reset___state___machine.html"
+"group___petit___modbus___porting___functions.html#gaf0ee2372c22e97ffa56b05f5e6f6fe37"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -57,10 +57,12 @@ the testing software should reflect these changes.
 1. Change the testing software to the new baud settings.
 The timeout should also change since that also depends on the baud rate.
 A good timeout that may work with all baud rates is 500 ms.
-    * An example would be as follows:\
-`instr.serial.baudrate = 38400`\
-`instr.serial.timeout = 0.5`\
-`instr.address = 1`
+    * An example would be as follows:
+```
+instr.serial.baudrate = 38400
+instr.serial.timeout = 0.5
+instr.address = 1
+```
 1. Write `0` to register `2` to go back to the configuration SM `idle` state.
 
 | Baud  | Index | Shifted Index |

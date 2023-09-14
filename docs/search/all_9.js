@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['laboratory_20iot_20supervisor_0',['MAG Laboratory IoT Supervisor',['../index.html',1,'']]],
-  ['lastrst_5ft_1',['LastRst_t',['../_io_t___supervisor_8h.html#a6fd609b4d1cbec982d502d97a866fca7',1,'IoT_Supervisor.h']]],
-  ['lastrsts_2',['lastRstS',['../unionsv__dev__sta__t.html#af171a5f631e30a629c542e211bfc4f93',1,'sv_dev_sta_t']]],
-  ['license_3',['License',['../index.html#autotoc_md8',1,'']]]
+  ['kirisaki_5fcrc_2ec_0',['Kirisaki_CRC.c',['../_kirisaki___c_r_c_8c.html',1,'']]],
+  ['kirisakicrc16calc_1',['KirisakiCRC16Calc',['../_kirisaki___c_r_c_8c.html#a91cf4f2aefbeb1a7a9447e4f73f9b6c5',1,'Kirisaki_CRC.c']]],
+  ['kirisakicrctable_2',['KirisakiCRCtable',['../_kirisaki___c_r_c_8c.html#af5855e095c78b148dc7bc64cfcad2a80',1,'Kirisaki_CRC.c']]]
 ];

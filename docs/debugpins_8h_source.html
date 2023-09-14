@@ -121,25 +121,30 @@ $(document).ready(function(){initNavTree('debugpins_8h_source.html',''); initRes
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#define MAIN_PIN_OFF()</span></div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#define PETIT_PROCESS_ON() DBG3 = 1;</span></div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#define PETIT_PROCESS_OFF() DBG3 = 0;</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">// empty declarations</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="debugpins_8h.html#a48bb0879a01c7582daeaf51f4c3708f4">   47</a></span><span class="preprocessor">#define TIMER0_PINO_ON()</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="debugpins_8h.html#a2f415042c71627ded6845ab3074db99e">   48</a></span><span class="preprocessor">#define TIMER0_PINO_OFF()</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="debugpins_8h.html#ada0ed52fc4271cc21769222613b4c60b">   49</a></span><span class="preprocessor">#define TIMER0_PINI_ON()</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="debugpins_8h.html#a7731f90cd59bd61dfb2ab19e811bd590">   50</a></span><span class="preprocessor">#define TIMER0_PINI_OFF()</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="debugpins_8h.html#ac0f842ddc77766ee28510886d2d6ab85">   51</a></span><span class="preprocessor">#define TIMER1_PIN_ON()</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="debugpins_8h.html#a5ed37e3d0f9014a745a20eefda6aea95">   52</a></span><span class="preprocessor">#define TIMER1_PIN_OFF()</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="debugpins_8h.html#adc22a4fda08c42d86df14e7f2e7d6aa2">   53</a></span><span class="preprocessor">#define UART0_PIN_ON()</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="debugpins_8h.html#a0c7676d57419a334273342071780035a">   54</a></span><span class="preprocessor">#define UART0_PIN_OFF()</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="debugpins_8h.html#a9940265ba46767d487a10770ec98bb50">   55</a></span><span class="preprocessor">#define ADC0_PIN_ON()</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="debugpins_8h.html#a8d4e78709475c786f38fa6ec8858c0bc">   56</a></span><span class="preprocessor">#define ADC0_PIN_OFF()</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="debugpins_8h.html#a6f4866801e55c39ebfb6eda9f7c72e65">   57</a></span><span class="preprocessor">#define MAIN_PIN_ON()</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="debugpins_8h.html#ad67471b877a3c235d14d2469a2ba603e">   58</a></span><span class="preprocessor">#define MAIN_PIN_OFF()</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="debugpins_8h.html#ab73a5eec6ca8d833d27f11d190f360c5">   59</a></span><span class="preprocessor">#define PETIT_PROCESS_ON()</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="debugpins_8h.html#a214147a181f538d25df71d17d853e8a6">   60</a></span><span class="preprocessor">#define PETIT_PROCESS_OFF()</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">#endif </span><span class="comment">/* INC_DEBUGPINS_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">// note that these respond to inverse logic</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#define RESET_LED_SET(nSTATE)</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#define WDT_LED_SET(nSTATE) nLED = (nSTATE);</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">// empty declarations</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="debugpins_8h.html#a48bb0879a01c7582daeaf51f4c3708f4">   50</a></span><span class="preprocessor">#define TIMER0_PINO_ON()</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="debugpins_8h.html#a2f415042c71627ded6845ab3074db99e">   51</a></span><span class="preprocessor">#define TIMER0_PINO_OFF()</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="debugpins_8h.html#ada0ed52fc4271cc21769222613b4c60b">   52</a></span><span class="preprocessor">#define TIMER0_PINI_ON()</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="debugpins_8h.html#a7731f90cd59bd61dfb2ab19e811bd590">   53</a></span><span class="preprocessor">#define TIMER0_PINI_OFF()</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="debugpins_8h.html#ac0f842ddc77766ee28510886d2d6ab85">   54</a></span><span class="preprocessor">#define TIMER1_PIN_ON()</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="debugpins_8h.html#a5ed37e3d0f9014a745a20eefda6aea95">   55</a></span><span class="preprocessor">#define TIMER1_PIN_OFF()</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="debugpins_8h.html#adc22a4fda08c42d86df14e7f2e7d6aa2">   56</a></span><span class="preprocessor">#define UART0_PIN_ON()</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="debugpins_8h.html#a0c7676d57419a334273342071780035a">   57</a></span><span class="preprocessor">#define UART0_PIN_OFF()</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="debugpins_8h.html#a9940265ba46767d487a10770ec98bb50">   58</a></span><span class="preprocessor">#define ADC0_PIN_ON()</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="debugpins_8h.html#a8d4e78709475c786f38fa6ec8858c0bc">   59</a></span><span class="preprocessor">#define ADC0_PIN_OFF()</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="debugpins_8h.html#a6f4866801e55c39ebfb6eda9f7c72e65">   60</a></span><span class="preprocessor">#define MAIN_PIN_ON()</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="debugpins_8h.html#ad67471b877a3c235d14d2469a2ba603e">   61</a></span><span class="preprocessor">#define MAIN_PIN_OFF()</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="debugpins_8h.html#ab73a5eec6ca8d833d27f11d190f360c5">   62</a></span><span class="preprocessor">#define PETIT_PROCESS_ON()</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="debugpins_8h.html#a214147a181f538d25df71d17d853e8a6">   63</a></span><span class="preprocessor">#define PETIT_PROCESS_OFF()</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="debugpins_8h.html#a71593eca9a8362ee2633e0c5750bce21">   64</a></span><span class="preprocessor">#define RESET_LED_SET(nSTATE)</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="debugpins_8h.html#ac6ced51037677d170421db85ae149faa">   65</a></span><span class="preprocessor">#define WDT_LED_SET(nSTATE)</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">#endif </span><span class="comment">/* INC_DEBUGPINS_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

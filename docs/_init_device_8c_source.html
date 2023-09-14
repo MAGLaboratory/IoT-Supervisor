@@ -233,7 +233,7 @@ $(document).ready(function(){initNavTree('_init_device_8c_source.html',''); init
 <div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    <span class="comment">// $[XBR0 - Port I/O Crossbar 0]</span></div>
 <div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
 <div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    XBR0 = XBR0_URT0E__ENABLED | XBR0_SPI0E__DISABLED | XBR0_SMB0E__DISABLED</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>            | XBR0_CP0E__DISABLED | XBR0_CP0AE__ENABLED | XBR0_CP1E__DISABLED</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>            | XBR0_CP0E__DISABLED | XBR0_CP0AE__DISABLED | XBR0_CP1E__DISABLED</div>
 <div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>            | XBR0_CP1AE__DISABLED | XBR0_SYSCKE__DISABLED;</div>
 <div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    <span class="comment">// [XBR0 - Port I/O Crossbar 0]$</span></div>
 <div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
@@ -590,45 +590,49 @@ $(document).ready(function(){initNavTree('_init_device_8c_source.html',''); init
 <div class="line"><a id="l00638" name="l00638"></a><span class="lineno">  638</span>    <span class="comment">// [PRTDRV - Port Drive Strength]$</span></div>
 <div class="line"><a id="l00639" name="l00639"></a><span class="lineno">  639</span> </div>
 <div class="line"><a id="l00640" name="l00640"></a><span class="lineno">  640</span>    <span class="comment">// $[XBR0 - Port I/O Crossbar 0]</span></div>
-<div class="line"><a id="l00641" name="l00641"></a><span class="lineno">  641</span>    <span class="comment">// [XBR0 - Port I/O Crossbar 0]$</span></div>
-<div class="line"><a id="l00642" name="l00642"></a><span class="lineno">  642</span> </div>
-<div class="line"><a id="l00643" name="l00643"></a><span class="lineno">  643</span>    <span class="comment">// $[XBR1 - Port I/O Crossbar 1]</span></div>
-<div class="line"><a id="l00644" name="l00644"></a><span class="lineno">  644</span>    <span class="comment">// [XBR1 - Port I/O Crossbar 1]$</span></div>
-<div class="line"><a id="l00645" name="l00645"></a><span class="lineno">  645</span> </div>
-<div class="line"><a id="l00646" name="l00646"></a><span class="lineno">  646</span>}</div>
-</div>
-<div class="line"><a id="l00647" name="l00647"></a><span class="lineno">  647</span> </div>
-<div class="foldopen" id="foldopen00648" data-start="{" data-end="}">
-<div class="line"><a id="l00648" name="l00648"></a><span class="lineno"><a class="line" href="_init_device_8c.html#aaf63cc0eb9b4a87f8eef4967362f133f">  648</a></span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code hl_function" href="_init_device_8c.html#aaf63cc0eb9b4a87f8eef4967362f133f">TIMER01_0_enter_DebugMode_from_DefaultMode</a>(<span class="keywordtype">void</span>)</div>
-<div class="line"><a id="l00649" name="l00649"></a><span class="lineno">  649</span>{</div>
-<div class="line"><a id="l00650" name="l00650"></a><span class="lineno">  650</span>    <span class="comment">// $[Timer Initialization]</span></div>
-<div class="line"><a id="l00651" name="l00651"></a><span class="lineno">  651</span>    <span class="comment">//Save Timer Configuration</span></div>
-<div class="line"><a id="l00652" name="l00652"></a><span class="lineno">  652</span>    uint8_t TCON_save;</div>
-<div class="line"><a id="l00653" name="l00653"></a><span class="lineno">  653</span>    TCON_save = TCON;</div>
-<div class="line"><a id="l00654" name="l00654"></a><span class="lineno">  654</span>    <span class="comment">//Stop Timers</span></div>
-<div class="line"><a id="l00655" name="l00655"></a><span class="lineno">  655</span>    TCON &amp;= ~TCON_TR0__BMASK &amp; ~TCON_TR1__BMASK;</div>
-<div class="line"><a id="l00656" name="l00656"></a><span class="lineno">  656</span> </div>
-<div class="line"><a id="l00657" name="l00657"></a><span class="lineno">  657</span>    <span class="comment">// [Timer Initialization]$</span></div>
+<div class="line"><a id="l00641" name="l00641"></a><span class="lineno">  641</span> </div>
+<div class="line"><a id="l00651" name="l00651"></a><span class="lineno">  651</span>    XBR0 = XBR0_URT0E__ENABLED | XBR0_SPI0E__DISABLED | XBR0_SMB0E__DISABLED</div>
+<div class="line"><a id="l00652" name="l00652"></a><span class="lineno">  652</span>            | XBR0_CP0E__DISABLED | XBR0_CP0AE__ENABLED | XBR0_CP1E__DISABLED</div>
+<div class="line"><a id="l00653" name="l00653"></a><span class="lineno">  653</span>            | XBR0_CP1AE__DISABLED | XBR0_SYSCKE__DISABLED;</div>
+<div class="line"><a id="l00654" name="l00654"></a><span class="lineno">  654</span>    <span class="comment">// [XBR0 - Port I/O Crossbar 0]$</span></div>
+<div class="line"><a id="l00655" name="l00655"></a><span class="lineno">  655</span> </div>
+<div class="line"><a id="l00656" name="l00656"></a><span class="lineno">  656</span>    <span class="comment">// $[XBR1 - Port I/O Crossbar 1]</span></div>
+<div class="line"><a id="l00657" name="l00657"></a><span class="lineno">  657</span>    <span class="comment">// [XBR1 - Port I/O Crossbar 1]$</span></div>
 <div class="line"><a id="l00658" name="l00658"></a><span class="lineno">  658</span> </div>
-<div class="line"><a id="l00659" name="l00659"></a><span class="lineno">  659</span>    <span class="comment">// $[TH0 - Timer 0 High Byte]</span></div>
-<div class="line"><a id="l00660" name="l00660"></a><span class="lineno">  660</span>    <span class="comment">// [TH0 - Timer 0 High Byte]$</span></div>
-<div class="line"><a id="l00661" name="l00661"></a><span class="lineno">  661</span> </div>
-<div class="line"><a id="l00662" name="l00662"></a><span class="lineno">  662</span>    <span class="comment">// $[TL0 - Timer 0 Low Byte]</span></div>
-<div class="line"><a id="l00663" name="l00663"></a><span class="lineno">  663</span>    <span class="comment">// [TL0 - Timer 0 Low Byte]$</span></div>
-<div class="line"><a id="l00664" name="l00664"></a><span class="lineno">  664</span> </div>
-<div class="line"><a id="l00665" name="l00665"></a><span class="lineno">  665</span>    <span class="comment">// $[TH1 - Timer 1 High Byte]</span></div>
-<div class="line"><a id="l00666" name="l00666"></a><span class="lineno">  666</span>    <span class="comment">// [TH1 - Timer 1 High Byte]$</span></div>
-<div class="line"><a id="l00667" name="l00667"></a><span class="lineno">  667</span> </div>
-<div class="line"><a id="l00668" name="l00668"></a><span class="lineno">  668</span>    <span class="comment">// $[TL1 - Timer 1 Low Byte]</span></div>
-<div class="line"><a id="l00669" name="l00669"></a><span class="lineno">  669</span>    <span class="comment">// [TL1 - Timer 1 Low Byte]$</span></div>
-<div class="line"><a id="l00670" name="l00670"></a><span class="lineno">  670</span> </div>
-<div class="line"><a id="l00671" name="l00671"></a><span class="lineno">  671</span>    <span class="comment">// $[Timer Restoration]</span></div>
-<div class="line"><a id="l00672" name="l00672"></a><span class="lineno">  672</span>    <span class="comment">//Restore Timer Configuration</span></div>
-<div class="line"><a id="l00673" name="l00673"></a><span class="lineno">  673</span>    TCON |= (TCON_save &amp; TCON_TR0__BMASK) | (TCON_save &amp; TCON_TR1__BMASK);</div>
+<div class="line"><a id="l00659" name="l00659"></a><span class="lineno">  659</span>}</div>
+</div>
+<div class="line"><a id="l00660" name="l00660"></a><span class="lineno">  660</span> </div>
+<div class="foldopen" id="foldopen00661" data-start="{" data-end="}">
+<div class="line"><a id="l00661" name="l00661"></a><span class="lineno"><a class="line" href="_init_device_8c.html#aaf63cc0eb9b4a87f8eef4967362f133f">  661</a></span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code hl_function" href="_init_device_8c.html#aaf63cc0eb9b4a87f8eef4967362f133f">TIMER01_0_enter_DebugMode_from_DefaultMode</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00662" name="l00662"></a><span class="lineno">  662</span>{</div>
+<div class="line"><a id="l00663" name="l00663"></a><span class="lineno">  663</span>    <span class="comment">// $[Timer Initialization]</span></div>
+<div class="line"><a id="l00664" name="l00664"></a><span class="lineno">  664</span>    <span class="comment">//Save Timer Configuration</span></div>
+<div class="line"><a id="l00665" name="l00665"></a><span class="lineno">  665</span>    uint8_t TCON_save;</div>
+<div class="line"><a id="l00666" name="l00666"></a><span class="lineno">  666</span>    TCON_save = TCON;</div>
+<div class="line"><a id="l00667" name="l00667"></a><span class="lineno">  667</span>    <span class="comment">//Stop Timers</span></div>
+<div class="line"><a id="l00668" name="l00668"></a><span class="lineno">  668</span>    TCON &amp;= ~TCON_TR0__BMASK &amp; ~TCON_TR1__BMASK;</div>
+<div class="line"><a id="l00669" name="l00669"></a><span class="lineno">  669</span> </div>
+<div class="line"><a id="l00670" name="l00670"></a><span class="lineno">  670</span>    <span class="comment">// [Timer Initialization]$</span></div>
+<div class="line"><a id="l00671" name="l00671"></a><span class="lineno">  671</span> </div>
+<div class="line"><a id="l00672" name="l00672"></a><span class="lineno">  672</span>    <span class="comment">// $[TH0 - Timer 0 High Byte]</span></div>
+<div class="line"><a id="l00673" name="l00673"></a><span class="lineno">  673</span>    <span class="comment">// [TH0 - Timer 0 High Byte]$</span></div>
 <div class="line"><a id="l00674" name="l00674"></a><span class="lineno">  674</span> </div>
-<div class="line"><a id="l00675" name="l00675"></a><span class="lineno">  675</span>    <span class="comment">// [Timer Restoration]$</span></div>
-<div class="line"><a id="l00676" name="l00676"></a><span class="lineno">  676</span> </div>
-<div class="line"><a id="l00677" name="l00677"></a><span class="lineno">  677</span>}</div>
+<div class="line"><a id="l00675" name="l00675"></a><span class="lineno">  675</span>    <span class="comment">// $[TL0 - Timer 0 Low Byte]</span></div>
+<div class="line"><a id="l00676" name="l00676"></a><span class="lineno">  676</span>    <span class="comment">// [TL0 - Timer 0 Low Byte]$</span></div>
+<div class="line"><a id="l00677" name="l00677"></a><span class="lineno">  677</span> </div>
+<div class="line"><a id="l00678" name="l00678"></a><span class="lineno">  678</span>    <span class="comment">// $[TH1 - Timer 1 High Byte]</span></div>
+<div class="line"><a id="l00679" name="l00679"></a><span class="lineno">  679</span>    <span class="comment">// [TH1 - Timer 1 High Byte]$</span></div>
+<div class="line"><a id="l00680" name="l00680"></a><span class="lineno">  680</span> </div>
+<div class="line"><a id="l00681" name="l00681"></a><span class="lineno">  681</span>    <span class="comment">// $[TL1 - Timer 1 Low Byte]</span></div>
+<div class="line"><a id="l00682" name="l00682"></a><span class="lineno">  682</span>    <span class="comment">// [TL1 - Timer 1 Low Byte]$</span></div>
+<div class="line"><a id="l00683" name="l00683"></a><span class="lineno">  683</span> </div>
+<div class="line"><a id="l00684" name="l00684"></a><span class="lineno">  684</span>    <span class="comment">// $[Timer Restoration]</span></div>
+<div class="line"><a id="l00685" name="l00685"></a><span class="lineno">  685</span>    <span class="comment">//Restore Timer Configuration</span></div>
+<div class="line"><a id="l00686" name="l00686"></a><span class="lineno">  686</span>    TCON |= (TCON_save &amp; TCON_TR0__BMASK) | (TCON_save &amp; TCON_TR1__BMASK);</div>
+<div class="line"><a id="l00687" name="l00687"></a><span class="lineno">  687</span> </div>
+<div class="line"><a id="l00688" name="l00688"></a><span class="lineno">  688</span>    <span class="comment">// [Timer Restoration]$</span></div>
+<div class="line"><a id="l00689" name="l00689"></a><span class="lineno">  689</span> </div>
+<div class="line"><a id="l00690" name="l00690"></a><span class="lineno">  690</span>}</div>
 </div>
 <div class="ttc" id="a_init_device_8c_html_a073f6e3530e588a4ea64c39dd1b360f6"><div class="ttname"><a href="_init_device_8c.html#a073f6e3530e588a4ea64c39dd1b360f6">enter_DebugMode_from_DefaultMode</a></div><div class="ttdeci">void enter_DebugMode_from_DefaultMode(void)</div><div class="ttdef"><b>Definition</b> <a href="_init_device_8c_source.html#l00525">InitDevice.c:525</a></div></div>
 <div class="ttc" id="a_init_device_8c_html_a0bab7eeb3d65d66727888b61479a744d"><div class="ttname"><a href="_init_device_8c.html#a0bab7eeb3d65d66727888b61479a744d">enter_DefaultMode_from_RESET</a></div><div class="ttdeci">void enter_DefaultMode_from_RESET(void)</div><div class="ttdef"><b>Definition</b> <a href="_init_device_8c_source.html#l00025">InitDevice.c:25</a></div></div>
@@ -644,7 +648,7 @@ $(document).ready(function(){initNavTree('_init_device_8c_source.html',''); init
 <div class="ttc" id="a_init_device_8c_html_aab9903f722f042312538fa8228f4bd2a"><div class="ttname"><a href="_init_device_8c.html#aab9903f722f042312538fa8228f4bd2a">PBCFG_0_enter_DebugMode_from_DefaultMode</a></div><div class="ttdeci">void PBCFG_0_enter_DebugMode_from_DefaultMode(void)</div><div class="ttdef"><b>Definition</b> <a href="_init_device_8c_source.html#l00632">InitDevice.c:632</a></div></div>
 <div class="ttc" id="a_init_device_8c_html_aae140b75a3c93f7df8756fd0a792a74b"><div class="ttname"><a href="_init_device_8c.html#aae140b75a3c93f7df8756fd0a792a74b">PORTS_1_enter_DefaultMode_from_RESET</a></div><div class="ttdeci">void PORTS_1_enter_DefaultMode_from_RESET(void)</div><div class="ttdef"><b>Definition</b> <a href="_init_device_8c_source.html#l00491">InitDevice.c:491</a></div></div>
 <div class="ttc" id="a_init_device_8c_html_aaef59efacd1592933c66e4fab7a79bb5"><div class="ttname"><a href="_init_device_8c.html#aaef59efacd1592933c66e4fab7a79bb5">INTERRUPT_0_enter_DefaultMode_from_RESET</a></div><div class="ttdeci">void INTERRUPT_0_enter_DefaultMode_from_RESET(void)</div><div class="ttdef"><b>Definition</b> <a href="_init_device_8c_source.html#l00306">InitDevice.c:306</a></div></div>
-<div class="ttc" id="a_init_device_8c_html_aaf63cc0eb9b4a87f8eef4967362f133f"><div class="ttname"><a href="_init_device_8c.html#aaf63cc0eb9b4a87f8eef4967362f133f">TIMER01_0_enter_DebugMode_from_DefaultMode</a></div><div class="ttdeci">void TIMER01_0_enter_DebugMode_from_DefaultMode(void)</div><div class="ttdef"><b>Definition</b> <a href="_init_device_8c_source.html#l00648">InitDevice.c:648</a></div></div>
+<div class="ttc" id="a_init_device_8c_html_aaf63cc0eb9b4a87f8eef4967362f133f"><div class="ttname"><a href="_init_device_8c.html#aaf63cc0eb9b4a87f8eef4967362f133f">TIMER01_0_enter_DebugMode_from_DefaultMode</a></div><div class="ttdeci">void TIMER01_0_enter_DebugMode_from_DefaultMode(void)</div><div class="ttdef"><b>Definition</b> <a href="_init_device_8c_source.html#l00661">InitDevice.c:661</a></div></div>
 <div class="ttc" id="a_init_device_8c_html_ab3da6d279061f6434f18f0e2feaa58b2"><div class="ttname"><a href="_init_device_8c.html#ab3da6d279061f6434f18f0e2feaa58b2">PORTS_1_enter_DebugMode_from_DefaultMode</a></div><div class="ttdeci">void PORTS_1_enter_DebugMode_from_DefaultMode(void)</div><div class="ttdef"><b>Definition</b> <a href="_init_device_8c_source.html#l00584">InitDevice.c:584</a></div></div>
 <div class="ttc" id="a_init_device_8c_html_acb76a1255dbfee91c132e9c8bcbb294f"><div class="ttname"><a href="_init_device_8c.html#acb76a1255dbfee91c132e9c8bcbb294f">PORTS_0_enter_DebugMode_from_DefaultMode</a></div><div class="ttdeci">void PORTS_0_enter_DebugMode_from_DefaultMode(void)</div><div class="ttdef"><b>Definition</b> <a href="_init_device_8c_source.html#l00536">InitDevice.c:536</a></div></div>
 <div class="ttc" id="a_init_device_8c_html_afe08d0765f5fdb9182ccab7422364bb5"><div class="ttname"><a href="_init_device_8c.html#afe08d0765f5fdb9182ccab7422364bb5">CMP_0_enter_DefaultMode_from_RESET</a></div><div class="ttdeci">void CMP_0_enter_DefaultMode_from_RESET(void)</div><div class="ttdef"><b>Definition</b> <a href="_init_device_8c_source.html#l00209">InitDevice.c:209</a></div></div>
