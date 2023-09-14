@@ -1,6 +1,6 @@
 Testing Procedures
 =======
-This document contains the testing procedures.
+This page contains the testing procedures.
 
 Interrupts
 ==========
@@ -100,6 +100,8 @@ cycle) and lets it time out.
 2. Wait 7.5 minutes.
 3. Write `0x5A` to register `0` to pet the watchdog and reset the watchdog timer.
 4. Wait until the watchdog resets in 15 minutes.
+5. Verify that the watchdog has triggered the reset pin either through the
+logic analyzer or through the reset field in register `0`.
 
 
 Voltage In Comparator
