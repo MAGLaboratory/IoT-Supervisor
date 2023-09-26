@@ -17,6 +17,16 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <link href="stylesheet.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -143,7 +153,7 @@ Functions</h2></td></tr>
 <p>ADC0 End of Conversion ISR</p>
 <p>This ISR is called when the ADC finishes converting. In this application, it should be configured for every 50ms or so. </p>
 
-<p class="definition">Definition at line <a class="el" href="_interrupts_8c_source.html#l00198">198</a> of file <a class="el" href="_interrupts_8c_source.html">Interrupts.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_interrupts_8c_source.html#l00195">195</a> of file <a class="el" href="_interrupts_8c_source.html">Interrupts.c</a>.</p>
 
 </div>
 </div>
@@ -172,13 +182,13 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>CMP0 ISR Content goes here. Remember to clear flag bits:</p><ul>
-<li>CMP0CN0::CPFIF (Comparator Falling-Edge Flag)</li>
-<li>CMP0CN0::CPRIF (Comparator Rising-Edge Flag)</li>
+<p>CMPn ISR Content goes here. Remember to clear flag bits:</p><ul>
+<li>CMPnCN0::CPFIF (Comparator Falling-Edge Flag)</li>
+<li>CMPnCN0::CPRIF (Comparator Rising-Edge Flag)</li>
 </ul>
 <p>This ISR implements the immediate voltage low reset for the SBC. </p>
 
-<p class="definition">Definition at line <a class="el" href="_interrupts_8c_source.html#l00035">35</a> of file <a class="el" href="_interrupts_8c_source.html">Interrupts.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_interrupts_8c_source.html#l00032">32</a> of file <a class="el" href="_interrupts_8c_source.html">Interrupts.c</a>.</p>
 
 </div>
 </div>
@@ -214,7 +224,7 @@ Functions</h2></td></tr>
 <dl class="section note"><dt>Note</dt><dd>This is actually the timer 0 low ISR since timer0 is split into two timers.</dd></dl>
 <p>Modbus implements a "T_1.5" timeout between bytes. Clearing the data in the modbus buffer invalidates it. </p>
 
-<p class="definition">Definition at line <a class="el" href="_interrupts_8c_source.html#l00076">76</a> of file <a class="el" href="_interrupts_8c_source.html">Interrupts.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_interrupts_8c_source.html#l00073">73</a> of file <a class="el" href="_interrupts_8c_source.html">Interrupts.c</a>.</p>
 
 </div>
 </div>
@@ -250,7 +260,7 @@ Functions</h2></td></tr>
 <p>Actually the timer 0 high ISR since timer0 is split into two timers.</p>
 <p>This is more or less the main timing source for the functions on this application. </p>
 
-<p class="definition">Definition at line <a class="el" href="_interrupts_8c_source.html#l00118">118</a> of file <a class="el" href="_interrupts_8c_source.html">Interrupts.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_interrupts_8c_source.html#l00115">115</a> of file <a class="el" href="_interrupts_8c_source.html">Interrupts.c</a>.</p>
 
 </div>
 </div>
@@ -288,7 +298,7 @@ Functions</h2></td></tr>
 <p>On UART transmit, this ISR is called to start transmitting the next byte</p>
 <dl class="section note"><dt>Note</dt><dd>both UART transmit and UART receive interrupts are implemented here </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_interrupts_8c_source.html#l00157">157</a> of file <a class="el" href="_interrupts_8c_source.html">Interrupts.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_interrupts_8c_source.html#l00154">154</a> of file <a class="el" href="_interrupts_8c_source.html">Interrupts.c</a>.</p>
 
 </div>
 </div>

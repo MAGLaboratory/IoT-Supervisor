@@ -29,32 +29,32 @@ device entering a network in an unconfigured state.
 
 1. Verify that register `0`, `1` read `[194, 0]` in order to verify the 
 starting state of the system. 
-1. Write `0xDEFA` into register 1 to enter the `cache` state.
-1. Verify that register `1` reads `2` to verify that the configuration state machine has entered into the `cache` state.
-1. Write SID `1` into register `2`.  There is no need to write a new baud rate
-because the register accepts individual bytes and or's them.
-1. Write `0x5FAF` into register `1` to enter the `commit` state.
-1. Write `0xDEFA` into register `1` to enter the flash `erase` and subsequent
+2. Write `0xDEFA` into register 1 to enter the `cache` state.
+3. Verify that register `1` reads `2` to verify that the configuration state machine has entered into the `cache` state.
+4. Write SID `1` into register `2`.  There is no need to write a new baud rate
+5ecause the register accepts individual bytes and or's them.
+6. Write `0x5FAF` into register `1` to enter the `commit` state.
+7. Write `0xDEFA` into register `1` to enter the flash `erase` and subsequent
 `write` state.  The controller should reboot and recalculate the flash CRC.
-1. Verify that register `0`, `1` read `[2, 0]` in order to verify the starting
+8. Verify that register `0`, `1` read `[2, 0]` in order to verify the starting
 state of the system.
 
 Generic Baud Instructions
 ---------
 1. Verify that register `1` reads `0` to verify that the configuration state machine is in the `idle` state.
-1. Write `0xDEFA` into register 1 to enter the `cache` state.
-1. Verify that register `1` reads `2` to verify that the configuration state machine has entered into the `cache` state.
-1. Write the desired baud and SID setting into register `2`.
+2. Write `0xDEFA` into register 1 to enter the `cache` state.
+3. Verify that register `1` reads `2` to verify that the configuration state machine has entered into the `cache` state.
+4. Write the desired baud and SID setting into register `2`.
     * Baud rates are always left shifted by eight in register `2`.
 Preshifted baud rates with shifts are listed in the table below.
     * Addresses are unshifted.
     * The register setting can be calculated by adding (or or'ing) the shifted
 baud rate with the address.
-1. Verify that register `2` reads the setting that was entered.
-1. Write `0x5FAF` into register `1` to enter the `commit` state.
+5. Verify that register `2` reads the setting that was entered.
+6. Write `0x5FAF` into register `1` to enter the `commit` state.
 The baud rate settings at this point should have changed;
 the testing software should reflect these changes.
-1. Change the testing software to the new baud settings.
+7. Change the testing software to the new baud settings.
 The timeout should also change since that also depends on the baud rate.
 A good timeout that may work with all baud rates is 500 ms.
     * An example would be as follows:

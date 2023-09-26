@@ -17,6 +17,16 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <link href="stylesheet.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -92,12 +102,50 @@ $(document).ready(function(){initNavTree('group___modbus___middle_ware.html','')
 
 <div class="header">
   <div class="summary">
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">Modbus MiddleWare</div></div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:gac4b55353c236e4425b062d426cb99eac" id="r_gac4b55353c236e4425b062d426cb99eac"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___modbus___middle_ware.html#gac4b55353c236e4425b062d426cb99eac">mmw_speeds_t</a> { <br />
+&#160;&#160;<a class="el" href="group___modbus___middle_ware.html#ggac4b55353c236e4425b062d426cb99eacab70faceaf93603ca5b05cb190bbb85c7">eMMW_B_NULL</a> = 0
+, <a class="el" href="group___modbus___middle_ware.html#ggac4b55353c236e4425b062d426cb99eaca3935af3a6cf121e677eef008dcd07ead">eMMW_B_38400</a>
+, <a class="el" href="group___modbus___middle_ware.html#ggac4b55353c236e4425b062d426cb99eaca3d1508060bd3400694e0ee38ba9efc1b">eMMW_B_19200</a>
+, <a class="el" href="group___modbus___middle_ware.html#ggac4b55353c236e4425b062d426cb99eacac9a7797a2f5bc01fe7b95d31a4a98361">eMMW_B_9600</a>
+, <br />
+&#160;&#160;<a class="el" href="group___modbus___middle_ware.html#ggac4b55353c236e4425b062d426cb99eaca2c8a39ccb24dc02704ea2e68c2b7450d">eMMW_B_4800</a>
+, <a class="el" href="group___modbus___middle_ware.html#ggac4b55353c236e4425b062d426cb99eaca9d123b4d192f79124676fc3b8caff2a4">eMMW_B_2400</a>
+, <a class="el" href="group___modbus___middle_ware.html#ggac4b55353c236e4425b062d426cb99eaca0988ce2818e3654d2e9f7d325aa1f9ad">eMMW_B_1200</a>
+, <a class="el" href="group___modbus___middle_ware.html#ggac4b55353c236e4425b062d426cb99eacaf518145fe38ea36c4539548d591a1b6f">eMMW_B_NUM</a>
+<br />
+ }</td></tr>
+<tr class="separator:gac4b55353c236e4425b062d426cb99eac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadde283b6b914f27cfba8b2b873fb88ac" id="r_gadde283b6b914f27cfba8b2b873fb88ac"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___modbus___middle_ware.html#gadde283b6b914f27cfba8b2b873fb88ac">mmw_cl_i_t</a> { <br />
+&#160;&#160;<a class="el" href="group___modbus___middle_ware.html#ggadde283b6b914f27cfba8b2b873fb88aca5a8b8f93a45e39e023f3dea0c768e20e">eMMW_CL_T1_PRE</a> = 0
+, <a class="el" href="group___modbus___middle_ware.html#ggadde283b6b914f27cfba8b2b873fb88aca25ca0eaabbc4e4c9624f594eedbc3d18">eMMW_CL_TH1</a>
+, <a class="el" href="group___modbus___middle_ware.html#ggadde283b6b914f27cfba8b2b873fb88aca2fe6e22f764aeb6791d2bf7e83897f17">eMMW_CL_PETIT_TOP</a>
+, <a class="el" href="group___modbus___middle_ware.html#ggadde283b6b914f27cfba8b2b873fb88aca71960c042b6e19c9623ff8519f6fefa6">eMMW_CL_TL0_TOP</a>
+, <br />
+&#160;&#160;<a class="el" href="group___modbus___middle_ware.html#ggadde283b6b914f27cfba8b2b873fb88acacc11b72d7e173801bbde03e68e8a6e9d">eMMW_CL_NUM</a>
+<br />
+ }</td></tr>
+<tr class="separator:gadde283b6b914f27cfba8b2b873fb88ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae15b34c23dde54da2ab2f40099e63cd7" id="r_gae15b34c23dde54da2ab2f40099e63cd7"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___modbus___middle_ware.html#gae15b34c23dde54da2ab2f40099e63cd7">mmw_hr_t</a> { <br />
+&#160;&#160;<a class="el" href="group___modbus___middle_ware.html#ggae15b34c23dde54da2ab2f40099e63cd7add4e83572d4663579adad05204248312">eMMW_HR_STA</a> = 0
+, <a class="el" href="group___modbus___middle_ware.html#ggae15b34c23dde54da2ab2f40099e63cd7a9e0f8f62c78b0abcc482c8b9d5415ffd">eMMW_HR_CFG</a>
+, <a class="el" href="group___modbus___middle_ware.html#ggae15b34c23dde54da2ab2f40099e63cd7ac60cb5800869e84a422a88476e11a768">eMMW_HR_MB</a>
+, <a class="el" href="group___modbus___middle_ware.html#ggae15b34c23dde54da2ab2f40099e63cd7a02f9a325325078c1be53644e68132026">eMMW_HR_WDT</a>
+, <br />
+&#160;&#160;<a class="el" href="group___modbus___middle_ware.html#ggae15b34c23dde54da2ab2f40099e63cd7a1bc2cad258457c7b434418f8ff350472">eMMW_HR_PW</a>
+, <a class="el" href="group___modbus___middle_ware.html#ggae15b34c23dde54da2ab2f40099e63cd7a7c86a6773faf7b8f5917a6cbad1a1ed3">eMMW_HR_NUM</a>
+<br />
+ }</td></tr>
+<tr class="separator:gae15b34c23dde54da2ab2f40099e63cd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ga2327e0e12d6b8eb65b2c21d6dfc92a96" id="r_ga2327e0e12d6b8eb65b2c21d6dfc92a96"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___modbus___middle_ware.html#ga2327e0e12d6b8eb65b2c21d6dfc92a96">mmw_init</a> (uint8_t sid, uint8_t baud)</td></tr>
@@ -105,15 +153,140 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:gae99f13fec6ba22dfa12eef0df06574cf" id="r_gae99f13fec6ba22dfa12eef0df06574cf"><td class="memItemLeft" align="right" valign="top">code const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___modbus___middle_ware.html#gae99f13fec6ba22dfa12eef0df06574cf">mmw_ct</a> [<a class="el" href="_modbus_middle_ware_8h.html#ac4b55353c236e4425b062d426cb99eacaf518145fe38ea36c4539548d591a1b6f">eMMW_B_NUM</a>][<a class="el" href="_modbus_middle_ware_8h.html#a0637d0b9751ca38a0ad7f3cac42c7a40a7cec6cf212411debd9cc00f576e3a605">eMMW_CT_NUM</a>]</td></tr>
-<tr class="separator:gae99f13fec6ba22dfa12eef0df06574cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga30ada42f070d3345a8dbeb1d1070f08b" id="r_ga30ada42f070d3345a8dbeb1d1070f08b"><td class="memItemLeft" align="right" valign="top">code const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___modbus___middle_ware.html#ga30ada42f070d3345a8dbeb1d1070f08b">mmw_ct</a> [<a class="el" href="group___modbus___middle_ware.html#ggac4b55353c236e4425b062d426cb99eacaf518145fe38ea36c4539548d591a1b6f">eMMW_B_NUM</a>][<a class="el" href="group___modbus___middle_ware.html#ggadde283b6b914f27cfba8b2b873fb88acacc11b72d7e173801bbde03e68e8a6e9d">eMMW_CL_NUM</a>]</td></tr>
+<tr class="separator:ga30ada42f070d3345a8dbeb1d1070f08b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9622a98d515bab04ca2a83558b0f571a" id="r_ga9622a98d515bab04ca2a83558b0f571a"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___modbus___middle_ware.html#ga9622a98d515bab04ca2a83558b0f571a">PETITMODBUS_DLY_TOP</a> = 0</td></tr>
 <tr class="separator:ga9622a98d515bab04ca2a83558b0f571a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga25a0ea5f5173ae31a717fec624fd0a8c" id="r_ga25a0ea5f5173ae31a717fec624fd0a8c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___modbus___middle_ware.html#ga25a0ea5f5173ae31a717fec624fd0a8c">PETITMODBUS_SLAVE_ADDRESS</a> = 0</td></tr>
 <tr class="separator:ga25a0ea5f5173ae31a717fec624fd0a8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9622a98d515bab04ca2a83558b0f571a" id="r_ga9622a98d515bab04ca2a83558b0f571a"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___modbus___middle_ware.html#ga9622a98d515bab04ca2a83558b0f571a">PETITMODBUS_DLY_TOP</a></td></tr>
+<tr class="separator:ga9622a98d515bab04ca2a83558b0f571a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga25a0ea5f5173ae31a717fec624fd0a8c" id="r_ga25a0ea5f5173ae31a717fec624fd0a8c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___modbus___middle_ware.html#ga25a0ea5f5173ae31a717fec624fd0a8c">PETITMODBUS_SLAVE_ADDRESS</a></td></tr>
+<tr class="separator:ga25a0ea5f5173ae31a717fec624fd0a8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>This section contains the intersection between the petit modbus library and the application. It exists because the modbus library does not handle sid switching or baud rate switching. The library also does not handle the hardware when the baud rate switches. </p>
+<p>This section contains the intersection between the petit modbus library and the application and the hardware. It exists because the modbus library does not handle sid switching or baud rate switching. The library also does not handle the hardware when the baud rate switches.</p>
+<p> <div class="mermaid"> 
+   flowchart LR
+ User
+ MMW[Modbus</br> MiddleWare]
+ subgraph PMUP [Petit Modbus</br> User Port]
+ PMB[Petit Modbus]
+ end
+ subgraph App [Application]
+ CSM[Config SM]
+ end
+ PMB <-- Modbus Comm --> User
+ CSM -- Controls --> MMW
+ CSM -- Start/Stop --> PMB
+ PMUP -- Controls --> App
+ PMUP -- Controls --> CSM
+ MMW -.Hardware Control.-> PMUP
+  
+  </div>  </p>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="gadde283b6b914f27cfba8b2b873fb88ac" name="gadde283b6b914f27cfba8b2b873fb88ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gadde283b6b914f27cfba8b2b873fb88ac">&#9670;&#160;</a></span>mmw_cl_i_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group___modbus___middle_ware.html#gadde283b6b914f27cfba8b2b873fb88ac">mmw_cl_i_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This enumeration contains the number of entries across the MMW table.</p>
+<p>CL in this context stands for Configuration List. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggadde283b6b914f27cfba8b2b873fb88aca5a8b8f93a45e39e023f3dea0c768e20e" name="ggadde283b6b914f27cfba8b2b873fb88aca5a8b8f93a45e39e023f3dea0c768e20e"></a>eMMW_CL_T1_PRE&#160;</td><td class="fielddoc"><p>Timer 1 Prescale Control.</p>
+<p>This flag controls the hardware prescale selection. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggadde283b6b914f27cfba8b2b873fb88aca25ca0eaabbc4e4c9624f594eedbc3d18" name="ggadde283b6b914f27cfba8b2b873fb88aca25ca0eaabbc4e4c9624f594eedbc3d18"></a>eMMW_CL_TH1&#160;</td><td class="fielddoc"><p>Timer High 1 Value.</p>
+<p>This is the timer reload value for determining the UART baud rate. Each BAUD is two timer overflow periods, probably. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggadde283b6b914f27cfba8b2b873fb88aca2fe6e22f764aeb6791d2bf7e83897f17" name="ggadde283b6b914f27cfba8b2b873fb88aca2fe6e22f764aeb6791d2bf7e83897f17"></a>eMMW_CL_PETIT_TOP&#160;</td><td class="fielddoc"><p>Petit Modbus delay cycles.</p>
+<p>The main application runs on a 1ms loop and it needs to be delayed to meet the T_3.5 character timing period for transmission line direction switch. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggadde283b6b914f27cfba8b2b873fb88aca71960c042b6e19c9623ff8519f6fefa6" name="ggadde283b6b914f27cfba8b2b873fb88aca71960c042b6e19c9623ff8519f6fefa6"></a>eMMW_CL_TL0_TOP&#160;</td><td class="fielddoc"><p>Timer 0 Low Reload.</p>
+<p>This value controls the T_1.5 character timing period for maximum intra-octet timing. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggadde283b6b914f27cfba8b2b873fb88acacc11b72d7e173801bbde03e68e8a6e9d" name="ggadde283b6b914f27cfba8b2b873fb88acacc11b72d7e173801bbde03e68e8a6e9d"></a>eMMW_CL_NUM&#160;</td><td class="fielddoc"><p>total number of configuration table entries </p>
+</td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="_modbus_middle_ware_8h_source.html#l00045">45</a> of file <a class="el" href="_modbus_middle_ware_8h_source.html">ModbusMiddleWare.h</a>.</p>
+
+</div>
+</div>
+<a id="gae15b34c23dde54da2ab2f40099e63cd7" name="gae15b34c23dde54da2ab2f40099e63cd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae15b34c23dde54da2ab2f40099e63cd7">&#9670;&#160;</a></span>mmw_hr_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group___modbus___middle_ware.html#gae15b34c23dde54da2ab2f40099e63cd7">mmw_hr_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This is the enumeration for all <b>H</b>olding <b>R</b>egisters</p>
+<dl class="section note"><dt>Note</dt><dd>These are not input registers. The input registers are read-only. </dd></dl>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggae15b34c23dde54da2ab2f40099e63cd7add4e83572d4663579adad05204248312" name="ggae15b34c23dde54da2ab2f40099e63cd7add4e83572d4663579adad05204248312"></a>eMMW_HR_STA&#160;</td><td class="fielddoc"><p>SV Status and MB Watchdog Control </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggae15b34c23dde54da2ab2f40099e63cd7a9e0f8f62c78b0abcc482c8b9d5415ffd" name="ggae15b34c23dde54da2ab2f40099e63cd7a9e0f8f62c78b0abcc482c8b9d5415ffd"></a>eMMW_HR_CFG&#160;</td><td class="fielddoc"><p>Password and Config SM Control </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggae15b34c23dde54da2ab2f40099e63cd7ac60cb5800869e84a422a88476e11a768" name="ggae15b34c23dde54da2ab2f40099e63cd7ac60cb5800869e84a422a88476e11a768"></a>eMMW_HR_MB&#160;</td><td class="fielddoc"><p>Modbus Control Register </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggae15b34c23dde54da2ab2f40099e63cd7a02f9a325325078c1be53644e68132026" name="ggae15b34c23dde54da2ab2f40099e63cd7a02f9a325325078c1be53644e68132026"></a>eMMW_HR_WDT&#160;</td><td class="fielddoc"><p>MB WDT Period Register </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggae15b34c23dde54da2ab2f40099e63cd7a1bc2cad258457c7b434418f8ff350472" name="ggae15b34c23dde54da2ab2f40099e63cd7a1bc2cad258457c7b434418f8ff350472"></a>eMMW_HR_PW&#160;</td><td class="fielddoc"><p>Password Set Register </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggae15b34c23dde54da2ab2f40099e63cd7a7c86a6773faf7b8f5917a6cbad1a1ed3" name="ggae15b34c23dde54da2ab2f40099e63cd7a7c86a6773faf7b8f5917a6cbad1a1ed3"></a>eMMW_HR_NUM&#160;</td><td class="fielddoc"><p>Number of holding registers </p>
+</td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="_modbus_middle_ware_8h_source.html#l00083">83</a> of file <a class="el" href="_modbus_middle_ware_8h_source.html">ModbusMiddleWare.h</a>.</p>
+
+</div>
+</div>
+<a id="gac4b55353c236e4425b062d426cb99eac" name="gac4b55353c236e4425b062d426cb99eac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac4b55353c236e4425b062d426cb99eac">&#9670;&#160;</a></span>mmw_speeds_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group___modbus___middle_ware.html#gac4b55353c236e4425b062d426cb99eac">mmw_speeds_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This enumeration contains the speeds used by the Modbus MiddleWare.</p>
+<p>Note that these are standard UART speeds. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggac4b55353c236e4425b062d426cb99eacab70faceaf93603ca5b05cb190bbb85c7" name="ggac4b55353c236e4425b062d426cb99eacab70faceaf93603ca5b05cb190bbb85c7"></a>eMMW_B_NULL&#160;</td><td class="fielddoc"><p>The first modbus speed is null because of the mechanism used to set individual bitfields within the modbus register. eMMW_B_NULL </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggac4b55353c236e4425b062d426cb99eaca3935af3a6cf121e677eef008dcd07ead" name="ggac4b55353c236e4425b062d426cb99eaca3935af3a6cf121e677eef008dcd07ead"></a>eMMW_B_38400&#160;</td><td class="fielddoc"><p>eMMW_B_38400 eMMW_B_38400 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggac4b55353c236e4425b062d426cb99eaca3d1508060bd3400694e0ee38ba9efc1b" name="ggac4b55353c236e4425b062d426cb99eaca3d1508060bd3400694e0ee38ba9efc1b"></a>eMMW_B_19200&#160;</td><td class="fielddoc"><p>eMMW_B_19200 eMMW_B_19200 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggac4b55353c236e4425b062d426cb99eacac9a7797a2f5bc01fe7b95d31a4a98361" name="ggac4b55353c236e4425b062d426cb99eacac9a7797a2f5bc01fe7b95d31a4a98361"></a>eMMW_B_9600&#160;</td><td class="fielddoc"><p>eMMW_B_9600 eMMW_B_9600 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggac4b55353c236e4425b062d426cb99eaca2c8a39ccb24dc02704ea2e68c2b7450d" name="ggac4b55353c236e4425b062d426cb99eaca2c8a39ccb24dc02704ea2e68c2b7450d"></a>eMMW_B_4800&#160;</td><td class="fielddoc"><p>eMMW_B_4800 eMMW_B_4800 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggac4b55353c236e4425b062d426cb99eaca9d123b4d192f79124676fc3b8caff2a4" name="ggac4b55353c236e4425b062d426cb99eaca9d123b4d192f79124676fc3b8caff2a4"></a>eMMW_B_2400&#160;</td><td class="fielddoc"><p>eMMW_B_2400 eMMW_B_2400 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggac4b55353c236e4425b062d426cb99eaca0988ce2818e3654d2e9f7d325aa1f9ad" name="ggac4b55353c236e4425b062d426cb99eaca0988ce2818e3654d2e9f7d325aa1f9ad"></a>eMMW_B_1200&#160;</td><td class="fielddoc"><p>eMMW_B_1200 eMMW_B_1200 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggac4b55353c236e4425b062d426cb99eacaf518145fe38ea36c4539548d591a1b6f" name="ggac4b55353c236e4425b062d426cb99eacaf518145fe38ea36c4539548d591a1b6f"></a>eMMW_B_NUM&#160;</td><td class="fielddoc"><p>The total number of modbus speeds eMMW_B_NUM </p>
+</td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="_modbus_middle_ware_8h_source.html#l00024">24</a> of file <a class="el" href="_modbus_middle_ware_8h_source.html">ModbusMiddleWare.h</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="ga2327e0e12d6b8eb65b2c21d6dfc92a96" name="ga2327e0e12d6b8eb65b2c21d6dfc92a96"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga2327e0e12d6b8eb65b2c21d6dfc92a96">&#9670;&#160;</a></span>mmw_init()</h2>
@@ -143,24 +316,24 @@ Variables</h2></td></tr>
 <p>Modbus MiddleWare Init function takes an SID and a baud rate enumeration and applies it to device hardware and functions to support that selected baud. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">sid</td><td>Which ID this device should respond to </td></tr>
-    <tr><td class="paramname">baud</td><td>rate at which the device communicates on RS485. This is an enumeration that is set to one higher than the index in the <a class="el" href="group___modbus___middle_ware.html#gae99f13fec6ba22dfa12eef0df06574cf">mmw_ct</a> table. </td></tr>
+    <tr><td class="paramname">baud</td><td>rate at which the device communicates on RS485. This is an enumeration that is set to one higher than the index in the <a class="el" href="group___modbus___middle_ware.html#ga30ada42f070d3345a8dbeb1d1070f08b">mmw_ct</a> table. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_modbus_middle_ware_8c_source.html#l00044">44</a> of file <a class="el" href="_modbus_middle_ware_8c_source.html">ModbusMiddleWare.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_modbus_middle_ware_8c_source.html#l00047">47</a> of file <a class="el" href="_modbus_middle_ware_8c_source.html">ModbusMiddleWare.c</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="gae99f13fec6ba22dfa12eef0df06574cf" name="gae99f13fec6ba22dfa12eef0df06574cf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gae99f13fec6ba22dfa12eef0df06574cf">&#9670;&#160;</a></span>mmw_ct</h2>
+<a id="ga30ada42f070d3345a8dbeb1d1070f08b" name="ga30ada42f070d3345a8dbeb1d1070f08b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga30ada42f070d3345a8dbeb1d1070f08b">&#9670;&#160;</a></span>mmw_ct</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">code const uint8_t mmw_ct[<a class="el" href="_modbus_middle_ware_8h.html#ac4b55353c236e4425b062d426cb99eacaf518145fe38ea36c4539548d591a1b6f">eMMW_B_NUM</a>][<a class="el" href="_modbus_middle_ware_8h.html#a0637d0b9751ca38a0ad7f3cac42c7a40a7cec6cf212411debd9cc00f576e3a605">eMMW_CT_NUM</a>]</td>
+          <td class="memname">code const uint8_t mmw_ct[<a class="el" href="group___modbus___middle_ware.html#ggac4b55353c236e4425b062d426cb99eacaf518145fe38ea36c4539548d591a1b6f">eMMW_B_NUM</a>][<a class="el" href="group___modbus___middle_ware.html#ggadde283b6b914f27cfba8b2b873fb88acacc11b72d7e173801bbde03e68e8a6e9d">eMMW_CL_NUM</a>]</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -176,12 +349,36 @@ Variables</h2></td></tr>
 </div><!-- fragment --><p>Modbus configuration table containing variables for each standard modbus speed.</p>
 <p>These constants were generated largely with aid from the device configurator and with simple pen and paper calculations. </p>
 
-<p class="definition">Definition at line <a class="el" href="_modbus_middle_ware_8c_source.html#l00022">22</a> of file <a class="el" href="_modbus_middle_ware_8c_source.html">ModbusMiddleWare.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_modbus_middle_ware_8c_source.html#l00025">25</a> of file <a class="el" href="_modbus_middle_ware_8c_source.html">ModbusMiddleWare.c</a>.</p>
 
 </div>
 </div>
 <a id="ga9622a98d515bab04ca2a83558b0f571a" name="ga9622a98d515bab04ca2a83558b0f571a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga9622a98d515bab04ca2a83558b0f571a">&#9670;&#160;</a></span>PETITMODBUS_DLY_TOP</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9622a98d515bab04ca2a83558b0f571a">&#9670;&#160;</a></span>PETITMODBUS_DLY_TOP <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t PETITMODBUS_DLY_TOP</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_modbus_middle_ware_8c_source.html#l00035">35</a> of file <a class="el" href="_modbus_middle_ware_8c_source.html">ModbusMiddleWare.c</a>.</p>
+
+</div>
+</div>
+<a id="ga9622a98d515bab04ca2a83558b0f571a" name="ga9622a98d515bab04ca2a83558b0f571a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9622a98d515bab04ca2a83558b0f571a">&#9670;&#160;</a></span>PETITMODBUS_DLY_TOP <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -192,12 +389,36 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_modbus_middle_ware_8c_source.html#l00032">32</a> of file <a class="el" href="_modbus_middle_ware_8c_source.html">ModbusMiddleWare.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_modbus_middle_ware_8c_source.html#l00035">35</a> of file <a class="el" href="_modbus_middle_ware_8c_source.html">ModbusMiddleWare.c</a>.</p>
 
 </div>
 </div>
 <a id="ga25a0ea5f5173ae31a717fec624fd0a8c" name="ga25a0ea5f5173ae31a717fec624fd0a8c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga25a0ea5f5173ae31a717fec624fd0a8c">&#9670;&#160;</a></span>PETITMODBUS_SLAVE_ADDRESS</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ga25a0ea5f5173ae31a717fec624fd0a8c">&#9670;&#160;</a></span>PETITMODBUS_SLAVE_ADDRESS <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t PETITMODBUS_SLAVE_ADDRESS</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_modbus_middle_ware_8c_source.html#l00036">36</a> of file <a class="el" href="_modbus_middle_ware_8c_source.html">ModbusMiddleWare.c</a>.</p>
+
+</div>
+</div>
+<a id="ga25a0ea5f5173ae31a717fec624fd0a8c" name="ga25a0ea5f5173ae31a717fec624fd0a8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga25a0ea5f5173ae31a717fec624fd0a8c">&#9670;&#160;</a></span>PETITMODBUS_SLAVE_ADDRESS <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -208,7 +429,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_modbus_middle_ware_8c_source.html#l00033">33</a> of file <a class="el" href="_modbus_middle_ware_8c_source.html">ModbusMiddleWare.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_modbus_middle_ware_8c_source.html#l00036">36</a> of file <a class="el" href="_modbus_middle_ware_8c_source.html">ModbusMiddleWare.c</a>.</p>
 
 </div>
 </div>

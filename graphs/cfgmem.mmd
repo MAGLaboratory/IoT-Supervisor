@@ -1,0 +1,12 @@
+flowchart LR
+ subgraph Configuration Flash Section
+ ex_cfg_header
+ subgraph cfg_t
+ sid
+ baud
+ wdto
+ password
+ end
+ c_crc("Configuration CRC")
+ p_crc("Program CRC")
+ end

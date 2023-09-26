@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['petit_20modbus_20porting_20functions_0',['Petit Modbus Porting Functions',['../group___petit___modbus___porting___functions.html',1,'']]],
-  ['petit_20modbus_20support_1',['Petit Modbus Support',['../group___petit___modbus___support.html',1,'']]],
-  ['porting_20functions_2',['Petit Modbus Porting Functions',['../group___petit___modbus___porting___functions.html',1,'']]]
+  ['petit_20modbus_20port_0',['IoT Supervisor EFM8BB1LCK Petit Modbus Port',['../group___io_t___s_v___e_f_m8_b_b1_l_c_k___petit___modbus___port.html',1,'']]],
+  ['port_1',['IoT Supervisor EFM8BB1LCK Petit Modbus Port',['../group___io_t___s_v___e_f_m8_b_b1_l_c_k___petit___modbus___port.html',1,'']]]
 ];

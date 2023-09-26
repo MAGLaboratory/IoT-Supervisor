@@ -6,9 +6,12 @@
 /**
  * @defgroup Modbus_MiddleWare Modbus MiddleWare
  * This section contains the intersection between the petit modbus library and
- * the application.  It exists because the modbus library does not handle sid
- * switching or baud rate switching.  The library also does not handle the
+ * the application and the hardware.  It exists because the modbus library does
+ * not handle sid switching or baud rate switching.
+ * The library also does not handle the
  * hardware when the baud rate switches.
+ *
+ * @mermaid{mmw_diagram}
  * @{
  */
 
@@ -19,7 +22,7 @@
  * These constants were generated largely with aid from the device
  * configurator and with simple pen and paper calculations.
  */
-code const uint8_t mmw_ct[eMMW_B_NUM][eMMW_CT_NUM] =
+code const uint8_t mmw_ct[eMMW_B_NUM][eMMW_CL_NUM] =
 {
 	{0, 0xEC,  0, 0},
 	{0, 0xD8,  0, 0},
@@ -55,7 +58,7 @@ void mmw_init(uint8_t sid, uint8_t baud)
 	TMOD = (TMOD & ~TMOD_T1M__FMASK) | TMOD_T1M__MODE3;
 
 	// decode T1 clock source
-	if (mmw_ct[baud - 1][eMMW_CT_T1_PRE] == 1)
+	if (mmw_ct[baud - 1][eMMW_CL_T1_PRE] == 1)
 	{
 		// prescaler
 		CKCON0 = (CKCON0 & ~CKCON0_T1M__BMASK) | CKCON0_T1M__PRESCALE;
@@ -70,8 +73,8 @@ void mmw_init(uint8_t sid, uint8_t baud)
 	TMOD = (TMOD & ~TMOD_T1M__FMASK) | TMOD_T1M__MODE2;
 
 	// set timer 1 current value and reload value
-	TH1 = (mmw_ct[baud - 1][eMMW_CT_TH1] << TH1_TH1__SHIFT);
-	TL1 = (mmw_ct[baud - 1][eMMW_CT_TH1] << TL1_TL1__SHIFT);
+	TH1 = (mmw_ct[baud - 1][eMMW_CL_TH1] << TH1_TH1__SHIFT);
+	TL1 = (mmw_ct[baud - 1][eMMW_CL_TH1] << TL1_TL1__SHIFT);
 
 	// maybe this code will support parity values in the future, but the
 	// efm8bb1 does not support parity.
@@ -81,8 +84,8 @@ void mmw_init(uint8_t sid, uint8_t baud)
 	SCON0 |= SCON0_REN__RECEIVE_ENABLED | SCON0_MCE__MULTI_ENABLED;
 
 	// software counter values
-	PETITMODBUS_DLY_TOP = mmw_ct[baud - 1][eMMW_CT_PETIT_TOP];
-	T0C_TOP = mmw_ct[baud - 1][eMMW_CT_TL0_TOP];
+	PETITMODBUS_DLY_TOP = mmw_ct[baud - 1][eMMW_CL_PETIT_TOP];
+	T0C_TOP = mmw_ct[baud - 1][eMMW_CL_TL0_TOP];
 }
 
 /** @} */ // group Modbus_MiddleWare

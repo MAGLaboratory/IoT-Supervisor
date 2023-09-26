@@ -17,6 +17,16 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <link href="stylesheet.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -95,29 +105,219 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md__r_e_a_d_m_e"></a>An IoT supervisor board\ <a href="https://maglaboratory.github.io/IoT-Supervisor/">https://maglaboratory.github.io/IoT-Supervisor/</a></p>
+<h1><a class="anchor" id="acronyms-abbreviations-and-definitions"></a>
+Acronyms, Abbreviations, and Definitions</h1>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Term   </th><th class="markdownTableHeadNone">Definition    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">ADC   </td><td class="markdownTableBodyNone">Analog to Digital Converter    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">BB   </td><td class="markdownTableBodyNone">Busy Bee    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">CMP   </td><td class="markdownTableBodyNone">Comparator    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">DBG   </td><td class="markdownTableBodyNone">Debug    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">EFM   </td><td class="markdownTableBodyNone">Energy Friendly Microcontroller    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">ID   </td><td class="markdownTableBodyNone">Identification    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">IoT   </td><td class="markdownTableBodyNone">Internet of Trash    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">LDO   </td><td class="markdownTableBodyNone">Low-DropOut Linear Regulator    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">LED   </td><td class="markdownTableBodyNone">Light-Emitting Diode    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">MAG   </td><td class="markdownTableBodyNone">Makers, Artists, and Gadgeteers    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">MMW   </td><td class="markdownTableBodyNone">Modbus MiddleWare    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">PROG   </td><td class="markdownTableBodyNone">Program Memory    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">PW   </td><td class="markdownTableBodyNone">Password    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">SBC   </td><td class="markdownTableBodyNone">Single-Board Computer    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">SM   </td><td class="markdownTableBodyNone">State Machine    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">SV   </td><td class="markdownTableBodyNone">SuperVisor    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">UART   </td><td class="markdownTableBodyNone">Universal Asynchronous Receiver / Transmitter    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">WDT   </td><td class="markdownTableBodyNone">WatchDog Timer    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">XCVR   </td><td class="markdownTableBodyNone">Transciever   </td></tr>
+</table>
 <h1><a class="anchor" id="project-description"></a>
 Project Description</h1>
 <p>This is an IoT SBC supervisor for the MAG Laboratory IoT devices.</p>
 <p>Included are a voltage comparator which automatically resets devices if the input voltage drops below an acceptable voltage. (Manually configured through a resistor divider)</p>
+<h1><a class="anchor" id="hardware-description"></a>
+Hardware Description</h1>
+<p>This description should change with the introduction of other branches where hardware other than the EFM8BB1 with a bespoke SP485 adapter is used.</p>
+<p>A general overview including pin descriptions is provided in this section. A more detailed description should be provided in the hardware section.</p>
+<h2><a class="anchor" id="on-chip-peripherals"></a>
+On-Chip Peripherals</h2>
+<p>The EFM8BB1 is clocked with the high-frequency internal oscillator divided by sixteen. 25.4 MHz / 16 is about 1.531 MHz.</p>
+<p>A comparator is set with its negative input on P0.1 and positive input on the internal 1.8V LDO.</p>
+<p>Timer 0 high is set to overflow at 1.003 ms. Timer 0 low is set to overflow at 1.254 ms and is not changed by the initialization state machine. Timer 1 is set and maintained by the initialization state machine its period should not be listed here. Timer 2 is set to overflow 20 times per second. This is probably faster than any application would reasonably poll for the voltage over modbus. For reference, each modbus transaction takes something in the order of 7 ms at full speed (38400 baud). Timer 3 isn't used and is left disabled.</p>
+<p>UART is enabled and is timed off of timer 1.</p>
+<p>The ADC is enabled in burst mode and takes measurements at each timer 2 period.</p>
+<p>The watchdog is enabled at 25ms. It is serviced at the end of the timer 0 high interrupt.</p>
+<p>Timer 0 low is used for T_1.5 in modbus to clear messages that have had too much time in between their octets.</p>
+<h2><a class="anchor" id="pins"></a>
+Pins</h2>
+<p>The pin description here should exist to describe the pins in the "Debug" build more than it describes the pins in the "Release" build. The main purpose of this branch is to debug this build after all...</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Pin   </th><th class="markdownTableHeadNone">Name   </th><th class="markdownTableHeadNone">Purpose    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">P0.1   </td><td class="markdownTableBodyNone">VIN_DIV   </td><td class="markdownTableBodyNone">Voltage Divider Input    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">P0.3   </td><td class="markdownTableBodyNone">XCVR_EN   </td><td class="markdownTableBodyNone">Transciever Transmit Enable    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">P0.4   </td><td class="markdownTableBodyNone">UART_TX   </td><td class="markdownTableBodyNone">UART Transmit    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">P0.5   </td><td class="markdownTableBodyNone">UART_RX   </td><td class="markdownTableBodyNone">UART Receive    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">P0.6   </td><td class="markdownTableBodyNone">DBG0   </td><td class="markdownTableBodyNone">Debug Pin 0. Used for a debug function.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">P0.7   </td><td class="markdownTableBodyNone">CMP0_A   </td><td class="markdownTableBodyNone">Asynchronous Comparator Output. Immediately shows when the voltage in compartaor is triggered.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">P1.0   </td><td class="markdownTableBodyNone">DBG1   </td><td class="markdownTableBodyNone">Debug Pin 1. Used for a debug function.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">P1.1   </td><td class="markdownTableBodyNone">RESET_OUT   </td><td class="markdownTableBodyNone">Reset Output. Used to reset the SBC. Tie directly to SBC.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">P1.2   </td><td class="markdownTableBodyNone">DBG2   </td><td class="markdownTableBodyNone">Debug Pin 2.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">P1.3   </td><td class="markdownTableBodyNone">DBG3   </td><td class="markdownTableBodyNone">Debug Pin 3.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">P1.4   </td><td class="markdownTableBodyNone">LED   </td><td class="markdownTableBodyNone">The LED on the development board. Very useful.   </td></tr>
+</table>
+<h2><a class="anchor" id="voltage-divider-detail"></a>
+Voltage Divider Detail</h2>
+<p>The voltage divider is set to 3.6v by default. This is \(1.8v * 2\). The equation to find the set point is the multiplicative inverse of the resistor divider equation multiplied by 1.8v. Selection of the resistors should begin at 100k ohms. The default uses two 100kohm resistors.</p>
+<p class="formulaDsp">
+\begin{eqnarray*}
+    V_{min} = \frac{1.8v \cdot (R_1 + R_2)}{R_2}
+\end{eqnarray*}
+</p>
+<h1><a class="anchor" id="modbus-register-description"></a>
+Modbus Register Description</h1>
+<p>This section contains tables describing the modbus registers. Note that the holding registers are stored under function code <code>03</code> and the input registers are under function code <code>04</code>.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadCenter">Address   </th><th class="markdownTableHeadNone">Holding Register Read   </th><th class="markdownTableHeadNone">Holding Register Write    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyCenter">0   </td><td class="markdownTableBodyNone">Supervisor Status <a class="el" href="unionsv__dev__sta__t.html">sv_dev_sta_t</a>   </td><td class="markdownTableBodyNone">Modbus WDT Control    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyCenter">1   </td><td class="markdownTableBodyNone">Configuration State Machine State <a class="el" href="group___configuration___state___machine.html#ga2e2885d00577c7076677cc277ac4f238">CfgSM_t</a>   </td><td class="markdownTableBodyNone">Password or Command    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyCenter">2   </td><td class="markdownTableBodyNone">Modbus Control Bitfield   </td><td class="markdownTableBodyNone">Modbus Control Bitfield    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyCenter">3   </td><td class="markdownTableBodyNone">Watchdog Timeout (in seconds)   </td><td class="markdownTableBodyNone">Watchdog Timeout (in seconds)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyCenter">4   </td><td class="markdownTableBodyNone">Next Password   </td><td class="markdownTableBodyNone">Next Password   </td></tr>
+</table>
+<p>The following table lists the input registers which are read only by design.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadCenter">Address   </th><th class="markdownTableHeadNone">Input Register Read    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyCenter">0   </td><td class="markdownTableBodyNone">ADC Bitfield   </td></tr>
+</table>
+<h2><a class="anchor" id="the-adc-bitfield"></a>
+The ADC bitfield</h2>
+<p>The ADC bitfield includes the number of conversions in the upper 6 bits of the bitfield because there is the slight possibility of the supervisor's conversions freezing.</p>
+<p>The following table documents the ADC bitfield:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">15   </th><th class="markdownTableHeadNone">14   </th><th class="markdownTableHeadNone">13   </th><th class="markdownTableHeadNone">12   </th><th class="markdownTableHeadNone">11   </th><th class="markdownTableHeadNone">10   </th><th class="markdownTableHeadNone">9   </th><th class="markdownTableHeadNone">8   </th><th class="markdownTableHeadNone">7   </th><th class="markdownTableHeadNone">6   </th><th class="markdownTableHeadNone">5   </th><th class="markdownTableHeadNone">4   </th><th class="markdownTableHeadNone">3   </th><th class="markdownTableHeadNone">2   </th><th class="markdownTableHeadNone">1   </th><th class="markdownTableHeadNone">0    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone" colspan="6">Number of Conversion   </td><td class="markdownTableBodyNone" colspan="10">Conversion Value in Counts   </td></tr>
+</table>
+<h2><a class="anchor" id="supervisor-status"></a>
+Supervisor Status</h2>
+<p>This section is for those who do not wish to read the other doxygen documentation. (Okay, maybe this section documents it better too...)</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">15   </th><th class="markdownTableHeadNone">14   </th><th class="markdownTableHeadNone">13   </th><th class="markdownTableHeadNone">12   </th><th class="markdownTableHeadNone">11   </th><th class="markdownTableHeadNone">10   </th><th class="markdownTableHeadNone">9   </th><th class="markdownTableHeadNone">8   </th><th class="markdownTableHeadNone">7   </th><th class="markdownTableHeadNone">6   </th><th class="markdownTableHeadNone">5   </th><th class="markdownTableHeadNone">4   </th><th class="markdownTableHeadNone">3   </th><th class="markdownTableHeadNone">2   </th><th class="markdownTableHeadNone">1   </th><th class="markdownTableHeadNone">0    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone" colspan="8">Reserved   </td><td class="markdownTableBodyNone" colspan="2">verifSt   </td><td class="markdownTableBodyNone" colspan="2">lstRstS   </td><td class="markdownTableBodyNone" colspan="2">wdtSmS   </td><td class="markdownTableBodyNone" colspan="2">vinSmS   </td></tr>
+</table>
+<p>The <code>vinSmS</code> field contains three enumerations defined in <a class="el" href="group___voltage___state___machine.html#gac71595e22bb54f0f156340ffb1ff44ba">VinSm_t</a>. The eVIN_Init (0) state is the initial state which resets the SBC. The eVIN_VLow (1) state of the SM is reached when the voltage is low. The eVIN_OK (2) state of the SM is reached when everything is okay. This field should read <code>2</code> under normal operation.</p>
+<p>The <code>wdtSmS</code> field contains three enumerations defined in <a class="el" href="group___modbus___w_d_t___state___machine.html#ga299607114400fe41e8e9dcccee0f787a">mbWDTsmS_t</a>. The eMW_Ini (0) state is the intial state which disables or resets the state machine. The eMW_En (1) state enables the state machine countdown. The eMW_Timeout (2) state resets the SBC through the Vin and Reset state machine.</p>
+<p>The <code>lstRstS</code> field contains three enumerations defined in <a class="el" href="group___main___application.html#ga6fd609b4d1cbec982d502d97a866fca7">LastRst_t</a>. The eLR_Init (0) state is the initial state which resets the SBC. The eLR_VSM (1) state indicates that a low voltage condition caused the last reset. The eLR_WDT (1) state indicates that a modbus watchdog reset caused the last reset.</p>
+<p>The <code>verifSt</code> field contains four enumerations defined in <a class="el" href="group___configuration___state___machine.html#gae7452a3b4994fb1305b6184d19c8b4fe">VerifSt_t</a>. The VS_Norm (0) state shows normal verification status. The eVS_Cfg (1) state shows an abnormal configuration. The eVS_Prog (2) state shows that the program memory CRC has a mismatch. The eVS_Setup (3) state shows that the configuration header has a mismatch. Upgrading from a previous version of the software could show the eVS_Setup condition. Unfortunately, the settings from previous versions are not imported to newer versions of the software.</p>
+<h2><a class="anchor" id="modbus-wdt-control"></a>
+Modbus WDT Control</h2>
+<p>The modbus watchdog timer is controlled using only two simple values. The value <a class="el" href="group___modbus___w_d_t___state___machine.html#ga8f2ab3d655054566ca4857f1ffbeb938">C_WDT_PET</a> (0x5A) enables or pets the watchdog. The value <a class="el" href="group___modbus___w_d_t___state___machine.html#ga297e9ea9b92297b1cf3d85e3b12e8f30">C_WDT_DIS</a> (0xA5) disables the watchdog.</p>
+<p>These values may change, their doxygen values are provided for a hard reference</p>
+<h2><a class="anchor" id="passwords-and-commands"></a>
+Passwords and Commands</h2>
+<p>The password can not be set to a command value. These are magic numbers defined as <a class="el" href="group___configuration___state___machine.html#ga35004385fd057486275757ee2d0dd1e9">C_CMD_COMMIT</a> (0x5FAF) and <a class="el" href="group___configuration___state___machine.html#ga3eeb3473a2e1cd78451afc01b331d89f">C_CMD_CANCEL</a> (0x0000). The password is set to <a class="el" href="group___configuration___state___machine.html#ga0f6656888b6da3d751ce6bb0644d0dd9">C_PW_DEFAULT</a> (0xDEFA) by default.</p>
+<p>These values may change, their doxygen values are provided for a hard reference</p>
+<h2><a class="anchor" id="modbus-control-bitfield"></a>
+Modbus Control Bitfield</h2>
+<p>The modbus control bitfield contains fields for the baud and the servant id. These collectively could be called B,S. Both bitfields are byte aligned for your convenience. This bitfield defaults to <code>511</code> which decodes as <code>0x1FF</code> meaning the SID is set to <code>0xFF</code> and the BAUD to <code>1</code>.</p>
+<p>The following table describes the positions of these bitfields: </p><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">15   </th><th class="markdownTableHeadNone">14   </th><th class="markdownTableHeadNone">13   </th><th class="markdownTableHeadNone">12   </th><th class="markdownTableHeadNone">11   </th><th class="markdownTableHeadNone">10   </th><th class="markdownTableHeadNone">9   </th><th class="markdownTableHeadNone">8   </th><th class="markdownTableHeadNone">7   </th><th class="markdownTableHeadNone">6   </th><th class="markdownTableHeadNone">5   </th><th class="markdownTableHeadNone">4   </th><th class="markdownTableHeadNone">3   </th><th class="markdownTableHeadNone">2   </th><th class="markdownTableHeadNone">1   </th><th class="markdownTableHeadNone">0    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone" colspan="8">BAUD Enumeration   </td><td class="markdownTableBodyNone" colspan="8">Servant ID   </td></tr>
+</table>
+<p>The baud enum bitfield must be set to a number greater than <a class="el" href="group___modbus___middle_ware.html#ggac4b55353c236e4425b062d426cb99eacab70faceaf93603ca5b05cb190bbb85c7">eMMW_B_NULL</a> and less than <a class="el" href="group___modbus___middle_ware.html#ggac4b55353c236e4425b062d426cb99eacaf518145fe38ea36c4539548d591a1b6f">eMMW_B_NUM</a>. Writing <code>0</code> to this bitfield does not change its value and allows the other bitfield <code>Servant ID</code> to be changed.</p>
+<p>The servant ID bitfield must be set to a number greater than or equal to <a class="el" href="group___configuration___state___machine.html#ga36cea86425025f8b068256d0254b49c5">C_SID_MIN</a> (1) and less than or equal to <a class="el" href="group___configuration___state___machine.html#ga00d0491c3afc5730a550797466e1e7ef">C_SID_MAX</a> (247). Like the other bitfield at this address, writing <code>0</code> to this bitfield does not change its value and allows the other bitfield <code>BAUD Enumeration</code> to be changed. The servant ID is set to <code>255</code> by default.</p>
 <h1><a class="anchor" id="branch-description"></a>
 Branch Description</h1>
 <p>This branch is for initial development. The style of calling something "zero" came from a style of anime calling their prequel series "zero."</p>
-<h1><a class="anchor" id="todo"></a>
-TODO</h1>
-<ul>
-<li>Documentation<ul>
-<li>Voltage Divider Set-Point Documentation</li>
-<li>Modbus registers</li>
-<li>How-to (quickstart) guide</li>
-<li>State machines</li>
-</ul>
-</li>
-</ul>
 <h1><a class="anchor" id="deployment"></a>
 Deployment</h1>
 <p>Is this section supposed to be about how this project was developed or how to start developing for it?</p>
 <p>The project started in 2019 after a lot of SBC's were found hung and needing manual intervention. Hopefully, after two years of development, this project can automatically reset boards.</p>
 <p>Development and builds can be done with the Keil C51 toolchain and Silicon Labs Simplicity Studio v5. Unfortunately, SDCC support and other (let me know which, pls) compilers that may support the 8051 instruction set are not supported at the moment.</p>
+<h2><a class="anchor" id="quickstart"></a>
+Quickstart</h2>
+<p>This quickstart guide is written for this "zero" development branch in particular which is completed on a prototype version of IoT SV hardware consisting of the EFM8BB1LCK board and a protoboard and enameled wire attached SOIC-8 SP485 transciever.</p>
+<div class="fragment"><div class="line">import minimalmodbus</div>
+<div class="line"> </div>
+<div class="line">instr = minimalmodbus.Instrument(&quot;/dev/ttyUSB0&quot;, 255)</div>
+<div class="line">instr.address = 255</div>
+<div class="line">instr.serial.baudrate = 38400</div>
+<div class="line">instr.serial.timeout = 0.5</div>
+<div class="line"> </div>
+<div class="line"># check communication</div>
+<div class="line">instr.read_registers(0x00, 2)</div>
+<div class="line"> </div>
+<div class="line"># enter cache mode</div>
+<div class="line">instr.write_register(0x01, 0xDEFA)</div>
+<div class="line"> </div>
+<div class="line"># configure the board for address 1</div>
+<div class="line">instr.write_register(0x02, 257)</div>
+<div class="line"> </div>
+<div class="line"># commit the configuration</div>
+<div class="line">instr.write_register(0x01, 0x5FAF)</div>
+<div class="line"> </div>
+<div class="line"># change the address</div>
+<div class="line">instr.address = 1</div>
+<div class="line"> </div>
+<div class="line"># check communication</div>
+<div class="line">instr.read_registers(0x00, 2)</div>
+<div class="line"> </div>
+<div class="line"># write to Flash</div>
+<div class="line">instr.write_registers(0x01, 0xDEFA)</div>
+<div class="line"> </div>
+<div class="line"># check communication one last time</div>
+<div class="line">instr.read_registers(0x00, 2)</div>
+</div><!-- fragment --><ol type="1">
+<li>Select a resistor dividder value using the equation listed above.</li>
+<li>Connect the hardware and the board.</li>
+<li>Program the firmware onto the board</li>
+<li>Run through the configuration once with the python above. Note that the address can be changed to one that the user desires. Other settings can also be changed such as the baud and WDT timeout.</li>
+<li>Come up with a daemon that can enable the watchdog and pet it constantly.</li>
+<li>Enjoy your supervising solution.</li>
+</ol>
 <h2><a class="anchor" id="building"></a>
 Building</h2>
 <p>Building the project while utilizing the built-in program memory CRC requires some manual intervention and two cycles of clicking the "build" button. It is possible to build and use the supervisor without using the program memory CRC. The only caveat to this is that the supervisor will always report a program CRC error.</p>

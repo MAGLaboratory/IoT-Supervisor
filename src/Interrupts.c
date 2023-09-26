@@ -23,12 +23,9 @@
  */
 
 /******************************************************************************
- * @fn SI_INTERRUPT (CMP0_ISR, CMP0_IRQn)
- ******************************************************************************
- *
- * CMP0 ISR Content goes here. Remember to clear flag bits:
- * - CMP0CN0::CPFIF (Comparator Falling-Edge Flag)
- * - CMP0CN0::CPRIF (Comparator Rising-Edge Flag)
+ * CMPn ISR Content goes here. Remember to clear flag bits:
+ * - CMPnCN0::CPFIF (Comparator Falling-Edge Flag)
+ * - CMPnCN0::CPRIF (Comparator Rising-Edge Flag)
  *
  * This ISR implements the immediate voltage low reset for the SBC.
  *****************************************************************************/

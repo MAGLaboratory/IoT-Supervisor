@@ -1,11 +1,20 @@
 var searchData=
 [
-  ['v_0',['v',['../unionsv__dev__sta__t.html#af91687434945ba41cb901d8841fea73e',1,'sv_dev_sta_t']]],
-  ['verifst_1',['verifSt',['../unionsv__dev__sta__t.html#a660c20d83347693de4dc26906fa2a409',1,'sv_dev_sta_t']]],
-  ['verifst_5ft_2',['VerifSt_t',['../_io_t___supervisor_8h.html#ae7452a3b4994fb1305b6184d19c8b4fe',1,'IoT_Supervisor.h']]],
-  ['version_20history_3',['Version History',['../index.html#version-history',1,'']]],
-  ['vinsm_4',['vinsm',['../group___reset___state___machine.html#gae07580e6a3e7427894a9809c979f3f65',1,'VinSm(void):&#160;IoT Supervisor_main.c'],['../group___reset___state___machine.html#gae07580e6a3e7427894a9809c979f3f65',1,'VinSm(void):&#160;IoT Supervisor_main.c']]],
-  ['vinsm_5ft_5',['VinSm_t',['../_io_t___supervisor_8h.html#ac71595e22bb54f0f156340ffb1ff44ba',1,'IoT_Supervisor.h']]],
-  ['vinsms_6',['vinSmS',['../unionsv__dev__sta__t.html#ac132976af83e93dc19c20cc736991ede',1,'sv_dev_sta_t']]],
-  ['voltage_20in_20comparator_7',['Voltage In Comparator',['../testing-procedures.html#voltage-in-comparator',1,'']]]
+  ['t0c_5ftop_0',['t0c_top',['../group___main___application.html#ga06f41e11cde40f73d65c73f928a89ae9',1,'T0C_TOP:&#160;IoT Supervisor_main.c'],['../group___main___application.html#ga06f41e11cde40f73d65c73f928a89ae9',1,'T0C_TOP:&#160;IoT Supervisor_main.c']]],
+  ['t0count_1',['t0count',['../group___main___application.html#ga9f016462fc2803075b67d903c4045aa7',1,'t0Count:&#160;IoT Supervisor_main.c'],['../group___main___application.html#ga9f016462fc2803075b67d903c4045aa7',1,'t0Count:&#160;IoT Supervisor_main.c']]],
+  ['t1count_2',['t1count',['../group___main___application.html#gabff40580a49bdbf86db348e6ab0a8dc1',1,'t1Count:&#160;IoT Supervisor_main.c'],['../group___main___application.html#gabff40580a49bdbf86db348e6ab0a8dc1',1,'t1Count:&#160;IoT Supervisor_main.c']]],
+  ['testing_20procedures_3',['Testing Procedures',['../testing-procedures.html',1,'']]],
+  ['testing_2emd_4',['TESTING.md',['../_t_e_s_t_i_n_g_8md.html',1,'']]],
+  ['the_20adc_20bitfield_5',['The ADC bitfield',['../index.html#the-adc-bitfield',1,'']]],
+  ['timer_6',['Modbus Timer',['../testing-procedures.html#modbus-timer',1,'']]],
+  ['timer01_5f0_5fenter_5fdebugmode_5ffrom_5fdefaultmode_7',['timer01_0_enter_debugmode_from_defaultmode',['../_init_device_8c.html#aaf63cc0eb9b4a87f8eef4967362f133f',1,'TIMER01_0_enter_DebugMode_from_DefaultMode(void):&#160;InitDevice.c'],['../_init_device_8h.html#aaf63cc0eb9b4a87f8eef4967362f133f',1,'TIMER01_0_enter_DebugMode_from_DefaultMode(void):&#160;InitDevice.c']]],
+  ['timer01_5f0_5fenter_5fdefaultmode_5ffrom_5freset_8',['timer01_0_enter_defaultmode_from_reset',['../_init_device_8c.html#a486b02c38c6846534ded3cbdf70c09f1',1,'TIMER01_0_enter_DefaultMode_from_RESET(void):&#160;InitDevice.c'],['../_init_device_8h.html#a486b02c38c6846534ded3cbdf70c09f1',1,'TIMER01_0_enter_DefaultMode_from_RESET(void):&#160;InitDevice.c']]],
+  ['timer0_5fpini_5foff_9',['TIMER0_PINI_OFF',['../debugpins_8h.html#a7731f90cd59bd61dfb2ab19e811bd590',1,'debugpins.h']]],
+  ['timer0_5fpini_5fon_10',['TIMER0_PINI_ON',['../debugpins_8h.html#ada0ed52fc4271cc21769222613b4c60b',1,'debugpins.h']]],
+  ['timer0_5fpino_5foff_11',['TIMER0_PINO_OFF',['../debugpins_8h.html#a2f415042c71627ded6845ab3074db99e',1,'debugpins.h']]],
+  ['timer0_5fpino_5fon_12',['TIMER0_PINO_ON',['../debugpins_8h.html#a48bb0879a01c7582daeaf51f4c3708f4',1,'debugpins.h']]],
+  ['timer16_5f2_5fenter_5fdefaultmode_5ffrom_5freset_13',['timer16_2_enter_defaultmode_from_reset',['../_init_device_8c.html#a4fa11030d2fa098ebe53c0720e0c8263',1,'TIMER16_2_enter_DefaultMode_from_RESET(void):&#160;InitDevice.c'],['../_init_device_8h.html#a4fa11030d2fa098ebe53c0720e0c8263',1,'TIMER16_2_enter_DefaultMode_from_RESET(void):&#160;InitDevice.c']]],
+  ['timer1_5fpin_5foff_14',['TIMER1_PIN_OFF',['../debugpins_8h.html#a5ed37e3d0f9014a745a20eefda6aea95',1,'debugpins.h']]],
+  ['timer1_5fpin_5fon_15',['TIMER1_PIN_ON',['../debugpins_8h.html#ac0f842ddc77766ee28510886d2d6ab85',1,'debugpins.h']]],
+  ['timer_5fsetup_5f0_5fenter_5fdefaultmode_5ffrom_5freset_16',['timer_setup_0_enter_defaultmode_from_reset',['../_init_device_8c.html#a837107eb6072b88e4bd1668473a377c3',1,'TIMER_SETUP_0_enter_DefaultMode_from_RESET(void):&#160;InitDevice.c'],['../_init_device_8h.html#a837107eb6072b88e4bd1668473a377c3',1,'TIMER_SETUP_0_enter_DefaultMode_from_RESET(void):&#160;InitDevice.c']]]
 ];

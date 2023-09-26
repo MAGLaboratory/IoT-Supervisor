@@ -17,6 +17,16 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <link href="stylesheet.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -110,7 +120,7 @@ $(document).ready(function(){initNavTree('_io_t_01_supervisor__main_8c.html','')
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:gafc1dec4dc888692cdf30987658c2ab88" id="r_gafc1dec4dc888692cdf30987658c2ab88"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___reset___state___machine.html#gafc1dec4dc888692cdf30987658c2ab88">SCOUNTER_ONE_SECOND</a>&#160;&#160;&#160;(125)</td></tr>
+<tr class="memitem:gafc1dec4dc888692cdf30987658c2ab88" id="r_gafc1dec4dc888692cdf30987658c2ab88"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___voltage___state___machine.html#gafc1dec4dc888692cdf30987658c2ab88">SCOUNTER_ONE_SECOND</a>&#160;&#160;&#160;(125)</td></tr>
 <tr class="separator:gafc1dec4dc888692cdf30987658c2ab88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab4cd620a6ff382f2308515027d02e9b2" id="r_gab4cd620a6ff382f2308515027d02e9b2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___modbus___w_d_t___state___machine.html#gab4cd620a6ff382f2308515027d02e9b2">C_DEFAULT_MB_WD_TIMEOUT</a>&#160;&#160;&#160;(15)</td></tr>
 <tr class="separator:gab4cd620a6ff382f2308515027d02e9b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -124,9 +134,9 @@ Macros</h2></td></tr>
 <tr class="separator:ga0f6656888b6da3d751ce6bb0644d0dd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2b8473431a4fe63b20294043b9ae4773" id="r_ga2b8473431a4fe63b20294043b9ae4773"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___configuration___state___machine.html#ga2b8473431a4fe63b20294043b9ae4773">C_FOUND_PROG_END</a>&#160;&#160;&#160;(0x0FE5)</td></tr>
 <tr class="separator:ga2b8473431a4fe63b20294043b9ae4773"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga36de940e9065f10013db52ed98a34b1f" id="r_ga36de940e9065f10013db52ed98a34b1f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___configuration___state___machine.html#ga36de940e9065f10013db52ed98a34b1f">C_CFG_HEADER_LEN</a>&#160;&#160;&#160;(8)</td></tr>
+<tr class="memitem:ga36de940e9065f10013db52ed98a34b1f" id="r_ga36de940e9065f10013db52ed98a34b1f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___configuration___state___machine.html#ga36de940e9065f10013db52ed98a34b1f">C_CFG_HEADER_LEN</a>&#160;&#160;&#160;(sizeof(<a class="el" href="group___configuration___state___machine.html#ga4786f95f528dfb7d6225d35b27072418">ex_cfg_header</a>))</td></tr>
 <tr class="separator:ga36de940e9065f10013db52ed98a34b1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga65c7887c0e26969205a3e5b038fe403a" id="r_ga65c7887c0e26969205a3e5b038fe403a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___configuration___state___machine.html#ga65c7887c0e26969205a3e5b038fe403a">C_CFG_DATA_LEN</a>&#160;&#160;&#160;(5)</td></tr>
+<tr class="memitem:ga65c7887c0e26969205a3e5b038fe403a" id="r_ga65c7887c0e26969205a3e5b038fe403a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___configuration___state___machine.html#ga65c7887c0e26969205a3e5b038fe403a">C_CFG_DATA_LEN</a>&#160;&#160;&#160;(sizeof(<a class="el" href="structcfg__t.html">cfg_t</a>))</td></tr>
 <tr class="separator:ga65c7887c0e26969205a3e5b038fe403a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1cf8a7c45bd5eafaa45862c9f304da4c" id="r_ga1cf8a7c45bd5eafaa45862c9f304da4c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___configuration___state___machine.html#ga1cf8a7c45bd5eafaa45862c9f304da4c">C_CFG_C_CRC_LEN</a>&#160;&#160;&#160;(2)</td></tr>
 <tr class="separator:ga1cf8a7c45bd5eafaa45862c9f304da4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -144,7 +154,7 @@ Functions</h2></td></tr>
 <tr class="memitem:ga09296ef32928eaaa20010361d50ddf08" id="r_ga09296ef32928eaaa20010361d50ddf08"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___main___application.html#ga09296ef32928eaaa20010361d50ddf08">SiLabs_Startup</a> (void)</td></tr>
 <tr class="memdesc:ga09296ef32928eaaa20010361d50ddf08"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="group___main___application.html#ga09296ef32928eaaa20010361d50ddf08" title="SiLabs_Startup() Routine.">SiLabs_Startup()</a> Routine.  <br /></td></tr>
 <tr class="separator:ga09296ef32928eaaa20010361d50ddf08"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae07580e6a3e7427894a9809c979f3f65" id="r_gae07580e6a3e7427894a9809c979f3f65"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___reset___state___machine.html#gae07580e6a3e7427894a9809c979f3f65">VinSm</a> (void)</td></tr>
+<tr class="memitem:gae07580e6a3e7427894a9809c979f3f65" id="r_gae07580e6a3e7427894a9809c979f3f65"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___voltage___state___machine.html#gae07580e6a3e7427894a9809c979f3f65">VinSm</a> (void)</td></tr>
 <tr class="separator:gae07580e6a3e7427894a9809c979f3f65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga18a609d79f133d41b52d1cc90469be47" id="r_ga18a609d79f133d41b52d1cc90469be47"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___modbus___w_d_t___state___machine.html#ga18a609d79f133d41b52d1cc90469be47">mbWDTsm</a> (void)</td></tr>
 <tr class="separator:ga18a609d79f133d41b52d1cc90469be47"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -171,13 +181,13 @@ Variables</h2></td></tr>
 <tr class="separator:ga9f016462fc2803075b67d903c4045aa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga06f41e11cde40f73d65c73f928a89ae9" id="r_ga06f41e11cde40f73d65c73f928a89ae9"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___main___application.html#ga06f41e11cde40f73d65c73f928a89ae9">T0C_TOP</a> = 0</td></tr>
 <tr class="separator:ga06f41e11cde40f73d65c73f928a89ae9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga31390fb09ef36dd888ed0850ab41521d" id="r_ga31390fb09ef36dd888ed0850ab41521d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___reset___state___machine.html#ga31390fb09ef36dd888ed0850ab41521d">nReset</a> = false</td></tr>
+<tr class="memitem:ga31390fb09ef36dd888ed0850ab41521d" id="r_ga31390fb09ef36dd888ed0850ab41521d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___voltage___state___machine.html#ga31390fb09ef36dd888ed0850ab41521d">nReset</a> = false</td></tr>
 <tr class="separator:ga31390fb09ef36dd888ed0850ab41521d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0483e3e419cbb0dcb1a54e2d9d7b78e6" id="r_ga0483e3e419cbb0dcb1a54e2d9d7b78e6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___reset___state___machine.html#ga0483e3e419cbb0dcb1a54e2d9d7b78e6">modbusWdtSmEn</a> = false</td></tr>
+<tr class="memitem:ga0483e3e419cbb0dcb1a54e2d9d7b78e6" id="r_ga0483e3e419cbb0dcb1a54e2d9d7b78e6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___voltage___state___machine.html#ga0483e3e419cbb0dcb1a54e2d9d7b78e6">modbusWdtSmEn</a> = false</td></tr>
 <tr class="separator:ga0483e3e419cbb0dcb1a54e2d9d7b78e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga59f537ef8b7df61f7a1a3b477f5fc340" id="r_ga59f537ef8b7df61f7a1a3b477f5fc340"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___reset___state___machine.html#ga59f537ef8b7df61f7a1a3b477f5fc340">cprif</a> = false</td></tr>
+<tr class="memitem:ga59f537ef8b7df61f7a1a3b477f5fc340" id="r_ga59f537ef8b7df61f7a1a3b477f5fc340"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___voltage___state___machine.html#ga59f537ef8b7df61f7a1a3b477f5fc340">cprif</a> = false</td></tr>
 <tr class="separator:ga59f537ef8b7df61f7a1a3b477f5fc340"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad7452351720eb5866550eadd22acf654" id="r_gad7452351720eb5866550eadd22acf654"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___reset___state___machine.html#gad7452351720eb5866550eadd22acf654">modbusWdtExp</a> = false</td></tr>
+<tr class="memitem:gad7452351720eb5866550eadd22acf654" id="r_gad7452351720eb5866550eadd22acf654"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___voltage___state___machine.html#gad7452351720eb5866550eadd22acf654">modbusWdtExp</a> = false</td></tr>
 <tr class="separator:gad7452351720eb5866550eadd22acf654"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab9eb643439bfb234f1a6da202f1cbf60" id="r_gab9eb643439bfb234f1a6da202f1cbf60"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___modbus___w_d_t___state___machine.html#gab9eb643439bfb234f1a6da202f1cbf60">MB_WD_TIMEOUT</a> = <a class="el" href="group___modbus___w_d_t___state___machine.html#gab4cd620a6ff382f2308515027d02e9b2">C_DEFAULT_MB_WD_TIMEOUT</a></td></tr>
 <tr class="separator:gab9eb643439bfb234f1a6da202f1cbf60"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -189,7 +199,7 @@ Variables</h2></td></tr>
 <tr class="separator:ga4786f95f528dfb7d6225d35b27072418"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga35236392c891bc6d5ccee8f619d2f92a" id="r_ga35236392c891bc6d5ccee8f619d2f92a"><td class="memItemLeft" align="right" valign="top">code const <a class="el" href="structcfg__t.html">cfg_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___configuration___state___machine.html#ga35236392c891bc6d5ccee8f619d2f92a">default_cfg</a></td></tr>
 <tr class="separator:ga35236392c891bc6d5ccee8f619d2f92a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6c9c723896f1d714b5d1caeb1afceda6" id="r_ga6c9c723896f1d714b5d1caeb1afceda6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_io_t___supervisor_8h.html#a2e2885d00577c7076677cc277ac4f238">CfgSM_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___configuration___state___machine.html#ga6c9c723896f1d714b5d1caeb1afceda6">cfgSmS</a> = <a class="el" href="_io_t___supervisor_8h.html#a2e2885d00577c7076677cc277ac4f238a77c6aa8579abb456a1022f2c0749809b">eCFG_Load</a></td></tr>
+<tr class="memitem:ga6c9c723896f1d714b5d1caeb1afceda6" id="r_ga6c9c723896f1d714b5d1caeb1afceda6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___configuration___state___machine.html#ga2e2885d00577c7076677cc277ac4f238">CfgSM_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___configuration___state___machine.html#ga6c9c723896f1d714b5d1caeb1afceda6">cfgSmS</a> = <a class="el" href="group___configuration___state___machine.html#gga2e2885d00577c7076677cc277ac4f238a77c6aa8579abb456a1022f2c0749809b">eCFG_Load</a></td></tr>
 <tr class="separator:ga6c9c723896f1d714b5d1caeb1afceda6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0959e8576e2d8601bc958bbf7680f0d4" id="r_ga0959e8576e2d8601bc958bbf7680f0d4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___configuration___state___machine.html#ga0959e8576e2d8601bc958bbf7680f0d4">pw_flag</a> = false</td></tr>
 <tr class="separator:ga0959e8576e2d8601bc958bbf7680f0d4"><td class="memSeparator" colspan="2">&#160;</td></tr>

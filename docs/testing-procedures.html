@@ -17,6 +17,16 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <link href="stylesheet.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -115,51 +125,27 @@ Address and CRC Instructions</h2>
 <p>The instrument stated with address <code>255</code>. This is the default for any modbus device entering a network in an unconfigured state.</p>
 <ol type="1">
 <li>Verify that register <code>0</code>, <code>1</code> read <code>[194, 0]</code> in order to verify the starting state of the system.</li>
-</ol>
-<ol type="1">
 <li>Write <code>0xDEFA</code> into register 1 to enter the <code>cache</code> state.</li>
-</ol>
-<ol type="1">
 <li>Verify that register <code>1</code> reads <code>2</code> to verify that the configuration state machine has entered into the <code>cache</code> state.</li>
-</ol>
-<ol type="1">
-<li>Write SID <code>1</code> into register <code>2</code>. There is no need to write a new baud rate because the register accepts individual bytes and or's them.</li>
-</ol>
-<ol type="1">
+<li>Write SID <code>1</code> into register <code>2</code>. There is no need to write a new baud rate 5ecause the register accepts individual bytes and or's them.</li>
 <li>Write <code>0x5FAF</code> into register <code>1</code> to enter the <code>commit</code> state.</li>
-</ol>
-<ol type="1">
 <li>Write <code>0xDEFA</code> into register <code>1</code> to enter the flash <code>erase</code> and subsequent <code>write</code> state. The controller should reboot and recalculate the flash CRC.</li>
-</ol>
-<ol type="1">
 <li>Verify that register <code>0</code>, <code>1</code> read <code>[2, 0]</code> in order to verify the starting state of the system.</li>
 </ol>
 <h2><a class="anchor" id="generic-baud-instructions"></a>
 Generic Baud Instructions</h2>
 <ol type="1">
 <li>Verify that register <code>1</code> reads <code>0</code> to verify that the configuration state machine is in the <code>idle</code> state.</li>
-</ol>
-<ol type="1">
 <li>Write <code>0xDEFA</code> into register 1 to enter the <code>cache</code> state.</li>
-</ol>
-<ol type="1">
 <li>Verify that register <code>1</code> reads <code>2</code> to verify that the configuration state machine has entered into the <code>cache</code> state.</li>
-</ol>
-<ol type="1">
 <li>Write the desired baud and SID setting into register <code>2</code>.<ul>
 <li>Baud rates are always left shifted by eight in register <code>2</code>. Preshifted baud rates with shifts are listed in the table below.</li>
 <li>Addresses are unshifted.</li>
 <li>The register setting can be calculated by adding (or or'ing) the shifted baud rate with the address.</li>
 </ul>
 </li>
-</ol>
-<ol type="1">
 <li>Verify that register <code>2</code> reads the setting that was entered.</li>
-</ol>
-<ol type="1">
 <li>Write <code>0x5FAF</code> into register <code>1</code> to enter the <code>commit</code> state. The baud rate settings at this point should have changed; the testing software should reflect these changes.</li>
-</ol>
-<ol type="1">
 <li>Change the testing software to the new baud settings. The timeout should also change since that also depends on the baud rate. A good timeout that may work with all baud rates is 500 ms.<ul>
 <li>An example would be as follows: <div class="fragment"><div class="line">instr.serial.baudrate = 38400</div>
 <div class="line">instr.serial.timeout = 0.5</div>

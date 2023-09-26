@@ -17,6 +17,16 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <link href="stylesheet.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -93,6 +103,8 @@ $(document).ready(function(){initNavTree('group___main___application.html',''); 
 <div class="header">
   <div class="summary">
 <a href="#groups">Modules</a> &#124;
+<a href="#nested-classes">Data Structures</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">Main Application</div></div>
@@ -101,8 +113,8 @@ $(document).ready(function(){initNavTree('group___main___application.html',''); 
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="groups" name="groups"></a>
 Modules</h2></td></tr>
-<tr class="memitem:group___reset___state___machine" id="r_group___reset___state___machine"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___reset___state___machine.html">Reset State Machine</a></td></tr>
-<tr class="memdesc:group___reset___state___machine"><td class="mdescLeft">&#160;</td><td class="mdescRight">vin and reset the state machine <br /></td></tr>
+<tr class="memitem:group___voltage___state___machine" id="r_group___voltage___state___machine"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___voltage___state___machine.html">Voltage In and Reset State Machine</a></td></tr>
+<tr class="memdesc:group___voltage___state___machine"><td class="mdescLeft">&#160;</td><td class="mdescRight">vin and reset the state machine <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:group___modbus___w_d_t___state___machine" id="r_group___modbus___w_d_t___state___machine"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___modbus___w_d_t___state___machine.html">Modbus WDT State Machine</a></td></tr>
 <tr class="memdesc:group___modbus___w_d_t___state___machine"><td class="mdescLeft">&#160;</td><td class="mdescRight">The modbus watchdog timer state machine. <br /></td></tr>
@@ -110,6 +122,19 @@ Modules</h2></td></tr>
 <tr class="memitem:group___configuration___state___machine" id="r_group___configuration___state___machine"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___configuration___state___machine.html">Configuration State Machine</a></td></tr>
 <tr class="memdesc:group___configuration___state___machine"><td class="mdescLeft">&#160;</td><td class="mdescRight">The configuration state machine starts and maintains the system configuration. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unionsv__dev__sta__t.html">sv_dev_sta_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:ga6fd609b4d1cbec982d502d97a866fca7" id="r_ga6fd609b4d1cbec982d502d97a866fca7"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___main___application.html#ga6fd609b4d1cbec982d502d97a866fca7">LastRst_t</a> { <a class="el" href="group___main___application.html#gga6fd609b4d1cbec982d502d97a866fca7aabbf9c5d549fef8704eef1b591ff3c6f">eLR_Init</a> = 0
+, <a class="el" href="group___main___application.html#gga6fd609b4d1cbec982d502d97a866fca7aef014178696aec6a4defef724db4158c">eLR_VSM</a>
+, <a class="el" href="group___main___application.html#gga6fd609b4d1cbec982d502d97a866fca7ab8363aea3ebaa44acfd823adf3aa6a82">eLR_WDT</a>
+ }</td></tr>
+<tr class="separator:ga6fd609b4d1cbec982d502d97a866fca7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -131,6 +156,33 @@ Variables</h2></td></tr>
 <tr class="separator:ga06f41e11cde40f73d65c73f928a89ae9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="ga6fd609b4d1cbec982d502d97a866fca7" name="ga6fd609b4d1cbec982d502d97a866fca7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6fd609b4d1cbec982d502d97a866fca7">&#9670;&#160;</a></span>LastRst_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group___main___application.html#ga6fd609b4d1cbec982d502d97a866fca7">LastRst_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Last Reset Source _ Type</p>
+<p><b>Last</b> <b>R</b>e<b>s</b>e<b>t</b> Source <b>_ T</b>ype </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga6fd609b4d1cbec982d502d97a866fca7aabbf9c5d549fef8704eef1b591ff3c6f" name="gga6fd609b4d1cbec982d502d97a866fca7aabbf9c5d549fef8704eef1b591ff3c6f"></a>eLR_Init&#160;</td><td class="fielddoc"><p>Initial State. No recorded reset. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga6fd609b4d1cbec982d502d97a866fca7aef014178696aec6a4defef724db4158c" name="gga6fd609b4d1cbec982d502d97a866fca7aef014178696aec6a4defef724db4158c"></a>eLR_VSM&#160;</td><td class="fielddoc"><p>A low voltage condition caused the last reset. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga6fd609b4d1cbec982d502d97a866fca7ab8363aea3ebaa44acfd823adf3aa6a82" name="gga6fd609b4d1cbec982d502d97a866fca7ab8363aea3ebaa44acfd823adf3aa6a82"></a>eLR_WDT&#160;</td><td class="fielddoc"><p>The modbus watchdog timer caused the last reset. </p>
+</td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="_io_t___supervisor_8h_source.html#l00090">90</a> of file <a class="el" href="_io_t___supervisor_8h_source.html">IoT_Supervisor.h</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="ga840291bc02cba5474a4cb46a9b9566fe" name="ga840291bc02cba5474a4cb46a9b9566fe"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga840291bc02cba5474a4cb46a9b9566fe">&#9670;&#160;</a></span>main()</h2>
@@ -152,7 +204,7 @@ Variables</h2></td></tr>
 <p>The main function takes into consideration the reset condition to determine whether the vin state machine should start into the "ok" state or the "Init" state.</p>
 <p>The main function implements a counter-based system using the <a class="el" href="group___main___application.html#gabff40580a49bdbf86db348e6ab0a8dc1">t1Count</a> global which is incremented once a millisecond. An internal counter is incremented each time the modbus loop is executed. This makes it acceptable for the modbus process to overrun its timeslot through multiple cycles without affecting the number of times it is executed for timing purposes. Note that there is an anti-windup feature activated when <a class="el" href="group___configuration___state___machine.html#ga7624452708e1f4a54f678332e81c4867">run_petitmodbus</a> is not set where the internal counter is immediately set to the value of <a class="el" href="group___main___application.html#gabff40580a49bdbf86db348e6ab0a8dc1">t1Count</a> rather than incremented upon each execution. </p><dl class="section return"><dt>Returns</dt><dd>main functions usually have a return that should never get reached. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00704">704</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00713">713</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>

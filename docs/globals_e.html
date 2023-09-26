@@ -17,6 +17,16 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <link href="stylesheet.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -94,45 +104,46 @@ $(document).ready(function(){initNavTree('globals_e.html',''); initResizable(); 
 <div class="textblock">Here is a list of all functions, variables, defines, enums, and typedefs with links to the files they belong to:</div>
 
 <h3><a id="index_e" name="index_e"></a>- e -</h3><ul>
-<li>eCFG_Cache&#160;:&#160;<a class="el" href="_io_t___supervisor_8h.html#a2e2885d00577c7076677cc277ac4f238a043ae948bd3634b5a2b9a9d2bfd3f69b">IoT_Supervisor.h</a></li>
-<li>eCFG_Commit&#160;:&#160;<a class="el" href="_io_t___supervisor_8h.html#a2e2885d00577c7076677cc277ac4f238a87a1adc98bfaf1f2d90f0f89416e0884">IoT_Supervisor.h</a></li>
-<li>eCFG_Erase&#160;:&#160;<a class="el" href="_io_t___supervisor_8h.html#a2e2885d00577c7076677cc277ac4f238ad78633de4b8404feb411293df89d59e9">IoT_Supervisor.h</a></li>
-<li>eCFG_Idle&#160;:&#160;<a class="el" href="_io_t___supervisor_8h.html#a2e2885d00577c7076677cc277ac4f238aaacc79559a18ebcf22cccb549ebacd78">IoT_Supervisor.h</a></li>
-<li>eCFG_Load&#160;:&#160;<a class="el" href="_io_t___supervisor_8h.html#a2e2885d00577c7076677cc277ac4f238a77c6aa8579abb456a1022f2c0749809b">IoT_Supervisor.h</a></li>
-<li>eCFG_Write&#160;:&#160;<a class="el" href="_io_t___supervisor_8h.html#a2e2885d00577c7076677cc277ac4f238ac2a4696c092a4cf3c4bc13efa4f14aaf">IoT_Supervisor.h</a></li>
-<li>eLR_Init&#160;:&#160;<a class="el" href="_io_t___supervisor_8h.html#a6fd609b4d1cbec982d502d97a866fca7aabbf9c5d549fef8704eef1b591ff3c6f">IoT_Supervisor.h</a></li>
-<li>eLR_VSM&#160;:&#160;<a class="el" href="_io_t___supervisor_8h.html#a6fd609b4d1cbec982d502d97a866fca7aef014178696aec6a4defef724db4158c">IoT_Supervisor.h</a></li>
-<li>eLR_WDT&#160;:&#160;<a class="el" href="_io_t___supervisor_8h.html#a6fd609b4d1cbec982d502d97a866fca7ab8363aea3ebaa44acfd823adf3aa6a82">IoT_Supervisor.h</a></li>
-<li>eMMW_B_1200&#160;:&#160;<a class="el" href="_modbus_middle_ware_8h.html#ac4b55353c236e4425b062d426cb99eaca0988ce2818e3654d2e9f7d325aa1f9ad">ModbusMiddleWare.h</a></li>
-<li>eMMW_B_19200&#160;:&#160;<a class="el" href="_modbus_middle_ware_8h.html#ac4b55353c236e4425b062d426cb99eaca3d1508060bd3400694e0ee38ba9efc1b">ModbusMiddleWare.h</a></li>
-<li>eMMW_B_2400&#160;:&#160;<a class="el" href="_modbus_middle_ware_8h.html#ac4b55353c236e4425b062d426cb99eaca9d123b4d192f79124676fc3b8caff2a4">ModbusMiddleWare.h</a></li>
-<li>eMMW_B_38400&#160;:&#160;<a class="el" href="_modbus_middle_ware_8h.html#ac4b55353c236e4425b062d426cb99eaca3935af3a6cf121e677eef008dcd07ead">ModbusMiddleWare.h</a></li>
-<li>eMMW_B_4800&#160;:&#160;<a class="el" href="_modbus_middle_ware_8h.html#ac4b55353c236e4425b062d426cb99eaca2c8a39ccb24dc02704ea2e68c2b7450d">ModbusMiddleWare.h</a></li>
-<li>eMMW_B_9600&#160;:&#160;<a class="el" href="_modbus_middle_ware_8h.html#ac4b55353c236e4425b062d426cb99eacac9a7797a2f5bc01fe7b95d31a4a98361">ModbusMiddleWare.h</a></li>
-<li>eMMW_B_NUM&#160;:&#160;<a class="el" href="_modbus_middle_ware_8h.html#ac4b55353c236e4425b062d426cb99eacaf518145fe38ea36c4539548d591a1b6f">ModbusMiddleWare.h</a></li>
-<li>eMMW_CT_NUM&#160;:&#160;<a class="el" href="_modbus_middle_ware_8h.html#a0637d0b9751ca38a0ad7f3cac42c7a40a7cec6cf212411debd9cc00f576e3a605">ModbusMiddleWare.h</a></li>
-<li>eMMW_CT_PETIT_TOP&#160;:&#160;<a class="el" href="_modbus_middle_ware_8h.html#a0637d0b9751ca38a0ad7f3cac42c7a40a31bb5101d0edbb664c8b616de73fe5eb">ModbusMiddleWare.h</a></li>
-<li>eMMW_CT_T1_PRE&#160;:&#160;<a class="el" href="_modbus_middle_ware_8h.html#a0637d0b9751ca38a0ad7f3cac42c7a40a5fd0f9167a3eac69624996061dd3d28d">ModbusMiddleWare.h</a></li>
-<li>eMMW_CT_TH1&#160;:&#160;<a class="el" href="_modbus_middle_ware_8h.html#a0637d0b9751ca38a0ad7f3cac42c7a40a789089a098588e180f3a46e3031b9989">ModbusMiddleWare.h</a></li>
-<li>eMMW_CT_TL0_TOP&#160;:&#160;<a class="el" href="_modbus_middle_ware_8h.html#a0637d0b9751ca38a0ad7f3cac42c7a40af0d4a2198485736a25f2e879e56096b4">ModbusMiddleWare.h</a></li>
-<li>eMMW_HR_CFG&#160;:&#160;<a class="el" href="_modbus_middle_ware_8h.html#ae15b34c23dde54da2ab2f40099e63cd7a9e0f8f62c78b0abcc482c8b9d5415ffd">ModbusMiddleWare.h</a></li>
-<li>eMMW_HR_MB&#160;:&#160;<a class="el" href="_modbus_middle_ware_8h.html#ae15b34c23dde54da2ab2f40099e63cd7ac60cb5800869e84a422a88476e11a768">ModbusMiddleWare.h</a></li>
-<li>eMMW_HR_PW&#160;:&#160;<a class="el" href="_modbus_middle_ware_8h.html#ae15b34c23dde54da2ab2f40099e63cd7a1bc2cad258457c7b434418f8ff350472">ModbusMiddleWare.h</a></li>
-<li>eMMW_HR_STA&#160;:&#160;<a class="el" href="_modbus_middle_ware_8h.html#ae15b34c23dde54da2ab2f40099e63cd7add4e83572d4663579adad05204248312">ModbusMiddleWare.h</a></li>
-<li>eMMW_HR_WDT&#160;:&#160;<a class="el" href="_modbus_middle_ware_8h.html#ae15b34c23dde54da2ab2f40099e63cd7a02f9a325325078c1be53644e68132026">ModbusMiddleWare.h</a></li>
-<li>eMW_En&#160;:&#160;<a class="el" href="_io_t___supervisor_8h.html#a299607114400fe41e8e9dcccee0f787aaf3b70a02225c4e8361ba57f603faa018">IoT_Supervisor.h</a></li>
-<li>eMW_Ini&#160;:&#160;<a class="el" href="_io_t___supervisor_8h.html#a299607114400fe41e8e9dcccee0f787aa3b2f0f0f317d8a74a8ae3aa91af22040">IoT_Supervisor.h</a></li>
-<li>eMW_Timeout&#160;:&#160;<a class="el" href="_io_t___supervisor_8h.html#a299607114400fe41e8e9dcccee0f787aa636cff0025559b101755751245816aa7">IoT_Supervisor.h</a></li>
-<li>eMWW_B_NULL&#160;:&#160;<a class="el" href="_modbus_middle_ware_8h.html#ac4b55353c236e4425b062d426cb99eaca6f4506fc6b9b4687618041a0115c70df">ModbusMiddleWare.h</a></li>
+<li>eCFG_Cache&#160;:&#160;<a class="el" href="group___configuration___state___machine.html#gga2e2885d00577c7076677cc277ac4f238a043ae948bd3634b5a2b9a9d2bfd3f69b">IoT_Supervisor.h</a></li>
+<li>eCFG_Commit&#160;:&#160;<a class="el" href="group___configuration___state___machine.html#gga2e2885d00577c7076677cc277ac4f238a87a1adc98bfaf1f2d90f0f89416e0884">IoT_Supervisor.h</a></li>
+<li>eCFG_Erase&#160;:&#160;<a class="el" href="group___configuration___state___machine.html#gga2e2885d00577c7076677cc277ac4f238ad78633de4b8404feb411293df89d59e9">IoT_Supervisor.h</a></li>
+<li>eCFG_Idle&#160;:&#160;<a class="el" href="group___configuration___state___machine.html#gga2e2885d00577c7076677cc277ac4f238aaacc79559a18ebcf22cccb549ebacd78">IoT_Supervisor.h</a></li>
+<li>eCFG_Load&#160;:&#160;<a class="el" href="group___configuration___state___machine.html#gga2e2885d00577c7076677cc277ac4f238a77c6aa8579abb456a1022f2c0749809b">IoT_Supervisor.h</a></li>
+<li>eCFG_Write&#160;:&#160;<a class="el" href="group___configuration___state___machine.html#gga2e2885d00577c7076677cc277ac4f238ac2a4696c092a4cf3c4bc13efa4f14aaf">IoT_Supervisor.h</a></li>
+<li>eLR_Init&#160;:&#160;<a class="el" href="group___main___application.html#gga6fd609b4d1cbec982d502d97a866fca7aabbf9c5d549fef8704eef1b591ff3c6f">IoT_Supervisor.h</a></li>
+<li>eLR_VSM&#160;:&#160;<a class="el" href="group___main___application.html#gga6fd609b4d1cbec982d502d97a866fca7aef014178696aec6a4defef724db4158c">IoT_Supervisor.h</a></li>
+<li>eLR_WDT&#160;:&#160;<a class="el" href="group___main___application.html#gga6fd609b4d1cbec982d502d97a866fca7ab8363aea3ebaa44acfd823adf3aa6a82">IoT_Supervisor.h</a></li>
+<li>eMMW_B_1200&#160;:&#160;<a class="el" href="group___modbus___middle_ware.html#ggac4b55353c236e4425b062d426cb99eaca0988ce2818e3654d2e9f7d325aa1f9ad">ModbusMiddleWare.h</a></li>
+<li>eMMW_B_19200&#160;:&#160;<a class="el" href="group___modbus___middle_ware.html#ggac4b55353c236e4425b062d426cb99eaca3d1508060bd3400694e0ee38ba9efc1b">ModbusMiddleWare.h</a></li>
+<li>eMMW_B_2400&#160;:&#160;<a class="el" href="group___modbus___middle_ware.html#ggac4b55353c236e4425b062d426cb99eaca9d123b4d192f79124676fc3b8caff2a4">ModbusMiddleWare.h</a></li>
+<li>eMMW_B_38400&#160;:&#160;<a class="el" href="group___modbus___middle_ware.html#ggac4b55353c236e4425b062d426cb99eaca3935af3a6cf121e677eef008dcd07ead">ModbusMiddleWare.h</a></li>
+<li>eMMW_B_4800&#160;:&#160;<a class="el" href="group___modbus___middle_ware.html#ggac4b55353c236e4425b062d426cb99eaca2c8a39ccb24dc02704ea2e68c2b7450d">ModbusMiddleWare.h</a></li>
+<li>eMMW_B_9600&#160;:&#160;<a class="el" href="group___modbus___middle_ware.html#ggac4b55353c236e4425b062d426cb99eacac9a7797a2f5bc01fe7b95d31a4a98361">ModbusMiddleWare.h</a></li>
+<li>eMMW_B_NULL&#160;:&#160;<a class="el" href="group___modbus___middle_ware.html#ggac4b55353c236e4425b062d426cb99eacab70faceaf93603ca5b05cb190bbb85c7">ModbusMiddleWare.h</a></li>
+<li>eMMW_B_NUM&#160;:&#160;<a class="el" href="group___modbus___middle_ware.html#ggac4b55353c236e4425b062d426cb99eacaf518145fe38ea36c4539548d591a1b6f">ModbusMiddleWare.h</a></li>
+<li>eMMW_CL_NUM&#160;:&#160;<a class="el" href="group___modbus___middle_ware.html#ggadde283b6b914f27cfba8b2b873fb88acacc11b72d7e173801bbde03e68e8a6e9d">ModbusMiddleWare.h</a></li>
+<li>eMMW_CL_PETIT_TOP&#160;:&#160;<a class="el" href="group___modbus___middle_ware.html#ggadde283b6b914f27cfba8b2b873fb88aca2fe6e22f764aeb6791d2bf7e83897f17">ModbusMiddleWare.h</a></li>
+<li>eMMW_CL_T1_PRE&#160;:&#160;<a class="el" href="group___modbus___middle_ware.html#ggadde283b6b914f27cfba8b2b873fb88aca5a8b8f93a45e39e023f3dea0c768e20e">ModbusMiddleWare.h</a></li>
+<li>eMMW_CL_TH1&#160;:&#160;<a class="el" href="group___modbus___middle_ware.html#ggadde283b6b914f27cfba8b2b873fb88aca25ca0eaabbc4e4c9624f594eedbc3d18">ModbusMiddleWare.h</a></li>
+<li>eMMW_CL_TL0_TOP&#160;:&#160;<a class="el" href="group___modbus___middle_ware.html#ggadde283b6b914f27cfba8b2b873fb88aca71960c042b6e19c9623ff8519f6fefa6">ModbusMiddleWare.h</a></li>
+<li>eMMW_HR_CFG&#160;:&#160;<a class="el" href="group___modbus___middle_ware.html#ggae15b34c23dde54da2ab2f40099e63cd7a9e0f8f62c78b0abcc482c8b9d5415ffd">ModbusMiddleWare.h</a></li>
+<li>eMMW_HR_MB&#160;:&#160;<a class="el" href="group___modbus___middle_ware.html#ggae15b34c23dde54da2ab2f40099e63cd7ac60cb5800869e84a422a88476e11a768">ModbusMiddleWare.h</a></li>
+<li>eMMW_HR_NUM&#160;:&#160;<a class="el" href="group___modbus___middle_ware.html#ggae15b34c23dde54da2ab2f40099e63cd7a7c86a6773faf7b8f5917a6cbad1a1ed3">ModbusMiddleWare.h</a></li>
+<li>eMMW_HR_PW&#160;:&#160;<a class="el" href="group___modbus___middle_ware.html#ggae15b34c23dde54da2ab2f40099e63cd7a1bc2cad258457c7b434418f8ff350472">ModbusMiddleWare.h</a></li>
+<li>eMMW_HR_STA&#160;:&#160;<a class="el" href="group___modbus___middle_ware.html#ggae15b34c23dde54da2ab2f40099e63cd7add4e83572d4663579adad05204248312">ModbusMiddleWare.h</a></li>
+<li>eMMW_HR_WDT&#160;:&#160;<a class="el" href="group___modbus___middle_ware.html#ggae15b34c23dde54da2ab2f40099e63cd7a02f9a325325078c1be53644e68132026">ModbusMiddleWare.h</a></li>
+<li>eMW_En&#160;:&#160;<a class="el" href="group___modbus___w_d_t___state___machine.html#gga299607114400fe41e8e9dcccee0f787aaf3b70a02225c4e8361ba57f603faa018">IoT_Supervisor.h</a></li>
+<li>eMW_Ini&#160;:&#160;<a class="el" href="group___modbus___w_d_t___state___machine.html#gga299607114400fe41e8e9dcccee0f787aa3b2f0f0f317d8a74a8ae3aa91af22040">IoT_Supervisor.h</a></li>
+<li>eMW_Timeout&#160;:&#160;<a class="el" href="group___modbus___w_d_t___state___machine.html#gga299607114400fe41e8e9dcccee0f787aa636cff0025559b101755751245816aa7">IoT_Supervisor.h</a></li>
 <li>enter_DebugMode_from_DefaultMode()&#160;:&#160;<a class="el" href="_init_device_8c.html#a073f6e3530e588a4ea64c39dd1b360f6">InitDevice.c</a>, <a class="el" href="_init_device_8h.html#a073f6e3530e588a4ea64c39dd1b360f6">InitDevice.h</a></li>
 <li>enter_DefaultMode_from_RESET()&#160;:&#160;<a class="el" href="_init_device_8c.html#a0bab7eeb3d65d66727888b61479a744d">InitDevice.c</a>, <a class="el" href="_init_device_8h.html#a0bab7eeb3d65d66727888b61479a744d">InitDevice.h</a></li>
-<li>eVIN_Init&#160;:&#160;<a class="el" href="_io_t___supervisor_8h.html#ac71595e22bb54f0f156340ffb1ff44baa3cc30a2b8b36959007d7b06a0026b4f4">IoT_Supervisor.h</a></li>
-<li>eVIN_OK&#160;:&#160;<a class="el" href="_io_t___supervisor_8h.html#ac71595e22bb54f0f156340ffb1ff44baa77379fa13bb54be31a0d2839ab3fcfa9">IoT_Supervisor.h</a></li>
-<li>eVIN_VLow&#160;:&#160;<a class="el" href="_io_t___supervisor_8h.html#ac71595e22bb54f0f156340ffb1ff44baa4e6b99c0462309e3c86bb63696783469">IoT_Supervisor.h</a></li>
-<li>eVS_Cfg&#160;:&#160;<a class="el" href="_io_t___supervisor_8h.html#ae7452a3b4994fb1305b6184d19c8b4fea35b6111fc077cb0a8b93cb3bf473d332">IoT_Supervisor.h</a></li>
-<li>eVS_Norm&#160;:&#160;<a class="el" href="_io_t___supervisor_8h.html#ae7452a3b4994fb1305b6184d19c8b4feab8982b56b1e62c7b6c506fb5567f7994">IoT_Supervisor.h</a></li>
-<li>eVS_Prog&#160;:&#160;<a class="el" href="_io_t___supervisor_8h.html#ae7452a3b4994fb1305b6184d19c8b4fea8237171b70b05f5ca68993255e1b2d31">IoT_Supervisor.h</a></li>
-<li>eVS_Setup&#160;:&#160;<a class="el" href="_io_t___supervisor_8h.html#ae7452a3b4994fb1305b6184d19c8b4feae62b0e545b7fe9efa5ee339353f1ddc0">IoT_Supervisor.h</a></li>
+<li>eVIN_Init&#160;:&#160;<a class="el" href="group___voltage___state___machine.html#ggac71595e22bb54f0f156340ffb1ff44baa3cc30a2b8b36959007d7b06a0026b4f4">IoT_Supervisor.h</a></li>
+<li>eVIN_OK&#160;:&#160;<a class="el" href="group___voltage___state___machine.html#ggac71595e22bb54f0f156340ffb1ff44baa77379fa13bb54be31a0d2839ab3fcfa9">IoT_Supervisor.h</a></li>
+<li>eVIN_VLow&#160;:&#160;<a class="el" href="group___voltage___state___machine.html#ggac71595e22bb54f0f156340ffb1ff44baa4e6b99c0462309e3c86bb63696783469">IoT_Supervisor.h</a></li>
+<li>eVS_Cfg&#160;:&#160;<a class="el" href="group___configuration___state___machine.html#ggae7452a3b4994fb1305b6184d19c8b4fea35b6111fc077cb0a8b93cb3bf473d332">IoT_Supervisor.h</a></li>
+<li>eVS_Norm&#160;:&#160;<a class="el" href="group___configuration___state___machine.html#ggae7452a3b4994fb1305b6184d19c8b4feab8982b56b1e62c7b6c506fb5567f7994">IoT_Supervisor.h</a></li>
+<li>eVS_Prog&#160;:&#160;<a class="el" href="group___configuration___state___machine.html#ggae7452a3b4994fb1305b6184d19c8b4fea8237171b70b05f5ca68993255e1b2d31">IoT_Supervisor.h</a></li>
+<li>eVS_Setup&#160;:&#160;<a class="el" href="group___configuration___state___machine.html#ggae7452a3b4994fb1305b6184d19c8b4feae62b0e545b7fe9efa5ee339353f1ddc0">IoT_Supervisor.h</a></li>
 <li>ex_cfg_header&#160;:&#160;<a class="el" href="group___configuration___state___machine.html#ga4786f95f528dfb7d6225d35b27072418">IoT Supervisor_main.c</a></li>
 </ul>
 </div><!-- contents -->

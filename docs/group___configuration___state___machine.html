@@ -17,6 +17,16 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <link href="stylesheet.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -92,7 +102,9 @@ $(document).ready(function(){initNavTree('group___configuration___state___machin
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">Configuration State Machine<div class="ingroups"><a class="el" href="group___main___application.html">Main Application</a></div></div></div>
@@ -102,6 +114,12 @@ $(document).ready(function(){initNavTree('group___configuration___state___machin
 <p>The configuration state machine starts and maintains the system configuration.  
 <a href="#details">More...</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcfg__t.html">cfg_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This struct is a storage type for flash memory.  <a href="structcfg__t.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:gaa240e519cb5b99446d79d4aad8420dd1" id="r_gaa240e519cb5b99446d79d4aad8420dd1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___configuration___state___machine.html#gaa240e519cb5b99446d79d4aad8420dd1">C_FLASH_CONF</a>&#160;&#160;&#160;(0x1E00)</td></tr>
@@ -112,9 +130,9 @@ Macros</h2></td></tr>
 <tr class="separator:ga0f6656888b6da3d751ce6bb0644d0dd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2b8473431a4fe63b20294043b9ae4773" id="r_ga2b8473431a4fe63b20294043b9ae4773"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___configuration___state___machine.html#ga2b8473431a4fe63b20294043b9ae4773">C_FOUND_PROG_END</a>&#160;&#160;&#160;(0x0FE5)</td></tr>
 <tr class="separator:ga2b8473431a4fe63b20294043b9ae4773"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga36de940e9065f10013db52ed98a34b1f" id="r_ga36de940e9065f10013db52ed98a34b1f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___configuration___state___machine.html#ga36de940e9065f10013db52ed98a34b1f">C_CFG_HEADER_LEN</a>&#160;&#160;&#160;(8)</td></tr>
+<tr class="memitem:ga36de940e9065f10013db52ed98a34b1f" id="r_ga36de940e9065f10013db52ed98a34b1f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___configuration___state___machine.html#ga36de940e9065f10013db52ed98a34b1f">C_CFG_HEADER_LEN</a>&#160;&#160;&#160;(sizeof(<a class="el" href="group___configuration___state___machine.html#ga4786f95f528dfb7d6225d35b27072418">ex_cfg_header</a>))</td></tr>
 <tr class="separator:ga36de940e9065f10013db52ed98a34b1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga65c7887c0e26969205a3e5b038fe403a" id="r_ga65c7887c0e26969205a3e5b038fe403a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___configuration___state___machine.html#ga65c7887c0e26969205a3e5b038fe403a">C_CFG_DATA_LEN</a>&#160;&#160;&#160;(5)</td></tr>
+<tr class="memitem:ga65c7887c0e26969205a3e5b038fe403a" id="r_ga65c7887c0e26969205a3e5b038fe403a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___configuration___state___machine.html#ga65c7887c0e26969205a3e5b038fe403a">C_CFG_DATA_LEN</a>&#160;&#160;&#160;(sizeof(<a class="el" href="structcfg__t.html">cfg_t</a>))</td></tr>
 <tr class="separator:ga65c7887c0e26969205a3e5b038fe403a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1cf8a7c45bd5eafaa45862c9f304da4c" id="r_ga1cf8a7c45bd5eafaa45862c9f304da4c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___configuration___state___machine.html#ga1cf8a7c45bd5eafaa45862c9f304da4c">C_CFG_C_CRC_LEN</a>&#160;&#160;&#160;(2)</td></tr>
 <tr class="separator:ga1cf8a7c45bd5eafaa45862c9f304da4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -135,6 +153,26 @@ Macros</h2></td></tr>
 <tr class="memitem:ga00d0491c3afc5730a550797466e1e7ef" id="r_ga00d0491c3afc5730a550797466e1e7ef"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___configuration___state___machine.html#ga00d0491c3afc5730a550797466e1e7ef">C_SID_MAX</a>&#160;&#160;&#160;247</td></tr>
 <tr class="separator:ga00d0491c3afc5730a550797466e1e7ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:gae7452a3b4994fb1305b6184d19c8b4fe" id="r_gae7452a3b4994fb1305b6184d19c8b4fe"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___configuration___state___machine.html#gae7452a3b4994fb1305b6184d19c8b4fe">VerifSt_t</a> { <a class="el" href="group___configuration___state___machine.html#ggae7452a3b4994fb1305b6184d19c8b4feab8982b56b1e62c7b6c506fb5567f7994">eVS_Norm</a> = 0
+, <a class="el" href="group___configuration___state___machine.html#ggae7452a3b4994fb1305b6184d19c8b4fea35b6111fc077cb0a8b93cb3bf473d332">eVS_Cfg</a>
+, <a class="el" href="group___configuration___state___machine.html#ggae7452a3b4994fb1305b6184d19c8b4fea8237171b70b05f5ca68993255e1b2d31">eVS_Prog</a>
+, <a class="el" href="group___configuration___state___machine.html#ggae7452a3b4994fb1305b6184d19c8b4feae62b0e545b7fe9efa5ee339353f1ddc0">eVS_Setup</a>
+ }</td></tr>
+<tr class="separator:gae7452a3b4994fb1305b6184d19c8b4fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2e2885d00577c7076677cc277ac4f238" id="r_ga2e2885d00577c7076677cc277ac4f238"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___configuration___state___machine.html#ga2e2885d00577c7076677cc277ac4f238">CfgSM_t</a> { <br />
+&#160;&#160;<a class="el" href="group___configuration___state___machine.html#gga2e2885d00577c7076677cc277ac4f238aaacc79559a18ebcf22cccb549ebacd78">eCFG_Idle</a> = 0
+, <a class="el" href="group___configuration___state___machine.html#gga2e2885d00577c7076677cc277ac4f238a77c6aa8579abb456a1022f2c0749809b">eCFG_Load</a>
+, <a class="el" href="group___configuration___state___machine.html#gga2e2885d00577c7076677cc277ac4f238a043ae948bd3634b5a2b9a9d2bfd3f69b">eCFG_Cache</a>
+, <a class="el" href="group___configuration___state___machine.html#gga2e2885d00577c7076677cc277ac4f238a87a1adc98bfaf1f2d90f0f89416e0884">eCFG_Commit</a>
+, <br />
+&#160;&#160;<a class="el" href="group___configuration___state___machine.html#gga2e2885d00577c7076677cc277ac4f238ad78633de4b8404feb411293df89d59e9">eCFG_Erase</a>
+, <a class="el" href="group___configuration___state___machine.html#gga2e2885d00577c7076677cc277ac4f238ac2a4696c092a4cf3c4bc13efa4f14aaf">eCFG_Write</a>
+<br />
+ }</td></tr>
+<tr class="separator:ga2e2885d00577c7076677cc277ac4f238"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:gadb26e03a4457120c3b24c6316b9dcabe" id="r_gadb26e03a4457120c3b24c6316b9dcabe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___configuration___state___machine.html#gadb26e03a4457120c3b24c6316b9dcabe">ccfg_check</a> (void)</td></tr>
@@ -154,7 +192,7 @@ Variables</h2></td></tr>
 <tr class="separator:ga4786f95f528dfb7d6225d35b27072418"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga35236392c891bc6d5ccee8f619d2f92a" id="r_ga35236392c891bc6d5ccee8f619d2f92a"><td class="memItemLeft" align="right" valign="top">code const <a class="el" href="structcfg__t.html">cfg_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___configuration___state___machine.html#ga35236392c891bc6d5ccee8f619d2f92a">default_cfg</a></td></tr>
 <tr class="separator:ga35236392c891bc6d5ccee8f619d2f92a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6c9c723896f1d714b5d1caeb1afceda6" id="r_ga6c9c723896f1d714b5d1caeb1afceda6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_io_t___supervisor_8h.html#a2e2885d00577c7076677cc277ac4f238">CfgSM_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___configuration___state___machine.html#ga6c9c723896f1d714b5d1caeb1afceda6">cfgSmS</a> = <a class="el" href="_io_t___supervisor_8h.html#a2e2885d00577c7076677cc277ac4f238a77c6aa8579abb456a1022f2c0749809b">eCFG_Load</a></td></tr>
+<tr class="memitem:ga6c9c723896f1d714b5d1caeb1afceda6" id="r_ga6c9c723896f1d714b5d1caeb1afceda6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___configuration___state___machine.html#ga2e2885d00577c7076677cc277ac4f238">CfgSM_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___configuration___state___machine.html#ga6c9c723896f1d714b5d1caeb1afceda6">cfgSmS</a> = <a class="el" href="group___configuration___state___machine.html#gga2e2885d00577c7076677cc277ac4f238a77c6aa8579abb456a1022f2c0749809b">eCFG_Load</a></td></tr>
 <tr class="separator:ga6c9c723896f1d714b5d1caeb1afceda6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0959e8576e2d8601bc958bbf7680f0d4" id="r_ga0959e8576e2d8601bc958bbf7680f0d4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___configuration___state___machine.html#ga0959e8576e2d8601bc958bbf7680f0d4">pw_flag</a> = false</td></tr>
 <tr class="separator:ga0959e8576e2d8601bc958bbf7680f0d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -203,7 +241,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>End of configuration CRC offset in configuration page. </p>
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00333">333</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00336">336</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -220,7 +258,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>configuration CRC length (16 bits) </p>
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00323">323</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00326">326</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -237,7 +275,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>End of configuration data offset in configuration page. </p>
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00329">329</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00332">332</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -248,14 +286,14 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define C_CFG_DATA_LEN&#160;&#160;&#160;(5)</td>
+          <td class="memname">#define C_CFG_DATA_LEN&#160;&#160;&#160;(sizeof(<a class="el" href="structcfg__t.html">cfg_t</a>))</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Configuration data length</p>
 <p>The password is stored in two bytes. </p>
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00321">321</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00324">324</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -266,13 +304,13 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define C_CFG_HEADER_LEN&#160;&#160;&#160;(8)</td>
+          <td class="memname">#define C_CFG_HEADER_LEN&#160;&#160;&#160;(sizeof(<a class="el" href="group___configuration___state___machine.html#ga4786f95f528dfb7d6225d35b27072418">ex_cfg_header</a>))</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Configuration header length </p>
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00302">302</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00305">305</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -289,7 +327,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>End of program CRC offset in configuration page. Total configuration length. </p>
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00338">338</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00341">341</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -306,7 +344,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>program CRC length (16 bits) </p>
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00325">325</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00328">328</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -322,7 +360,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_io_t___supervisor_8h_source.html#l00031">31</a> of file <a class="el" href="_io_t___supervisor_8h_source.html">IoT_Supervisor.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t___supervisor_8h_source.html#l00034">34</a> of file <a class="el" href="_io_t___supervisor_8h_source.html">IoT_Supervisor.h</a>.</p>
 
 </div>
 </div>
@@ -338,7 +376,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_io_t___supervisor_8h_source.html#l00030">30</a> of file <a class="el" href="_io_t___supervisor_8h_source.html">IoT_Supervisor.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t___supervisor_8h_source.html#l00033">33</a> of file <a class="el" href="_io_t___supervisor_8h_source.html">IoT_Supervisor.h</a>.</p>
 
 </div>
 </div>
@@ -404,7 +442,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_io_t___supervisor_8h_source.html#l00033">33</a> of file <a class="el" href="_io_t___supervisor_8h_source.html">IoT_Supervisor.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t___supervisor_8h_source.html#l00036">36</a> of file <a class="el" href="_io_t___supervisor_8h_source.html">IoT_Supervisor.h</a>.</p>
 
 </div>
 </div>
@@ -420,7 +458,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_io_t___supervisor_8h_source.html#l00032">32</a> of file <a class="el" href="_io_t___supervisor_8h_source.html">IoT_Supervisor.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t___supervisor_8h_source.html#l00035">35</a> of file <a class="el" href="_io_t___supervisor_8h_source.html">IoT_Supervisor.h</a>.</p>
 
 </div>
 </div>
@@ -438,6 +476,68 @@ Variables</h2></td></tr>
 <p>Pointer to the flash config </p>
 
 <p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00272">272</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="ga2e2885d00577c7076677cc277ac4f238" name="ga2e2885d00577c7076677cc277ac4f238"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2e2885d00577c7076677cc277ac4f238">&#9670;&#160;</a></span>CfgSM_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group___configuration___state___machine.html#ga2e2885d00577c7076677cc277ac4f238">CfgSM_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Configuration Memory State Machine _ Type</p>
+<p><b>C</b>on<b>f</b>i<b>g</b>uration Memory <b>S</b>tate <b>M</b>achine <b>_ T</b>ype </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga2e2885d00577c7076677cc277ac4f238aaacc79559a18ebcf22cccb549ebacd78" name="gga2e2885d00577c7076677cc277ac4f238aaacc79559a18ebcf22cccb549ebacd78"></a>eCFG_Idle&#160;</td><td class="fielddoc"><p>Idle State. No configuration state machine activity. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga2e2885d00577c7076677cc277ac4f238a77c6aa8579abb456a1022f2c0749809b" name="gga2e2885d00577c7076677cc277ac4f238a77c6aa8579abb456a1022f2c0749809b"></a>eCFG_Load&#160;</td><td class="fielddoc"><p>Configuration Loading from memory. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga2e2885d00577c7076677cc277ac4f238a043ae948bd3634b5a2b9a9d2bfd3f69b" name="gga2e2885d00577c7076677cc277ac4f238a043ae948bd3634b5a2b9a9d2bfd3f69b"></a>eCFG_Cache&#160;</td><td class="fielddoc"><p>New Configuration is Caching from Modbus. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga2e2885d00577c7076677cc277ac4f238a87a1adc98bfaf1f2d90f0f89416e0884" name="gga2e2885d00577c7076677cc277ac4f238a87a1adc98bfaf1f2d90f0f89416e0884"></a>eCFG_Commit&#160;</td><td class="fielddoc"><p>New Configuration is Committed (Active) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga2e2885d00577c7076677cc277ac4f238ad78633de4b8404feb411293df89d59e9" name="gga2e2885d00577c7076677cc277ac4f238ad78633de4b8404feb411293df89d59e9"></a>eCFG_Erase&#160;</td><td class="fielddoc"><p>Erase the old Configuration (from Flash) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga2e2885d00577c7076677cc277ac4f238ac2a4696c092a4cf3c4bc13efa4f14aaf" name="gga2e2885d00577c7076677cc277ac4f238ac2a4696c092a4cf3c4bc13efa4f14aaf"></a>eCFG_Write&#160;</td><td class="fielddoc"><p>Write the new Configuration (into Flash) </p>
+</td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="_io_t___supervisor_8h_source.html#l00125">125</a> of file <a class="el" href="_io_t___supervisor_8h_source.html">IoT_Supervisor.h</a>.</p>
+
+</div>
+</div>
+<a id="gae7452a3b4994fb1305b6184d19c8b4fe" name="gae7452a3b4994fb1305b6184d19c8b4fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae7452a3b4994fb1305b6184d19c8b4fe">&#9670;&#160;</a></span>VerifSt_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group___configuration___state___machine.html#gae7452a3b4994fb1305b6184d19c8b4fe">VerifSt_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Verification Status _ Type</p>
+<p><b>Verif</b>ication <b>St</b>atus <b>_ T</b>ype </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggae7452a3b4994fb1305b6184d19c8b4feab8982b56b1e62c7b6c506fb5567f7994" name="ggae7452a3b4994fb1305b6184d19c8b4feab8982b56b1e62c7b6c506fb5567f7994"></a>eVS_Norm&#160;</td><td class="fielddoc"><p>Normal Verification Status</p>
+<p>No configuration errors or program memory CRC mismatch detected. eVS_Norm </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggae7452a3b4994fb1305b6184d19c8b4fea35b6111fc077cb0a8b93cb3bf473d332" name="ggae7452a3b4994fb1305b6184d19c8b4fea35b6111fc077cb0a8b93cb3bf473d332"></a>eVS_Cfg&#160;</td><td class="fielddoc"><p>Configuration Error or CRC Mismatch Detected. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggae7452a3b4994fb1305b6184d19c8b4fea8237171b70b05f5ca68993255e1b2d31" name="ggae7452a3b4994fb1305b6184d19c8b4fea8237171b70b05f5ca68993255e1b2d31"></a>eVS_Prog&#160;</td><td class="fielddoc"><p>Program Memory Mismatch Detected. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggae7452a3b4994fb1305b6184d19c8b4feae62b0e545b7fe9efa5ee339353f1ddc0" name="ggae7452a3b4994fb1305b6184d19c8b4feae62b0e545b7fe9efa5ee339353f1ddc0"></a>eVS_Setup&#160;</td><td class="fielddoc"><p>Initial Setup. </p>
+</td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="_io_t___supervisor_8h_source.html#l00106">106</a> of file <a class="el" href="_io_t___supervisor_8h_source.html">IoT_Supervisor.h</a>.</p>
 
 </div>
 </div>
@@ -460,7 +560,7 @@ Variables</h2></td></tr>
 <p>This function performs the code memory configuration checks. It first checks if the values from memory are in-range and then checks if the CRC against the value stored in code memory.</p>
 <dl class="section return"><dt>Returns</dt><dd>the validity of the code memory configuration. true if okay. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00357">357</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00360">360</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -479,9 +579,24 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>This function performs the tasks in the configuration load state in the configuration state machine. This includes loading the configuration from code memory and checking the CRC of program memory.</p>
+<p> <div class="mermaid"> 
+   flowchart LR
+ subgraph Configuration Flash Section
+ ex_cfg_header
+ subgraph cfg_t
+ sid
+ baud
+ wdto
+ password
+ end
+ c_crc("Configuration CRC")
+ p_crc("Program CRC")
+ end
+  
+  </div> </p>
 <p>The verification status is set based on greater than logic. If code memory lacks the correct configuration header, the verification status is "Setup." If the program memory CRC does not match what is stored in the configuration, the verification status is "Program [invalid]." If code memory is invalid or deemed corrupted by an incorrect CRC, the verification status is "Configuration [invalid]." </p>
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00485">485</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00490">490</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -502,7 +617,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>This function writes the data memory configuration into code memory. It also calculates the CRC so that later reads can determine the integrity of the configuration data. </p>
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00539">539</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00548">548</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -524,7 +639,7 @@ Variables</h2></td></tr>
 <p>The configuration state machine locks the modbus master out of reading or writing the configuration memory if the state machine is not put into either cache or commit state.</p>
 <p>Caches or commits can be escaped from if the modbus user does not want to write data to code memory. </p>
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00587">587</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00596">596</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -545,7 +660,7 @@ Variables</h2></td></tr>
 <p>This function checks the configuration stored in data memory. It does not perform a CRC.</p>
 <dl class="section return"><dt>Returns</dt><dd>the validity of the configuration. true if okay. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00446">446</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00449">449</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -562,7 +677,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00347">347</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00350">350</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -578,7 +693,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00348">348</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00351">351</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -595,7 +710,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>entered password, not necessarily the correct password </p>
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00345">345</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00348">348</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -611,7 +726,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00346">346</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00349">349</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -622,12 +737,12 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="_io_t___supervisor_8h.html#a2e2885d00577c7076677cc277ac4f238">CfgSM_t</a> cfgSmS = <a class="el" href="_io_t___supervisor_8h.html#a2e2885d00577c7076677cc277ac4f238a77c6aa8579abb456a1022f2c0749809b">eCFG_Load</a></td>
+          <td class="memname"><a class="el" href="group___configuration___state___machine.html#ga2e2885d00577c7076677cc277ac4f238">CfgSM_t</a> cfgSmS = <a class="el" href="group___configuration___state___machine.html#gga2e2885d00577c7076677cc277ac4f238a77c6aa8579abb456a1022f2c0749809b">eCFG_Load</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00340">340</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00343">343</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -645,17 +760,17 @@ Variables</h2></td></tr>
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">{</div>
 <div class="line">    255, </div>
-<div class="line">    <a class="code hl_enumvalue" href="_modbus_middle_ware_8h.html#ac4b55353c236e4425b062d426cb99eaca3935af3a6cf121e677eef008dcd07ead">eMMW_B_38400</a>, </div>
+<div class="line">    <a class="code hl_enumvalue" href="group___modbus___middle_ware.html#ggac4b55353c236e4425b062d426cb99eaca3935af3a6cf121e677eef008dcd07ead">eMMW_B_38400</a>, </div>
 <div class="line">    <a class="code hl_define" href="group___modbus___w_d_t___state___machine.html#gab4cd620a6ff382f2308515027d02e9b2">C_DEFAULT_MB_WD_TIMEOUT</a>, </div>
 <div class="line">    <a class="code hl_define" href="group___configuration___state___machine.html#ga0f6656888b6da3d751ce6bb0644d0dd9">C_PW_DEFAULT</a></div>
 <div class="line">}</div>
-<div class="ttc" id="a_modbus_middle_ware_8h_html_ac4b55353c236e4425b062d426cb99eaca3935af3a6cf121e677eef008dcd07ead"><div class="ttname"><a href="_modbus_middle_ware_8h.html#ac4b55353c236e4425b062d426cb99eaca3935af3a6cf121e677eef008dcd07ead">eMMW_B_38400</a></div><div class="ttdeci">@ eMMW_B_38400</div><div class="ttdef"><b>Definition</b> <a href="_modbus_middle_ware_8h_source.html#l00019">ModbusMiddleWare.h:19</a></div></div>
 <div class="ttc" id="agroup___configuration___state___machine_html_ga0f6656888b6da3d751ce6bb0644d0dd9"><div class="ttname"><a href="group___configuration___state___machine.html#ga0f6656888b6da3d751ce6bb0644d0dd9">C_PW_DEFAULT</a></div><div class="ttdeci">#define C_PW_DEFAULT</div><div class="ttdef"><b>Definition</b> <a href="_io_t_01_supervisor__main_8c_source.html#l00277">IoT Supervisor_main.c:277</a></div></div>
+<div class="ttc" id="agroup___modbus___middle_ware_html_ggac4b55353c236e4425b062d426cb99eaca3935af3a6cf121e677eef008dcd07ead"><div class="ttname"><a href="group___modbus___middle_ware.html#ggac4b55353c236e4425b062d426cb99eaca3935af3a6cf121e677eef008dcd07ead">eMMW_B_38400</a></div><div class="ttdeci">@ eMMW_B_38400</div><div class="ttdef"><b>Definition</b> <a href="_modbus_middle_ware_8h_source.html#l00031">ModbusMiddleWare.h:31</a></div></div>
 <div class="ttc" id="agroup___modbus___w_d_t___state___machine_html_gab4cd620a6ff382f2308515027d02e9b2"><div class="ttname"><a href="group___modbus___w_d_t___state___machine.html#gab4cd620a6ff382f2308515027d02e9b2">C_DEFAULT_MB_WD_TIMEOUT</a></div><div class="ttdeci">#define C_DEFAULT_MB_WD_TIMEOUT</div><div class="ttdef"><b>Definition</b> <a href="_io_t_01_supervisor__main_8c_source.html#l00182">IoT Supervisor_main.c:182</a></div></div>
 </div><!-- fragment --><p>Stores the default configuration data.</p>
 <dl class="section note"><dt>Note</dt><dd>The default modbus sid is 255 because this sid is specifically reserved for devices that have not been configured yet. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00309">309</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00312">312</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -671,7 +786,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00342">342</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00345">345</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -694,9 +809,10 @@ Variables</h2></td></tr>
 <div class="line">    <span class="charliteral">&#39;0&#39;</span>,            </div>
 <div class="line">    <span class="charliteral">&#39;0&#39;</span>             </div>
 <div class="line">}</div>
-</div><!-- fragment --><p>Stores the header of the configuration page in FLASH </p>
+</div><!-- fragment --><p>Stores the header of the configuration page in FLASH</p>
+<p>This is the <b>ex</b>pected <b>c</b>on<b>f</b>i<b>g</b>uration <b>header</b>. </p>
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00293">293</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00296">296</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -712,7 +828,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00344">344</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00347">347</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -728,7 +844,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00341">341</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00344">344</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -744,7 +860,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00343">343</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00346">346</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>

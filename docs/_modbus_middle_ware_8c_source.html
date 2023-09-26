@@ -17,6 +17,16 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <link href="stylesheet.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -104,81 +114,81 @@ $(document).ready(function(){initNavTree('_modbus_middle_ware_8c_source.html',''
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;SI_EFM8BB1_Register_Enums.h&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="foldopen" id="foldopen00022" data-start="{" data-end="};">
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="group___modbus___middle_ware.html#gae99f13fec6ba22dfa12eef0df06574cf">   22</a></span>code <span class="keyword">const</span> uint8_t <a class="code hl_variable" href="group___modbus___middle_ware.html#gae99f13fec6ba22dfa12eef0df06574cf">mmw_ct</a>[<a class="code hl_enumvalue" href="_modbus_middle_ware_8h.html#ac4b55353c236e4425b062d426cb99eacaf518145fe38ea36c4539548d591a1b6f">eMMW_B_NUM</a>][<a class="code hl_enumvalue" href="_modbus_middle_ware_8h.html#a0637d0b9751ca38a0ad7f3cac42c7a40a7cec6cf212411debd9cc00f576e3a605">eMMW_CT_NUM</a>] =</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>{</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    {0, 0xEC,  0, 0},</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    {0, 0xD8,  0, 0},</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    {0, 0xB0,  1, 0},</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    {0, 0x60,  4, 1},</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    {1, 0xE5, 10, 3},</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    {1, 0xCB, 22, 7}</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>};</div>
+<div class="foldopen" id="foldopen00025" data-start="{" data-end="};">
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="group___modbus___middle_ware.html#ga30ada42f070d3345a8dbeb1d1070f08b">   25</a></span>code <span class="keyword">const</span> uint8_t <a class="code hl_variable" href="group___modbus___middle_ware.html#ga30ada42f070d3345a8dbeb1d1070f08b">mmw_ct</a>[<a class="code hl_enumvalue" href="group___modbus___middle_ware.html#ggac4b55353c236e4425b062d426cb99eacaf518145fe38ea36c4539548d591a1b6f">eMMW_B_NUM</a>][<a class="code hl_enumvalue" href="group___modbus___middle_ware.html#ggadde283b6b914f27cfba8b2b873fb88acacc11b72d7e173801bbde03e68e8a6e9d">eMMW_CL_NUM</a>] =</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>{</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    {0, 0xEC,  0, 0},</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    {0, 0xD8,  0, 0},</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    {0, 0xB0,  1, 0},</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    {0, 0x60,  4, 1},</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    {1, 0xE5, 10, 3},</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    {1, 0xCB, 22, 7}</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>};</div>
 </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="group___modbus___middle_ware.html#ga9622a98d515bab04ca2a83558b0f571a">   32</a></span>uint8_t <a class="code hl_variable" href="group___modbus___middle_ware.html#ga9622a98d515bab04ca2a83558b0f571a">PETITMODBUS_DLY_TOP</a> = 0;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="group___modbus___middle_ware.html#ga25a0ea5f5173ae31a717fec624fd0a8c">   33</a></span>uint8_t <a class="code hl_variable" href="group___modbus___middle_ware.html#ga25a0ea5f5173ae31a717fec624fd0a8c">PETITMODBUS_SLAVE_ADDRESS</a> = 0;</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">// Functions</span></div>
-<div class="foldopen" id="foldopen00044" data-start="{" data-end="}">
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="group___modbus___middle_ware.html#ga2327e0e12d6b8eb65b2c21d6dfc92a96">   44</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="group___modbus___middle_ware.html#ga2327e0e12d6b8eb65b2c21d6dfc92a96">mmw_init</a>(uint8_t sid, uint8_t baud)</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>{</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <a class="code hl_variable" href="group___modbus___middle_ware.html#ga25a0ea5f5173ae31a717fec624fd0a8c">PETITMODBUS_SLAVE_ADDRESS</a> = sid;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordflow">if</span> (baud == 0)</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    {</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    }</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="comment">// stop UART</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    SCON0 &amp;= ~SCON0_REN__BMASK &amp; ~SCON0_MCE__BMASK;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="comment">// stop timer 1</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    TMOD = (TMOD &amp; ~TMOD_T1M__FMASK) | TMOD_T1M__MODE3;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="comment">// decode T1 clock source</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="group___modbus___middle_ware.html#gae99f13fec6ba22dfa12eef0df06574cf">mmw_ct</a>[baud - 1][<a class="code hl_enumvalue" href="_modbus_middle_ware_8h.html#a0637d0b9751ca38a0ad7f3cac42c7a40a5fd0f9167a3eac69624996061dd3d28d">eMMW_CT_T1_PRE</a>] == 1)</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    {</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="comment">// prescaler</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        CKCON0 = (CKCON0 &amp; ~CKCON0_T1M__BMASK) | CKCON0_T1M__PRESCALE;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    }</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    {</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="comment">// system clock</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        CKCON0 = (CKCON0 &amp; ~CKCON0_T1M__BMASK) | CKCON0_T1M__SYSCLK;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    }</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="comment">// set timer 1 mode to mode 2 (8-bit counter/timer with auto-reload)</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    TMOD = (TMOD &amp; ~TMOD_T1M__FMASK) | TMOD_T1M__MODE2;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="group___modbus___middle_ware.html#ga9622a98d515bab04ca2a83558b0f571a">   35</a></span>uint8_t <a class="code hl_variable" href="group___modbus___middle_ware.html#ga9622a98d515bab04ca2a83558b0f571a">PETITMODBUS_DLY_TOP</a> = 0;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="group___modbus___middle_ware.html#ga25a0ea5f5173ae31a717fec624fd0a8c">   36</a></span>uint8_t <a class="code hl_variable" href="group___modbus___middle_ware.html#ga25a0ea5f5173ae31a717fec624fd0a8c">PETITMODBUS_SLAVE_ADDRESS</a> = 0;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">// Functions</span></div>
+<div class="foldopen" id="foldopen00047" data-start="{" data-end="}">
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="group___modbus___middle_ware.html#ga2327e0e12d6b8eb65b2c21d6dfc92a96">   47</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="group___modbus___middle_ware.html#ga2327e0e12d6b8eb65b2c21d6dfc92a96">mmw_init</a>(uint8_t sid, uint8_t baud)</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>{</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <a class="code hl_variable" href="group___modbus___middle_ware.html#ga25a0ea5f5173ae31a717fec624fd0a8c">PETITMODBUS_SLAVE_ADDRESS</a> = sid;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordflow">if</span> (baud == 0)</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    {</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    }</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="comment">// stop UART</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    SCON0 &amp;= ~SCON0_REN__BMASK &amp; ~SCON0_MCE__BMASK;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="comment">// stop timer 1</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    TMOD = (TMOD &amp; ~TMOD_T1M__FMASK) | TMOD_T1M__MODE3;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="comment">// decode T1 clock source</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="group___modbus___middle_ware.html#ga30ada42f070d3345a8dbeb1d1070f08b">mmw_ct</a>[baud - 1][<a class="code hl_enumvalue" href="group___modbus___middle_ware.html#ggadde283b6b914f27cfba8b2b873fb88aca5a8b8f93a45e39e023f3dea0c768e20e">eMMW_CL_T1_PRE</a>] == 1)</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    {</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="comment">// prescaler</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        CKCON0 = (CKCON0 &amp; ~CKCON0_T1M__BMASK) | CKCON0_T1M__PRESCALE;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    }</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    {</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="comment">// system clock</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        CKCON0 = (CKCON0 &amp; ~CKCON0_T1M__BMASK) | CKCON0_T1M__SYSCLK;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    }</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="comment">// set timer 1 current value and reload value</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    TH1 = (<a class="code hl_variable" href="group___modbus___middle_ware.html#gae99f13fec6ba22dfa12eef0df06574cf">mmw_ct</a>[baud - 1][<a class="code hl_enumvalue" href="_modbus_middle_ware_8h.html#a0637d0b9751ca38a0ad7f3cac42c7a40a789089a098588e180f3a46e3031b9989">eMMW_CT_TH1</a>] &lt;&lt; TH1_TH1__SHIFT);</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    TL1 = (<a class="code hl_variable" href="group___modbus___middle_ware.html#gae99f13fec6ba22dfa12eef0df06574cf">mmw_ct</a>[baud - 1][<a class="code hl_enumvalue" href="_modbus_middle_ware_8h.html#a0637d0b9751ca38a0ad7f3cac42c7a40a789089a098588e180f3a46e3031b9989">eMMW_CT_TH1</a>] &lt;&lt; TL1_TL1__SHIFT);</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="comment">// maybe this code will support parity values in the future, but the</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="comment">// efm8bb1 does not support parity.</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="comment">// set timer 1 mode to mode 2 (8-bit counter/timer with auto-reload)</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    TMOD = (TMOD &amp; ~TMOD_T1M__FMASK) | TMOD_T1M__MODE2;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="comment">// set timer 1 current value and reload value</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    TH1 = (<a class="code hl_variable" href="group___modbus___middle_ware.html#ga30ada42f070d3345a8dbeb1d1070f08b">mmw_ct</a>[baud - 1][<a class="code hl_enumvalue" href="group___modbus___middle_ware.html#ggadde283b6b914f27cfba8b2b873fb88aca25ca0eaabbc4e4c9624f594eedbc3d18">eMMW_CL_TH1</a>] &lt;&lt; TH1_TH1__SHIFT);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    TL1 = (<a class="code hl_variable" href="group___modbus___middle_ware.html#ga30ada42f070d3345a8dbeb1d1070f08b">mmw_ct</a>[baud - 1][<a class="code hl_enumvalue" href="group___modbus___middle_ware.html#ggadde283b6b914f27cfba8b2b873fb88aca25ca0eaabbc4e4c9624f594eedbc3d18">eMMW_CL_TH1</a>] &lt;&lt; TL1_TL1__SHIFT);</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="comment">// enable UART, interestingly enough the MCE bit is just for</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="comment">// normal interrupts</span></div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    SCON0 |= SCON0_REN__RECEIVE_ENABLED | SCON0_MCE__MULTI_ENABLED;</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="comment">// software counter values</span></div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <a class="code hl_variable" href="group___modbus___middle_ware.html#ga9622a98d515bab04ca2a83558b0f571a">PETITMODBUS_DLY_TOP</a> = <a class="code hl_variable" href="group___modbus___middle_ware.html#gae99f13fec6ba22dfa12eef0df06574cf">mmw_ct</a>[baud - 1][<a class="code hl_enumvalue" href="_modbus_middle_ware_8h.html#a0637d0b9751ca38a0ad7f3cac42c7a40a31bb5101d0edbb664c8b616de73fe5eb">eMMW_CT_PETIT_TOP</a>];</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <a class="code hl_variable" href="group___main___application.html#ga06f41e11cde40f73d65c73f928a89ae9">T0C_TOP</a> = <a class="code hl_variable" href="group___modbus___middle_ware.html#gae99f13fec6ba22dfa12eef0df06574cf">mmw_ct</a>[baud - 1][<a class="code hl_enumvalue" href="_modbus_middle_ware_8h.html#a0637d0b9751ca38a0ad7f3cac42c7a40af0d4a2198485736a25f2e879e56096b4">eMMW_CT_TL0_TOP</a>];</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>}</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="comment">// maybe this code will support parity values in the future, but the</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="comment">// efm8bb1 does not support parity.</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="comment">// enable UART, interestingly enough the MCE bit is just for</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="comment">// normal interrupts</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    SCON0 |= SCON0_REN__RECEIVE_ENABLED | SCON0_MCE__MULTI_ENABLED;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="comment">// software counter values</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <a class="code hl_variable" href="group___modbus___middle_ware.html#ga9622a98d515bab04ca2a83558b0f571a">PETITMODBUS_DLY_TOP</a> = <a class="code hl_variable" href="group___modbus___middle_ware.html#ga30ada42f070d3345a8dbeb1d1070f08b">mmw_ct</a>[baud - 1][<a class="code hl_enumvalue" href="group___modbus___middle_ware.html#ggadde283b6b914f27cfba8b2b873fb88aca2fe6e22f764aeb6791d2bf7e83897f17">eMMW_CL_PETIT_TOP</a>];</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <a class="code hl_variable" href="group___main___application.html#ga06f41e11cde40f73d65c73f928a89ae9">T0C_TOP</a> = <a class="code hl_variable" href="group___modbus___middle_ware.html#ga30ada42f070d3345a8dbeb1d1070f08b">mmw_ct</a>[baud - 1][<a class="code hl_enumvalue" href="group___modbus___middle_ware.html#ggadde283b6b914f27cfba8b2b873fb88aca71960c042b6e19c9623ff8519f6fefa6">eMMW_CL_TL0_TOP</a>];</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>}</div>
 </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
  <span class="comment">// group Modbus_MiddleWare</span><div class="ttc" id="a_io_t___supervisor_8h_html"><div class="ttname"><a href="_io_t___supervisor_8h.html">IoT_Supervisor.h</a></div></div>
 <div class="ttc" id="a_modbus_middle_ware_8h_html"><div class="ttname"><a href="_modbus_middle_ware_8h.html">ModbusMiddleWare.h</a></div></div>
-<div class="ttc" id="a_modbus_middle_ware_8h_html_a0637d0b9751ca38a0ad7f3cac42c7a40a31bb5101d0edbb664c8b616de73fe5eb"><div class="ttname"><a href="_modbus_middle_ware_8h.html#a0637d0b9751ca38a0ad7f3cac42c7a40a31bb5101d0edbb664c8b616de73fe5eb">eMMW_CT_PETIT_TOP</a></div><div class="ttdeci">@ eMMW_CT_PETIT_TOP</div><div class="ttdef"><b>Definition</b> <a href="_modbus_middle_ware_8h_source.html#l00032">ModbusMiddleWare.h:32</a></div></div>
-<div class="ttc" id="a_modbus_middle_ware_8h_html_a0637d0b9751ca38a0ad7f3cac42c7a40a5fd0f9167a3eac69624996061dd3d28d"><div class="ttname"><a href="_modbus_middle_ware_8h.html#a0637d0b9751ca38a0ad7f3cac42c7a40a5fd0f9167a3eac69624996061dd3d28d">eMMW_CT_T1_PRE</a></div><div class="ttdeci">@ eMMW_CT_T1_PRE</div><div class="ttdef"><b>Definition</b> <a href="_modbus_middle_ware_8h_source.html#l00030">ModbusMiddleWare.h:30</a></div></div>
-<div class="ttc" id="a_modbus_middle_ware_8h_html_a0637d0b9751ca38a0ad7f3cac42c7a40a789089a098588e180f3a46e3031b9989"><div class="ttname"><a href="_modbus_middle_ware_8h.html#a0637d0b9751ca38a0ad7f3cac42c7a40a789089a098588e180f3a46e3031b9989">eMMW_CT_TH1</a></div><div class="ttdeci">@ eMMW_CT_TH1</div><div class="ttdef"><b>Definition</b> <a href="_modbus_middle_ware_8h_source.html#l00031">ModbusMiddleWare.h:31</a></div></div>
-<div class="ttc" id="a_modbus_middle_ware_8h_html_a0637d0b9751ca38a0ad7f3cac42c7a40a7cec6cf212411debd9cc00f576e3a605"><div class="ttname"><a href="_modbus_middle_ware_8h.html#a0637d0b9751ca38a0ad7f3cac42c7a40a7cec6cf212411debd9cc00f576e3a605">eMMW_CT_NUM</a></div><div class="ttdeci">@ eMMW_CT_NUM</div><div class="ttdef"><b>Definition</b> <a href="_modbus_middle_ware_8h_source.html#l00035">ModbusMiddleWare.h:34</a></div></div>
-<div class="ttc" id="a_modbus_middle_ware_8h_html_a0637d0b9751ca38a0ad7f3cac42c7a40af0d4a2198485736a25f2e879e56096b4"><div class="ttname"><a href="_modbus_middle_ware_8h.html#a0637d0b9751ca38a0ad7f3cac42c7a40af0d4a2198485736a25f2e879e56096b4">eMMW_CT_TL0_TOP</a></div><div class="ttdeci">@ eMMW_CT_TL0_TOP</div><div class="ttdef"><b>Definition</b> <a href="_modbus_middle_ware_8h_source.html#l00033">ModbusMiddleWare.h:33</a></div></div>
-<div class="ttc" id="a_modbus_middle_ware_8h_html_ac4b55353c236e4425b062d426cb99eacaf518145fe38ea36c4539548d591a1b6f"><div class="ttname"><a href="_modbus_middle_ware_8h.html#ac4b55353c236e4425b062d426cb99eacaf518145fe38ea36c4539548d591a1b6f">eMMW_B_NUM</a></div><div class="ttdeci">@ eMMW_B_NUM</div><div class="ttdef"><b>Definition</b> <a href="_modbus_middle_ware_8h_source.html#l00026">ModbusMiddleWare.h:25</a></div></div>
 <div class="ttc" id="agroup___main___application_html_ga06f41e11cde40f73d65c73f928a89ae9"><div class="ttname"><a href="group___main___application.html#ga06f41e11cde40f73d65c73f928a89ae9">T0C_TOP</a></div><div class="ttdeci">uint8_t T0C_TOP</div><div class="ttdef"><b>Definition</b> <a href="_io_t_01_supervisor__main_8c_source.html#l00056">IoT Supervisor_main.c:56</a></div></div>
-<div class="ttc" id="agroup___modbus___middle_ware_html_ga2327e0e12d6b8eb65b2c21d6dfc92a96"><div class="ttname"><a href="group___modbus___middle_ware.html#ga2327e0e12d6b8eb65b2c21d6dfc92a96">mmw_init</a></div><div class="ttdeci">void mmw_init(uint8_t sid, uint8_t baud)</div><div class="ttdef"><b>Definition</b> <a href="_modbus_middle_ware_8c_source.html#l00044">ModbusMiddleWare.c:44</a></div></div>
-<div class="ttc" id="agroup___modbus___middle_ware_html_ga25a0ea5f5173ae31a717fec624fd0a8c"><div class="ttname"><a href="group___modbus___middle_ware.html#ga25a0ea5f5173ae31a717fec624fd0a8c">PETITMODBUS_SLAVE_ADDRESS</a></div><div class="ttdeci">uint8_t PETITMODBUS_SLAVE_ADDRESS</div><div class="ttdef"><b>Definition</b> <a href="_modbus_middle_ware_8c_source.html#l00033">ModbusMiddleWare.c:33</a></div></div>
-<div class="ttc" id="agroup___modbus___middle_ware_html_ga9622a98d515bab04ca2a83558b0f571a"><div class="ttname"><a href="group___modbus___middle_ware.html#ga9622a98d515bab04ca2a83558b0f571a">PETITMODBUS_DLY_TOP</a></div><div class="ttdeci">uint8_t PETITMODBUS_DLY_TOP</div><div class="ttdef"><b>Definition</b> <a href="_modbus_middle_ware_8c_source.html#l00032">ModbusMiddleWare.c:32</a></div></div>
-<div class="ttc" id="agroup___modbus___middle_ware_html_gae99f13fec6ba22dfa12eef0df06574cf"><div class="ttname"><a href="group___modbus___middle_ware.html#gae99f13fec6ba22dfa12eef0df06574cf">mmw_ct</a></div><div class="ttdeci">code const uint8_t mmw_ct[eMMW_B_NUM][eMMW_CT_NUM]</div><div class="ttdef"><b>Definition</b> <a href="_modbus_middle_ware_8c_source.html#l00022">ModbusMiddleWare.c:22</a></div></div>
+<div class="ttc" id="agroup___modbus___middle_ware_html_ga2327e0e12d6b8eb65b2c21d6dfc92a96"><div class="ttname"><a href="group___modbus___middle_ware.html#ga2327e0e12d6b8eb65b2c21d6dfc92a96">mmw_init</a></div><div class="ttdeci">void mmw_init(uint8_t sid, uint8_t baud)</div><div class="ttdef"><b>Definition</b> <a href="_modbus_middle_ware_8c_source.html#l00047">ModbusMiddleWare.c:47</a></div></div>
+<div class="ttc" id="agroup___modbus___middle_ware_html_ga25a0ea5f5173ae31a717fec624fd0a8c"><div class="ttname"><a href="group___modbus___middle_ware.html#ga25a0ea5f5173ae31a717fec624fd0a8c">PETITMODBUS_SLAVE_ADDRESS</a></div><div class="ttdeci">uint8_t PETITMODBUS_SLAVE_ADDRESS</div><div class="ttdef"><b>Definition</b> <a href="_modbus_middle_ware_8c_source.html#l00036">ModbusMiddleWare.c:36</a></div></div>
+<div class="ttc" id="agroup___modbus___middle_ware_html_ga30ada42f070d3345a8dbeb1d1070f08b"><div class="ttname"><a href="group___modbus___middle_ware.html#ga30ada42f070d3345a8dbeb1d1070f08b">mmw_ct</a></div><div class="ttdeci">code const uint8_t mmw_ct[eMMW_B_NUM][eMMW_CL_NUM]</div><div class="ttdef"><b>Definition</b> <a href="_modbus_middle_ware_8c_source.html#l00025">ModbusMiddleWare.c:25</a></div></div>
+<div class="ttc" id="agroup___modbus___middle_ware_html_ga9622a98d515bab04ca2a83558b0f571a"><div class="ttname"><a href="group___modbus___middle_ware.html#ga9622a98d515bab04ca2a83558b0f571a">PETITMODBUS_DLY_TOP</a></div><div class="ttdeci">uint8_t PETITMODBUS_DLY_TOP</div><div class="ttdef"><b>Definition</b> <a href="_modbus_middle_ware_8c_source.html#l00035">ModbusMiddleWare.c:35</a></div></div>
+<div class="ttc" id="agroup___modbus___middle_ware_html_ggac4b55353c236e4425b062d426cb99eacaf518145fe38ea36c4539548d591a1b6f"><div class="ttname"><a href="group___modbus___middle_ware.html#ggac4b55353c236e4425b062d426cb99eacaf518145fe38ea36c4539548d591a1b6f">eMMW_B_NUM</a></div><div class="ttdeci">@ eMMW_B_NUM</div><div class="ttdef"><b>Definition</b> <a href="_modbus_middle_ware_8h_source.html#l00038">ModbusMiddleWare.h:37</a></div></div>
+<div class="ttc" id="agroup___modbus___middle_ware_html_ggadde283b6b914f27cfba8b2b873fb88aca25ca0eaabbc4e4c9624f594eedbc3d18"><div class="ttname"><a href="group___modbus___middle_ware.html#ggadde283b6b914f27cfba8b2b873fb88aca25ca0eaabbc4e4c9624f594eedbc3d18">eMMW_CL_TH1</a></div><div class="ttdeci">@ eMMW_CL_TH1</div><div class="ttdef"><b>Definition</b> <a href="_modbus_middle_ware_8h_source.html#l00059">ModbusMiddleWare.h:59</a></div></div>
+<div class="ttc" id="agroup___modbus___middle_ware_html_ggadde283b6b914f27cfba8b2b873fb88aca2fe6e22f764aeb6791d2bf7e83897f17"><div class="ttname"><a href="group___modbus___middle_ware.html#ggadde283b6b914f27cfba8b2b873fb88aca2fe6e22f764aeb6791d2bf7e83897f17">eMMW_CL_PETIT_TOP</a></div><div class="ttdeci">@ eMMW_CL_PETIT_TOP</div><div class="ttdef"><b>Definition</b> <a href="_modbus_middle_ware_8h_source.html#l00067">ModbusMiddleWare.h:67</a></div></div>
+<div class="ttc" id="agroup___modbus___middle_ware_html_ggadde283b6b914f27cfba8b2b873fb88aca5a8b8f93a45e39e023f3dea0c768e20e"><div class="ttname"><a href="group___modbus___middle_ware.html#ggadde283b6b914f27cfba8b2b873fb88aca5a8b8f93a45e39e023f3dea0c768e20e">eMMW_CL_T1_PRE</a></div><div class="ttdeci">@ eMMW_CL_T1_PRE</div><div class="ttdef"><b>Definition</b> <a href="_modbus_middle_ware_8h_source.html#l00052">ModbusMiddleWare.h:52</a></div></div>
+<div class="ttc" id="agroup___modbus___middle_ware_html_ggadde283b6b914f27cfba8b2b873fb88aca71960c042b6e19c9623ff8519f6fefa6"><div class="ttname"><a href="group___modbus___middle_ware.html#ggadde283b6b914f27cfba8b2b873fb88aca71960c042b6e19c9623ff8519f6fefa6">eMMW_CL_TL0_TOP</a></div><div class="ttdeci">@ eMMW_CL_TL0_TOP</div><div class="ttdef"><b>Definition</b> <a href="_modbus_middle_ware_8h_source.html#l00074">ModbusMiddleWare.h:74</a></div></div>
+<div class="ttc" id="agroup___modbus___middle_ware_html_ggadde283b6b914f27cfba8b2b873fb88acacc11b72d7e173801bbde03e68e8a6e9d"><div class="ttname"><a href="group___modbus___middle_ware.html#ggadde283b6b914f27cfba8b2b873fb88acacc11b72d7e173801bbde03e68e8a6e9d">eMMW_CL_NUM</a></div><div class="ttdeci">@ eMMW_CL_NUM</div><div class="ttdef"><b>Definition</b> <a href="_modbus_middle_ware_8h_source.html#l00076">ModbusMiddleWare.h:75</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.9.8-->

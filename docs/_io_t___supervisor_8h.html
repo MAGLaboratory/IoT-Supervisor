@@ -17,6 +17,16 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <link href="stylesheet.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -107,9 +117,10 @@ $(document).ready(function(){initNavTree('_io_t___supervisor_8h.html',''); initR
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unionsv__dev__sta__t.html">sv_dev_sta_t</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcfg__t.html">cfg_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This struct is a storage type for flash memory.  <a href="structcfg__t.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unionsv__dev__sta__t.html">sv_dev_sta_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
@@ -118,6 +129,10 @@ Macros</h2></td></tr>
 <tr class="separator:af4aa38c233ba7beb1af589ff95cd2717"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ee54671b212fa40e655eae67c043a9b" id="r_a4ee54671b212fa40e655eae67c043a9b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_io_t___supervisor_8h.html#a4ee54671b212fa40e655eae67c043a9b">nLED</a>&#160;&#160;&#160;(P1_B4)</td></tr>
 <tr class="separator:a4ee54671b212fa40e655eae67c043a9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f2fe96c8829b8774687bc4099de99e3" id="r_a9f2fe96c8829b8774687bc4099de99e3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_io_t___supervisor_8h.html#a9f2fe96c8829b8774687bc4099de99e3">XCVR_TX</a>&#160;&#160;&#160;(P0_B3)</td></tr>
+<tr class="separator:a9f2fe96c8829b8774687bc4099de99e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75f2eb1ed9d5fb9196255682a29ab939" id="r_a75f2eb1ed9d5fb9196255682a29ab939"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_io_t___supervisor_8h.html#a75f2eb1ed9d5fb9196255682a29ab939">VIN_CMP_CPOUT</a>()&#160;&#160;&#160;(CMP0CN0 &amp; CMP0CN0_CPOUT__BMASK)</td></tr>
+<tr class="separator:a75f2eb1ed9d5fb9196255682a29ab939"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8f2ab3d655054566ca4857f1ffbeb938" id="r_ga8f2ab3d655054566ca4857f1ffbeb938"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___modbus___w_d_t___state___machine.html#ga8f2ab3d655054566ca4857f1ffbeb938">C_WDT_PET</a>&#160;&#160;&#160;0x5A</td></tr>
 <tr class="separator:ga8f2ab3d655054566ca4857f1ffbeb938"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga297e9ea9b92297b1cf3d85e3b12e8f30" id="r_ga297e9ea9b92297b1cf3d85e3b12e8f30"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___modbus___w_d_t___state___machine.html#ga297e9ea9b92297b1cf3d85e3b12e8f30">C_WDT_DIS</a>&#160;&#160;&#160;0xA5</td></tr>
@@ -133,42 +148,42 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:ac71595e22bb54f0f156340ffb1ff44ba" id="r_ac71595e22bb54f0f156340ffb1ff44ba"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_io_t___supervisor_8h.html#ac71595e22bb54f0f156340ffb1ff44ba">VinSm_t</a> { <a class="el" href="_io_t___supervisor_8h.html#ac71595e22bb54f0f156340ffb1ff44baa3cc30a2b8b36959007d7b06a0026b4f4">eVIN_Init</a> = 0
-, <a class="el" href="_io_t___supervisor_8h.html#ac71595e22bb54f0f156340ffb1ff44baa4e6b99c0462309e3c86bb63696783469">eVIN_VLow</a>
-, <a class="el" href="_io_t___supervisor_8h.html#ac71595e22bb54f0f156340ffb1ff44baa77379fa13bb54be31a0d2839ab3fcfa9">eVIN_OK</a>
+<tr class="memitem:gac71595e22bb54f0f156340ffb1ff44ba" id="r_gac71595e22bb54f0f156340ffb1ff44ba"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___voltage___state___machine.html#gac71595e22bb54f0f156340ffb1ff44ba">VinSm_t</a> { <a class="el" href="group___voltage___state___machine.html#ggac71595e22bb54f0f156340ffb1ff44baa3cc30a2b8b36959007d7b06a0026b4f4">eVIN_Init</a> = 0
+, <a class="el" href="group___voltage___state___machine.html#ggac71595e22bb54f0f156340ffb1ff44baa4e6b99c0462309e3c86bb63696783469">eVIN_VLow</a>
+, <a class="el" href="group___voltage___state___machine.html#ggac71595e22bb54f0f156340ffb1ff44baa77379fa13bb54be31a0d2839ab3fcfa9">eVIN_OK</a>
  }</td></tr>
-<tr class="separator:ac71595e22bb54f0f156340ffb1ff44ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a299607114400fe41e8e9dcccee0f787a" id="r_a299607114400fe41e8e9dcccee0f787a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_io_t___supervisor_8h.html#a299607114400fe41e8e9dcccee0f787a">mbWDTsmS_t</a> { <a class="el" href="_io_t___supervisor_8h.html#a299607114400fe41e8e9dcccee0f787aa3b2f0f0f317d8a74a8ae3aa91af22040">eMW_Ini</a> = 0
-, <a class="el" href="_io_t___supervisor_8h.html#a299607114400fe41e8e9dcccee0f787aaf3b70a02225c4e8361ba57f603faa018">eMW_En</a>
-, <a class="el" href="_io_t___supervisor_8h.html#a299607114400fe41e8e9dcccee0f787aa636cff0025559b101755751245816aa7">eMW_Timeout</a>
+<tr class="separator:gac71595e22bb54f0f156340ffb1ff44ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga299607114400fe41e8e9dcccee0f787a" id="r_ga299607114400fe41e8e9dcccee0f787a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___modbus___w_d_t___state___machine.html#ga299607114400fe41e8e9dcccee0f787a">mbWDTsmS_t</a> { <a class="el" href="group___modbus___w_d_t___state___machine.html#gga299607114400fe41e8e9dcccee0f787aa3b2f0f0f317d8a74a8ae3aa91af22040">eMW_Ini</a> = 0
+, <a class="el" href="group___modbus___w_d_t___state___machine.html#gga299607114400fe41e8e9dcccee0f787aaf3b70a02225c4e8361ba57f603faa018">eMW_En</a>
+, <a class="el" href="group___modbus___w_d_t___state___machine.html#gga299607114400fe41e8e9dcccee0f787aa636cff0025559b101755751245816aa7">eMW_Timeout</a>
  }</td></tr>
-<tr class="separator:a299607114400fe41e8e9dcccee0f787a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6fd609b4d1cbec982d502d97a866fca7" id="r_a6fd609b4d1cbec982d502d97a866fca7"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_io_t___supervisor_8h.html#a6fd609b4d1cbec982d502d97a866fca7">LastRst_t</a> { <a class="el" href="_io_t___supervisor_8h.html#a6fd609b4d1cbec982d502d97a866fca7aabbf9c5d549fef8704eef1b591ff3c6f">eLR_Init</a> = 0
-, <a class="el" href="_io_t___supervisor_8h.html#a6fd609b4d1cbec982d502d97a866fca7aef014178696aec6a4defef724db4158c">eLR_VSM</a>
-, <a class="el" href="_io_t___supervisor_8h.html#a6fd609b4d1cbec982d502d97a866fca7ab8363aea3ebaa44acfd823adf3aa6a82">eLR_WDT</a>
+<tr class="separator:ga299607114400fe41e8e9dcccee0f787a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6fd609b4d1cbec982d502d97a866fca7" id="r_ga6fd609b4d1cbec982d502d97a866fca7"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___main___application.html#ga6fd609b4d1cbec982d502d97a866fca7">LastRst_t</a> { <a class="el" href="group___main___application.html#gga6fd609b4d1cbec982d502d97a866fca7aabbf9c5d549fef8704eef1b591ff3c6f">eLR_Init</a> = 0
+, <a class="el" href="group___main___application.html#gga6fd609b4d1cbec982d502d97a866fca7aef014178696aec6a4defef724db4158c">eLR_VSM</a>
+, <a class="el" href="group___main___application.html#gga6fd609b4d1cbec982d502d97a866fca7ab8363aea3ebaa44acfd823adf3aa6a82">eLR_WDT</a>
  }</td></tr>
-<tr class="separator:a6fd609b4d1cbec982d502d97a866fca7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7452a3b4994fb1305b6184d19c8b4fe" id="r_ae7452a3b4994fb1305b6184d19c8b4fe"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_io_t___supervisor_8h.html#ae7452a3b4994fb1305b6184d19c8b4fe">VerifSt_t</a> { <a class="el" href="_io_t___supervisor_8h.html#ae7452a3b4994fb1305b6184d19c8b4feab8982b56b1e62c7b6c506fb5567f7994">eVS_Norm</a> = 0
-, <a class="el" href="_io_t___supervisor_8h.html#ae7452a3b4994fb1305b6184d19c8b4fea35b6111fc077cb0a8b93cb3bf473d332">eVS_Cfg</a>
-, <a class="el" href="_io_t___supervisor_8h.html#ae7452a3b4994fb1305b6184d19c8b4fea8237171b70b05f5ca68993255e1b2d31">eVS_Prog</a>
-, <a class="el" href="_io_t___supervisor_8h.html#ae7452a3b4994fb1305b6184d19c8b4feae62b0e545b7fe9efa5ee339353f1ddc0">eVS_Setup</a>
+<tr class="separator:ga6fd609b4d1cbec982d502d97a866fca7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae7452a3b4994fb1305b6184d19c8b4fe" id="r_gae7452a3b4994fb1305b6184d19c8b4fe"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___configuration___state___machine.html#gae7452a3b4994fb1305b6184d19c8b4fe">VerifSt_t</a> { <a class="el" href="group___configuration___state___machine.html#ggae7452a3b4994fb1305b6184d19c8b4feab8982b56b1e62c7b6c506fb5567f7994">eVS_Norm</a> = 0
+, <a class="el" href="group___configuration___state___machine.html#ggae7452a3b4994fb1305b6184d19c8b4fea35b6111fc077cb0a8b93cb3bf473d332">eVS_Cfg</a>
+, <a class="el" href="group___configuration___state___machine.html#ggae7452a3b4994fb1305b6184d19c8b4fea8237171b70b05f5ca68993255e1b2d31">eVS_Prog</a>
+, <a class="el" href="group___configuration___state___machine.html#ggae7452a3b4994fb1305b6184d19c8b4feae62b0e545b7fe9efa5ee339353f1ddc0">eVS_Setup</a>
  }</td></tr>
-<tr class="separator:ae7452a3b4994fb1305b6184d19c8b4fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e2885d00577c7076677cc277ac4f238" id="r_a2e2885d00577c7076677cc277ac4f238"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_io_t___supervisor_8h.html#a2e2885d00577c7076677cc277ac4f238">CfgSM_t</a> { <br />
-&#160;&#160;<a class="el" href="_io_t___supervisor_8h.html#a2e2885d00577c7076677cc277ac4f238aaacc79559a18ebcf22cccb549ebacd78">eCFG_Idle</a> = 0
-, <a class="el" href="_io_t___supervisor_8h.html#a2e2885d00577c7076677cc277ac4f238a77c6aa8579abb456a1022f2c0749809b">eCFG_Load</a>
-, <a class="el" href="_io_t___supervisor_8h.html#a2e2885d00577c7076677cc277ac4f238a043ae948bd3634b5a2b9a9d2bfd3f69b">eCFG_Cache</a>
-, <a class="el" href="_io_t___supervisor_8h.html#a2e2885d00577c7076677cc277ac4f238a87a1adc98bfaf1f2d90f0f89416e0884">eCFG_Commit</a>
+<tr class="separator:gae7452a3b4994fb1305b6184d19c8b4fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2e2885d00577c7076677cc277ac4f238" id="r_ga2e2885d00577c7076677cc277ac4f238"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___configuration___state___machine.html#ga2e2885d00577c7076677cc277ac4f238">CfgSM_t</a> { <br />
+&#160;&#160;<a class="el" href="group___configuration___state___machine.html#gga2e2885d00577c7076677cc277ac4f238aaacc79559a18ebcf22cccb549ebacd78">eCFG_Idle</a> = 0
+, <a class="el" href="group___configuration___state___machine.html#gga2e2885d00577c7076677cc277ac4f238a77c6aa8579abb456a1022f2c0749809b">eCFG_Load</a>
+, <a class="el" href="group___configuration___state___machine.html#gga2e2885d00577c7076677cc277ac4f238a043ae948bd3634b5a2b9a9d2bfd3f69b">eCFG_Cache</a>
+, <a class="el" href="group___configuration___state___machine.html#gga2e2885d00577c7076677cc277ac4f238a87a1adc98bfaf1f2d90f0f89416e0884">eCFG_Commit</a>
 , <br />
-&#160;&#160;<a class="el" href="_io_t___supervisor_8h.html#a2e2885d00577c7076677cc277ac4f238ad78633de4b8404feb411293df89d59e9">eCFG_Erase</a>
-, <a class="el" href="_io_t___supervisor_8h.html#a2e2885d00577c7076677cc277ac4f238ac2a4696c092a4cf3c4bc13efa4f14aaf">eCFG_Write</a>
+&#160;&#160;<a class="el" href="group___configuration___state___machine.html#gga2e2885d00577c7076677cc277ac4f238ad78633de4b8404feb411293df89d59e9">eCFG_Erase</a>
+, <a class="el" href="group___configuration___state___machine.html#gga2e2885d00577c7076677cc277ac4f238ac2a4696c092a4cf3c4bc13efa4f14aaf">eCFG_Write</a>
 <br />
  }</td></tr>
-<tr class="separator:a2e2885d00577c7076677cc277ac4f238"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:ga2e2885d00577c7076677cc277ac4f238"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gae07580e6a3e7427894a9809c979f3f65" id="r_gae07580e6a3e7427894a9809c979f3f65"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___reset___state___machine.html#gae07580e6a3e7427894a9809c979f3f65">VinSm</a> (void)</td></tr>
+<tr class="memitem:gae07580e6a3e7427894a9809c979f3f65" id="r_gae07580e6a3e7427894a9809c979f3f65"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___voltage___state___machine.html#gae07580e6a3e7427894a9809c979f3f65">VinSm</a> (void)</td></tr>
 <tr class="separator:gae07580e6a3e7427894a9809c979f3f65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga18a609d79f133d41b52d1cc90469be47" id="r_ga18a609d79f133d41b52d1cc90469be47"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___modbus___w_d_t___state___machine.html#ga18a609d79f133d41b52d1cc90469be47">mbWDTsm</a> (void)</td></tr>
 <tr class="separator:ga18a609d79f133d41b52d1cc90469be47"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -177,7 +192,7 @@ Functions</h2></td></tr>
 Variables</h2></td></tr>
 <tr class="memitem:gabff40580a49bdbf86db348e6ab0a8dc1" id="r_gabff40580a49bdbf86db348e6ab0a8dc1"><td class="memItemLeft" align="right" valign="top">volatile uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___main___application.html#gabff40580a49bdbf86db348e6ab0a8dc1">t1Count</a></td></tr>
 <tr class="separator:gabff40580a49bdbf86db348e6ab0a8dc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga59f537ef8b7df61f7a1a3b477f5fc340" id="r_ga59f537ef8b7df61f7a1a3b477f5fc340"><td class="memItemLeft" align="right" valign="top">volatile bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___reset___state___machine.html#ga59f537ef8b7df61f7a1a3b477f5fc340">cprif</a></td></tr>
+<tr class="memitem:ga59f537ef8b7df61f7a1a3b477f5fc340" id="r_ga59f537ef8b7df61f7a1a3b477f5fc340"><td class="memItemLeft" align="right" valign="top">volatile bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___voltage___state___machine.html#ga59f537ef8b7df61f7a1a3b477f5fc340">cprif</a></td></tr>
 <tr class="separator:ga59f537ef8b7df61f7a1a3b477f5fc340"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9f016462fc2803075b67d903c4045aa7" id="r_ga9f016462fc2803075b67d903c4045aa7"><td class="memItemLeft" align="right" valign="top">volatile uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___main___application.html#ga9f016462fc2803075b67d903c4045aa7">t0Count</a></td></tr>
 <tr class="separator:ga9f016462fc2803075b67d903c4045aa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -199,7 +214,7 @@ Variables</h2></td></tr>
 <tr class="separator:ga1edfc8756590da90a14f41af9bd71dc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga14ee0f41b2e64cad6f4c28cbb3fcb39b" id="r_ga14ee0f41b2e64cad6f4c28cbb3fcb39b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcfg__t.html">cfg_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___configuration___state___machine.html#ga14ee0f41b2e64cad6f4c28cbb3fcb39b">cfg</a></td></tr>
 <tr class="separator:ga14ee0f41b2e64cad6f4c28cbb3fcb39b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6c9c723896f1d714b5d1caeb1afceda6" id="r_ga6c9c723896f1d714b5d1caeb1afceda6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_io_t___supervisor_8h.html#a2e2885d00577c7076677cc277ac4f238">CfgSM_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___configuration___state___machine.html#ga6c9c723896f1d714b5d1caeb1afceda6">cfgSmS</a></td></tr>
+<tr class="memitem:ga6c9c723896f1d714b5d1caeb1afceda6" id="r_ga6c9c723896f1d714b5d1caeb1afceda6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___configuration___state___machine.html#ga2e2885d00577c7076677cc277ac4f238">CfgSM_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___configuration___state___machine.html#ga6c9c723896f1d714b5d1caeb1afceda6">cfgSmS</a></td></tr>
 <tr class="separator:ga6c9c723896f1d714b5d1caeb1afceda6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -241,113 +256,38 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="a2e2885d00577c7076677cc277ac4f238" name="a2e2885d00577c7076677cc277ac4f238"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2e2885d00577c7076677cc277ac4f238">&#9670;&#160;</a></span>CfgSM_t</h2>
+<a id="a75f2eb1ed9d5fb9196255682a29ab939" name="a75f2eb1ed9d5fb9196255682a29ab939"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75f2eb1ed9d5fb9196255682a29ab939">&#9670;&#160;</a></span>VIN_CMP_CPOUT</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="_io_t___supervisor_8h.html#a2e2885d00577c7076677cc277ac4f238">CfgSM_t</a></td>
+          <td class="memname">#define VIN_CMP_CPOUT</td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td>&#160;&#160;&#160;(CMP0CN0 &amp; CMP0CN0_CPOUT__BMASK)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a2e2885d00577c7076677cc277ac4f238aaacc79559a18ebcf22cccb549ebacd78" name="a2e2885d00577c7076677cc277ac4f238aaacc79559a18ebcf22cccb549ebacd78"></a>eCFG_Idle&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a2e2885d00577c7076677cc277ac4f238a77c6aa8579abb456a1022f2c0749809b" name="a2e2885d00577c7076677cc277ac4f238a77c6aa8579abb456a1022f2c0749809b"></a>eCFG_Load&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a2e2885d00577c7076677cc277ac4f238a043ae948bd3634b5a2b9a9d2bfd3f69b" name="a2e2885d00577c7076677cc277ac4f238a043ae948bd3634b5a2b9a9d2bfd3f69b"></a>eCFG_Cache&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a2e2885d00577c7076677cc277ac4f238a87a1adc98bfaf1f2d90f0f89416e0884" name="a2e2885d00577c7076677cc277ac4f238a87a1adc98bfaf1f2d90f0f89416e0884"></a>eCFG_Commit&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a2e2885d00577c7076677cc277ac4f238ad78633de4b8404feb411293df89d59e9" name="a2e2885d00577c7076677cc277ac4f238ad78633de4b8404feb411293df89d59e9"></a>eCFG_Erase&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a2e2885d00577c7076677cc277ac4f238ac2a4696c092a4cf3c4bc13efa4f14aaf" name="a2e2885d00577c7076677cc277ac4f238ac2a4696c092a4cf3c4bc13efa4f14aaf"></a>eCFG_Write&#160;</td><td class="fielddoc"></td></tr>
-</table>
 
-<p class="definition">Definition at line <a class="el" href="_io_t___supervisor_8h_source.html#l00087">87</a> of file <a class="el" href="_io_t___supervisor_8h_source.html">IoT_Supervisor.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t___supervisor_8h_source.html#l00023">23</a> of file <a class="el" href="_io_t___supervisor_8h_source.html">IoT_Supervisor.h</a>.</p>
 
 </div>
 </div>
-<a id="a6fd609b4d1cbec982d502d97a866fca7" name="a6fd609b4d1cbec982d502d97a866fca7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6fd609b4d1cbec982d502d97a866fca7">&#9670;&#160;</a></span>LastRst_t</h2>
+<a id="a9f2fe96c8829b8774687bc4099de99e3" name="a9f2fe96c8829b8774687bc4099de99e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f2fe96c8829b8774687bc4099de99e3">&#9670;&#160;</a></span>XCVR_TX</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="_io_t___supervisor_8h.html#a6fd609b4d1cbec982d502d97a866fca7">LastRst_t</a></td>
+          <td class="memname">#define XCVR_TX&#160;&#160;&#160;(P0_B3)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a6fd609b4d1cbec982d502d97a866fca7aabbf9c5d549fef8704eef1b591ff3c6f" name="a6fd609b4d1cbec982d502d97a866fca7aabbf9c5d549fef8704eef1b591ff3c6f"></a>eLR_Init&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a6fd609b4d1cbec982d502d97a866fca7aef014178696aec6a4defef724db4158c" name="a6fd609b4d1cbec982d502d97a866fca7aef014178696aec6a4defef724db4158c"></a>eLR_VSM&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a6fd609b4d1cbec982d502d97a866fca7ab8363aea3ebaa44acfd823adf3aa6a82" name="a6fd609b4d1cbec982d502d97a866fca7ab8363aea3ebaa44acfd823adf3aa6a82"></a>eLR_WDT&#160;</td><td class="fielddoc"></td></tr>
-</table>
 
-<p class="definition">Definition at line <a class="el" href="_io_t___supervisor_8h_source.html#l00055">55</a> of file <a class="el" href="_io_t___supervisor_8h_source.html">IoT_Supervisor.h</a>.</p>
-
-</div>
-</div>
-<a id="a299607114400fe41e8e9dcccee0f787a" name="a299607114400fe41e8e9dcccee0f787a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a299607114400fe41e8e9dcccee0f787a">&#9670;&#160;</a></span>mbWDTsmS_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="_io_t___supervisor_8h.html#a299607114400fe41e8e9dcccee0f787a">mbWDTsmS_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a299607114400fe41e8e9dcccee0f787aa3b2f0f0f317d8a74a8ae3aa91af22040" name="a299607114400fe41e8e9dcccee0f787aa3b2f0f0f317d8a74a8ae3aa91af22040"></a>eMW_Ini&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a299607114400fe41e8e9dcccee0f787aaf3b70a02225c4e8361ba57f603faa018" name="a299607114400fe41e8e9dcccee0f787aaf3b70a02225c4e8361ba57f603faa018"></a>eMW_En&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a299607114400fe41e8e9dcccee0f787aa636cff0025559b101755751245816aa7" name="a299607114400fe41e8e9dcccee0f787aa636cff0025559b101755751245816aa7"></a>eMW_Timeout&#160;</td><td class="fielddoc"></td></tr>
-</table>
-
-<p class="definition">Definition at line <a class="el" href="_io_t___supervisor_8h_source.html#l00047">47</a> of file <a class="el" href="_io_t___supervisor_8h_source.html">IoT_Supervisor.h</a>.</p>
-
-</div>
-</div>
-<a id="ae7452a3b4994fb1305b6184d19c8b4fe" name="ae7452a3b4994fb1305b6184d19c8b4fe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae7452a3b4994fb1305b6184d19c8b4fe">&#9670;&#160;</a></span>VerifSt_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="_io_t___supervisor_8h.html#ae7452a3b4994fb1305b6184d19c8b4fe">VerifSt_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ae7452a3b4994fb1305b6184d19c8b4feab8982b56b1e62c7b6c506fb5567f7994" name="ae7452a3b4994fb1305b6184d19c8b4feab8982b56b1e62c7b6c506fb5567f7994"></a>eVS_Norm&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ae7452a3b4994fb1305b6184d19c8b4fea35b6111fc077cb0a8b93cb3bf473d332" name="ae7452a3b4994fb1305b6184d19c8b4fea35b6111fc077cb0a8b93cb3bf473d332"></a>eVS_Cfg&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ae7452a3b4994fb1305b6184d19c8b4fea8237171b70b05f5ca68993255e1b2d31" name="ae7452a3b4994fb1305b6184d19c8b4fea8237171b70b05f5ca68993255e1b2d31"></a>eVS_Prog&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ae7452a3b4994fb1305b6184d19c8b4feae62b0e545b7fe9efa5ee339353f1ddc0" name="ae7452a3b4994fb1305b6184d19c8b4feae62b0e545b7fe9efa5ee339353f1ddc0"></a>eVS_Setup&#160;</td><td class="fielddoc"></td></tr>
-</table>
-
-<p class="definition">Definition at line <a class="el" href="_io_t___supervisor_8h_source.html#l00063">63</a> of file <a class="el" href="_io_t___supervisor_8h_source.html">IoT_Supervisor.h</a>.</p>
-
-</div>
-</div>
-<a id="ac71595e22bb54f0f156340ffb1ff44ba" name="ac71595e22bb54f0f156340ffb1ff44ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac71595e22bb54f0f156340ffb1ff44ba">&#9670;&#160;</a></span>VinSm_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="_io_t___supervisor_8h.html#ac71595e22bb54f0f156340ffb1ff44ba">VinSm_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ac71595e22bb54f0f156340ffb1ff44baa3cc30a2b8b36959007d7b06a0026b4f4" name="ac71595e22bb54f0f156340ffb1ff44baa3cc30a2b8b36959007d7b06a0026b4f4"></a>eVIN_Init&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ac71595e22bb54f0f156340ffb1ff44baa4e6b99c0462309e3c86bb63696783469" name="ac71595e22bb54f0f156340ffb1ff44baa4e6b99c0462309e3c86bb63696783469"></a>eVIN_VLow&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ac71595e22bb54f0f156340ffb1ff44baa77379fa13bb54be31a0d2839ab3fcfa9" name="ac71595e22bb54f0f156340ffb1ff44baa77379fa13bb54be31a0d2839ab3fcfa9"></a>eVIN_OK&#160;</td><td class="fielddoc"></td></tr>
-</table>
-
-<p class="definition">Definition at line <a class="el" href="_io_t___supervisor_8h_source.html#l00039">39</a> of file <a class="el" href="_io_t___supervisor_8h_source.html">IoT_Supervisor.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t___supervisor_8h_source.html#l00021">21</a> of file <a class="el" href="_io_t___supervisor_8h_source.html">IoT_Supervisor.h</a>.</p>
 
 </div>
 </div>

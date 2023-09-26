@@ -17,6 +17,16 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <link href="stylesheet.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -98,12 +108,11 @@ $(document).ready(function(){initNavTree('topics.html',''); initResizable(); });
 <div class="levels">[detail level <span onclick="javascript:toggleLevel(1);">1</span><span onclick="javascript:toggleLevel(2);">2</span>]</div><table class="directory">
 <tr id="row_0_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a class="el" href="group___application___interrupts.html" target="_self">Application Interrupts</a></td><td class="desc"></td></tr>
 <tr id="row_1_" class="odd"><td class="entry"><span style="width:0px;display:inline-block;">&#160;</span><span id="arr_1_" class="arrow" onclick="toggleFolder('1_')">&#9660;</span><a class="el" href="group___main___application.html" target="_self">Main Application</a></td><td class="desc"></td></tr>
-<tr id="row_1_0_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><a class="el" href="group___reset___state___machine.html" target="_self">Reset State Machine</a></td><td class="desc">Vin and reset the state machine </td></tr>
+<tr id="row_1_0_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><a class="el" href="group___voltage___state___machine.html" target="_self">Voltage In and Reset State Machine</a></td><td class="desc">Vin and reset the state machine </td></tr>
 <tr id="row_1_1_" class="odd"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><a class="el" href="group___modbus___w_d_t___state___machine.html" target="_self">Modbus WDT State Machine</a></td><td class="desc">The modbus watchdog timer state machine </td></tr>
 <tr id="row_1_2_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><a class="el" href="group___configuration___state___machine.html" target="_self">Configuration State Machine</a></td><td class="desc">The configuration state machine starts and maintains the system configuration </td></tr>
 <tr id="row_2_" class="odd"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a class="el" href="group___modbus___middle_ware.html" target="_self">Modbus MiddleWare</a></td><td class="desc"></td></tr>
-<tr id="row_3_" class="even"><td class="entry"><span style="width:0px;display:inline-block;">&#160;</span><span id="arr_3_" class="arrow" onclick="toggleFolder('3_')">&#9660;</span><a class="el" href="group___petit___modbus___support.html" target="_self">Petit Modbus Support</a></td><td class="desc"></td></tr>
-<tr id="row_3_0_" class="odd"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><a class="el" href="group___petit___modbus___porting___functions.html" target="_self">Petit Modbus Porting Functions</a></td><td class="desc">These functions allow Petit Modbus to work with our hardware </td></tr>
+<tr id="row_3_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a class="el" href="group___io_t___s_v___e_f_m8_b_b1_l_c_k___petit___modbus___port.html" target="_self">IoT Supervisor EFM8BB1LCK Petit Modbus Port</a></td><td class="desc"></td></tr>
 </table>
 </div><!-- directory -->
 </div><!-- contents -->

@@ -17,6 +17,16 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <link href="stylesheet.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -177,7 +187,7 @@ Functions</h2></td></tr>
 <li>Select ADC0.1</li>
 </ul>
 <ul>
-<li>SAR Clock Divider = 0x0F</li>
+<li>SAR Clock Divider = 0x06</li>
 <li>ADC0 operates in 10-bit or 12-bit mode</li>
 <li>The on-chip PGA gain is 0.5</li>
 <li>Normal Track Mode</li>
@@ -189,13 +199,17 @@ Functions</h2></td></tr>
 <li>Perform and Accumulate 1 conversion</li>
 </ul>
 <ul>
-<li>Burst Mode Power Up Time = 0x0F</li>
-<li>Disable low power mode</li>
+<li>The ADC will re-track and sample the input four times during a 12-bit conversion</li>
+<li>Burst Mode Tracking Time = 0x22</li>
+</ul>
+<ul>
+<li>Burst Mode Power Up Time = 0x04</li>
+<li>Enable low power mode</li>
 <li>Low power mode enabled</li>
 <li>Select bias current mode 3</li>
 </ul>
 <ul>
-<li>Enable ADC0</li>
+<li>Enable ADC0 burst mode</li>
 <li>ADC0 conversion initiated on overflow of Timer 2</li>
 </ul>
 
@@ -297,7 +311,7 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_init_device_8c_source.html#l00525">525</a> of file <a class="el" href="_init_device_8c_source.html">InitDevice.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_init_device_8c_source.html#l00531">531</a> of file <a class="el" href="_init_device_8c_source.html">InitDevice.c</a>.</p>
 
 </div>
 </div>
@@ -411,7 +425,7 @@ Functions</h2></td></tr>
 <li>SYSCLK unavailable at Port pin</li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="_init_device_8c_source.html#l00632">632</a> of file <a class="el" href="_init_device_8c_source.html">InitDevice.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_init_device_8c_source.html#l00638">638</a> of file <a class="el" href="_init_device_8c_source.html">InitDevice.c</a>.</p>
 
 </div>
 </div>
@@ -501,7 +515,7 @@ Functions</h2></td></tr>
 <li>P0.7 output is push-pull</li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="_init_device_8c_source.html#l00536">536</a> of file <a class="el" href="_init_device_8c_source.html">InitDevice.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_init_device_8c_source.html#l00542">542</a> of file <a class="el" href="_init_device_8c_source.html">InitDevice.c</a>.</p>
 
 </div>
 </div>
@@ -617,7 +631,7 @@ Functions</h2></td></tr>
 <li>P1.7 output is open-drain</li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="_init_device_8c_source.html#l00584">584</a> of file <a class="el" href="_init_device_8c_source.html">InitDevice.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_init_device_8c_source.html#l00590">590</a> of file <a class="el" href="_init_device_8c_source.html">InitDevice.c</a>.</p>
 
 </div>
 </div>
@@ -655,7 +669,7 @@ Functions</h2></td></tr>
 <li>P1.7 is high. Set P1.7 to drive or float high</li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="_init_device_8c_source.html#l00491">491</a> of file <a class="el" href="_init_device_8c_source.html">InitDevice.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_init_device_8c_source.html#l00497">497</a> of file <a class="el" href="_init_device_8c_source.html">InitDevice.c</a>.</p>
 
 </div>
 </div>
@@ -683,7 +697,7 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_init_device_8c_source.html#l00661">661</a> of file <a class="el" href="_init_device_8c_source.html">InitDevice.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_init_device_8c_source.html#l00667">667</a> of file <a class="el" href="_init_device_8c_source.html">InitDevice.c</a>.</p>
 
 </div>
 </div>
@@ -760,7 +774,7 @@ Functions</h2></td></tr>
 <li>Start Timer 2 running</li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="_init_device_8c_source.html#l00436">436</a> of file <a class="el" href="_init_device_8c_source.html">InitDevice.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_init_device_8c_source.html#l00442">442</a> of file <a class="el" href="_init_device_8c_source.html">InitDevice.c</a>.</p>
 
 </div>
 </div>

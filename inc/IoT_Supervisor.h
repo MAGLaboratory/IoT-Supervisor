@@ -18,6 +18,9 @@
 //-----------------------------------------------------------------------------
 #define RESET_P (P1_B1)
 #define nLED (P1_B4)
+#define XCVR_TX (P0_B3)
+
+#define VIN_CMP_CPOUT() (CMP0CN0 & CMP0CN0_CPOUT__BMASK)
 /** @addtogroup Modbus_WDT_State_Machine
  *  @{
  */
@@ -35,65 +38,101 @@
 //-----------------------------------------------------------------------------
 // Type Definitions
 //-----------------------------------------------------------------------------
-// voltage in state machine _ type
+/**
+ * @addtogroup Voltage_State_Machine
+ * @{
+ */
+/**
+ * Voltage in (and Reset) State Machine _ Type
+ *
+ * <b>V</b>oltage <b>in</b> (and Reset) <b>S</b>tate <b>M</b>achine
+ * <b>_ T</b>ype
+ */
 typedef enum
 {
-	eVIN_Init = 0,
-	eVIN_VLow,
-	eVIN_OK
+	/**
+	 * Voltage in and Reset State Machine Initial State
+	 *
+	 * The state machine sets reset to true in this state, and the state
+	 * machine transitions into this state when the Modbus WDT bites.
+	 */
+	eVIN_Init = 0,/**< eVIN_Init */
+	eVIN_VLow, ///< Voltage Low State
+	eVIN_OK ///< Voltage in and Reset State Machine OK
 } VinSm_t;
-
-// modbus watchdog timer state machine status _ type
+/** @} */ // group Voltage_State_Machine
+/**
+ * @addtogroup Modbus_WDT_State_Machine
+ * @{
+ */
+/**
+ * Modbus Watchdog Timer State Machine Status _ Type
+ *
+ * <b>M</b>od<b>b</b>us <b>W</b>atch<b>d</b>og <b>T</b>imer <b>S</b>tate
+ * <b>M</b>achine <b>S</b>tatus <b>_ T</b>ype
+ */
 typedef enum
 {
-	eMW_Ini = 0,
-	eMW_En,
-	eMW_Timeout
+	eMW_Ini = 0, ///< Initial State.
+	eMW_En, ///< Enable State
+	eMW_Timeout ///< Timeout State.  This watchdog bites!
 } mbWDTsmS_t;
-
-// last reset source _ type
+/** @} */ // Modbus_WDT_State_Machine
+/**
+ * @addtogroup Main_Application
+ * @{
+ */
+/**
+ * Last Reset Source _ Type
+ *
+ * <b>Last</b> <b>R</b>e<b>s</b>e<b>t</b> Source <b>_ T</b>ype
+ */
 typedef enum
 {
-	eLR_Init = 0,
-	eLR_VSM,
-	eLR_WDT
+	eLR_Init = 0, ///< Initial State.  No recorded reset.
+	eLR_VSM, ///< A low voltage condition caused the last reset.
+	eLR_WDT ///< The modbus watchdog timer caused the last reset.
 } LastRst_t;
-
-// verification status _ type
+/** @} */ // Main_Application
+/**
+ * @addtogroup Configuration_State_Machine
+ * @{
+ */
+/**
+ * Verification Status _ Type
+ *
+ * <b>Verif</b>ication <b>St</b>atus <b>_ T</b>ype
+ */
 typedef enum
 {
-	eVS_Norm = 0,
-	eVS_Cfg,
-	eVS_Prog,
-	eVS_Setup
+	/**
+	 * Normal Verification Status
+	 *
+	 * No configuration errors or program memory CRC mismatch detected.
+	 */
+	eVS_Norm = 0,/**< eVS_Norm */
+	eVS_Cfg, ///< Configuration Error or CRC Mismatch Detected
+	eVS_Prog, ///< Program Memory Mismatch Detected
+	eVS_Setup ///< Initial Setup.
 } VerifSt_t;
 
-// supervisor (device) status
-typedef union
-{
-	// bitfield access
-	struct
-	{
-		VinSm_t vinSmS :2;
-		mbWDTsmS_t wdtSmS :2;
-		LastRst_t lastRstS :2;
-		VerifSt_t verifSt :2;
-	} v;
-	// byte access
-	uint8_t b;
-} sv_dev_sta_t;
-
-// configuration memory state machine _ type
+/**
+ * Configuration Memory State Machine _ Type
+ *
+ * <b>C</b>on<b>f</b>i<b>g</b>uration Memory <b>S</b>tate <b>M</b>achine
+ * <b>_ T</b>ype
+ */
 typedef enum
 {
-	eCFG_Idle = 0,
-	eCFG_Load,
-	eCFG_Cache,
-	eCFG_Commit,
-	eCFG_Erase,
-	eCFG_Write
+	eCFG_Idle = 0, ///< Idle State.  No configuration state machine activity.
+	eCFG_Load, ///< Configuration Loading from memory
+	eCFG_Cache, ///< New Configuration is Caching from Modbus
+	eCFG_Commit, ///< New Configuration is Committed (Active)
+	eCFG_Erase, ///< Erase the old Configuration (from Flash)
+	eCFG_Write ///< Write the new Configuration (into Flash)
 } CfgSM_t;
 
+/// This struct is a storage type for flash memory.
 typedef struct
 {
 	uint8_t sid;
@@ -101,6 +140,34 @@ typedef struct
 	uint8_t wdto;
 	uint16_t pw;
 } cfg_t;
+/** @} */ // group Configuration_State_Machine
+
+/**
+ * @addtogroup Main_Application
+ * @{
+ */
+/**
+ * Supervisor (Device) Status _ Type
+ *
+ * <b>S</b>uper<b>v</b>isor (<b>Dev</b>ice) <b>Sta</b>tus <b>_ T</b>ype
+ */
+typedef union
+{
+	/* bitfield access
+	 *
+	 * @note these fields are represented in LSB first which is normal in C
+	 */
+	struct
+	{
+		VinSm_t vinSmS :2;
+		mbWDTsmS_t wdtSmS :2;
+		LastRst_t lastRstS :2;
+		VerifSt_t verifSt :2;
+	} v;
+	/// byte access
+	uint8_t b;
+} sv_dev_sta_t;
+/** @} */ // Main_Application
 
 //-----------------------------------------------------------------------------
 // Globals

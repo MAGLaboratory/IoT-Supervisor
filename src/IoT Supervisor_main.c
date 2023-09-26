@@ -55,7 +55,7 @@ volatile uint8_t t0Count = 0;
 /** Software counter to implement modbus inter-byte timeout */
 uint8_t T0C_TOP = 0;
 /******************************************************************************
- * @defgroup Reset_State_Machine Reset State Machine
+ * @defgroup Voltage_State_Machine Voltage In and Reset State Machine
  ******************************************************************************
  * @{
  * @brief vin and reset the state machine
@@ -96,7 +96,7 @@ void VinSm(void)
 	static uint8_t sCounter = 0;
 
 	// determine input state
-	bool VinCmp = CMP0CN0 & CMP0CN0_CPOUT__BMASK;
+	bool VinCmp = VIN_CMP_CPOUT();
 
 	// default output states
 	nReset = false;
@@ -162,7 +162,7 @@ void VinSm(void)
 	// reset flags
 	cprif = false;
 }
-/** @} */ // section Reset State Machine
+/** @} */ // section Voltage State Machine
 /******************************************************************************
  * @defgroup Modbus_WDT_State_Machine Modbus WDT State Machine
  ******************************************************************************
@@ -289,6 +289,9 @@ void mbWDTsm(void)
 // configuration variables
 /**
  * Stores the header of the configuration page in FLASH
+ *
+ * This is the <b>ex</b>pected <b>c</b>on<b>f</b>i<b>g</b>uration
+ * <b>header</b>.
  */
 code const uint8_t ex_cfg_header[] =
 {
@@ -299,7 +302,7 @@ code const uint8_t ex_cfg_header[] =
 	'0' 			// header version
 };
 /** Configuration header length */
-#define C_CFG_HEADER_LEN (8)
+#define C_CFG_HEADER_LEN (sizeof(ex_cfg_header))
 /**
  * Stores the default configuration data.
  *
@@ -318,7 +321,7 @@ code const cfg_t default_cfg =
  *
  * The password is stored in two bytes.
  */
-#define C_CFG_DATA_LEN (5)
+#define C_CFG_DATA_LEN (sizeof(cfg_t))
 /** configuration CRC length (16 bits) */
 #define C_CFG_C_CRC_LEN (2)
 /** program CRC length (16 bits) */
@@ -474,6 +477,8 @@ bool dcfg_check()
  * This includes loading the configuration from code memory and checking the
  * CRC of program memory.
  *
+ * \mermaid{cfgmem}
+ *
  * The verification status is set based on greater than logic.
  * If code memory lacks the correct configuration header, the verification
  * status is "Setup."
@@ -491,6 +496,8 @@ void cfg_load()
 	cfg_ok = ccfg_check();
 
 	// calculate PROG CRC
+	// this is set to run even if the CRC is not checked in order to ensure
+	// a valid startup time for debugging is achieved
 	calc_prog_crc = 0xFFFF;
 	for (addr =	0; addr < C_FOUND_PROG_END; addr++)
 	{
@@ -501,12 +508,14 @@ void cfg_load()
 	if (sv_dev_sta.v.verifSt != eVS_Setup)
 	{
 		i = *(pFLASH_CONF + C_CFG_C_CRC_END);
+		// check low byte
 		if ((calc_prog_crc & 0xFF) != i)
 		{
 			sv_dev_sta.v.verifSt = eVS_Prog;
 		}
 		else
 		{
+			// check high byte
 			i = *(pFLASH_CONF + C_CFG_C_CRC_END + 1);
 			if (calc_prog_crc >> 8 != i)
 			{
