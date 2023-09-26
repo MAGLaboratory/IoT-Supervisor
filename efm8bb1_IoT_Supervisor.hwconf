@@ -3,11 +3,14 @@
   <mode name="DefaultMode">
     <property object="ADC_0" propertyId="ABPeripheral.included" value="true"/>
     <property object="ADC_0" propertyId="adc.accumulatorconfiguration.accumulatorshiftandjustify" value="Left justified"/>
-    <property object="ADC_0" propertyId="adc.configuration.sarclockdivider" value="15"/>
-    <property object="ADC_0" propertyId="adc.control.enableadc" value="Enabled"/>
+    <property object="ADC_0" propertyId="adc.burstmodetracktime.burstmodetrackingtime" value="34"/>
+    <property object="ADC_0" propertyId="adc.configuration.sarclockdivider" value="6"/>
+    <property object="ADC_0" propertyId="adc.control.enableburstmode" value="Enabled"/>
     <property object="ADC_0" propertyId="adc.control.enablecommonmodebuffer" value="Enabled"/>
     <property object="ADC_0" propertyId="adc.control.startofconversion" value="Timer 2 overflow"/>
     <property object="ADC_0" propertyId="adc.multiplexerselection.positiveinputselection" value="ADC0.1 (P0.1)"/>
+    <property object="ADC_0" propertyId="adc.powercontrol.burstmodepoweruptime" value="4"/>
+    <property object="ADC_0" propertyId="adc.powercontrol.enablelowpowermode" value="Enabled"/>
     <property object="ADC_0" propertyId="adc.powercontrol.enablemuxandreferencelowpowermode" value="Enabled"/>
     <property object="ADC_0" propertyId="adc.powercontrol.selectbiaspower" value="Bias current mode 3 (SARCLK &lt;= 4 MHz)"/>
     <property object="ADC_0" propertyId="adc.view.view" value="Advanced"/>
@@ -91,11 +94,14 @@
   <mode name="DebugMode">
     <property object="ADC_0" propertyId="ABPeripheral.included" value="true"/>
     <property object="ADC_0" propertyId="adc.accumulatorconfiguration.accumulatorshiftandjustify" value="Left justified"/>
-    <property object="ADC_0" propertyId="adc.configuration.sarclockdivider" value="15"/>
-    <property object="ADC_0" propertyId="adc.control.enableadc" value="Enabled"/>
+    <property object="ADC_0" propertyId="adc.burstmodetracktime.burstmodetrackingtime" value="34"/>
+    <property object="ADC_0" propertyId="adc.configuration.sarclockdivider" value="6"/>
+    <property object="ADC_0" propertyId="adc.control.enableburstmode" value="Enabled"/>
     <property object="ADC_0" propertyId="adc.control.enablecommonmodebuffer" value="Enabled"/>
     <property object="ADC_0" propertyId="adc.control.startofconversion" value="Timer 2 overflow"/>
     <property object="ADC_0" propertyId="adc.multiplexerselection.positiveinputselection" value="ADC0.1 (P0.1)"/>
+    <property object="ADC_0" propertyId="adc.powercontrol.burstmodepoweruptime" value="4"/>
+    <property object="ADC_0" propertyId="adc.powercontrol.enablelowpowermode" value="Enabled"/>
     <property object="ADC_0" propertyId="adc.powercontrol.enablemuxandreferencelowpowermode" value="Enabled"/>
     <property object="ADC_0" propertyId="adc.powercontrol.selectbiaspower" value="Bias current mode 3 (SARCLK &lt;= 4 MHz)"/>
     <property object="ADC_0" propertyId="adc.view.view" value="Advanced"/>

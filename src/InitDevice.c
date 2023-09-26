@@ -375,12 +375,12 @@ extern void ADC_0_enter_DefaultMode_from_RESET(void)
 
 	// $[ADC0CF - ADC0 Configuration]
 	/***********************************************************************
-	 - SAR Clock Divider = 0x0F
+	 - SAR Clock Divider = 0x06
 	 - ADC0 operates in 10-bit or 12-bit mode 
 	 - The on-chip PGA gain is 0.5
 	 - Normal Track Mode
 	 ***********************************************************************/
-	ADC0CF = (0x0F << ADC0CF_ADSC__SHIFT) | ADC0CF_AD8BE__NORMAL
+	ADC0CF = (0x06 << ADC0CF_ADSC__SHIFT) | ADC0CF_AD8BE__NORMAL
 			| ADC0CF_ADGN__GAIN_0P5 | ADC0CF_ADTM__TRACK_NORMAL;
 	// [ADC0CF - ADC0 Configuration]$
 
@@ -397,16 +397,22 @@ extern void ADC_0_enter_DefaultMode_from_RESET(void)
 	// [ADC0AC - ADC0 Accumulator Configuration]$
 
 	// $[ADC0TK - ADC0 Burst Mode Track Time]
+	/***********************************************************************
+	 - The ADC will re-track and sample the input four times during a 12-bit
+	 conversion
+	 - Burst Mode Tracking Time = 0x22
+	 ***********************************************************************/
+	ADC0TK = ADC0TK_AD12SM__SAMPLE_FOUR | (0x22 << ADC0TK_ADTK__SHIFT);
 	// [ADC0TK - ADC0 Burst Mode Track Time]$
 
 	// $[ADC0PWR - ADC0 Power Control]
 	/***********************************************************************
-	 - Burst Mode Power Up Time = 0x0F
-	 - Disable low power mode
+	 - Burst Mode Power Up Time = 0x04
+	 - Enable low power mode 
 	 - Low power mode enabled 
 	 - Select bias current mode 3 
 	 ***********************************************************************/
-	ADC0PWR = (0x0F << ADC0PWR_ADPWR__SHIFT) | ADC0PWR_ADLPM__LP_BUFFER_DISABLED
+	ADC0PWR = (0x04 << ADC0PWR_ADPWR__SHIFT) | ADC0PWR_ADLPM__LP_BUFFER_ENABLED
 			| ADC0PWR_ADMXLP__LP_MUX_VREF_ENABLED | ADC0PWR_ADBIAS__MODE3;
 	// [ADC0PWR - ADC0 Power Control]$
 
@@ -424,11 +430,11 @@ extern void ADC_0_enter_DefaultMode_from_RESET(void)
 
 	// $[ADC0CN0 - ADC0 Control 0]
 	/***********************************************************************
-	 - Enable ADC0 
+	 - Enable ADC0 burst mode
 	 - ADC0 conversion initiated on overflow of Timer 2
 	 ***********************************************************************/
 	ADC0CN0 &= ~ADC0CN0_ADCM__FMASK;
-	ADC0CN0 |= ADC0CN0_ADEN__ENABLED | ADC0CN0_ADCM__TIMER2;
+	ADC0CN0 |= ADC0CN0_ADBMEN__BURST_ENABLED | ADC0CN0_ADCM__TIMER2;
 	// [ADC0CN0 - ADC0 Control 0]$
 
 }
@@ -688,3 +694,4 @@ extern void TIMER01_0_enter_DebugMode_from_DefaultMode(void)
 	// [Timer Restoration]$
 
 }
+
