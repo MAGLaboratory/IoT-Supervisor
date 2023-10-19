@@ -6,10 +6,7 @@ var _io_t___supervisor_8h =
     [ "C_SID_MIN", "group___configuration___state___machine.html#ga36cea86425025f8b068256d0254b49c5", null ],
     [ "C_WDT_DIS", "group___modbus___w_d_t___state___machine.html#ga297e9ea9b92297b1cf3d85e3b12e8f30", null ],
     [ "C_WDT_PET", "group___modbus___w_d_t___state___machine.html#ga8f2ab3d655054566ca4857f1ffbeb938", null ],
-    [ "nLED", "_io_t___supervisor_8h.html#a4ee54671b212fa40e655eae67c043a9b", null ],
-    [ "RESET_P", "_io_t___supervisor_8h.html#af4aa38c233ba7beb1af589ff95cd2717", null ],
-    [ "VIN_CMP_CPOUT", "_io_t___supervisor_8h.html#a75f2eb1ed9d5fb9196255682a29ab939", null ],
-    [ "XCVR_TX", "_io_t___supervisor_8h.html#a9f2fe96c8829b8774687bc4099de99e3", null ],
+    [ "t1Count_t", "_io_t___supervisor_8h.html#acc52489b520d2a9d93572b350a5bc346", null ],
     [ "CfgSM_t", "group___configuration___state___machine.html#ga2e2885d00577c7076677cc277ac4f238", [
       [ "eCFG_Idle", "group___configuration___state___machine.html#gga2e2885d00577c7076677cc277ac4f238aaacc79559a18ebcf22cccb549ebacd78", null ],
       [ "eCFG_Load", "group___configuration___state___machine.html#gga2e2885d00577c7076677cc277ac4f238a77c6aa8579abb456a1022f2c0749809b", null ],
@@ -53,5 +50,5 @@ var _io_t___supervisor_8h =
     [ "sv_dev_sta", "group___main___application.html#ga5aeeb2c06cb9bc8498f6ca5a520157d5", null ],
     [ "T0C_TOP", "group___main___application.html#ga06f41e11cde40f73d65c73f928a89ae9", null ],
     [ "t0Count", "group___main___application.html#ga9f016462fc2803075b67d903c4045aa7", null ],
-    [ "t1Count", "group___main___application.html#gabff40580a49bdbf86db348e6ab0a8dc1", null ]
+    [ "t1Count", "group___main___application.html#ga41510eddee8f6b5ed47ac84a1802ed05", null ]
 ];

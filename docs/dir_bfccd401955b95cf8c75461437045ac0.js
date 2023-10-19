@@ -1,7 +1,7 @@
 var dir_bfccd401955b95cf8c75461437045ac0 =
 [
-    [ "debugpins.h", "debugpins_8h.html", "debugpins_8h" ],
     [ "EFM8BB1_FlashPrimitives.h", "_e_f_m8_b_b1___flash_primitives_8h.html", "_e_f_m8_b_b1___flash_primitives_8h" ],
+    [ "hardware.h", "hardware_8h.html", "hardware_8h" ],
     [ "InitDevice.h", "_init_device_8h.html", "_init_device_8h" ],
     [ "IoT_Supervisor.h", "_io_t___supervisor_8h.html", "_io_t___supervisor_8h" ],
     [ "ModbusMiddleWare.h", "_modbus_middle_ware_8h.html", "_modbus_middle_ware_8h" ],

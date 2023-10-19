@@ -108,11 +108,11 @@ $(document).ready(function(){initNavTree('_io_t_01_supervisor__main_8c.html','')
   <div class="headertitle"><div class="title">IoT Supervisor_main.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;SI_EFM8BB1_Register_Enums.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="hardware_8h_source.html">hardware.h</a>&gt;</code><br />
+<code>#include &lt;SI_EFM8BB1_Register_Enums.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="_init_device_8h_source.html">InitDevice.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_io_t___supervisor_8h_source.html">IoT_Supervisor.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_modbus_middle_ware_8h_source.html">ModbusMiddleWare.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="debugpins_8h_source.html">debugpins.h</a>&quot;</code><br />
 <code>#include &quot;PetitModbus.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="_e_f_m8_b_b1___flash_primitives_8h_source.html">EFM8BB1_FlashPrimitives.h</a>&quot;</code><br />
 </div>
@@ -120,6 +120,16 @@ $(document).ready(function(){initNavTree('_io_t_01_supervisor__main_8c.html','')
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
+<tr class="memitem:gac1580c8fe58aec053a031b2fb84e5016" id="r_gac1580c8fe58aec053a031b2fb84e5016"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___blinker.html#gac1580c8fe58aec053a031b2fb84e5016">HB_DIV</a>&#160;&#160;&#160;(9u)</td></tr>
+<tr class="separator:gac1580c8fe58aec053a031b2fb84e5016"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga28232e33acc0bede8ef1d909136a3f36" id="r_ga28232e33acc0bede8ef1d909136a3f36"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___blinker.html#ga28232e33acc0bede8ef1d909136a3f36">HB_DUTYCYCLE</a>&#160;&#160;&#160;(4u)</td></tr>
+<tr class="separator:ga28232e33acc0bede8ef1d909136a3f36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga676c6d2aaaa9903a62ae18e182923d16" id="r_ga676c6d2aaaa9903a62ae18e182923d16"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___blinker.html#ga676c6d2aaaa9903a62ae18e182923d16">HB_SKIP</a>&#160;&#160;&#160;(4u)</td></tr>
+<tr class="separator:ga676c6d2aaaa9903a62ae18e182923d16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gade65acac06eb242d02d71648b41b27f6" id="r_gade65acac06eb242d02d71648b41b27f6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___blinker.html#gade65acac06eb242d02d71648b41b27f6">FAST_BLINK</a>&#160;&#160;&#160;(9u)</td></tr>
+<tr class="separator:gade65acac06eb242d02d71648b41b27f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad2f2358ce2a0e5765d5eb1087633a7e6" id="r_gad2f2358ce2a0e5765d5eb1087633a7e6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___blinker.html#gad2f2358ce2a0e5765d5eb1087633a7e6">SLOW_BLINK</a>&#160;&#160;&#160;(<a class="el" href="group___blinker.html#gade65acac06eb242d02d71648b41b27f6">FAST_BLINK</a> + 2u)</td></tr>
+<tr class="separator:gad2f2358ce2a0e5765d5eb1087633a7e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gafc1dec4dc888692cdf30987658c2ab88" id="r_gafc1dec4dc888692cdf30987658c2ab88"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___voltage___state___machine.html#gafc1dec4dc888692cdf30987658c2ab88">SCOUNTER_ONE_SECOND</a>&#160;&#160;&#160;(125)</td></tr>
 <tr class="separator:gafc1dec4dc888692cdf30987658c2ab88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab4cd620a6ff382f2308515027d02e9b2" id="r_gab4cd620a6ff382f2308515027d02e9b2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___modbus___w_d_t___state___machine.html#gab4cd620a6ff382f2308515027d02e9b2">C_DEFAULT_MB_WD_TIMEOUT</a>&#160;&#160;&#160;(15)</td></tr>
@@ -132,7 +142,7 @@ Macros</h2></td></tr>
 <tr class="separator:gab1cca6a1cf1c6efba75c3ccab43e1518"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0f6656888b6da3d751ce6bb0644d0dd9" id="r_ga0f6656888b6da3d751ce6bb0644d0dd9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___configuration___state___machine.html#ga0f6656888b6da3d751ce6bb0644d0dd9">C_PW_DEFAULT</a>&#160;&#160;&#160;(0xDEFA)</td></tr>
 <tr class="separator:ga0f6656888b6da3d751ce6bb0644d0dd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2b8473431a4fe63b20294043b9ae4773" id="r_ga2b8473431a4fe63b20294043b9ae4773"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___configuration___state___machine.html#ga2b8473431a4fe63b20294043b9ae4773">C_FOUND_PROG_END</a>&#160;&#160;&#160;(0x0FE5)</td></tr>
+<tr class="memitem:ga2b8473431a4fe63b20294043b9ae4773" id="r_ga2b8473431a4fe63b20294043b9ae4773"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___configuration___state___machine.html#ga2b8473431a4fe63b20294043b9ae4773">C_FOUND_PROG_END</a>&#160;&#160;&#160;(0x10C0)</td></tr>
 <tr class="separator:ga2b8473431a4fe63b20294043b9ae4773"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga36de940e9065f10013db52ed98a34b1f" id="r_ga36de940e9065f10013db52ed98a34b1f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___configuration___state___machine.html#ga36de940e9065f10013db52ed98a34b1f">C_CFG_HEADER_LEN</a>&#160;&#160;&#160;(sizeof(<a class="el" href="group___configuration___state___machine.html#ga4786f95f528dfb7d6225d35b27072418">ex_cfg_header</a>))</td></tr>
 <tr class="separator:ga36de940e9065f10013db52ed98a34b1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -154,6 +164,8 @@ Functions</h2></td></tr>
 <tr class="memitem:ga09296ef32928eaaa20010361d50ddf08" id="r_ga09296ef32928eaaa20010361d50ddf08"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___main___application.html#ga09296ef32928eaaa20010361d50ddf08">SiLabs_Startup</a> (void)</td></tr>
 <tr class="memdesc:ga09296ef32928eaaa20010361d50ddf08"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="group___main___application.html#ga09296ef32928eaaa20010361d50ddf08" title="SiLabs_Startup() Routine.">SiLabs_Startup()</a> Routine.  <br /></td></tr>
 <tr class="separator:ga09296ef32928eaaa20010361d50ddf08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac3904e59393211c5ea87813812356e05" id="r_gac3904e59393211c5ea87813812356e05"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___blinker.html#gac3904e59393211c5ea87813812356e05">blinker</a> (void)</td></tr>
+<tr class="separator:gac3904e59393211c5ea87813812356e05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae07580e6a3e7427894a9809c979f3f65" id="r_gae07580e6a3e7427894a9809c979f3f65"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___voltage___state___machine.html#gae07580e6a3e7427894a9809c979f3f65">VinSm</a> (void)</td></tr>
 <tr class="separator:gae07580e6a3e7427894a9809c979f3f65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga18a609d79f133d41b52d1cc90469be47" id="r_ga18a609d79f133d41b52d1cc90469be47"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___modbus___w_d_t___state___machine.html#ga18a609d79f133d41b52d1cc90469be47">mbWDTsm</a> (void)</td></tr>
@@ -175,12 +187,22 @@ Functions</h2></td></tr>
 Variables</h2></td></tr>
 <tr class="memitem:ga5aeeb2c06cb9bc8498f6ca5a520157d5" id="r_ga5aeeb2c06cb9bc8498f6ca5a520157d5"><td class="memItemLeft" align="right" valign="top">volatile <a class="el" href="unionsv__dev__sta__t.html">sv_dev_sta_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___main___application.html#ga5aeeb2c06cb9bc8498f6ca5a520157d5">sv_dev_sta</a> = {0}</td></tr>
 <tr class="separator:ga5aeeb2c06cb9bc8498f6ca5a520157d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabff40580a49bdbf86db348e6ab0a8dc1" id="r_gabff40580a49bdbf86db348e6ab0a8dc1"><td class="memItemLeft" align="right" valign="top">volatile uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___main___application.html#gabff40580a49bdbf86db348e6ab0a8dc1">t1Count</a> = 0</td></tr>
-<tr class="separator:gabff40580a49bdbf86db348e6ab0a8dc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga41510eddee8f6b5ed47ac84a1802ed05" id="r_ga41510eddee8f6b5ed47ac84a1802ed05"><td class="memItemLeft" align="right" valign="top">volatile <a class="el" href="_io_t___supervisor_8h.html#acc52489b520d2a9d93572b350a5bc346">t1Count_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___main___application.html#ga41510eddee8f6b5ed47ac84a1802ed05">t1Count</a> = 0</td></tr>
+<tr class="separator:ga41510eddee8f6b5ed47ac84a1802ed05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9f016462fc2803075b67d903c4045aa7" id="r_ga9f016462fc2803075b67d903c4045aa7"><td class="memItemLeft" align="right" valign="top">volatile uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___main___application.html#ga9f016462fc2803075b67d903c4045aa7">t0Count</a> = 0</td></tr>
 <tr class="separator:ga9f016462fc2803075b67d903c4045aa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga06f41e11cde40f73d65c73f928a89ae9" id="r_ga06f41e11cde40f73d65c73f928a89ae9"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___main___application.html#ga06f41e11cde40f73d65c73f928a89ae9">T0C_TOP</a> = 0</td></tr>
 <tr class="separator:ga06f41e11cde40f73d65c73f928a89ae9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab724f7c43d0d1bbb8401d0ef0abf8ac4" id="r_gab724f7c43d0d1bbb8401d0ef0abf8ac4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___blinker.html#gab724f7c43d0d1bbb8401d0ef0abf8ac4">sys_ok</a> = true</td></tr>
+<tr class="separator:gab724f7c43d0d1bbb8401d0ef0abf8ac4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9b72b6aa164172cd3d0b8dfe56833c11" id="r_ga9b72b6aa164172cd3d0b8dfe56833c11"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___blinker.html#ga9b72b6aa164172cd3d0b8dfe56833c11">configuring</a> = false</td></tr>
+<tr class="separator:ga9b72b6aa164172cd3d0b8dfe56833c11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf318e0fdf052bf1c57db435343dbbecc" id="r_gaf318e0fdf052bf1c57db435343dbbecc"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___blinker.html#gaf318e0fdf052bf1c57db435343dbbecc">hbdCount</a> = 0</td></tr>
+<tr class="separator:gaf318e0fdf052bf1c57db435343dbbecc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaae68010a7dda3c61c7edd0eb74195a5d" id="r_gaae68010a7dda3c61c7edd0eb74195a5d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___blinker.html#gaae68010a7dda3c61c7edd0eb74195a5d">hbd_state</a> = false</td></tr>
+<tr class="separator:gaae68010a7dda3c61c7edd0eb74195a5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafe53a3c1193d19d6a47b1b45c5001ba1" id="r_gafe53a3c1193d19d6a47b1b45c5001ba1"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___blinker.html#gafe53a3c1193d19d6a47b1b45c5001ba1">hbsCount</a> = 0</td></tr>
+<tr class="separator:gafe53a3c1193d19d6a47b1b45c5001ba1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga31390fb09ef36dd888ed0850ab41521d" id="r_ga31390fb09ef36dd888ed0850ab41521d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___voltage___state___machine.html#ga31390fb09ef36dd888ed0850ab41521d">nReset</a> = false</td></tr>
 <tr class="separator:ga31390fb09ef36dd888ed0850ab41521d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0483e3e419cbb0dcb1a54e2d9d7b78e6" id="r_ga0483e3e419cbb0dcb1a54e2d9d7b78e6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___voltage___state___machine.html#ga0483e3e419cbb0dcb1a54e2d9d7b78e6">modbusWdtSmEn</a> = false</td></tr>

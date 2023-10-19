@@ -271,7 +271,7 @@ Modbus Control Bitfield</h2>
 <p>The servant ID bitfield must be set to a number greater than or equal to <a class="el" href="group___configuration___state___machine.html#ga36cea86425025f8b068256d0254b49c5">C_SID_MIN</a> (1) and less than or equal to <a class="el" href="group___configuration___state___machine.html#ga00d0491c3afc5730a550797466e1e7ef">C_SID_MAX</a> (247). Like the other bitfield at this address, writing <code>0</code> to this bitfield does not change its value and allows the other bitfield <code>BAUD Enumeration</code> to be changed. The servant ID is set to <code>255</code> by default.</p>
 <h1><a class="anchor" id="branch-description"></a>
 Branch Description</h1>
-<p>This branch is for initial development. The style of calling something "zero" came from a style of anime calling their prequel series "zero."</p>
+<p>This branch is for porting the inital development performed on the EFM8BB1LCK with the added SP485 breakout onto the newly designed PCB with blinky LEDs.</p>
 <h1><a class="anchor" id="deployment"></a>
 Deployment</h1>
 <p>Is this section supposed to be about how this project was developed or how to start developing for it?</p>
@@ -306,7 +306,7 @@ Quickstart</h2>
 <div class="line">instr.read_registers(0x00, 2)</div>
 <div class="line"> </div>
 <div class="line"># write to Flash</div>
-<div class="line">instr.write_registers(0x01, 0xDEFA)</div>
+<div class="line">instr.write_register(0x01, 0xDEFA)</div>
 <div class="line"> </div>
 <div class="line"># check communication one last time</div>
 <div class="line">instr.read_registers(0x00, 2)</div>

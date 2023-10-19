@@ -113,6 +113,8 @@ $(document).ready(function(){initNavTree('group___main___application.html',''); 
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="groups" name="groups"></a>
 Modules</h2></td></tr>
+<tr class="memitem:group___blinker" id="r_group___blinker"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___blinker.html">Heart Beat Blinker</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:group___voltage___state___machine" id="r_group___voltage___state___machine"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___voltage___state___machine.html">Voltage In and Reset State Machine</a></td></tr>
 <tr class="memdesc:group___voltage___state___machine"><td class="mdescLeft">&#160;</td><td class="mdescRight">vin and reset the state machine <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -148,8 +150,8 @@ Functions</h2></td></tr>
 Variables</h2></td></tr>
 <tr class="memitem:ga5aeeb2c06cb9bc8498f6ca5a520157d5" id="r_ga5aeeb2c06cb9bc8498f6ca5a520157d5"><td class="memItemLeft" align="right" valign="top">volatile <a class="el" href="unionsv__dev__sta__t.html">sv_dev_sta_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___main___application.html#ga5aeeb2c06cb9bc8498f6ca5a520157d5">sv_dev_sta</a> = {0}</td></tr>
 <tr class="separator:ga5aeeb2c06cb9bc8498f6ca5a520157d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabff40580a49bdbf86db348e6ab0a8dc1" id="r_gabff40580a49bdbf86db348e6ab0a8dc1"><td class="memItemLeft" align="right" valign="top">volatile uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___main___application.html#gabff40580a49bdbf86db348e6ab0a8dc1">t1Count</a> = 0</td></tr>
-<tr class="separator:gabff40580a49bdbf86db348e6ab0a8dc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga41510eddee8f6b5ed47ac84a1802ed05" id="r_ga41510eddee8f6b5ed47ac84a1802ed05"><td class="memItemLeft" align="right" valign="top">volatile <a class="el" href="_io_t___supervisor_8h.html#acc52489b520d2a9d93572b350a5bc346">t1Count_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___main___application.html#ga41510eddee8f6b5ed47ac84a1802ed05">t1Count</a> = 0</td></tr>
+<tr class="separator:ga41510eddee8f6b5ed47ac84a1802ed05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9f016462fc2803075b67d903c4045aa7" id="r_ga9f016462fc2803075b67d903c4045aa7"><td class="memItemLeft" align="right" valign="top">volatile uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___main___application.html#ga9f016462fc2803075b67d903c4045aa7">t0Count</a> = 0</td></tr>
 <tr class="separator:ga9f016462fc2803075b67d903c4045aa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga06f41e11cde40f73d65c73f928a89ae9" id="r_ga06f41e11cde40f73d65c73f928a89ae9"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___main___application.html#ga06f41e11cde40f73d65c73f928a89ae9">T0C_TOP</a> = 0</td></tr>
@@ -179,7 +181,7 @@ Variables</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="_io_t___supervisor_8h_source.html#l00090">90</a> of file <a class="el" href="_io_t___supervisor_8h_source.html">IoT_Supervisor.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t___supervisor_8h_source.html#l00087">87</a> of file <a class="el" href="_io_t___supervisor_8h_source.html">IoT_Supervisor.h</a>.</p>
 
 </div>
 </div>
@@ -202,9 +204,9 @@ Variables</h2></td></tr>
 <p>This is the main function where the configuration and modbus are run.</p>
 <p>It is assumed that the main function is run after the cinit and startup implementations, so all global and static variables are initialized to their correct default values.</p>
 <p>The main function takes into consideration the reset condition to determine whether the vin state machine should start into the "ok" state or the "Init" state.</p>
-<p>The main function implements a counter-based system using the <a class="el" href="group___main___application.html#gabff40580a49bdbf86db348e6ab0a8dc1">t1Count</a> global which is incremented once a millisecond. An internal counter is incremented each time the modbus loop is executed. This makes it acceptable for the modbus process to overrun its timeslot through multiple cycles without affecting the number of times it is executed for timing purposes. Note that there is an anti-windup feature activated when <a class="el" href="group___configuration___state___machine.html#ga7624452708e1f4a54f678332e81c4867">run_petitmodbus</a> is not set where the internal counter is immediately set to the value of <a class="el" href="group___main___application.html#gabff40580a49bdbf86db348e6ab0a8dc1">t1Count</a> rather than incremented upon each execution. </p><dl class="section return"><dt>Returns</dt><dd>main functions usually have a return that should never get reached. </dd></dl>
+<p>The main function implements a counter-based system using the <a class="el" href="group___main___application.html#ga41510eddee8f6b5ed47ac84a1802ed05">t1Count</a> global which is incremented once a millisecond. An internal counter is incremented each time the modbus loop is executed. This makes it acceptable for the modbus process to overrun its timeslot through multiple cycles without affecting the number of times it is executed for timing purposes. Note that there is an anti-windup feature activated when <a class="el" href="group___configuration___state___machine.html#ga7624452708e1f4a54f678332e81c4867">run_petitmodbus</a> is not set where the internal counter is immediately set to the value of <a class="el" href="group___main___application.html#ga41510eddee8f6b5ed47ac84a1802ed05">t1Count</a> rather than incremented upon each execution. </p><dl class="section return"><dt>Returns</dt><dd>main functions usually have a return that should never get reached. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00713">713</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00835">835</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -227,7 +229,7 @@ Variables</h2></td></tr>
 <p><a class="el" href="group___main___application.html#ga09296ef32928eaaa20010361d50ddf08" title="SiLabs_Startup() Routine.">SiLabs_Startup()</a> Routine. </p>
 <p>This function is called immediately after reset, before the initialization code is run in SILABS_STARTUP.A51 (which runs before <a class="el" href="group___main___application.html#ga840291bc02cba5474a4cb46a9b9566fe">main()</a> ). This is a useful place to disable the watchdog timer, which is enabled by default and may trigger before <a class="el" href="group___main___application.html#ga840291bc02cba5474a4cb46a9b9566fe">main()</a> in some instances. </p>
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00039">39</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00038">38</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -244,7 +246,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00048">48</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00047">47</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -261,7 +263,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Software counter to implement modbus inter-byte timeout </p>
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00056">56</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00055">55</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
@@ -277,23 +279,23 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00054">54</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00053">53</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>
-<a id="gabff40580a49bdbf86db348e6ab0a8dc1" name="gabff40580a49bdbf86db348e6ab0a8dc1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gabff40580a49bdbf86db348e6ab0a8dc1">&#9670;&#160;</a></span>t1Count</h2>
+<a id="ga41510eddee8f6b5ed47ac84a1802ed05" name="ga41510eddee8f6b5ed47ac84a1802ed05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga41510eddee8f6b5ed47ac84a1802ed05">&#9670;&#160;</a></span>t1Count</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">volatile uint8_t t1Count = 0</td>
+          <td class="memname">volatile <a class="el" href="_io_t___supervisor_8h.html#acc52489b520d2a9d93572b350a5bc346">t1Count_t</a> t1Count = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00051">51</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_io_t_01_supervisor__main_8c_source.html#l00050">50</a> of file <a class="el" href="_io_t_01_supervisor__main_8c_source.html">IoT Supervisor_main.c</a>.</p>
 
 </div>
 </div>

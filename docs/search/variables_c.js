@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['v_0',['v',['../unionsv__dev__sta__t.html#af91687434945ba41cb901d8841fea73e',1,'sv_dev_sta_t']]],
-  ['verifst_1',['verifSt',['../unionsv__dev__sta__t.html#a660c20d83347693de4dc26906fa2a409',1,'sv_dev_sta_t']]],
-  ['vinsms_2',['vinSmS',['../unionsv__dev__sta__t.html#ac132976af83e93dc19c20cc736991ede',1,'sv_dev_sta_t']]]
+  ['t0c_5ftop_0',['t0c_top',['../group___main___application.html#ga06f41e11cde40f73d65c73f928a89ae9',1,'T0C_TOP:&#160;IoT Supervisor_main.c'],['../group___main___application.html#ga06f41e11cde40f73d65c73f928a89ae9',1,'T0C_TOP:&#160;IoT Supervisor_main.c']]],
+  ['t0count_1',['t0count',['../group___main___application.html#ga9f016462fc2803075b67d903c4045aa7',1,'t0Count:&#160;IoT Supervisor_main.c'],['../group___main___application.html#ga9f016462fc2803075b67d903c4045aa7',1,'t0Count:&#160;IoT Supervisor_main.c']]],
+  ['t1count_2',['t1count',['../group___main___application.html#ga41510eddee8f6b5ed47ac84a1802ed05',1,'t1Count:&#160;IoT Supervisor_main.c'],['../group___main___application.html#ga41510eddee8f6b5ed47ac84a1802ed05',1,'t1Count:&#160;IoT Supervisor_main.c']]]
 ];

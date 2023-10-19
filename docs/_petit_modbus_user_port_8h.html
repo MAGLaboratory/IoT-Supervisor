@@ -110,6 +110,7 @@ $(document).ready(function(){initNavTree('_petit_modbus_user_port_8h.html',''); 
 <div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &lt;stdbool.h&gt;</code><br />
 <code>#include &lt;SI_EFM8BB1_Register_Enums.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="hardware_8h_source.html">hardware.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_io_t___supervisor_8h_source.html">IoT_Supervisor.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_modbus_middle_ware_8h_source.html">ModbusMiddleWare.h</a>&quot;</code><br />
 </div>
@@ -151,13 +152,13 @@ Macros</h2></td></tr>
 <tr class="separator:ga01c483557b33c4176a1d15e40e35dc75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga75da6d92fc5731207c41bce439e995ca" id="r_ga75da6d92fc5731207c41bce439e995ca"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___io_t___s_v___e_f_m8_b_b1_l_c_k___petit___modbus___port.html#ga75da6d92fc5731207c41bce439e995ca">PetitPortCRC16Calc</a>(a,  d)&#160;&#160;&#160;<a class="el" href="_kirisaki___c_r_c_8c.html#a91cf4f2aefbeb1a7a9447e4f73f9b6c5">KirisakiCRC16Calc</a>(a, d)</td></tr>
 <tr class="separator:ga75da6d92fc5731207c41bce439e995ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5ba246729c2440de96d3e3f5f5692f79" id="r_ga5ba246729c2440de96d3e3f5f5692f79"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___io_t___s_v___e_f_m8_b_b1_l_c_k___petit___modbus___port.html#ga5ba246729c2440de96d3e3f5f5692f79">PetitLedSuc</a>()&#160;&#160;&#160;<a class="el" href="_io_t___supervisor_8h.html#a4ee54671b212fa40e655eae67c043a9b">nLED</a> = 0;</td></tr>
+<tr class="memitem:ga5ba246729c2440de96d3e3f5f5692f79" id="r_ga5ba246729c2440de96d3e3f5f5692f79"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___io_t___s_v___e_f_m8_b_b1_l_c_k___petit___modbus___port.html#ga5ba246729c2440de96d3e3f5f5692f79">PetitLedSuc</a>()&#160;&#160;&#160;nMB_LED = 0;</td></tr>
 <tr class="separator:ga5ba246729c2440de96d3e3f5f5692f79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1fc49ff97e0f5fd14abbcf67dc0c891a" id="r_ga1fc49ff97e0f5fd14abbcf67dc0c891a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___io_t___s_v___e_f_m8_b_b1_l_c_k___petit___modbus___port.html#ga1fc49ff97e0f5fd14abbcf67dc0c891a">PetitLedErrFail</a>()</td></tr>
 <tr class="separator:ga1fc49ff97e0f5fd14abbcf67dc0c891a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga41fb3a898ce3335de161989d63017a6a" id="r_ga41fb3a898ce3335de161989d63017a6a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___io_t___s_v___e_f_m8_b_b1_l_c_k___petit___modbus___port.html#ga41fb3a898ce3335de161989d63017a6a">PetitLedCrcFail</a>()</td></tr>
 <tr class="separator:ga41fb3a898ce3335de161989d63017a6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6b554b967c2a00fbdd2283ff8c7f43b9" id="r_ga6b554b967c2a00fbdd2283ff8c7f43b9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___io_t___s_v___e_f_m8_b_b1_l_c_k___petit___modbus___port.html#ga6b554b967c2a00fbdd2283ff8c7f43b9">PetitLedOff</a>()&#160;&#160;&#160;<a class="el" href="_io_t___supervisor_8h.html#a4ee54671b212fa40e655eae67c043a9b">nLED</a> = 1;</td></tr>
+<tr class="memitem:ga6b554b967c2a00fbdd2283ff8c7f43b9" id="r_ga6b554b967c2a00fbdd2283ff8c7f43b9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___io_t___s_v___e_f_m8_b_b1_l_c_k___petit___modbus___port.html#ga6b554b967c2a00fbdd2283ff8c7f43b9">PetitLedOff</a>()&#160;&#160;&#160;nMB_LED = 1;</td></tr>
 <tr class="separator:ga6b554b967c2a00fbdd2283ff8c7f43b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>

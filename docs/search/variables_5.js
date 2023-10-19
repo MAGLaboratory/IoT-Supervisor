@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['lastrsts_0',['lastRstS',['../unionsv__dev__sta__t.html#af171a5f631e30a629c542e211bfc4f93',1,'sv_dev_sta_t']]]
+  ['kirisakicrctable_0',['KirisakiCRCtable',['../_kirisaki___c_r_c_8c.html#af5855e095c78b148dc7bc64cfcad2a80',1,'Kirisaki_CRC.c']]]
 ];

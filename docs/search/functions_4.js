@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['flash_5fbyteread_0',['flash_byteread',['../_e_f_m8_b_b1___flash_primitives_8c.html#a97b5ff36abd29b47548798d3dffcbd5c',1,'FLASH_ByteRead(FLADDR addr):&#160;EFM8BB1_FlashPrimitives.c'],['../_e_f_m8_b_b1___flash_primitives_8h.html#a97b5ff36abd29b47548798d3dffcbd5c',1,'FLASH_ByteRead(FLADDR addr):&#160;EFM8BB1_FlashPrimitives.c']]],
-  ['flash_5fbytewrite_1',['flash_bytewrite',['../_e_f_m8_b_b1___flash_primitives_8c.html#aab0e9302febb724eb8fb37a34c0a6c79',1,'FLASH_ByteWrite(FLADDR addr, uint8_t byte):&#160;EFM8BB1_FlashPrimitives.c'],['../_e_f_m8_b_b1___flash_primitives_8h.html#aab0e9302febb724eb8fb37a34c0a6c79',1,'FLASH_ByteWrite(FLADDR addr, uint8_t byte):&#160;EFM8BB1_FlashPrimitives.c']]],
-  ['flash_5fpageerase_2',['flash_pageerase',['../_e_f_m8_b_b1___flash_primitives_8c.html#ae1aa31c6270524d6810b78380e9b999b',1,'FLASH_PageErase(FLADDR addr):&#160;EFM8BB1_FlashPrimitives.c'],['../_e_f_m8_b_b1___flash_primitives_8h.html#ae1aa31c6270524d6810b78380e9b999b',1,'FLASH_PageErase(FLADDR addr):&#160;EFM8BB1_FlashPrimitives.c']]]
+  ['enter_5fdefaultmode_5ffrom_5freset_0',['enter_defaultmode_from_reset',['../_init_device_8c.html#a0bab7eeb3d65d66727888b61479a744d',1,'enter_DefaultMode_from_RESET(void):&#160;InitDevice.c'],['../_init_device_8h.html#a0bab7eeb3d65d66727888b61479a744d',1,'enter_DefaultMode_from_RESET(void):&#160;InitDevice.c']]]
 ];

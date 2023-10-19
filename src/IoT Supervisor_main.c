@@ -60,6 +60,42 @@ uint8_t T0C_TOP = 0;
  * @{
  *
  * This section contains the heart beat blinker.
+ *
+ * The main driver of the heart beat LED display is a counter and some
+ * combinational logic performed on select bits on the counter.
+ * The counter selected is the previously implemented ::t1Count which
+ * increments every 1ms or so.
+ * A slow bit of the counter a bit two times faster are selected.
+ * These two bits are then "and"ed together to form the main heartbeat.
+ *
+ * This program implements two complications on the original heart beat
+ * functionality.
+ * One is a heart beat skip implemented as the counter ::hbsCount.
+ * This counter is triggered on ::hbs_re or "heart beat skip, rising edge"
+ * which is triggered on some combinational logic on the same ::t1Count as
+ * the main heartbeat.
+ * Specifically, it is triggered when the slow counter bit is high and the
+ * subsequent lesser-significant bits are zero.
+ * In bit-vector terms, this would look something like 0bzzzz zz10 0000 0000
+ * where 'z' is a "don't care" bit.
+ * The heart beat skip counter is set to 0 the cycle after it reaches its
+ * compare match value ::HB_SKIP.
+ * The original heart beat ::hb_intrenal can reach additional code when the
+ * hbsCount is zero.
+ *
+ * The other complication upon the original heart beat is a duty cycle
+ * limiter.
+ * Instead of implementing a compare value, this duty cycle counter is clocked
+ * on the execution of this block of code.
+ * It contains a state machine with two states: ack and nack.
+ * Upon the heart beat reaching this block of code, it is treated as a strobe.
+ * In the nack state, a high value on the strobe causes the state machine to
+ * transition into the ack state, set the counter to one, and light the LED.
+ * In the ack state, the counter up-counts on each execution until it reaches
+ * its top value.
+ * On the cycle after reaching the top value, the LED is unlit.
+ * When the heart beat signal (strobe) is no longer given, the state machine
+ * returns to its initial value, nack.
  *****************************************************************************/
 #define HB_DIV (9u) // approximately once a second, actually less
 #define HB_DUTYCYCLE (4u) // this value is one at minimum
