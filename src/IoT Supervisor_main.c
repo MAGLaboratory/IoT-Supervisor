@@ -14,16 +14,15 @@
 //-----------------------------------------------------------------------------
 // Includes
 //-----------------------------------------------------------------------------
+#include <hardware.h>
 #include <SI_EFM8BB1_Register_Enums.h>                  // SFR declarations
 #include "InitDevice.h"
 #include "IoT_Supervisor.h"
 #include "ModbusMiddleWare.h"
-#include "debugpins.h"
 #include "PetitModbus.h"
 #include "EFM8BB1_FlashPrimitives.h"
 // $[Generated Includes]
 // [Generated Includes]$
-
 /**
  * @defgroup Main_Application Main Application
  * @{
@@ -48,12 +47,93 @@ void SiLabs_Startup(void)
 volatile sv_dev_sta_t sv_dev_sta = {0};
 
 // controls the main loop
-volatile uint8_t t1Count = 0;
+volatile t1Count_t t1Count = 0;
 
 // used in the timer 0 loop
 volatile uint8_t t0Count = 0;
 /** Software counter to implement modbus inter-byte timeout */
 uint8_t T0C_TOP = 0;
+
+/******************************************************************************
+ * @defgroup Blinker Heart Beat Blinker
+ ******************************************************************************
+ * @{
+ *
+ * This section contains the heart beat blinker.
+ *****************************************************************************/
+#define HB_DIV (9u) // approximately once a second, actually less
+#define HB_DUTYCYCLE (4u) // this value is one at minimum
+#define HB_SKIP (4u) // number of heartbeat cycles to skip between blinks
+
+#define FAST_BLINK (9u) // one second
+#define SLOW_BLINK (FAST_BLINK + 2u)
+
+bool sys_ok = true;
+bool configuring = false;
+uint8_t hbdCount = 0; // heartbeat dutycycle counter
+bool hbd_state = false; // heartbeat dutycycle state machine state
+uint8_t hbsCount = 0; // heartbeat skip counter
+
+void blinker(void)
+{
+	// sys ok is heart beat
+	if (sys_ok == true && configuring == false)
+	{
+		// one: determine heart beat
+		// t1Count & (1 << HB_DIV)
+		bool hb_slow = (t1Count & (1 << HB_DIV)) != 0;
+		bool hb_fast = (t1Count & (1 << HB_DIV - 2)) != 0;
+		// heart beat slow _ rising edge
+		bool hbs_re = (t1Count & ((1 << HB_DIV + 1) - 1)) == (1 << HB_DIV);
+		bool hb_internal = hb_fast && hb_slow;
+		if (hbs_re == true && hbsCount < HB_SKIP)
+		{
+			hbsCount++;
+		}
+		else if (hbs_re == true)
+		{
+			hbsCount = 0;
+		}
+		// compute heartbeat skip
+		hb_internal = hb_internal && (hbsCount == 0);
+
+		// two: LED duty cycle limiter
+		if (hb_internal == true && hbd_state == false)
+		{
+			hbd_state = true;
+			hbdCount = 1;
+			nPWR_LED = 0;
+		}
+		else if (hb_internal == true) // hbd_state == true
+		{
+			if (hbdCount < HB_DUTYCYCLE)
+			{
+				hbdCount++;
+			}
+			else
+			{
+				nPWR_LED = 1;
+			}
+		}
+		else // hb_internal == false
+		{
+			hbd_state = false;
+			nPWR_LED = 1;
+		}
+	}
+	// sys not ok is short blink
+	else if (configuring == false) // sys_ok == false
+	{
+		nPWR_LED = !(t1Count & (1 << FAST_BLINK));
+	}
+	// configuring is long blink
+	else // configuring == true
+	{
+		nPWR_LED = !((t1Count & (1 << SLOW_BLINK)));
+	}
+}
+/** @} */
+
 /******************************************************************************
  * @defgroup Voltage_State_Machine Voltage In and Reset State Machine
  ******************************************************************************
@@ -126,11 +206,13 @@ void VinSm(void)
 		{
 			sv_dev_sta.v.vinSmS = eVIN_VLow;
 			sv_dev_sta.v.lastRstS = eLR_VSM;
+			sys_ok = false;
 		}
 		else if (modbusWdtExp == true)
 		{
 			sv_dev_sta.v.vinSmS = eVIN_VLow;
 			sv_dev_sta.v.lastRstS = eLR_WDT;
+			sys_ok = false;
 		}
 		break;
 	default:
@@ -283,7 +365,7 @@ void mbWDTsm(void)
  */
 #define C_FOUND_PROG_END (0x101F) // end of program memory to check (exclusive)
 #else
-#define C_FOUND_PROG_END (0x0FE5) // determine me
+#define C_FOUND_PROG_END (0x10C0) // determine me
 #endif
 
 // configuration variables
@@ -531,6 +613,7 @@ void cfg_load()
 		cfg.baud = default_cfg.baud;
 		cfg.wdto = default_cfg.wdto;
 		cfg.pw = default_cfg.pw;
+		sys_ok = false;
 	}
 
 	// apply configuration structure
@@ -607,6 +690,7 @@ void CFGsm()
 			if (pw == cfg.pw)
 			{
 				cfgSmS = eCFG_Cache;
+				configuring = true;
 			}
 			pw_flag = false;
 		}
@@ -627,6 +711,7 @@ void CFGsm()
 			{
 				cfgSmS = eCFG_Idle;
 				cfg = default_cfg;
+				configuring = false;
 			}
 			pw_flag = false;
 		}
@@ -641,6 +726,7 @@ void CFGsm()
 			if (pw == C_CMD_CANCEL)
 			{
 				cfgSmS = eCFG_Idle;
+				configuring = false;
 			}
 			pw_flag = false;
 		}
@@ -712,7 +798,7 @@ void CFGsm()
  *****************************************************************************/
 int main(void)
 {
-	static uint8_t t1CountLast = 0;
+	static t1Count_t t1CountLast = 0;
 	// reset handling code
 	//   skip startup reset if a software reset was called
 	if ((RSTSRC & RSTSRC_SWRSF__BMASK) == RSTSRC_SWRSF__SET)
@@ -728,10 +814,11 @@ int main(void)
 	while (1)
 	{
 		// apparently, casting this to unsigned is necessary
-		if (t1Count - t1CountLast >= (uint8_t)1)
+		if (t1Count - t1CountLast >= 1u)
 		{
 			PETIT_PROCESS_ON();
 			CFGsm();
+			blinker();
 			if (run_petitmodbus)
 			{
 				t1CountLast++;

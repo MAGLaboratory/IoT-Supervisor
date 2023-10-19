@@ -16,11 +16,6 @@
 //-----------------------------------------------------------------------------
 // Defines
 //-----------------------------------------------------------------------------
-#define RESET_P (P1_B1)
-#define nLED (P1_B4)
-#define XCVR_TX (P0_B3)
-
-#define VIN_CMP_CPOUT() (CMP0CN0 & CMP0CN0_CPOUT__BMASK)
 /** @addtogroup Modbus_WDT_State_Machine
  *  @{
  */
@@ -38,6 +33,8 @@
 //-----------------------------------------------------------------------------
 // Type Definitions
 //-----------------------------------------------------------------------------
+#define t1Count_t uint16_t
+
 /**
  * @addtogroup Voltage_State_Machine
  * @{
@@ -172,7 +169,7 @@ typedef union
 //-----------------------------------------------------------------------------
 // Globals
 //-----------------------------------------------------------------------------
-extern volatile uint8_t t1Count;
+extern volatile t1Count_t t1Count;
 extern volatile bool cprif;
 
 extern volatile uint8_t t0Count;

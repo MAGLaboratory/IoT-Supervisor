@@ -15,6 +15,7 @@
 #include "PetitModbusPort.h"
 // User Includes
 #include <SI_EFM8BB1_Register_Enums.h>
+#include "hardware.h"
 #include "IoT_Supervisor.h"
 #include "ModbusMiddleWare.h"
 

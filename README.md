@@ -203,8 +203,8 @@ value and allows the other bitfield `BAUD Enumeration` to be changed.
 The servant ID is set to `255` by default.
 
 ## Branch Description
-This branch is for initial development.  The style of calling something "zero"
-came from a style of anime calling their prequel series "zero."
+This branch is for porting the inital development performed on the EFM8BB1LCK
+with the added SP485 breakout onto the newly designed PCB with blinky LEDs.
 
 ## Deployment
 Is this section supposed to be about how this project was developed or how to
@@ -252,7 +252,7 @@ instr.address = 1
 instr.read_registers(0x00, 2)
 
 # write to Flash
-instr.write_registers(0x01, 0xDEFA)
+instr.write_register(0x01, 0xDEFA)
 
 # check communication one last time
 instr.read_registers(0x00, 2)

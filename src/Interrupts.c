@@ -10,8 +10,8 @@
  *****************************************************************************/
 
 // USER INCLUDES
+#include "hardware.h"
 #include <SI_EFM8BB1_Register_Enums.h>
-#include "debugpins.h"
 #include "PetitModbusPort.h"
 #include "IoT_Supervisor.h"
 
@@ -29,20 +29,20 @@
  *
  * This ISR implements the immediate voltage low reset for the SBC.
  *****************************************************************************/
-SI_INTERRUPT (CMP0_ISR, CMP0_IRQn)
+SI_INTERRUPT (CMP1_ISR, CMP1_IRQn)
 {
 	static bool firstInterrupt = true;
 	// state machine immediate off
 	// clear falling edge flag (should not trigger to but whatever)
-	if (CMP0CN0 & CMP0CN0_CPFIF__BMASK)
+	if (CMP1CN0 & CMP1CN0_CPFIF__BMASK)
 	{
-		CMP0CN0 &= ~(CMP0CN0_CPFIF__BMASK);
+		CMP1CN0 &= ~(CMP1CN0_CPFIF__BMASK);
 	}
 	// clear rising edge flag
 	// run the Vin state machine to shut down the IoT device
-	if (CMP0CN0 & CMP0CN0_CPRIF__BMASK)
+	if (CMP1CN0 & CMP1CN0_CPRIF__BMASK)
 	{
-		CMP0CN0 &= ~(CMP0CN0_CPRIF__BMASK);
+		CMP1CN0 &= ~(CMP1CN0_CPRIF__BMASK);
 		// interrupt fires once on startup
 		if (firstInterrupt)
 			firstInterrupt = false;
@@ -79,8 +79,9 @@ SI_INTERRUPT (TIMER0_ISR, TIMER0_IRQn)
 	// reset timer counter
 	TL0 = (0x20 << TL0_TL0__SHIFT);
 
+	// this timer implements both a software and a hardware timer.
+	// multiple counts of the software timer are used for slower modbus speeds
 	t0Count++;
-
 	if (t0Count > T0C_TOP)
 	{
 		TIMER0_PINI_ON();

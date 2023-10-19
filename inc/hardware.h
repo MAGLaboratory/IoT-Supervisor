@@ -1,7 +1,7 @@
 /******************************************************************************
- * @file debugpins.h
- * This file contains function-like macros that aim to help debug the
- * application code through applicable timing data.
+ * @file pins.h
+ * This file contains function-like macros that aim to provide device hardware
+ * pinout data.
  *
  * This project is meant to be developed in conjunction with an
  * affordable USB logic analyer.  Much of the timing data is validated using
@@ -15,15 +15,49 @@
  * code until they are no longer needed.  The definitions in this file can be
  * changed to suit the target of the debugging effort.  New definitions can be
  * added in this file to help future developers.
+ *
+ * The fully integrated PCB does not use debug pins for timing data since the
+ * timing should have already been developed in the low-cost kit board.
  * @date Jul 18, 2023
  * @author brandon
  *****************************************************************************/
 
-#ifndef INC_DEBUGPINS_H_
-#define INC_DEBUGPINS_H_
+#ifndef INC_HARDWARE_H_
+#define INC_HARDWARE_H_
+
+#if defined(PCB)
+// PORT 0
+// P0_B0 NC
+// P0_B1 NC
+#define nLED (P0_B2) // reset LED, present since initial development as "LED"
+#define XCVR_TX (P0_B3)
+// P0_B4 UART TX
+// P0_B5 UART RX
+#define nPWR_LED (P0_B6)
+// P0_B7 comparator output (hardware)
+
+// PORT 1
+#define nMB_LED (P1_B0)
+#define RESET_P (P1_B1)
+#define nWDT_LED (P1_B2)
+// P1_B3 is taken by the comparator input
+
+#define VIN_CMP_CPOUT() (CMP1CN0 & CMP1CN0_CPOUT__BMASK)
+
+#else // not PCB
+#define RESET_P (P1_B1)
+#define nLED (P1_B4)
+#define XCVR_TX (P0_B3)
+
+#define VIN_CMP_CPOUT() (CMP0CN0 & CMP0CN0_CPOUT__BMASK)
+#endif // PCB
 
 #if defined(DEBUG) && DEBUG
 // debug mode is on, toggle the debug pins
+// do not use the pcb with debug mode!
+#if defined(PCB)
+#error "Do not use debug mode with the PCB!"
+#endif // PCB
 #define DBG0 (P0_B6)
 #define DBG1 (P1_B0)
 #define DBG2 (P1_B2)
@@ -61,8 +95,8 @@
 #define MAIN_PIN_OFF()
 #define PETIT_PROCESS_ON()
 #define PETIT_PROCESS_OFF()
-#define RESET_LED_SET(nSTATE)
-#define WDT_LED_SET(nSTATE)
+#define RESET_LED_SET(nSTATE) nLED = (nSTATE);
+#define WDT_LED_SET(nSTATE) nWDT_LED = (nSTATE);
 #endif
 
-#endif /* INC_DEBUGPINS_H_ */
+#endif /* INC_HARDWARE_H_ */
