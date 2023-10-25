@@ -74,19 +74,20 @@ The pin description here should exist to describe the pins in the "Debug" build
 more than it describes the pins in the "Release" build.
 The main purpose of this branch is to debug this build after all...
 
+TODO: update this
+
 | Pin | Name | Purpose |
 | --- | ---- | ------- |
-| P0.1 | VIN_DIV | Voltage Divider Input |
-| P0.3 | XCVR_EN | Transciever Transmit Enable |
+| P0.2 | RESET_LED | Reset LED Indication |
+| P0.3 | XCVR_TXEN | Transciever Transmit Enable |
 | P0.4 | UART_TX | UART Transmit | 
 | P0.5 | UART_RX | UART Receive |
-| P0.6 | DBG0 | Debug Pin 0.  Used for a debug function. | 
-| P0.7 | CMP0_A | Asynchronous Comparator Output. Immediately shows when the voltage in compartaor is triggered. |
-| P1.0 | DBG1 | Debug Pin 1. Used for a debug function. |
+| P0.6 | PWR_LED | Power LED Indication.  Outputs the status of the SV. | 
+| P0.7 | CMP1_A | Asynchronous Comparator Output. Immediately shows when the voltage in compartaor is triggered. |
+| P1.0 | MODBUS_LED | Modbus LED Indication.  Blinks with modbus comms. |
 | P1.1 | RESET_OUT | Reset Output.  Used to reset the SBC. Tie directly to SBC. |
-| P1.2 | DBG2 | Debug Pin 2. |
-| P1.3 | DBG3 | Debug Pin 3. |
-| P1.4 | LED | The LED on the development board.  Very useful. |
+| P1.2 | WDT_LED | Modbus WDT LED Indication.  On until the WDT is activated. |
+| P1.3 | VIN_DIV | Voltage in after the divider. |
 
 ### Voltage Divider Detail
 The voltage divider is set to 3.6v by default.  This is \f$1.8v * 2\f$.
@@ -127,6 +128,8 @@ The following table documents the ADC bitfield:
 | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 | -- | -- | -- | -- | -- | -- | - | - | - | - | - | - | - | - | - | - |
 | Number of Conversion |||||| Conversion Value in Counts ||||||||||
+
+TODO provide sample code
 
 ### Supervisor Status
 This section is for those who do not wish to read the other doxygen

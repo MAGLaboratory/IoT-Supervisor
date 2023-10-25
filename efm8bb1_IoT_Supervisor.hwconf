@@ -22,6 +22,8 @@
     <property object="CMP_0" propertyId="cmp.input.positiveinputmuxselection" value="Internal LDO output"/>
     <property object="CMP_0" propertyId="cmp.interrupts.enablerisingedgeinterrupt" value="Enabled"/>
     <property object="CMP_1" propertyId="ABPeripheral.included" value="true"/>
+    <property object="CMP_1" propertyId="cmp.control.negativehysteresis" value="~20 mV"/>
+    <property object="CMP_1" propertyId="cmp.control.positivehysteresis" value="~5 mV"/>
     <property object="CMP_1" propertyId="cmp.enable.enablecomparator" value="Enabled"/>
     <property object="CMP_1" propertyId="cmp.input.negativeinputmuxselection" value="CMP1N.5 (P1.3)"/>
     <property object="CMP_1" propertyId="cmp.input.positiveinputmuxselection" value="Internal LDO output"/>
@@ -36,12 +38,15 @@
     <property object="INTERRUPT_0" propertyId="interrupt.interruptenable.enabletimer0interrupt" value="Enabled"/>
     <property object="INTERRUPT_0" propertyId="interrupt.interruptenable.enabletimer1interrupt" value="Enabled"/>
     <property object="INTERRUPT_0" propertyId="interrupt.interruptenable.enableuart0interrupt" value="Enabled"/>
+    <property object="P0.0" propertyId="ports.settings.latch" value="Low"/>
     <property object="P0.0" propertyId="ports.settings.skip" value="Skipped"/>
+    <property object="P0.1" propertyId="ports.settings.inputmode" value="Analog"/>
+    <property object="P0.1" propertyId="ports.settings.iomode" value="Analog I/O"/>
     <property object="P0.1" propertyId="ports.settings.skip" value="Skipped"/>
     <property object="P0.2" propertyId="ports.settings.label" value="RESET LED"/>
     <property object="P0.2" propertyId="ports.settings.skip" value="Skipped"/>
     <property object="P0.3" propertyId="ports.settings.iomode" value="Digital Push-Pull Output"/>
-    <property object="P0.3" propertyId="ports.settings.label" value="XCVR_DIR"/>
+    <property object="P0.3" propertyId="ports.settings.label" value="XCVR_TXEN"/>
     <property object="P0.3" propertyId="ports.settings.latch" value="Low"/>
     <property object="P0.3" propertyId="ports.settings.outputmode" value="Push-pull"/>
     <property object="P0.3" propertyId="ports.settings.skip" value="Skipped"/>

@@ -89,7 +89,7 @@ extern void PORTS_0_enter_DefaultMode_from_RESET(void)
 {
 	// $[P0 - Port 0 Pin Latch]
 	/***********************************************************************
-	 - P0.0 is high. Set P0.0 to drive or float high
+	 - P0.0 is low. Set P0.0 to drive low
 	 - P0.1 is high. Set P0.1 to drive or float high
 	 - P0.2 is high. Set P0.2 to drive or float high
 	 - P0.3 is low. Set P0.3 to drive low
@@ -98,7 +98,7 @@ extern void PORTS_0_enter_DefaultMode_from_RESET(void)
 	 - P0.6 is high. Set P0.6 to drive or float high
 	 - P0.7 is low. Set P0.7 to drive low
 	 ***********************************************************************/
-	P0 = P0_B0__HIGH | P0_B1__HIGH | P0_B2__HIGH | P0_B3__LOW | P0_B4__HIGH
+	P0 = P0_B0__LOW | P0_B1__HIGH | P0_B2__HIGH | P0_B3__LOW | P0_B4__HIGH
 			| P0_B5__HIGH | P0_B6__HIGH | P0_B7__LOW;
 	// [P0 - Port 0 Pin Latch]$
 
@@ -120,6 +120,19 @@ extern void PORTS_0_enter_DefaultMode_from_RESET(void)
 	// [P0MDOUT - Port 0 Output Mode]$
 
 	// $[P0MDIN - Port 0 Input Mode]
+	/***********************************************************************
+	 - P0.0 pin is configured for digital mode
+	 - P0.1 pin is configured for analog mode
+	 - P0.2 pin is configured for digital mode
+	 - P0.3 pin is configured for digital mode
+	 - P0.4 pin is configured for digital mode
+	 - P0.5 pin is configured for digital mode
+	 - P0.6 pin is configured for digital mode
+	 - P0.7 pin is configured for digital mode
+	 ***********************************************************************/
+	P0MDIN = P0MDIN_B0__DIGITAL | P0MDIN_B1__ANALOG | P0MDIN_B2__DIGITAL
+			| P0MDIN_B3__DIGITAL | P0MDIN_B4__DIGITAL | P0MDIN_B5__DIGITAL
+			| P0MDIN_B6__DIGITAL | P0MDIN_B7__DIGITAL;
 	// [P0MDIN - Port 0 Input Mode]$
 
 	// $[P0SKIP - Port 0 Skip]
@@ -544,9 +557,18 @@ extern void CMP_1_enter_DefaultMode_from_RESET(void)
 	// $[CMP1CN0 - Comparator 1 Control 0]
 	/***********************************************************************
 	 - Comparator enabled
+	 - Positive Hysteresis = Hysteresis 1
+	 - Negative Hysteresis = Hysteresis 3 
 	 ***********************************************************************/
-	CMP1CN0 |= CMP1CN0_CPEN__ENABLED;
+	CMP1CN0 &= ~CMP1CN0_CPHYP__FMASK;
+	CMP1CN0 |= CMP1CN0_CPEN__ENABLED | CMP1CN0_CPHYP__ENABLED_MODE1
+			| CMP1CN0_CPHYN__ENABLED_MODE3;
 	// [CMP1CN0 - Comparator 1 Control 0]$
+
+}
+
+extern void VREF_0_enter_DefaultMode_from_RESET(void)
+{
 
 }
 

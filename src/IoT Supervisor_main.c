@@ -98,9 +98,10 @@ uint8_t T0C_TOP = 0;
  * returns to its initial value, nack.
  *****************************************************************************/
 #define HB_DIV (9u) // approximately once a second, actually less
-#define HB_DUTYCYCLE (4u) // this value is one at minimum
-#define HB_SKIP (4u) // number of heartbeat cycles to skip between blinks
-
+                    // must be at least two, but it probably won't look good
+                    // at two...
+#define HB_DUTYCYCLE (4u) // select zero here to bypass the dutycycle gen
+#define HB_SKIP (3u) // number of heartbeat cycles to skip between blinks
 #define FAST_BLINK (9u) // one second
 #define SLOW_BLINK (FAST_BLINK + 2u)
 
@@ -140,21 +141,21 @@ void blinker(void)
 			hbdCount = 1;
 			nPWR_LED = 0;
 		}
-		else if (hb_internal == true) // hbd_state == true
+
+		// if the selected dutycycle is 0, base this part
+		// off of the heatbeat generated before
+		if (hbdCount < HB_DUTYCYCLE)
 		{
-			if (hbdCount < HB_DUTYCYCLE)
-			{
-				hbdCount++;
-			}
-			else
-			{
-				nPWR_LED = 1;
-			}
+			hbdCount++;
 		}
-		else // hb_internal == false
+		else if ((HB_DUTYCYCLE > 0u) || (hb_internal == false))
+		{
+			nPWR_LED = 1;
+		}
+
+		if (hb_internal == false && hbd_state == true)
 		{
 			hbd_state = false;
-			nPWR_LED = 1;
 		}
 	}
 	// sys not ok is short blink
@@ -198,7 +199,6 @@ bool modbusWdtExp = false; // set outside, cleared in this SM
 // == constants ==
 #define SCOUNTER_ONE_SECOND (125)
 // 125 for one second
-
 /**
  * Voltage in state machine.  Perhaps this could be called the main state
  * machine in this application.
@@ -242,13 +242,11 @@ void VinSm(void)
 		{
 			sv_dev_sta.v.vinSmS = eVIN_VLow;
 			sv_dev_sta.v.lastRstS = eLR_VSM;
-			sys_ok = false;
 		}
 		else if (modbusWdtExp == true)
 		{
 			sv_dev_sta.v.vinSmS = eVIN_VLow;
 			sv_dev_sta.v.lastRstS = eLR_WDT;
-			sys_ok = false;
 		}
 		break;
 	default:
@@ -265,6 +263,7 @@ void VinSm(void)
 		break;
 	case eVIN_VLow:
 		sCounter = 0;
+		sys_ok = false;
 		break;
 	case eVIN_OK:
 		nReset = true;
@@ -360,7 +359,7 @@ void mbWDTsm(void)
 	}
 
 	// inverse logic
-	WDT_LED_SET(sv_dev_sta.v.wdtSmS != eMW_En);
+	WDT_LED_SET(sv_dev_sta.v.wdtSmS == eMW_En);
 
 	mbWDTpet = false;
 }
@@ -401,7 +400,7 @@ void mbWDTsm(void)
  */
 #define C_FOUND_PROG_END (0x101F) // end of program memory to check (exclusive)
 #else
-#define C_FOUND_PROG_END (0x10C0) // determine me
+#define C_FOUND_PROG_END (0x10D0) // determine me
 #endif
 
 // configuration variables
@@ -630,6 +629,7 @@ void cfg_load()
 		if ((calc_prog_crc & 0xFF) != i)
 		{
 			sv_dev_sta.v.verifSt = eVS_Prog;
+			sys_ok = false;
 		}
 		else
 		{
@@ -638,6 +638,7 @@ void cfg_load()
 			if (calc_prog_crc >> 8 != i)
 			{
 				sv_dev_sta.v.verifSt = eVS_Prog;
+				sys_ok = false;
 			}
 		}
 	}
