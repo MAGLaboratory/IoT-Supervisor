@@ -100,7 +100,7 @@ uint8_t T0C_TOP = 0;
 #define HB_DIV (9u) // approximately once a second, actually less
                     // must be at least two, but it probably won't look good
                     // at two...
-#define HB_DUTYCYCLE (4u) // select zero here to bypass the dutycycle gen
+#define HB_DUTYCYCLE (32u) // select zero here to bypass the dutycycle gen
 #define HB_SKIP (3u) // number of heartbeat cycles to skip between blinks
 #define FAST_BLINK (9u) // one second
 #define SLOW_BLINK (FAST_BLINK + 2u)
@@ -108,7 +108,6 @@ uint8_t T0C_TOP = 0;
 bool sys_ok = true;
 bool configuring = false;
 uint8_t hbdCount = 0; // heartbeat dutycycle counter
-bool hbd_state = false; // heartbeat dutycycle state machine state
 uint8_t hbsCount = 0; // heartbeat skip counter
 
 void blinker(void)
@@ -122,6 +121,8 @@ void blinker(void)
 		bool hb_fast = (t1Count & (1 << HB_DIV - 2)) != 0;
 		// heart beat slow _ rising edge
 		bool hbs_re = (t1Count & ((1 << HB_DIV + 1) - 1)) == (1 << HB_DIV);
+		// heart beat fast _ rising edge
+		bool hbf_re = (t1Count & ((1 << HB_DIV - 1) - 1)) == (1 << HB_DIV - 2);
 		bool hb_internal = hb_fast && hb_slow;
 		if (hbs_re == true && hbsCount < HB_SKIP)
 		{
@@ -135,9 +136,8 @@ void blinker(void)
 		hb_internal = hb_internal && (hbsCount == 0);
 
 		// two: LED duty cycle limiter
-		if (hb_internal == true && hbd_state == false)
+		if (hb_internal == true && hbf_re == true)
 		{
-			hbd_state = true;
 			hbdCount = 1;
 			nPWR_LED = 0;
 		}
@@ -148,14 +148,9 @@ void blinker(void)
 		{
 			hbdCount++;
 		}
-		else if ((HB_DUTYCYCLE > 0u) || (hb_internal == false))
+		else if (HB_DUTYCYCLE > 0u || hb_internal == false)
 		{
 			nPWR_LED = 1;
-		}
-
-		if (hb_internal == false && hbd_state == true)
-		{
-			hbd_state = false;
 		}
 	}
 	// sys not ok is short blink

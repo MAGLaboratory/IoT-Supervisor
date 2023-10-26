@@ -82,12 +82,12 @@ typedef enum
  */
 typedef enum
 {
-	eMMW_HR_STA = 0, /**< SV Status and MB Watchdog Control */
+	eMMW_HR_STA, /**< SV Status and MB Watchdog Control */
 	eMMW_HR_CFG, /**< Password and Config SM Control */
-	eMMW_HR_MB, /**< Modbus Control Register */
+	eMMW_HR_MB,  /**< Modbus Control Register */
 	eMMW_HR_WDT, /**< MB WDT Period Register */
-	eMMW_HR_PW, /**< Password Set Register */
-	eMMW_HR_NUM /**< Number of holding registers */
+	eMMW_HR_PW,  /**< Password Set Register */
+	eMMW_HR_NUM  /**< Number of holding registers */
 } mmw_hr_t;
 
 extern uint8_t PETITMODBUS_DLY_TOP;

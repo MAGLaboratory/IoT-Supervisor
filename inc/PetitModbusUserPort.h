@@ -18,6 +18,8 @@
 #include "hardware.h"
 #include "IoT_Supervisor.h"
 #include "ModbusMiddleWare.h"
+#define NUMBER_OF_COILS                                 ( 1 )
+#define NUMBER_OF_DISCRETE_INPUTS                       ( 0 )
 // Petit Modbus RTU Slave Output Register Number
 // Have to put a number of registers here
 // It has to be bigger than 0 (zero)!!
@@ -25,8 +27,11 @@
 #define NUMBER_OF_INPUT_PETITREGISTERS 					( 1 )
 #define NUMBER_OF_REGISTERS_IN_BUFFER                   ( 3 )
 
+#define PETITMODBUS_READ_COILS_ENABLED                  ( 1 )
 #define PETITMODBUS_READ_HOLDING_REGISTERS_ENABLED      ( 1 )
-#define PETITMODBUSWRITE_SINGLE_REGISTER_ENABLED        ( 1 )
+#define PETITMODBUS_WRITE_SINGLE_COIL_ENABLED           ( 1 )
+#define PETITMODBUS_WRITE_SINGLE_REGISTER_ENABLED       ( 1 )
+#define PETITMODBUS_WRITE_MULTIPLE_COILS_ENABLED        ( 1 )
 #define PETITMODBUS_WRITE_MULTIPLE_REGISTERS_ENABLED    ( 1 )
 #define PETITMODBUS_READ_INPUT_REGISTERS_ENABLED        ( 1 )
 // Where to process our modbus message
@@ -54,9 +59,11 @@
 //     it is possible to use hardware CRC calculation with this.
 #define PETIT_CRC PETIT_CRC_EXTERNAL
 
-#define PETIT_REG PETIT_REG_EXTERNAL
+#define PETIT_COIL PETIT_EXTERNAL
 
-#define PETIT_INPUT_REG PETIT_REG_INTERNAL
+#define PETIT_REG PETIT_EXTERNAL
+
+#define PETIT_INPUT_REG PETIT_INTERNAL
 /*****************************************************************************
  */
 // define this to let the CRC table reside in code memory rather than RAM
