@@ -13,5 +13,6 @@ var _init_device_8c =
     [ "TIMER16_2_enter_DefaultMode_from_RESET", "_init_device_8c.html#a4fa11030d2fa098ebe53c0720e0c8263", null ],
     [ "TIMER_SETUP_0_enter_DefaultMode_from_RESET", "_init_device_8c.html#a837107eb6072b88e4bd1668473a377c3", null ],
     [ "UART_0_enter_DefaultMode_from_RESET", "_init_device_8c.html#a8f92eb1c21dd22d96f862cfbe6e61e50", null ],
+    [ "VREF_0_enter_DefaultMode_from_RESET", "_init_device_8c.html#a2bbca5f82216dcb6fcb6a58399dac896", null ],
     [ "WDT_0_enter_DefaultMode_from_RESET", "_init_device_8c.html#a313b80c9f74abd6ec961cf19153f0ca3", null ]
 ];

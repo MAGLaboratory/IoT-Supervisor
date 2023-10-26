@@ -10,5 +10,6 @@ var searchData=
   ['vinsms_7',['vinSmS',['../unionsv__dev__sta__t.html#ac132976af83e93dc19c20cc736991ede',1,'sv_dev_sta_t']]],
   ['voltage_20divider_20detail_8',['Voltage Divider Detail',['../index.html#voltage-divider-detail',1,'']]],
   ['voltage_20in_20and_20reset_20state_20machine_9',['Voltage In and Reset State Machine',['../group___voltage___state___machine.html',1,'']]],
-  ['voltage_20in_20comparator_10',['Voltage In Comparator',['../testing-procedures.html#voltage-in-comparator',1,'']]]
+  ['voltage_20in_20comparator_10',['Voltage In Comparator',['../testing-procedures.html#voltage-in-comparator',1,'']]],
+  ['vref_5f0_5fenter_5fdefaultmode_5ffrom_5freset_11',['VREF_0_enter_DefaultMode_from_RESET',['../_init_device_8c.html#a2bbca5f82216dcb6fcb6a58399dac896',1,'InitDevice.c']]]
 ];

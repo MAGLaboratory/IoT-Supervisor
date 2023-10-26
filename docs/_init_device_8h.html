@@ -193,7 +193,7 @@ Functions</h2></td></tr>
 <li>ADC0 conversion initiated on overflow of Timer 2</li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="_init_device_8c_source.html#l00347">347</a> of file <a class="el" href="_init_device_8c_source.html">InitDevice.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_init_device_8c_source.html#l00360">360</a> of file <a class="el" href="_init_device_8c_source.html">InitDevice.c</a>.</p>
 
 </div>
 </div>
@@ -225,7 +225,7 @@ Functions</h2></td></tr>
 <li>SYSCLK is equal to selected clock source divided by 16</li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="_init_device_8c_source.html#l00184">184</a> of file <a class="el" href="_init_device_8c_source.html">InitDevice.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_init_device_8c_source.html#l00197">197</a> of file <a class="el" href="_init_device_8c_source.html">InitDevice.c</a>.</p>
 
 </div>
 </div>
@@ -261,9 +261,11 @@ Functions</h2></td></tr>
 </ul>
 <ul>
 <li>Comparator enabled</li>
+<li>Positive Hysteresis = Hysteresis 1</li>
+<li>Negative Hysteresis = Hysteresis 3</li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="_init_device_8c_source.html#l00522">522</a> of file <a class="el" href="_init_device_8c_source.html">InitDevice.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_init_device_8c_source.html#l00535">535</a> of file <a class="el" href="_init_device_8c_source.html">InitDevice.c</a>.</p>
 
 </div>
 </div>
@@ -339,7 +341,7 @@ Functions</h2></td></tr>
 <li>Enable UART0 interrupt</li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="_init_device_8c_source.html#l00293">293</a> of file <a class="el" href="_init_device_8c_source.html">InitDevice.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_init_device_8c_source.html#l00306">306</a> of file <a class="el" href="_init_device_8c_source.html">InitDevice.c</a>.</p>
 
 </div>
 </div>
@@ -381,7 +383,7 @@ Functions</h2></td></tr>
 <li>SYSCLK unavailable at Port pin</li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="_init_device_8c_source.html#l00150">150</a> of file <a class="el" href="_init_device_8c_source.html">InitDevice.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_init_device_8c_source.html#l00163">163</a> of file <a class="el" href="_init_device_8c_source.html">InitDevice.c</a>.</p>
 
 </div>
 </div>
@@ -409,7 +411,7 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <ul>
-<li>P0.0 is high. Set P0.0 to drive or float high</li>
+<li>P0.0 is low. Set P0.0 to drive low</li>
 <li>P0.1 is high. Set P0.1 to drive or float high</li>
 <li>P0.2 is high. Set P0.2 to drive or float high</li>
 <li>P0.3 is low. Set P0.3 to drive low</li>
@@ -427,6 +429,16 @@ Functions</h2></td></tr>
 <li>P0.5 output is open-drain</li>
 <li>P0.6 output is open-drain</li>
 <li>P0.7 output is push-pull</li>
+</ul>
+<ul>
+<li>P0.0 pin is configured for digital mode</li>
+<li>P0.1 pin is configured for analog mode</li>
+<li>P0.2 pin is configured for digital mode</li>
+<li>P0.3 pin is configured for digital mode</li>
+<li>P0.4 pin is configured for digital mode</li>
+<li>P0.5 pin is configured for digital mode</li>
+<li>P0.6 pin is configured for digital mode</li>
+<li>P0.7 pin is configured for digital mode</li>
 </ul>
 <ul>
 <li>P0.0 pin is skipped by the crossbar</li>
@@ -479,7 +491,7 @@ Functions</h2></td></tr>
 <li>P1.3 pin is skipped by the crossbar</li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="_init_device_8c_source.html#l00484">484</a> of file <a class="el" href="_init_device_8c_source.html">InitDevice.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_init_device_8c_source.html#l00497">497</a> of file <a class="el" href="_init_device_8c_source.html">InitDevice.c</a>.</p>
 
 </div>
 </div>
@@ -513,7 +525,7 @@ Functions</h2></td></tr>
 <li>Timer 0 Low Byte = 0x60</li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="_init_device_8c_source.html#l00227">227</a> of file <a class="el" href="_init_device_8c_source.html">InitDevice.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_init_device_8c_source.html#l00240">240</a> of file <a class="el" href="_init_device_8c_source.html">InitDevice.c</a>.</p>
 
 </div>
 </div>
@@ -556,7 +568,7 @@ Functions</h2></td></tr>
 <li>Start Timer 2 running</li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="_init_device_8c_source.html#l00429">429</a> of file <a class="el" href="_init_device_8c_source.html">InitDevice.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_init_device_8c_source.html#l00442">442</a> of file <a class="el" href="_init_device_8c_source.html">InitDevice.c</a>.</p>
 
 </div>
 </div>
@@ -595,7 +607,7 @@ Functions</h2></td></tr>
 <li>Start Timer 1 running</li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="_init_device_8c_source.html#l00266">266</a> of file <a class="el" href="_init_device_8c_source.html">InitDevice.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_init_device_8c_source.html#l00279">279</a> of file <a class="el" href="_init_device_8c_source.html">InitDevice.c</a>.</p>
 
 </div>
 </div>

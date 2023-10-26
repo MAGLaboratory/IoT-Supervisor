@@ -39,7 +39,6 @@ var _io_t_01_supervisor__main_8c =
     [ "default_cfg", "group___configuration___state___machine.html#ga35236392c891bc6d5ccee8f619d2f92a", null ],
     [ "dir_tx", "group___configuration___state___machine.html#ga4310b6cbe0d1f02c0d8bacadf8fa09a2", null ],
     [ "ex_cfg_header", "group___configuration___state___machine.html#ga4786f95f528dfb7d6225d35b27072418", null ],
-    [ "hbd_state", "group___blinker.html#gaae68010a7dda3c61c7edd0eb74195a5d", null ],
     [ "hbdCount", "group___blinker.html#gaf318e0fdf052bf1c57db435343dbbecc", null ],
     [ "hbsCount", "group___blinker.html#gafe53a3c1193d19d6a47b1b45c5001ba1", null ],
     [ "MB_WD_TIMEOUT", "group___modbus___w_d_t___state___machine.html#gab9eb643439bfb234f1a6da202f1cbf60", null ],

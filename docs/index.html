@@ -169,31 +169,30 @@ On-Chip Peripherals</h2>
 <h2><a class="anchor" id="pins"></a>
 Pins</h2>
 <p>The pin description here should exist to describe the pins in the "Debug" build more than it describes the pins in the "Release" build. The main purpose of this branch is to debug this build after all...</p>
+<p>TODO: update this</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Pin   </th><th class="markdownTableHeadNone">Name   </th><th class="markdownTableHeadNone">Purpose    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">P0.1   </td><td class="markdownTableBodyNone">VIN_DIV   </td><td class="markdownTableBodyNone">Voltage Divider Input    </td></tr>
+<td class="markdownTableBodyNone">P0.2   </td><td class="markdownTableBodyNone">RESET_LED   </td><td class="markdownTableBodyNone">Reset LED Indication    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">P0.3   </td><td class="markdownTableBodyNone">XCVR_EN   </td><td class="markdownTableBodyNone">Transciever Transmit Enable    </td></tr>
+<td class="markdownTableBodyNone">P0.3   </td><td class="markdownTableBodyNone">XCVR_TXEN   </td><td class="markdownTableBodyNone">Transciever Transmit Enable    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">P0.4   </td><td class="markdownTableBodyNone">UART_TX   </td><td class="markdownTableBodyNone">UART Transmit    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">P0.5   </td><td class="markdownTableBodyNone">UART_RX   </td><td class="markdownTableBodyNone">UART Receive    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">P0.6   </td><td class="markdownTableBodyNone">DBG0   </td><td class="markdownTableBodyNone">Debug Pin 0. Used for a debug function.    </td></tr>
+<td class="markdownTableBodyNone">P0.6   </td><td class="markdownTableBodyNone">PWR_LED   </td><td class="markdownTableBodyNone">Power LED Indication. Outputs the status of the SV.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">P0.7   </td><td class="markdownTableBodyNone">CMP0_A   </td><td class="markdownTableBodyNone">Asynchronous Comparator Output. Immediately shows when the voltage in compartaor is triggered.    </td></tr>
+<td class="markdownTableBodyNone">P0.7   </td><td class="markdownTableBodyNone">CMP1_A   </td><td class="markdownTableBodyNone">Asynchronous Comparator Output. Immediately shows when the voltage in compartaor is triggered.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">P1.0   </td><td class="markdownTableBodyNone">DBG1   </td><td class="markdownTableBodyNone">Debug Pin 1. Used for a debug function.    </td></tr>
+<td class="markdownTableBodyNone">P1.0   </td><td class="markdownTableBodyNone">MODBUS_LED   </td><td class="markdownTableBodyNone">Modbus LED Indication. Blinks with modbus comms.    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">P1.1   </td><td class="markdownTableBodyNone">RESET_OUT   </td><td class="markdownTableBodyNone">Reset Output. Used to reset the SBC. Tie directly to SBC.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">P1.2   </td><td class="markdownTableBodyNone">DBG2   </td><td class="markdownTableBodyNone">Debug Pin 2.    </td></tr>
+<td class="markdownTableBodyNone">P1.2   </td><td class="markdownTableBodyNone">WDT_LED   </td><td class="markdownTableBodyNone">Modbus WDT LED Indication. On until the WDT is activated.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">P1.3   </td><td class="markdownTableBodyNone">DBG3   </td><td class="markdownTableBodyNone">Debug Pin 3.    </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">P1.4   </td><td class="markdownTableBodyNone">LED   </td><td class="markdownTableBodyNone">The LED on the development board. Very useful.   </td></tr>
+<td class="markdownTableBodyNone">P1.3   </td><td class="markdownTableBodyNone">VIN_DIV   </td><td class="markdownTableBodyNone">Voltage in after the divider.   </td></tr>
 </table>
 <h2><a class="anchor" id="voltage-divider-detail"></a>
 Voltage Divider Detail</h2>
@@ -237,6 +236,7 @@ The ADC bitfield</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone" colspan="6">Number of Conversion   </td><td class="markdownTableBodyNone" colspan="10">Conversion Value in Counts   </td></tr>
 </table>
+<p>TODO provide sample code</p>
 <h2><a class="anchor" id="supervisor-status"></a>
 Supervisor Status</h2>
 <p>This section is for those who do not wish to read the other doxygen documentation. (Okay, maybe this section documents it better too...)</p>

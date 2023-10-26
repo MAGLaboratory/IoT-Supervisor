@@ -13,5 +13,5 @@ var searchData=
   ['supervisor_20status_10',['Supervisor Status',['../index.html#supervisor-status',1,'']]],
   ['sv_5fdev_5fsta_11',['sv_dev_sta',['../group___main___application.html#ga5aeeb2c06cb9bc8498f6ca5a520157d5',1,'sv_dev_sta:&#160;IoT Supervisor_main.c'],['../group___main___application.html#ga5aeeb2c06cb9bc8498f6ca5a520157d5',1,'sv_dev_sta:&#160;IoT Supervisor_main.c']]],
   ['sv_5fdev_5fsta_5ft_12',['sv_dev_sta_t',['../unionsv__dev__sta__t.html',1,'']]],
-  ['sys_5fok_13',['sys_ok',['../group___blinker.html#gab724f7c43d0d1bbb8401d0ef0abf8ac4',1,'IoT Supervisor_main.c']]]
+  ['sys_5fok_13',['sys_ok',['../group___blinker.html#gab724f7c43d0d1bbb8401d0ef0abf8ac4',1,'sys_ok:&#160;IoT Supervisor_main.c'],['../group___blinker.html#gab724f7c43d0d1bbb8401d0ef0abf8ac4',1,'sys_ok:&#160;IoT Supervisor_main.c']]]
 ];

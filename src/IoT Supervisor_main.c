@@ -395,7 +395,7 @@ void mbWDTsm(void)
  */
 #define C_FOUND_PROG_END (0x101F) // end of program memory to check (exclusive)
 #else
-#define C_FOUND_PROG_END (0x10D0) // determine me
+#define C_FOUND_PROG_END (0x12A9) // determine me
 #endif
 
 // configuration variables

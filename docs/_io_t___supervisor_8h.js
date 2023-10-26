@@ -48,6 +48,7 @@ var _io_t___supervisor_8h =
     [ "pw", "group___configuration___state___machine.html#ga1edfc8756590da90a14f41af9bd71dc4", null ],
     [ "pw_flag", "group___configuration___state___machine.html#ga0959e8576e2d8601bc958bbf7680f0d4", null ],
     [ "sv_dev_sta", "group___main___application.html#ga5aeeb2c06cb9bc8498f6ca5a520157d5", null ],
+    [ "sys_ok", "group___blinker.html#gab724f7c43d0d1bbb8401d0ef0abf8ac4", null ],
     [ "T0C_TOP", "group___main___application.html#ga06f41e11cde40f73d65c73f928a89ae9", null ],
     [ "t0Count", "group___main___application.html#ga9f016462fc2803075b67d903c4045aa7", null ],
     [ "t1Count", "group___main___application.html#ga41510eddee8f6b5ed47ac84a1802ed05", null ]
