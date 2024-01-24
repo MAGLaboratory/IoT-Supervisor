@@ -28,9 +28,13 @@ https://maglaboratory.github.io/IoT-Supervisor/
 ## Project Description
 This is an IoT SBC supervisor for the MAG Laboratory IoT devices.
 
-Included are a voltage comparator which automatically resets devices if the
-input voltage drops below an acceptable voltage.  (Manually configured through
-a resistor divider)
+The following table describes the interfaces for this project:
+| Interface | Description | Configurable |
+| --------- | ----------- | ------------ |
+| Reset | Pulls low if a reset condition is active | X | 
+| Voltage Comparator | Initiates a reset if the voltage becomes too low | Resistor Divider |
+| Modbus Watchdog | Initiates a reset if the watchdog is not pet for a period of time | Software Config. Period / Address / Baud |
+| Heartbeat LED | Tells you this system is alive | Recompileable to a different period / intensity |
 
 ## Hardware Description
 This description should change with the introduction of other branches where
@@ -167,6 +171,9 @@ The eVS_Setup (3) state shows that the configuration header has a mismatch.
 Upgrading from a previous version of the software could show the eVS_Setup
 condition.  Unfortunately, the settings from previous versions are not imported
 to newer versions of the software.
+
+Writing '0' into this register resets the last reset source `lstRstS`.
+Doing so also makes the heartbeat LED stop blinking menacingly after reset.
 
 ### Modbus WDT Control
 The modbus watchdog timer is controlled using only two simple values.
